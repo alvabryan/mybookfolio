@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { NavigationComponent } from './dashboard/page-skeleton/navigation/navigation.component';
+import { SidebarComponent } from './dashboard/page-skeleton/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     AppComponent,
     HomepageComponent,
     DashboardComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    NavigationComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
