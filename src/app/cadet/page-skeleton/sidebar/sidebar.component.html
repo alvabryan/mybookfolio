@@ -2,43 +2,43 @@
   <!-- Sidebar -->
 
   <ul class="sidebar navbar-nav " [ngClass]="{ toggled: toggledBar == true }">
-    <li class="nav-item active">
-      <a class="nav-link" href="cadets">
+    <li class="nav-item active" routerLinkActive="active">
+      <a class="nav-link" routerLink="dashboard">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span>
       </a>
     </li>
 
     <li class="nav-item" id="resumeTab">
-      <a class="nav-link" href="resumetemplate">
+      <a class="nav-link" routerLink="resume">
         <i class="fas fa-fw fa fa-file"></i>
         <span>Resume</span></a
       >
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="calenderHome" id="calendarTab">
+      <a class="nav-link" routerLink="calendar" id="calendarTab">
         <i class="fa fa-fw fa-calendar-alt"></i>
         <span>Calendar</span></a
       >
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="requestComingSoon" id="requestTab">
+      <a class="nav-link" routerLink="request" id="requestTab">
         <i class="fas fa-plus-circle"></i>
         <span>Request</span></a
       >
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="analytics" id="analyticsTab">
+      <a class="nav-link" routerLink="analytics" id="analyticsTab">
         <i class="fas fa-chart-line"></i>
         <span>Analytics</span></a
       >
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="analytics" id="analyticsTab">
+      <a class="nav-link" routerLink="cadet-challenge" id="analyticsTab">
         <i class="fas fa-chart-line"></i>
         <span>Cadet Challenge</span></a
       >

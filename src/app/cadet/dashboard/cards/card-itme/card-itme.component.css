@@ -1,0 +1,40 @@
+.cardJpa {
+  width: 14rem;
+  height: 380px;
+  box-shadow: 0px 0px 15px rgba(0,  0,  0, 0.21);
+  border: none; border-radius: 10px;
+  text-align: center;
+  margin: 0px 30px;
+}
+
+.cardTitleJpa {
+  font-size: 20px;
+}
+
+
+@media screen and (max-width: 576px) {
+ .cardJpa {
+   width: 13rem;
+}
+}
+
+@media screen and (max-width: 992px) {
+ .cardJpa {
+   width: 14rem;
+}
+}
+
+@media screen and (max-width: 768px) {
+ .cardJpa {
+   width: 18rem;
+}
+
+.cardTitleJpa {
+  font-size: 25px;
+  }
+}
+
+.cardJpa:hover {
+  box-shadow: 0px 0px 15px rgba(0,    0,    0, 0.45);
+  z-index: 10000;
+}
