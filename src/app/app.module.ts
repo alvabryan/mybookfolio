@@ -33,6 +33,9 @@ import { WrittenSummaryComponent } from './cadet/portfolio/written-summary/writt
 import { AchievementsComponent } from './cadet/portfolio/achievements/achievements.component';
 import { ServiceLearningComponent } from './cadet/portfolio/service-learning/service-learning.component';
 import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/portfolio-resume.component';
+import { RegisterComponent } from './homepage/register/register.component';
+import { LoginComponent } from './homepage/login/login.component';
+import { LandingPageComponent } from './homepage/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -67,7 +70,10 @@ import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/por
     WrittenSummaryComponent,
     AchievementsComponent,
     ServiceLearningComponent,
-    PortfolioResumeComponent
+    PortfolioResumeComponent,
+    RegisterComponent,
+    LoginComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule,

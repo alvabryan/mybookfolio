@@ -26,9 +26,13 @@ import { WrittenSummaryComponent } from './cadet/portfolio/written-summary/writt
 import { AchievementsComponent } from './cadet/portfolio/achievements/achievements.component';
 import { ServiceLearningComponent } from './cadet/portfolio/service-learning/service-learning.component';
 import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/portfolio-resume.component';
+import { RegisterComponent } from './homepage/register/register.component';
+import { LoginComponent } from './homepage/login/login.component';
 
 const routes: Routes = [
-  {path: '', component: HomepageComponent, pathMatch: 'full'},
+  {path: '', component: HomepageComponent},
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'cadet', component: CadetComponent, children: [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'resume', component: ResumeComponent},
