@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card-itme.component.css']
 })
 export class CardItmeComponent implements OnInit {
-  @Input() card: {name: string, imageUrl: string, progress: string};
+  @Input() card: {name: string, url: string, imageUrl: string, progress: string};
 
   constructor() { }
 

@@ -1,6 +1,6 @@
-<div class="d-flex  flex-wrap justify-center mt-5" *ngFor="let card of portfolioContet">
+<div class="d-flex  flex-wrap justify-content-center mt-5" *ngFor="let card of portfolioContet">
   <div class="container-fluid" style="text-align: center;">
-        <h2 class="mx-auto">Personal Growth</h2>
+        <h2 class="mx-auto">{{ card.name }}</h2>
   </div>
   <app-card-itme *ngFor="let cardItem of card.cards" [card]="cardItem"></app-card-itme>
 </div>
