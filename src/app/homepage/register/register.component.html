@@ -8,39 +8,61 @@
     </ul>
   </nav>
   <div class="container-fluid form-container">
-    <form class="form-signin">
+    <form class="form-signin" #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
       <div class="text-center mb-4">
         <img class="mb-4" src="assets/img/myBookfolio.png" alt="" width="72" height="72" />
         <h1 class="h3 mb-3 font-weight-normal">MyBookfolio Register</h1>
       </div>
 
       <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" />
+        <input type="email" ngModel #battalionCode="ngModel" name="battalionCode" id="battalionCode" class="form-control"
+          placeholder="Battalion Code" required="" autofocus="" minlength="5" maxlength="5"/>
+        <label for="battalionCode">Battalion Code</label>
+      </div>
+      <div class="form-label-group">
+        <input type="email" ngModel #firstName="ngModel" name="firstName" id="firstName" class="form-control"
+          placeholder="First Name" required="" autofocus="" />
+        <label for="firstName">First Name</label>
+      </div>
+      <div class="form-label-group">
+        <input type="email" ngModel #lastName="ngModel" name="lastName" id="lastName" class="form-control"
+          placeholder="Last Name" required="" autofocus="" />
+        <label for="lastName">Last Name</label>
+      </div>
+      <div class="form-label-group">
+        <input type="email" ngModel #email="ngModel" name="email" id="inputEmail" class="form-control"
+          placeholder="Email address" required="" autofocus="" />
         <label for="inputEmail">Email address</label>
       </div>
       <div class="form-label-group">
-        <input type="text" id="name" class="form-control" placeholder="Email address" required="" autofocus="" />
-        <label for="name">Name</label>
-      </div>
-      <div class="form-label-group">
-        <input type="number" id="let" class="form-control" placeholder="Email address" required="" autofocus="" />
+        <input type="number" ngModel #letLevel="ngModel" name="letLevel" id="let" class="form-control"
+          placeholder="Let Level" required="" autofocus="" />
         <label for="let">Let</label>
       </div>
       <div class="form-label-group">
-          <input type="number" id="period" class="form-control" placeholder="Email address" required="" autofocus="" />
-          <label for="period">Period</label>
-        </div>
+        <input type="number" ngModel #classPeriod="ngModel" name="classPeriod" id="period" class="form-control"
+          placeholder="Period" required="" autofocus="" />
+        <label for="period">Period</label>
+      </div>
       <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
+        <input type="password" ngModel #password="ngModel" name="password" id="inputPassword" class="form-control"
+          placeholder="Password" required="" minlength="6" />
         <label for="inputPassword">Password</label>
       </div>
       <div class="form-label-group">
-        <input type="password" id="confirmPassword" class="form-control" placeholder="Password" required="" />
+        <input type="password" ngModel #confirmPassword="ngModel" name="confirmPassword" id="confirmPassword"
+          class="form-control" placeholder="Password" required="" minlength="6" />
         <label for="confirmPassword">Confirm Password</label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Sign in
+
+      <!-- flash message model -->
+      <flash-messages></flash-messages>
+
+      <!-- sign up button -->
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="!signupForm.valid">
+        Sign Up
       </button>
+
       <p class="mt-3 mb-3 text-center"><a routerLink="/login">Login</a></p>
       <p class="mt-3 mb-3 text-muted text-center">MyBookfolio © 2019</p>
     </form>

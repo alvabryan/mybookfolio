@@ -28,12 +28,13 @@ import { ServiceLearningComponent } from './cadet/portfolio/service-learning/ser
 import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/portfolio-resume.component';
 import { RegisterComponent } from './homepage/register/register.component';
 import { LoginComponent } from './homepage/login/login.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'cadet', component: CadetComponent, children: [
+  {path: 'cadet', component: CadetComponent, canActivate: [AuthGuard], children: [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'resume', component: ResumeComponent},
     {path: 'calendar', component: CalendarComponent},

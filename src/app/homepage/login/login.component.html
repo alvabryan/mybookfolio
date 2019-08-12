@@ -8,19 +8,19 @@
     </ul>
   </nav>
   <div class="container-fluid form-container">
-    <form class="form-signin">
+    <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div class="text-center mb-4">
         <img class="mb-4" src="assets/img/myBookfolio.png" alt="" width="72" height="72" />
         <h1 class="h3 mb-3 font-weight-normal">MyBookfolio Login</h1>
       </div>
 
       <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" />
+        <input type="email" ngModel #email="ngModel" name="email" id="inputEmail" class="form-control" placeholder="Email address" required=""  email autofocus="" />
         <label for="inputEmail">Email address</label>
       </div>
 
       <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
+        <input type="password" ngModel #password="ngModel" name="password" id="inputPassword" class="form-control" placeholder="Password" required="" />
         <label for="inputPassword">Password</label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
