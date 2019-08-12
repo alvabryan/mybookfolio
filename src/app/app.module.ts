@@ -35,7 +35,6 @@ import { ServiceLearningComponent } from './cadet/portfolio/service-learning/ser
 import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/portfolio-resume.component';
 import { RegisterComponent } from './homepage/register/register.component';
 import { LoginComponent } from './homepage/login/login.component';
-import { LandingPageComponent } from './homepage/landing-page/landing-page.component';
 
 
 @NgModule({
@@ -72,8 +71,7 @@ import { LandingPageComponent } from './homepage/landing-page/landing-page.compo
     ServiceLearningComponent,
     PortfolioResumeComponent,
     RegisterComponent,
-    LoginComponent,
-    LandingPageComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
