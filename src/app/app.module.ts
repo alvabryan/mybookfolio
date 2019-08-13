@@ -51,6 +51,7 @@ import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/por
 import { RegisterComponent } from './homepage/register/register.component';
 import { LoginComponent } from './homepage/login/login.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { ResetPasswordComponent } from './homepage/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
     PortfolioResumeComponent,
     RegisterComponent,
     LoginComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

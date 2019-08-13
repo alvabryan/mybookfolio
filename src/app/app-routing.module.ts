@@ -29,11 +29,13 @@ import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/por
 import { RegisterComponent } from './homepage/register/register.component';
 import { LoginComponent } from './homepage/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ResetPasswordComponent } from './homepage/reset-password/reset-password.component';
 
 const routes: Routes = [
   {path: '', component: HomepageComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'password-reset', component: ResetPasswordComponent},
   {path: 'cadet', component: CadetComponent, canActivate: [AuthGuard], children: [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'resume', component: ResumeComponent},

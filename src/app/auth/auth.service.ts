@@ -146,6 +146,16 @@ export class AuthService {
     });
   }
 
+  passwordReset(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email).then( () => {
+      console.log('Email Sent');
+      return true;
+    }).catch( error => {
+      this.authErrorHandling(error);
+      return false;
+    });
+  }
+
 
   // logout method
   logout() {
