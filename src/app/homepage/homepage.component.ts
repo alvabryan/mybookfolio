@@ -18,10 +18,10 @@ export class HomepageComponent implements OnInit {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e) {
      if (window.pageYOffset > 60) {
-       let nav = document.getElementById('mainNav');
-        nav.classList.add('navbar-shrink');
-     } else if(window.pageYOffset < 60) {
-      let nav = document.getElementById('mainNav');
+       const nav = document.getElementById('mainNav');
+       nav.classList.add('navbar-shrink');
+     } else if (window.pageYOffset < 60) {
+      const nav = document.getElementById('mainNav');
       nav.classList.remove('navbar-shrink');
      }
   }
