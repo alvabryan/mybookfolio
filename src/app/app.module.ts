@@ -50,6 +50,7 @@ import { ServiceLearningComponent } from './cadet/portfolio/service-learning/ser
 import { PortfolioResumeComponent } from './cadet/portfolio/portfolio-resume/portfolio-resume.component';
 import { RegisterComponent } from './homepage/register/register.component';
 import { LoginComponent } from './homepage/login/login.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { LoginComponent } from './homepage/login/login.component';
     ServiceLearningComponent,
     PortfolioResumeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

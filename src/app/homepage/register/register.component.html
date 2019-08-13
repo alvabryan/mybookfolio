@@ -58,12 +58,15 @@
       <!-- flash message model -->
       <flash-messages></flash-messages>
 
+      <!-- loading spinner  -->
+      <app-spinner *ngIf="isLoading"></app-spinner>
+
       <!-- sign up button -->
-      <button class="btn btn-lg btn-primary btn-block" [disabled]="!signupForm.valid">
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="!signupForm.valid" *ngIf="!isLoading">
         Sign Up
       </button>
 
-      <p class="mt-3 mb-3 text-center"><a routerLink="/login">Login</a></p>
+      <p class="mt-3 mb-3 text-center" *ngIf="!isLoading"><a routerLink="/login">Login</a></p>
       <p class="mt-3 mb-3 text-muted text-center">MyBookfolio © 2019</p>
     </form>
   </div>

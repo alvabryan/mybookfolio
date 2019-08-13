@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from './user.model';
 import { take, map, tap } from 'rxjs/operators';
 
@@ -11,6 +11,8 @@ import { take, map, tap } from 'rxjs/operators';
 })
 export class AuthService {
 
+  authError = new Subject();
+
   // user observable
   user = new BehaviorSubject<any>(null);
 
@@ -18,6 +20,30 @@ export class AuthService {
   newUser: any;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore, private router: Router ) { }
+
+
+  // error handling
+  authErrorHandling(message: any) {
+    let emitError = 'Something went wrong';
+    switch (message.code) {
+      case 'auth/user-not-found':
+        emitError = 'There is no user record corresponding to this email.';
+        break;
+      case 'auth/wrong-password':
+        emitError = 'The password is invalid.';
+        break;
+      case 'auth/unvalid-password':
+        emitError = message.message;
+        break;
+      case 'auth/email-already-in-use':
+        emitError = message.message;
+        break;
+      default:
+        emitError = emitError;
+    }
+
+    this.authError.next(emitError);
+  }
 
   // email validation
   validateEmail(email: string) {
@@ -56,7 +82,7 @@ export class AuthService {
 
       }
     }).catch( error => {
-      console.log(error);
+      this.authErrorHandling(error);
     });
   }
 
@@ -105,7 +131,7 @@ export class AuthService {
         });
       }
     ).catch( error => {
-      console.log(error);
+      this.authErrorHandling(error);
     });
   }
 
