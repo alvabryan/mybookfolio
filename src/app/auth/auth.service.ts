@@ -66,7 +66,7 @@ export class AuthService {
           }), tap( () => {
 
             // sends user to the dashboard if there were no errors
-            this.router.navigate(['/cadet/dashboard']);
+            this.router.navigate(['/cadet']);
 
           } )).subscribe( user => {
             console.log(user);

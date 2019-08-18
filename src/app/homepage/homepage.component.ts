@@ -1,5 +1,5 @@
-import { Component, OnInit, HostListener, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-homepage',
@@ -8,21 +8,9 @@ import { DOCUMENT } from '@angular/common';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) document) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
-     if (window.pageYOffset > 60) {
-       const nav = document.getElementById('mainNav');
-       nav.classList.add('navbar-shrink');
-     } else if (window.pageYOffset < 60) {
-      const nav = document.getElementById('mainNav');
-      nav.classList.remove('navbar-shrink');
-     }
   }
 
 

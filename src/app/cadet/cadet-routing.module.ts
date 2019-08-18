@@ -30,8 +30,8 @@ import { ServiceLearningComponent } from './portfolio/service-learning/service-l
 import { ErrorPageComponent } from '../shared/error-page/error-page.component';
 
 const routes: Routes = [
-  {path: 'cadet', component: CadetComponent, canActivate: [AuthGuard], children: [
-    {path: 'dashboard', component: DashboardComponent},
+  {path: '', component: CadetComponent, canActivate: [AuthGuard], children: [
+    {path: '', component: DashboardComponent},
     {path: 'resume', component: ResumeComponent},
     {path: 'calendar', component: CalendarComponent},
     {path: 'request', component: RequestComponent},

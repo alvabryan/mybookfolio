@@ -20,8 +20,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // modules
-import { CadetModule } from './cadet/cadet.module';
-import { HomepageModuel } from './homepage/homepage.module';
 import { SharedModule } from './shared/shared.module';
 
 
@@ -38,8 +36,6 @@ import { SharedModule } from './shared/shared.module';
     AngularFirestoreModule,
     FormsModule,
     FlashMessagesModule.forRoot(),
-    CadetModule,
-    HomepageModuel,
     SharedModule
   ],
   providers: [],

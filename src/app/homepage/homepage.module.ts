@@ -10,6 +10,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { HomepageRouting } from './homepage-routing.module';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     ResetPasswordComponent,
     HomepageComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
