@@ -28,6 +28,7 @@ import { WrittenSummaryComponent } from './portfolio/written-summary/written-sum
 import { AchievementsComponent } from './portfolio/achievements/achievements.component';
 import { ServiceLearningComponent } from './portfolio/service-learning/service-learning.component';
 import { ErrorPageComponent } from '../shared/error-page/error-page.component';
+import { PortfolioCadetChallengeComponent } from './portfolio/portfolio-cadet-challenge/cadet-challenge.component';
 
 const routes: Routes = [
   {path: '', component: CadetComponent, canActivate: [AuthGuard], children: [
@@ -53,7 +54,7 @@ const routes: Routes = [
       {path: 'lesson-evidence', component: LessonEvidenceComponent},
       {path: 'written-summary', component: WrittenSummaryComponent},
       {path: 'achievements', component: AchievementsComponent},
-      {path: 'cadet-challenge', component: CadetChallengeComponent},
+      {path: 'portfolio-cadet-challenge', component: PortfolioCadetChallengeComponent},
       {path: 'service-learning', component: ServiceLearningComponent},
     ]},
     {path: '**', component: ErrorPageComponent}

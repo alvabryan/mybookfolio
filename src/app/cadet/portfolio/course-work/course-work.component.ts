@@ -12,4 +12,8 @@ export class CourseWorkComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+
+  }
+
 }

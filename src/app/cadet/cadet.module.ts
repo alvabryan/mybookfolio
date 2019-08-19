@@ -29,12 +29,15 @@ import { WrittenSummaryComponent } from './portfolio/written-summary/written-sum
 import { AchievementsComponent } from './portfolio/achievements/achievements.component';
 import { ServiceLearningComponent } from './portfolio/service-learning/service-learning.component';
 import { PortfolioResumeComponent } from './portfolio/portfolio-resume/portfolio-resume.component';
+import { PortfolioCadetChallengeComponent } from './portfolio/portfolio-cadet-challenge/cadet-challenge.component';
 
 // module imports
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadetRoutingModule } from './cadet-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { QuillModule } from 'ngx-quill';
+
 
 @NgModule({
   declarations: [
@@ -65,13 +68,16 @@ import { SharedModule } from '../shared/shared.module';
     WrittenSummaryComponent,
     AchievementsComponent,
     ServiceLearningComponent,
-    PortfolioResumeComponent
+    PortfolioResumeComponent,
+    PortfolioCadetChallengeComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     CadetRoutingModule,
-    SharedModule
+    SharedModule,
+    QuillModule
   ]
 })
 

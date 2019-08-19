@@ -12,4 +12,7 @@ export class WinningColorsComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+
+  }
 }

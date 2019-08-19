@@ -12,4 +12,8 @@ export class HumanGraphComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+
+  }
+
 }

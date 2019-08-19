@@ -10,7 +10,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
 // form modules
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // flash message models
 import { FlashMessagesModule } from 'angular2-flash-messages';
@@ -22,7 +22,8 @@ import { AppComponent } from './app.component';
 // modules
 import { SharedModule } from './shared/shared.module';
 
-
+// Quil module
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -35,8 +36,10 @@ import { SharedModule } from './shared/shared.module';
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
+    ReactiveFormsModule,
     FlashMessagesModule.forRoot(),
-    SharedModule
+    SharedModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

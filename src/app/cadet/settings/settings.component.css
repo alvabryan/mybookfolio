@@ -1,0 +1,24 @@
+#imgUpload{
+  border-radius: 0px 0px 100px 100px;
+  background-color: rgba(0, 0, 0, 0.51);
+  color: white;
+  height: 75px;
+  width: 150px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  padding: 22px 0px;
+  font-size: 13px;
+}
+
+input[type='file']{
+  display: none;
+}
+
+#submitButton{
+  display: none;
+}
+
+#file_form p{
+  cursor: pointer;
+}

@@ -12,4 +12,7 @@ export class PersonalAdComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    
+  }
 }

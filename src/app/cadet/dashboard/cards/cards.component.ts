@@ -50,7 +50,7 @@ export class CardsComponent implements OnInit {
         // tslint:disable-next-line: max-line-length
         {name: 'Achievements', url: 'achievements', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/medal.png', progress: '100px'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Cadet Challenge', url: 'cadet-challenge', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/running-man.png', progress: '100px'},
+        {name: 'Cadet Challenge', url: 'portfolio-cadet-challenge', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/running-man.png', progress: '100px'},
         // tslint:disable-next-line: max-line-length
         {name: 'Service Learning', url: 'service-learning', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/serviceLearning.png', progress: '100px'}
       ]

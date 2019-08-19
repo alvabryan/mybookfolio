@@ -43,3 +43,12 @@
     width: auto;
   }
 }
+
+.dropdown-menu {
+  width: 200px;
+}
+
+.profileName {
+  font-weight: 500;
+  font-size: 20px;
+}

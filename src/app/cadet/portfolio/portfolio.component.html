@@ -1,1 +1,58 @@
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/cadet/">Portfolio</a>
+    </li>
+    <li class="breadcrumb-item active">Goals</li>
+    <li class="dropdown ml-auto">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fas fa-user-edit"></span></a>
+      <div class="dropdown-menu">
+        <div class="dropdown-header">
+          Portfolio View Selector
+        </div>
+        <form>
+          <a class="dropdown-item-text">
+            <div class="form-check">
+              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
+                  value="1">Let 1 </label>
+            </div>
+          </a> <a class="dropdown-item-text">
+            <div class="form-check">
+              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
+                  value="2">Let 2 </label>
+            </div>
+          </a> <a class="dropdown-item-text">
+            <div class="form-check">
+              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
+                  value="3">Let 3 </label>
+            </div>
+          </a> <a class="dropdown-item-text">
+            <div class="form-check">
+              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
+                  value="4">Let 4 </label>
+            </div>
+          </a> <a class="dropdown-item-text"><button class="btn btn-primary btn-sm float-right" name="PortView"
+              type="submit">Submit</button></a>
+        </form>
+      </div>
+    </li>
+  </ol>
+
+  <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-pencil-square"></i> Let 1
+          </div>
+
+          <!-- Router outlet -->
+          <router-outlet></router-outlet>
+
+        </div>
+      </div>
+    </div>
+
+</div>
+
+

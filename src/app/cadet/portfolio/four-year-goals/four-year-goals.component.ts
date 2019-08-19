@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-four-year-goals',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FourYearGoalsComponent implements OnInit {
 
+  editorForm: FormGroup;
+
+  editorStyle = {
+    height: '150px'
+  };
+
   constructor() { }
 
   ngOnInit() {
+    this.editorForm = new FormGroup({
+      editor: new FormControl(null)
+    });
+  }
+
+  onSubmit() {
+    console.log(this.editorForm.get('editor').value);
   }
 
 }
