@@ -8,66 +8,42 @@
     </ul>
   </nav>
   <div class="container-fluid form-container">
-    <form class="form-signin" #signupForm="ngForm" (ngSubmit)="onSignup(signupForm)">
-      <div class="text-center mb-4">
-        <img class="mb-4" src="assets/img/myBookfolio.png" alt="" width="72" height="72" />
-        <h1 class="h3 mb-3 font-weight-normal">MyBookfolio Register</h1>
-      </div>
 
-      <div class="form-label-group">
-        <input type="email" ngModel #battalionCode="ngModel" name="battalionCode" id="battalionCode" class="form-control"
-          placeholder="Battalion Code" required="" autofocus="" minlength="5" maxlength="5"/>
-        <label for="battalionCode">Battalion Code</label>
-      </div>
-      <div class="form-label-group">
-        <input type="email" ngModel #firstName="ngModel" name="firstName" id="firstName" class="form-control"
-          placeholder="First Name" required="" autofocus="" />
-        <label for="firstName">First Name</label>
-      </div>
-      <div class="form-label-group">
-        <input type="email" ngModel #lastName="ngModel" name="lastName" id="lastName" class="form-control"
-          placeholder="Last Name" required="" autofocus="" />
-        <label for="lastName">Last Name</label>
-      </div>
-      <div class="form-label-group">
-        <input type="email" ngModel #email="ngModel" name="email" id="inputEmail" class="form-control"
-          placeholder="Email address" required="" autofocus="" />
-        <label for="inputEmail">Email address</label>
-      </div>
-      <div class="form-label-group">
-        <input type="number" ngModel #letLevel="ngModel" name="letLevel" id="let" class="form-control"
-          placeholder="Let Level" required="" autofocus="" />
-        <label for="let">Let</label>
-      </div>
-      <div class="form-label-group">
-        <input type="number" ngModel #classPeriod="ngModel" name="classPeriod" id="period" class="form-control"
-          placeholder="Period" required="" autofocus="" />
-        <label for="period">Period</label>
-      </div>
-      <div class="form-label-group">
-        <input type="password" ngModel #password="ngModel" name="password" id="inputPassword" class="form-control"
-          placeholder="Password" required="" minlength="6" />
-        <label for="inputPassword">Password</label>
-      </div>
-      <div class="form-label-group">
-        <input type="password" ngModel #confirmPassword="ngModel" name="confirmPassword" id="confirmPassword"
-          class="form-control" placeholder="Password" required="" minlength="6" />
-        <label for="confirmPassword">Confirm Password</label>
-      </div>
 
-      <!-- flash message model -->
-      <flash-messages></flash-messages>
+    <div class="mt-5" *ngIf="!signupType">
+      <div class="container-fluid">
+          <h2 class="text-center">Welcome to MyBookfolio</h2>
+          <p class="text-center">Choose an option below to register.</p>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="mx-auto card-box" (click)="setSignup('cadet')">
+            <h5>Cadet Registration</h5>
+            <i class="fas fa-user IconsColor"></i>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mx-auto card-box" (click)="setSignup('instructor')">
+              <h5>Battalion Registration</h5>
+              <i class="fas fa-users IconsColor"></i>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <!-- loading spinner  -->
-      <app-spinner *ngIf="isLoading"></app-spinner>
+    <div *ngIf="signupType">
 
-      <!-- sign up button -->
-      <button class="btn btn-lg btn-primary btn-block" [disabled]="!signupForm.valid" *ngIf="!isLoading">
-        Sign Up
-      </button>
+          <div *ngIf="signupType === 'cadet'">
+            <app-cadet-registration></app-cadet-registration>
+          </div>
+          <div *ngIf="signupType === 'instructor'">
+            <app-instructor-registration></app-instructor-registration>
+          </div>
 
-      <p class="mt-3 mb-3 text-center" *ngIf="!isLoading"><a routerLink="/home/login">Login</a></p>
-      <p class="mt-3 mb-3 text-muted text-center">MyBookfolio © 2019</p>
-    </form>
+
+          <p class="mt-3 mb-3 text-center" *ngIf="!isLoading"><a routerLink="/home/login">Login</a></p>
+          <p class="mt-3 mb-3 text-muted text-center">MyBookfolio © 2019</p>
+    </div>
+
   </div>
 </div>

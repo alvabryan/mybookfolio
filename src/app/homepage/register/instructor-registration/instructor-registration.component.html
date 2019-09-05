@@ -1,0 +1,67 @@
+
+  <form class="form-signin" #instructorForm="ngForm" (ngSubmit)="onInstructorSignup(instructorForm)">
+      <div class="text-center mb-4">
+          <img class="mb-4" src="assets/img/myBookfolio.png" alt="" width="72" height="72" />
+          <h1 class="h3 mb-3 font-weight-normal">Battalion Registration</h1>
+      </div>
+      <div class="form-label-group">
+          <input type="email" ngModel #schoolName="ngModel" name="schoolName" id="schoolName" class="form-control"
+            placeholder="School Name" required=""/>
+          <label for="battalionCode">School Name</label>
+      </div>
+      <div class="form-label-group">
+        <select ngModel #state="ngModel" name="state" id="state" class="form-control" required="">
+          <option value="">Select State</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+        </select>
+      </div>
+      <div class="form-label-group">
+        <input type="text" ngModel #city="ngModel" name="city" id="city" class="form-control" placeholder="City" required="">
+        <label for="city">City</label>
+      </div>
+      <div class="form-label-group">
+          <input type="text" ngModel #zipCode="ngModel" name="zipCode" id="zipCode" class="form-control" placeholder="Zip Code" required="">
+          <label for="zipCode">Zip Code</label>
+      </div>
+      <div class="form-label-group">
+          <input type="text" ngModel #firstName="ngModel" name="firstName" id="firstName" class="form-control" placeholder="First Name" required="">
+          <label for="firstName">First Name</label>
+      </div>
+      <div class="form-label-group">
+          <input type="text" ngModel #lastName="ngModel" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required="">
+          <label for="lastName">Last Name</label>
+      </div>
+      <div class="form-label-group">
+          <select ngModel #instructorType="ngModel" name="instructorType" id="instructorType" class="form-control" required="">
+            <option value="">Instructor Type</option>
+            <option value="SAI">Senior Army Insturctor</option>
+            <option value="AI">Army Instructor</option>
+          </select>
+      </div>
+      <div class="form-label-group">
+          <input type="email" ngModel #email="ngModel" name="email" id="email" class="form-control" placeholder="Email" required="" email>
+          <label for="email">Email</label>
+      </div>
+      <div class="form-label-group">
+          <input type="tel" ngModel #phoneNumber="ngModel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required="">
+          <label for="phoneNumber">Phone Number</label>
+      </div>
+      <div class="form-label-group">
+          <input type="password" ngModel #password="ngModel" name="password" id="password" class="form-control" placeholder="Password" required="" minlength="6">
+          <label for="password">Password</label>
+      </div>
+      <div class="form-label-group">
+          <input type="password" ngModel #confirmPassword="ngModel" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Password" required="" minlength="6">
+          <label for="confirmPassword">Confirm Password</label>
+      </div>
+
+      <!-- loading spinner  -->
+      <app-spinner *ngIf="isLoading"></app-spinner>
+
+      <!-- sign up button -->
+      <button class="btn btn-lg btn-primary btn-block" [disabled]="!instructorForm.valid" *ngIf="!isLoading">
+          Sign Up
+      </button>
+  </form>
+
