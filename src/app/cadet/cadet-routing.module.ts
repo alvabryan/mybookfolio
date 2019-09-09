@@ -50,7 +50,7 @@ const routes: Routes = [
       {path: 'resume', component: PortfolioResumeComponent},
       {path: 'financial-planning', component: FinancialPlanningComponent},
       {path: 'course-work', component: CourseWorkComponent},
-      {path: 'essay', component: EssayComponent},
+      {path: 'essay', component: EssayComponent, data: {message: 'Essay'}},
       {path: 'lesson-evidence', component: LessonEvidenceComponent},
       {path: 'written-summary', component: WrittenSummaryComponent},
       {path: 'achievements', component: AchievementsComponent},

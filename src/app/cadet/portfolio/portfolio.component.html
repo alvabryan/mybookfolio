@@ -4,55 +4,37 @@
     <li class="breadcrumb-item">
       <a routerLink="/cadet/">Portfolio</a>
     </li>
-    <li class="breadcrumb-item active">Goals</li>
-    <li class="dropdown ml-auto">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fas fa-user-edit"></span></a>
-      <div class="dropdown-menu">
-        <div class="dropdown-header">
-          Portfolio View Selector
-        </div>
-        <form>
-          <a class="dropdown-item-text">
-            <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
-                  value="1">Let 1 </label>
-            </div>
-          </a> <a class="dropdown-item-text">
-            <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
-                  value="2">Let 2 </label>
-            </div>
-          </a> <a class="dropdown-item-text">
-            <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
-                  value="3">Let 3 </label>
-            </div>
-          </a> <a class="dropdown-item-text">
-            <div class="form-check">
-              <label class="form-check-label"><input class="form-check-input" name="portviewSelect" type="radio"
-                  value="4">Let 4 </label>
-            </div>
-          </a> <a class="dropdown-item-text"><button class="btn btn-primary btn-sm float-right" name="PortView"
-              type="submit">Submit</button></a>
-        </form>
-      </div>
-    </li>
+    <li class="breadcrumb-item active">{{ pageTitle }}</li>
   </ol>
 
-  <div class="row">
-      <div class="col">
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-pencil-square"></i> Let 1
-          </div>
-
-          <!-- Router outlet -->
-          <router-outlet></router-outlet>
-
+  <div class="container-fluid p-2">
+    <div class="row">
+      <div class="col ml-2">
+        <h3>{{ pageTitle }}</h3>
+        <p style="font-size: 13px;" *ngIf="lastUpdated"><b>Updated:</b> {{ lastUpdated | date:'yyyy/MM/dd h:mm:ss a' }}</p>
+        <p style="font-size: 13px;" *ngIf="!lastUpdated"><b>Updated:</b> No data submitted yet</p>
+      </div>
+      <div col="col mr-5">
+        <div class="d-block float-lg-right mr-4">
+          <button class="btn btn-sm btn-outline-primary ml-1 active"
+          (click)="setLetLevel(1)"
+          [ngClass]="{active: letLevel === 1}">Let 1</button>
+          <button class="btn btn-sm btn-outline-primary btn-active ml-1"
+          (click)="setLetLevel(2)"
+          [ngClass]="{active: letLevel === 2}">Let 2</button>
+          <button class="btn btn-sm btn-outline-primary ml-1"
+          (click)="setLetLevel(3)"
+          [ngClass]="{active: letLevel === 3}">Let 3</button>
+          <button class="btn btn-sm btn-outline-primary ml-1"
+          (click)="setLetLevel(4)"
+          [ngClass]="{active: letLevel === 4}">Let 4</button>
         </div>
       </div>
     </div>
 
+        <!-- Router outlet -->
+        <router-outlet></router-outlet>
+
+
+  </div>
 </div>
-
-

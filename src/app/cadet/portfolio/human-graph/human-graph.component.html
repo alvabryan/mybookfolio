@@ -1,144 +1,182 @@
 <form #humanGraph="ngForm" (ngSubmit)="onSubmit(humanGraph)">
-    <div class="wrapper" style="height: auto; padding: 10px; overflow: hidden; white-space: normal;">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p><b>Directions (Self-paced Option):</b> Read each sentence stem and the phrases that complete them. Under each sentence stem, select the behavior that most describes you. When you are finished, determine which behavior you most often exhibit and least often exhibit. Write a summary in your notebooks about your Winning Colors® behaviors.</p>
-                </div>
-            </div>
-
-            <div class="container-fluid">
-                <ol>
-                    <li>
-                        <p>When I communicate, I am most likely to:</p>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="1" required>
-                                    <label class="custom-control-label" for="customRadio1">Want to be taken seriously and focus on the thinking behind the talk (planner)</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customRadio2" name="example1" value="2">
-                                    <label class="custom-control-label" for="customRadio2">Take a bottom-line approach and focus on the results (builder)</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customRadio3" name="example1" value="3">
-                                    <label class="custom-control-label" for="customRadio3">Want people to connect with me and be friendly (relater)</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="customRadio4" name="example1" value="4">
-                                    <label class="custom-control-label" for="customRadio4">Take a light-hearted approach and focus on fun (adventurer)</label>
-                                </div>
-                                <br>
-                    </li>
-                    <li>
-                        <p>When there are things to get done, I am most likely to:</p>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio11" name="example2" value="1" required>
-                            <label class="custom-control-label" for="customRadio11">Be duty-conscious and follow rules and directions (builder)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio22" name="example2" value="2">
-                            <label class="custom-control-label" for="customRadio22">Talk with others and find ways to help out (relater)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio33" name="example2" value="3">
-                            <label class="custom-control-label" for="customRadio33">Take action (adventurer)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio44" name="example2" value="4">
-                            <label class="custom-control-label" for="customRadio44">Be prepared with details and new ways of doing things (planner)</label>
-                        </div>
-                        <br>
-                    </li>
-                    <li>
-                        <p>When others communicate with me, I prefer them to:</p>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio15" name="example3" value="1" required>
-                            <label class="custom-control-label" for="customRadio15">Show genuine concern, share feelings, and be honest (relater)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio26" name="example3" value="2">
-                            <label class="custom-control-label" for="customRadio26">Be creative and express ideas (planner)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio37" name="example3" value="3">
-                            <label class="custom-control-label" for="customRadio37">Be concrete and to the point, forget the theory and long explanations (adventurer)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio48" name="example3" value="4">
-                            <label class="custom-control-label" for="customRadio48">Use a strong, short-idea approach and cool the emotions (builder)</label>
-                        </div>
-                        <br>
-                    </li>
-                    <li>
-                        <p>My teacher or supervisor at work could help me stay on track by:</p>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio150" name="example4" value="1" required>
-                            <label class="custom-control-label" for="customRadio150">Giving me exciting or challenging tasks with quick turnaround times (adventurer)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio260" name="example4" value="2">
-                            <label class="custom-control-label" for="customRadio260">Being a good listener or sounding board (planner)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio370" name="example4" value="3">
-                            <label class="custom-control-label" for="customRadio370">Being on top of things themselves and treating me properly (builder)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio480" name="example4" value="4">
-                            <label class="custom-control-label" for="customRadio480">Giving me people-centered assignments (relater)</label>
-                        </div>
-                        <br>
-                    </li>
-                    <li>
-                        <p>When my plans affect others, I’m likely to:</p>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio19" name="example5" value="1" required>
-                            <label class="custom-control-label" for="customRadio19">Support my ideas in a detailed fashion with in-depth explanations (planner)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio20" name="example5" value="2">
-                            <label class="custom-control-label" for="customRadio20">Want to get going and explain later, only if necessary (adventurer)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio31" name="example5" value="3">
-                            <label class="custom-control-label" for="customRadio31">Give step-by-step explanations of how the plan will be carried out (builder)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio42" name="example5" value="4">
-                            <label class="custom-control-label" for="customRadio42">Think about how my plans affect people and how they might react (relater)</label>
-                        </div>
-                        <br>
-                    </li>
-                    <li>
-                        <p>If I’m in a group trying to work together, I really prefer people to:</p>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio01" name="example6" value="1" required>
-                            <label class="custom-control-label" for="customRadio01">Thank each other for contributions and help each other (relater)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio02" name="example6" value="2">
-                            <label class="custom-control-label" for="customRadio02">Know the hierarchy of command and give it recognition (builder)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio03" name="example6" value="3">
-                            <label class="custom-control-label" for="customRadio03">Be logical and appreciate ideas (planner)</label>
-                        </div>
-                        <div class="custom-control custom-radio">
-                            <input type="radio" class="custom-control-input" id="customRadio04" name="example6" value="4">
-                            <label class="custom-control-label" for="customRadio04">Be spontaneous and have a sense of humor (adventurer)</label>
-                        </div>
-
-                    </li>
-                </ol>
-            </div>
+  <div class="wrapper" style="height: auto; padding: 10px; overflow: hidden; white-space: normal;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>
+            <b>Directions (Self-paced Option):</b> Read each sentence stem and
+            the phrases that complete them. Under each sentence stem, select the
+            behavior that most describes you. When you are finished, determine
+            which behavior you most often exhibit and least often exhibit. Write
+            a summary in your notebooks about your Winning Colors® behaviors.
+          </p>
         </div>
+      </div>
 
-
+      <div class="container-fluid">
+        <ol>
+          <li>
+            <p>When I communicate, I am most likely to:</p>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio1" name="example1" value="1" required />
+              <label class="custom-control-label" for="customRadio1">Want to be taken seriously and focus on the
+                thinking behind the
+                talk (planner)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio2" name="example1" value="2" />
+              <label class="custom-control-label" for="customRadio2">Take a bottom-line approach and focus on the
+                results
+                (builder)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio3" name="example1" value="3" />
+              <label class="custom-control-label" for="customRadio3">Want people to connect with me and be friendly
+                (relater)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio4" name="example1" value="4" />
+              <label class="custom-control-label" for="customRadio4">Take a light-hearted approach and focus on fun
+                (adventurer)</label>
+            </div>
+            <br />
+          </li>
+          <li>
+            <p>When there are things to get done, I am most likely to:</p>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio11" name="example2" value="1" required />
+              <label class="custom-control-label" for="customRadio11">Be duty-conscious and follow rules and directions
+                (builder)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio22" name="example2" value="2" />
+              <label class="custom-control-label" for="customRadio22">Talk with others and find ways to help out
+                (relater)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio33" name="example2" value="3" />
+              <label class="custom-control-label" for="customRadio33">Take action (adventurer)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio44" name="example2" value="4" />
+              <label class="custom-control-label" for="customRadio44">Be prepared with details and new ways of doing
+                things
+                (planner)</label>
+            </div>
+            <br />
+          </li>
+          <li>
+            <p>When others communicate with me, I prefer them to:</p>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio15" name="example3" value="1" required />
+              <label class="custom-control-label" for="customRadio15">Show genuine concern, share feelings, and be
+                honest
+                (relater)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio26" name="example3" value="2" />
+              <label class="custom-control-label" for="customRadio26">Be creative and express ideas (planner)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio37" name="example3" value="3" />
+              <label class="custom-control-label" for="customRadio37">Be concrete and to the point, forget the theory
+                and long
+                explanations (adventurer)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio48" name="example3" value="4" />
+              <label class="custom-control-label" for="customRadio48">Use a strong, short-idea approach and cool the
+                emotions
+                (builder)</label>
+            </div>
+            <br />
+          </li>
+          <li>
+            <p>
+              My teacher or supervisor at work could help me stay on track by:
+            </p>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio150" name="example4" value="1" required />
+              <label class="custom-control-label" for="customRadio150">Giving me exciting or challenging tasks with
+                quick turnaround
+                times (adventurer)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio260" name="example4" value="2" />
+              <label class="custom-control-label" for="customRadio260">Being a good listener or sounding board
+                (planner)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio370" name="example4" value="3" />
+              <label class="custom-control-label" for="customRadio370">Being on top of things themselves and treating me
+                properly
+                (builder)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio480" name="example4" value="4" />
+              <label class="custom-control-label" for="customRadio480">Giving me people-centered assignments
+                (relater)</label>
+            </div>
+            <br />
+          </li>
+          <li>
+            <p>When my plans affect others, I’m likely to:</p>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio19" name="example5" value="1" required />
+              <label class="custom-control-label" for="customRadio19">Support my ideas in a detailed fashion with
+                in-depth
+                explanations (planner)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio20" name="example5" value="2" />
+              <label class="custom-control-label" for="customRadio20">Want to get going and explain later, only if
+                necessary
+                (adventurer)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio31" name="example5" value="3" />
+              <label class="custom-control-label" for="customRadio31">Give step-by-step explanations of how the plan
+                will be carried
+                out (builder)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio42" name="example5" value="4" />
+              <label class="custom-control-label" for="customRadio42">Think about how my plans affect people and how
+                they might react
+                (relater)</label>
+            </div>
+            <br />
+          </li>
+          <li>
+            <p>
+              If I’m in a group trying to work together, I really prefer people
+              to:
+            </p>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio01" name="example6" value="1" required />
+              <label class="custom-control-label" for="customRadio01">Thank each other for contributions and help each
+                other
+                (relater)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio02" name="example6" value="2" />
+              <label class="custom-control-label" for="customRadio02">Know the hierarchy of command and give it
+                recognition
+                (builder)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio03" name="example6" value="3" />
+              <label class="custom-control-label" for="customRadio03">Be logical and appreciate ideas (planner)</label>
+            </div>
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio04" name="example6" value="4" />
+              <label class="custom-control-label" for="customRadio04">Be spontaneous and have a sense of humor
+                (adventurer)</label>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <input type="submit" class="btn btn-primary btn-sm btn-block btn-submit" value="Submit" name="submit" />
     </div>
-
-    <div class="card-footer small text-muted">
-
-        <input type="submit" class="btn btn-primary btn-sm btn-block btn-submit" value="Submit" name="submit">
-    </div>
+  </div>
 </form>

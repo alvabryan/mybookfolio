@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageTitleService } from '../service/page-title.service';
 
 @Component({
   selector: 'app-personal-ad',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PersonalAdComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sendPageTitle: PageTitleService) { }
 
   ngOnInit() {
+    this.sendPageTitle.pageTitle.next('Personal Ad');
   }
 
   onSubmit() {
-    
+
   }
 }

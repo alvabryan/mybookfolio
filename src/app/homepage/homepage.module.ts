@@ -11,6 +11,8 @@ import { HomepageRouting } from './homepage-routing.module';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
+import { CadetRegistrationComponent } from './register/cadet-registration/cadet-registration.component';
+import { InstructorRegistrationComponent } from './register/instructor-registration/instructor-registration.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { HomeComponent } from './home/home.component';
     HomepageComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CadetRegistrationComponent,
+    InstructorRegistrationComponent
   ],
   imports: [
     CommonModule,

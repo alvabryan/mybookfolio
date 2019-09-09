@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyCxofp5IG67dbRwal230dC7qjxjNt3OdBc',
-    authDomain: 'angular-auth-32407.firebaseapp.com',
-    databaseURL: 'https://angular-auth-32407.firebaseio.com',
-    projectId: 'angular-auth-32407',
-    storageBucket: 'angular-auth-32407.appspot.com',
-    messagingSenderId: '806811786698',
-    appId: '1:806811786698:web:f0a5121b30882ff7'
+    apiKey: 'AIzaSyBlWRtrgBndlJ8Pok--wJzyOLlkz6FTm-Q',
+    authDomain: 'mybookfolio-acc55.firebaseapp.com',
+    databaseURL: 'https://mybookfolio-acc55.firebaseio.com',
+    projectId: 'mybookfolio-acc55',
+    storageBucket: 'mybookfolio-acc55.appspot.com',
+    messagingSenderId: '326193354984',
+    appId: '1:326193354984:web:0b915fe974e7d66f'
   }
 };
 

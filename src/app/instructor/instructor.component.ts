@@ -1,31 +1,29 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-cadet',
-  templateUrl: './cadet.component.html',
-  styleUrls: ['./cadet.component.css']
+  selector: 'app-instructor',
+  templateUrl: './instructor.component.html',
+  styleUrls: ['./instructor.component.css']
 })
-export class CadetComponent implements OnInit, OnDestroy  {
+export class InstructorComponent implements OnInit, OnDestroy {
 
   private cadetSubscription: Subscription = new Subscription();
 
   user: firebase.User;
   userLoaded = false;
 
-  constructor(private auth: AuthService, private db: AngularFirestore) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.cadetSubscription.add(this.auth.user.subscribe( user => {
       this.user = user;
       this.userLoaded = true;
     }));
-
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.cadetSubscription.unsubscribe();
   }
 

@@ -1,4 +1,4 @@
-<form #winningColors="ngForm" (ngSubmit)="onSubmit(winningColors)">
+<form [formGroup]="winningColorsForm" (ngSubmit)="onSubmit()">
     <div class="wrapper" style="height: auto; padding: 10px; overflow: hidden; white-space: normal;">
       <div class="container-fluid">
         <div class="row">
@@ -8,17 +8,17 @@
         </div>
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-3 border border-light p-0">
+            <div class="col-lg-3 border border-light p-0" formGroupName="A">
               <div class="bg-primary header-container center">
                 <p class="header titleStyle">A</p>
               </div>
               <div class="fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Being Prepared</b></p>
+                    <p class="c-height"><b>Being Prepared</b></p>
                   </div>
                   <div class="d-block">
-                    <select id="A1" name="A1" class="form-control">
+                    <select id="A1" name="A1" class="form-control" formControlName="A1">
                       <option value="0">
                         0
                       </option>
@@ -30,6 +30,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -38,10 +41,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Telling people what they should do</b></p>
+                    <p class="c-height"><b>Telling people what they should do</b></p>
                   </div>
                   <div class="d-block">
-                    <select id="A2" name="A2" class="form-control">
+                    <select id="A2" name="A2" class="form-control" formControlName="A2">
                       <option value="0">
                         0
                       </option>
@@ -53,6 +56,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -61,10 +67,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Saving and budgeting</b></p>
+                    <p class="c-height"><b>Saving and budgeting</b></p>
                   </div>
                   <div class="d-block">
-                    <select id="A3" name="A3" class="form-control">
+                    <select id="A3" name="A3" class="form-control" formControlName="A3">
                       <option value="0">
                         0
                       </option>
@@ -76,6 +82,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -84,10 +93,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Leading</b></p>
+                    <p class="c-height"><b>Leading</b></p>
                   </div>
                   <div class="d-block">
-                    <select id="A4" name="A4" class="form-control">
+                    <select id="A4" name="A4" class="form-control" formControlName="A4">
                       <option value="0">
                         0
                       </option>
@@ -99,6 +108,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -107,10 +119,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Being Organized</b></p>
+                    <p class="c-height"><b>Being Organized</b></p>
                   </div>
                   <div class="d-block">
-                    <select id="A5" name="A5" class="form-control">
+                    <select id="A5" name="A5" class="form-control" formControlName="A5">
                       <option value="0">
                         0
                       </option>
@@ -122,6 +134,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -135,17 +150,17 @@
 
               </div>
             </div>
-            <div class="col-lg-3 border border-light p-0">
+            <div class="col-lg-3 border border-light p-0" formGroupName="B">
               <div class="bg-primary header-container center">
                 <p class="header titleStyle">B</p>
               </div>
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Let’s all be friends</b></p>
+                    <p class="c-height"><b>Let’s all be friends</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="B1" class="form-control">
+                    <select name="B1" class="form-control" formControlName="B1">
                       <option value="0">
                         0
                       </option>
@@ -157,6 +172,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -165,10 +183,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Talking and socializing</b></p>
+                    <p class="c-height"><b>Talking and socializing</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="B2" class="form-control">
+                    <select name="B2" class="form-control" formControlName="B2">
                       <option value="0">
                         0
                       </option>
@@ -180,6 +198,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -188,10 +209,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Giving</b></p>
+                    <p class="c-height"><b>Giving</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="B3" class="form-control">
+                    <select name="B3" class="form-control" formControlName="B2">
                       <option value="0">
                         0
                       </option>
@@ -203,6 +224,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -211,10 +235,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Relating</b></p>
+                    <p class="c-height"><b>Relating</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="B4" class="form-control">
+                    <select name="B4" class="form-control" formControlName="B4">
                       <option value="0">
                         0
                       </option>
@@ -226,6 +250,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -234,10 +261,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Being loved and accepted</b></p>
+                    <p class="c-height"><b>Being loved and accepted</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="B5" class="form-control">
+                    <select name="B5" class="form-control" formControlName="B5">
                       <option value="0">
                         0
                       </option>
@@ -249,6 +276,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -262,17 +292,17 @@
 
               </div>
             </div>
-            <div class="col-lg-3 border border-light p-0">
+            <div class="col-lg-3 border border-light p-0" formGroupName="C">
               <div class="bg-primary header-container center">
                 <p class="header titleStyle">C</p>
               </div>
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Developing better and more logical ways</b></p>
+                    <p class="c-height"><b>Developing better and more logical ways</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="C1" class="form-control">
+                    <select name="C1" class="form-control" formControlName="C1">
                       <option value="0">
                         0
                       </option>
@@ -284,6 +314,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -292,10 +325,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Understanding and analyzing about tomorrow</b></p>
+                    <p class="c-height"><b>Understanding and analyzing about tomorrow</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="C2" class="form-control">
+                    <select name="C2" class="form-control" formControlName="C2">
                       <option value="0">
                         0
                       </option>
@@ -307,6 +340,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -315,10 +351,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Creating</b></p>
+                    <p class="c-height"><b>Creating</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="C3" class="form-control">
+                    <select name="C3" class="form-control" formControlName="C3">
                       <option value="0">
                         0
                       </option>
@@ -330,6 +366,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -338,10 +377,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Planning</b></p>
+                    <p class="c-height"><b>Planning</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="C4" class="form-control">
+                    <select name="C4" class="form-control" formControlName="C4">
                       <option value="0">
                         0
                       </option>
@@ -353,6 +392,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -361,10 +403,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Being correct and competent</b></p>
+                    <p class="c-height"><b>Being correct and competent</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="C5" class="form-control">
+                    <select name="C5" class="form-control" formControlName="C5">
                       <option value="0">
                         0
                       </option>
@@ -376,6 +418,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -389,17 +434,17 @@
 
               </div>
             </div>
-            <div class="col-lg-3 border border-light p-0">
+            <div class="col-lg-3 border border-light p-0" formGroupName="D">
               <div class="bg-primary header-container center">
                 <p class="header titleStyle">D</p>
               </div>
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Living today and not worrying about tomorrow</b></p>
+                    <p class="c-height"><b>Living today and not worrying about tomorrow</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="D1" class="form-control">
+                    <select name="D1" class="form-control" formControlName="D1">
                       <option value="0">
                         0
                       </option>
@@ -411,6 +456,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -419,10 +467,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Having fun and excitement with people</b></p>
+                    <p class="c-height"><b>Having fun and excitement with people</b></p>
                   </div>
                   <div class="d-block">
-                     <select name="D2" class="form-control">
+                     <select name="D2" class="form-control" formControlName="D2">
                       <option value="0">
                         0
                       </option>
@@ -434,6 +482,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -442,10 +493,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Spending</b></p>
+                    <p class="c-height"><b>Spending</b></p>
                   </div>
                   <div class="d-block">
-                     <select name="D3" class="form-control">
+                     <select name="D3" class="form-control" formControlName="D3">
                       <option value="0">
                         0
                       </option>
@@ -457,6 +508,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -465,10 +519,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Exploring</b></p>
+                    <p class="c-height"><b>Exploring</b></p>
                   </div>
                   <div class="d-block">
-                    <select name="D4" class="form-control">
+                    <select name="D4" class="form-control" formControlName="D4">
                       <option value="0">
                         0
                       </option>
@@ -480,6 +534,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -488,10 +545,10 @@
               <div class=" fill-container p-3 center">
 
                   <div class="d-block">
-                    <p><b>Being in spontaneous action</b></p>
+                    <p class="c-height"><b>Being in spontaneous action</b></p>
                   </div>
                   <div class="d-block">
-                     <select name="D5" class="form-control">
+                     <select name="D5" class="form-control" formControlName="D5">
                       <option value="0">
                         0
                       </option>
@@ -503,6 +560,9 @@
                       </option>
                       <option value="3">
                         3
+                      </option>
+                      <option value="4">
+                        4
                       </option>
                     </select>
                   </div>
@@ -518,9 +578,7 @@
             </div>
           </div>
         </div>
+        <input class="btn btn-primary btn-block btn-submit mt-2 p-2" name="winningColors" type="submit" value="Submit">
       </div>
-    </div>
-    <div class="card-footer small text-muted">
-      <input class="btn btn-primary btn-block btn-submit" name="winningColors" type="submit" value="Submit">
     </div>
   </form>

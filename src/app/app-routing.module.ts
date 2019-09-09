@@ -8,6 +8,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'cadet', loadChildren: './cadet/cadet.module#CadetModule'},
   {path: 'home', loadChildren: './homepage/homepage.module#HomepageModuel'},
+  {path: 'instructor', loadChildren: './instructor/instructor.module#InstructorModule'}
 ];
 
 @NgModule({

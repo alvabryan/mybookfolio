@@ -37,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadetRoutingModule } from './cadet-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { QuillModule } from 'ngx-quill';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { QuillModule } from 'ngx-quill';
     ReactiveFormsModule,
     CadetRoutingModule,
     SharedModule,
-    QuillModule
+    QuillModule,
+    AngularFirestoreModule
   ]
 })
 

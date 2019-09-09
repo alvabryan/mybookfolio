@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageTitleService } from '../service/page-title.service';
 
 @Component({
   selector: 'app-written-summary',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WrittenSummaryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sendPageTitle: PageTitleService) { }
 
   ngOnInit() {
+    this.sendPageTitle.pageTitle.next('Written Summary');
   }
 
 }

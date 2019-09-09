@@ -43,7 +43,10 @@ export class CadetRegistrationComponent implements OnInit {
       });
       this.isLoading = false;
     } else {
-      this.auth.createUser(user);
+      this.auth.createUser({
+        type: 'cadet',
+        data: user
+      });
     }
 
     this.auth.authError.pipe(take(1)).subscribe( error => {

@@ -7,7 +7,7 @@ import { map, take, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate   {
+export class AuthInstructor implements CanActivate   {
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate   {
     return this.auth.user.pipe(take(1) , map( user => {
       const isAuth = !!user;
       if (isAuth) {
-        if ( user.userType === 'cadet' ) {
+        if ( user.userType === 'instructor' ) {
           return true;
         } else {
           this.router.navigate(['/home/login']);

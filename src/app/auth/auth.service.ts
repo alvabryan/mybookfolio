@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
 import { User } from './user.model';
-import { take, map, tap } from 'rxjs/operators';
+import { take, map, tap, mergeMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -56,30 +56,32 @@ export class AuthService {
     this.afAuth.auth.signInWithEmailAndPassword(email, password).then( userCredential => {
       if ( userCredential ) {
 
-          this.afAuth.authState.pipe(take(1), map( user => {
-            // maps the returned data from the post request and only returns providerData and users unique id
-
-              return {
-                ...user.providerData[0],
-                uid: user.uid
-              };
-          }), tap( () => {
-
-            // sends user to the dashboard if there were no errors
+        this.afAuth.authState.pipe(mergeMap( (data: any) => {
+          return this.db.doc(`users/${data.uid}`).valueChanges().pipe(map( (userData: any) => {
+            return {
+              userType: userData.userType,
+              data: {
+                ...data.providerData[0],
+                uid: data.uid,
+                ...userData.data
+              }
+            };
+          }));
+        })).pipe(tap((data) => {
+          if (data.userType === 'cadet') {
             this.router.navigate(['/cadet']);
+          } else {
+            this.router.navigate(['/instructor']);
+          }
 
-          } )).subscribe( user => {
-            console.log(user);
-            // pass user through the User model
-            const loginUser = new User(user.displayName, user.email, user.phoneNumber, user.photoURL, user.providerId, user.uid );
+        })).subscribe( user => {
+          // set data from logged in user to observable
+          this.user.next(user);
 
-            // set login user to the user observable
-            this.user.next(loginUser);
-            // store user in your local storage
-            localStorage.setItem('userData', JSON.stringify(loginUser));
+          // store user in the local storage
+          localStorage.setItem('userData', JSON.stringify(user));
 
-          });
-
+        });
       }
     }).catch( error => {
       this.authErrorHandling(error);
@@ -89,45 +91,33 @@ export class AuthService {
   // auto login
   autoLogin() {
     // get user from localstorage
-    const user: {
-      displayName: string;
-      email: string;
-      phoneNumber: string;
-      photoUrl: string;
-      providerId: string;
-      uid: string;
-    } = JSON.parse(localStorage.getItem('userData'));
+    const user = JSON.parse(localStorage.getItem('userData'));
 
     // check if there was a user
     if (!user) {
       return;
     } else {
-      // pass user tnrough your model
-      const loginUser = new User(user.displayName, user.email, user.phoneNumber, user.photoUrl, user.providerId, user.uid);
 
       // send loginUser to your observable
-      if (loginUser.uniqueId) {
-        this.user.next(loginUser);
+      if (user.data.uid) {
+        this.user.next(user);
       }
     }
-
-
-
   }
 
   // signup method
   createUser(user) {
     this.newUser = user;
 
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password).then(
+    this.afAuth.auth.createUserWithEmailAndPassword(user.data.email, user.data.password).then(
       userCredential => {
 
         userCredential.user.updateProfile({
-          displayName: user.firstName + ' ' + user.lastName
+          displayName: user.data.firstName + ' ' + user.data.lastName
         });
 
         this.insertUserData(userCredential).then(() => {
-          this.login(this.newUser.email, this.newUser.password);
+          this.login(this.newUser.data.email, this.newUser.data.password);
         });
       }
     ).catch( error => {
@@ -137,13 +127,45 @@ export class AuthService {
 
   // signup user method
   insertUserData(userCredential: firebase.auth.UserCredential) {
-    return this.db.doc(`users/${userCredential.user.uid}`).set({
-      battalionCode: this.newUser.battalionCode,
-      firstName: this.newUser.firstName,
-      lastName: this.newUser.lastName,
-      letLevel: this.newUser.letLevel,
-      classPeriod: this.newUser.classPeriod
-    });
+    if ( this.newUser.type === 'cadet') {
+
+      return this.db.doc(`users/${userCredential.user.uid}`).set({
+        userType: this.newUser.type,
+        data: {
+          battalionCode: this.newUser.data.battalionCode,
+          firstName: this.newUser.data.firstName,
+          lastName: this.newUser.data.lastName,
+          letLevel: this.newUser.data.letLevel,
+          classPeriod: this.newUser.data.classPeriod
+        }
+      });
+
+    } else if ( this.newUser.type === 'instructor') {
+
+      return this.db.doc(`users/${userCredential.user.uid}`).set({
+        userType: this.newUser.type,
+        data: {
+          battalionCode: this.newUser.data.battalionCode,
+          firstName: this.newUser.data.firstName,
+          lastName: this.newUser.data.lastName,
+          instructorType: this.newUser.data.instructorType,
+          phoneNumber: this.newUser.data.phoneNumber
+        }
+      }).then(() => {
+        this.db.doc(`battalions/${this.newUser.data.battalionCode}`).set({
+          schoolName: this.newUser.data.schoolName,
+          state: this.newUser.data.state,
+          city: this.newUser.data.city,
+          zipCode: this.newUser.data.zipCode,
+          battalionCode: this.newUser.data.battalionCode
+        });
+      });
+
+
+
+    }
+
+
   }
 
   passwordReset(email: string) {
