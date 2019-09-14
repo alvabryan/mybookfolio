@@ -1,5 +1,11 @@
 <app-spinner *ngIf="!userLoaded"></app-spinner>
 <app-navigation *ngIf="userLoaded"></app-navigation>
 <app-sidebar *ngIf="userLoaded">
-  <router-outlet></router-outlet>
+      <ol class="breadcrumb m-2">
+            <li class="breadcrumb-item">
+                  <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Cadets</li>
+      </ol>
+      <router-outlet></router-outlet>
 </app-sidebar>

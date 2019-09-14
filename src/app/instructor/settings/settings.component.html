@@ -1,0 +1,90 @@
+<div class="container-fluid" style="padding:30px">
+    <div class="row">
+        <div class="col-12 m-b-5">
+          <div class="card">
+            <div class="card-body">
+    
+    
+                <div class="row mt-5">
+                    <div class="col d-flex justify-content-center">
+                        <img src="https://www.mybookfolio.com/instructor/profilePictures/placeHolder.png" height="150px" width="150px" style="border-radius: 100px;"/>
+                        <div id="imgUpload">
+                            <form method="post" id="file_form" enctype="multipart/form-data">
+                                <input type="file" name="file" id="file">
+                                <input id="submitButton" type="submit" name="submitProfileImage">
+                                <p id="clickFile">Change Image</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+    
+                <form method="post" class="mt-5">
+                    <p class="card-description font-weight-bold">
+                      Personal info
+                    </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">First Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="firstName" value=""/>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Last Name</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="lastName" value=""/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+    
+    
+                    <div class="row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-primary float-right" name="update">
+                        </div>
+                    </div>
+                </form>
+    
+                <form method="post">
+    
+                <!--Password-->
+                <p class="card-description font-weight-bold">
+                  Password
+                </p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label ">Current Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" name="oldPw"/>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">New Password</label>
+                      <div class="col-sm-9">
+                        <input type="password" class="form-control" name="newPw"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-primary float-right" name="pw_update" value="Update">
+                    </div>
+                </div>
+            </form>
+    
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
