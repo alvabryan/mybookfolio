@@ -7,3 +7,7 @@
         float: left;
     }
 }
+
+form label, form select {
+    margin-right: 5px;
+}

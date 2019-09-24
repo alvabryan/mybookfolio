@@ -1,0 +1,292 @@
+<div class="container-fluid p-2">
+    <div class="row">
+        <div class="col ml-3">
+            <h3>{{ searchCadet?.firstName }} {{ searchCadet?.lastName }}</h3>
+        </div>
+        <div col="col">
+            <div class="d-block float-lg-right mr-4">
+                <button class="btn btn-sm btn-outline-primary ml-1 active" (click)="setLetLevel(1)"
+                    [ngClass]="{active: searchCadet?.let === 1}">Let 1</button>
+                <button class="btn btn-sm btn-outline-primary btn-active ml-1" (click)="setLetLevel(2)"
+                    [ngClass]="{active: searchCadet?.let  === 2}">Let 2</button>
+                <button class="btn btn-sm btn-outline-primary ml-1" (click)="setLetLevel(3)"
+                    [ngClass]="{active: searchCadet?.let  === 3}">Let 3</button>
+                <button class="btn btn-sm btn-outline-primary ml-1" (click)="setLetLevel(4)"
+                    [ngClass]="{active: searchCadet?.let  === 4}">Let 4</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-3">
+        <div class="row pl-3 pr-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active">Cadet Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/instructor/cadet-portfolio/cadet-information" [queryParams]="{uid: 'etURkGdh4PUO8bqIPLb7XJb88A92'}">Cadet Information</a>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <!-- card starts -->
+                <div class="card mb-3">
+
+                    <div class="card-header">
+                        <i class="fas fa-pencil-square"></i> Let 2 <span class="date">date</span>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Awards
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width:100%;"
+                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">100%
+                                </div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaAwards" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Four Year Goals
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                    <a>100%</a></div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaGoals" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Success Profiler & Personal Growth Plan
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaSuccessProfiler" class="btn btn-primary float-right"
+                                        role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Learning Styles Inventory
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaLearningStyle" class="btn btn-primary float-right"
+                                        role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Course Work
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success " role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaCourseWork" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Winning Colors
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaWinningColors" class="btn btn-primary float-right"
+                                        role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Personal Ad
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaPersonalAd" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Cadet Challenge
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="cadetChallenge.php" class="btn btn-primary float-right"
+                                        role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Human Graph Activity
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width:100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaHumanGraph" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Jrotc Essay / Course
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaEssay" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Resume & Awards
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="#" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Let 1-4 Lesson Evidence
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaLessonEvidence" class="btn btn-primary float-right"
+                                        role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Service Learning
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaServiceLearning" class="btn btn-primary float-right"
+                                        role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Written Summary
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="jpaWrittenSummary" class="btn btn-primary float-right"
+                                        role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Financial Planning
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success " role="progressbar" style="width: 100%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <a href="#" class="btn btn-primary float-right" role="button">View</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <!--Container ends here-->
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>

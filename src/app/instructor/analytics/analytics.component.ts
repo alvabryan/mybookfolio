@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-analytics',
@@ -9,7 +9,10 @@ export class AnalyticsComponent implements OnInit {
 
   constructor() { }
 
+  chart: any;
+
   ngOnInit() {
+
   }
 
 }

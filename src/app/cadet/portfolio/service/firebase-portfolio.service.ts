@@ -7,7 +7,7 @@ import { CadetService } from '../../service/cadet.service';
 
 @Injectable({
   providedIn: 'root'
-})
+}) 
 export class FirebasePortfolioService {
 
   // logged in user

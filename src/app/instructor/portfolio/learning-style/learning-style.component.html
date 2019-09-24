@@ -1,1 +1,953 @@
-<p>learning-style works!</p>
+<form [formGroup]="learningStyle" (ngSubmit)="submit()">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h4 class="mainTitle pl-3 pt-3">(Step 1) Learning Styles Inventory</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <p class="SubTittle p-3">
+          <b>Directions:</b> Complete this self-assessment to determine your
+          learning styles based on the Dunn and Dunn model. Check the appropriate
+          column to indicate whether each numbered statement is true or false.
+        </p>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table formGroupName="environmentalP1" class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Environmental</th>
+            <th scope="col">True</th>
+            <th scope="col">False</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1.</th>
+            <td>If the Room is too hot, I can't concentrate.</td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q1" class="form-check-input" id="environmental1"
+                  name="environmentalP1Q1" type="radio" value="1" />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q1" class="form-check-input" id="environmental1"
+                  name="environmentalP1Q1" type="radio" value="0" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2.</th>
+            <td>Having some background music helps me concentrate.</td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q2" class="form-check-input" id="environmental2"
+                  name="environmentalP1Q2" type="radio" value="1" />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q2" class="form-check-input" id="environmental2"
+                  name="environmentalP1Q2" type="radio" value="0" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3.</th>
+            <td>
+              I prefer to make myself comfortable rather than being at a desk.
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q3" class="form-check-input" id="environmental3"
+                  name="environmentalP1Q3" type="radio" value="1" />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q3" class="form-check-input" id="environmental3"
+                  name="environmentalP1Q3" type="radio" value="0" />
+              </div>
+            </td>
+          </tr>
+          <!-- <tr>
+            <th scope="row">4.</th>
+            <td>I can ignore most sound when I study.</td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q4" class="form-check-input" id="environmentalP1Q4"
+                  name="environmentalP1Q4" type="radio" value="1" />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q4" class="form-check-input" id="environmental4"
+                  name="enviromentalP1Q4" type="radio" value="0" />
+              </div>
+            </td>
+          </tr> -->
+          <tr>
+            <th scope="row">5.</th>
+            <td>Bright light is distracting.</td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q5" class="form-check-input" id="environmental5"
+                  name="environmentalP1Q5" type="radio" value="1" />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q5" class="form-check-input" id="environmental5"
+                  name="environmentalP1Q5" type="radio" value="0" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">6.</th>
+            <td>I study best when it's quiet.</td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q6" class="form-check-input" id="environmental6"
+                  name="environmentalP1Q6" type="radio" value="1" />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q6" class="form-check-input" id="environmental6"
+                  name="environmentalP1Q6" type="radio" value="0" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">7.</th>
+            <td>I don't see how people can see in a dark room.</td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q7" class="form-check-input" id="environmental7"
+                  name="environmentalP1Q7" type="radio" value="1" />
+              </div>
+            </td>
+            <td class="text-center">
+              <div class="form-check form-check-inline">
+                <input formControlName="environmentalP1Q7" class="form-check-input" id="environmental7"
+                  name="environmentalP1Q7" type="radio" value="0" />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table formGroupName="emotionalP1" class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Emotional</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tr>
+          <th scope="row">1.</th>
+          <td>I need a lot of encouragement to complete tasks.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q1" class="form-check-input" id="Emotional1" name="emotionalP1Q1"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q1" class="form-check-input" id="Emotional1" name="emotionalP1Q1"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2.</th>
+          <td>I'm pretty self-directed about getting my work done.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q2" class="form-check-input" id="Emotional2" name="emotionalP1Q2"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q2" class="form-check-input" id="Emotional2" name="emotionalP1Q2"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3.</th>
+          <td>The adults in my life help me to accomplish more.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q3" class="form-check-input" id="Emotional3" name="emotionalP1Q3"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q3" class="form-check-input" id="Emotional3" name="emotionalP1Q3"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4.</th>
+          <td>I give up too easily unless someone helps me stick it through.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q4" class="form-check-input" id="Emotional4" name="emotionalP1Q4"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q4" class="form-check-input" id="Emotional4" name="emotionalP1Q4"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5.</th>
+          <td>I like having clear directions and well-defined steps.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q5" class="form-check-input" id="Emotional5" name="emotionalP1Q5"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q5" class="form-check-input" id="Emotional5" name="emotionalP1Q5"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6.</th>
+          <td>I have to be reminded often to do things.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q6" class="form-check-input" id="Emotional6" name="emotionalP1Q6"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q6" class="form-check-input" id="Emotional6" name="emotionalP1Q6"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">7.</th>
+          <td>
+            If i'm interested, I can really stick with it through very challenging
+            work.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q7" class="form-check-input" id="Emotional7" name="emotionalP1Q7"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="emotionalP1Q7" class="form-check-input" id="Emotional7" name="emotionalP1Q7"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table formGroupName="sociologicalP1" class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Sociological</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tr>
+          <th scope="row">1.</th>
+          <td>Having a friend to study with works well for me.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q1" class="form-check-input" id="Sociological1" name="sociologicalP1Q1"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q1" class="form-check-input" id="Sociological1" name="sociologicalP1Q1"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2.</th>
+          <td>I like to work with others.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q2" class="form-check-input" id="Sociological2" name="sociologicalP1Q2"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q2" class="form-check-input" id="Sociological2" name="sociologicalP1Q2"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3.</th>
+          <td>
+            Getting together with a friend is a good way to get homework done.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q3" class="form-check-input" id="Sociological3" name="sociologicalP1Q3"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q3" class="form-check-input" id="Sociological3" name="sociologicalP1Q3"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4.</th>
+          <td>Working in a team is frustrating.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q4" class="form-check-input" id="Sociological4" name="sociologicalP1Q4"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q4" class="form-check-input" id="Sociological4" name="sociologicalP1Q4"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5.</th>
+          <td>People my age have the most to offer me when I learn.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q5" class="form-check-input" id="Sociological5" name="sociologicalP1Q5"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q5" class="form-check-input" id="Sociological5" name="sociologicalP1Q5"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6.</th>
+          <td>
+            How many people can be a good workgroup really depends on the kind of
+            work I’m doing.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q6" class="form-check-input" id="Sociological6" name="sociologicalP1Q6"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q6" class="form-check-input" id="Sociological6" name="sociologicalP1Q6"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">7.</th>
+          <td>Usually an adult can help me to get through a study challenge.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q7" class="form-check-input" id="Sociological7" name="sociologicalP1Q7"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="sociologicalP1Q7" class="form-check-input" id="Sociological7" name="sociologicalP1Q7"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table formGroupName="physicalP1" class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Physical</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tr>
+          <th scope="row">1.</th>
+          <td>The things I remember best are the things I write down.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q1" class="form-check-input" id="Physical1" name="physicalP1Q1" type="radio"
+                value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q1" class="form-check-input" id="Physical1" name="physicalP1Q1" type="radio"
+                value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2.</th>
+          <td>I feel more energetic at night.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q2" class="form-check-input" id="Physical2" name="physicalP1Q2"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q2" class="form-check-input" id="Physical2" name="physicalP1Q2"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3.</th>
+          <td>
+            Seeing a picture, graph or diagram really helps me to understand.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q3" class="form-check-input" id="Physical3" name="physicalP1Q3"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q3" class="form-check-input" id="Physical3" name="physicalP1Q3"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4.</th>
+          <td>I need to take a lot of breaks while I’m study.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q4" class="form-check-input" id="Physical4" name="physicalP1Q4"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q4" class="form-check-input" id="Physical4" name="physicalP1Q4"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5.</th>
+          <td>I can remember almost everything I hear.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q5" class="form-check-input" id="Physical5" name="physicalP1Q5"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q5" class="form-check-input" id="Physical5" name="physicalP1Q5"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6.</th>
+          <td>
+            Things make more sense to me when I can handle them and see how they
+            work.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q6" class="form-check-input" id="Physical6" name="physicalP1Q6"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q6" class="form-check-input" id="Physical6" name="physicalP1Q6"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">7.</th>
+          <td>I like to eat snacks and drink a lot while I study.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q7" class="form-check-input" id="Physical7" name="physicalP1Q7"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q7" class="form-check-input" id="Physical7" name="physicalP1Q7"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">8.</th>
+          <td>The morning is the best time to get a lot done.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q8" class="form-check-input" id="Physical8" name="physicalP1Q8"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q8" class="form-check-input" id="Physical8" name="physicalP1Q8"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">9.</th>
+          <td>I often get tired in the afternoon.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q9" class="form-check-input" id="Physical9" name="physicalP1Q9"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q9" class="form-check-input" id="Physical9" name="physicalP1Q9"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">10.</th>
+          <td>I need to get up and move around when I study.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q10" class="form-check-input" id="Physical10" name="physicalP1Q10"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q10" class="form-check-input" id="Physical10" name="physicalP1Q10"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">11.</th>
+          <td>It’s hard for me to sit in one place for a long time.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q11" class="form-check-input" id="Physical11" name="physicalP1Q11"
+                type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="physicalP1Q11" class="form-check-input" id="Physical11" name="physicalP1Q11"
+                type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+      </table>
+      <table formGroupName="psychologicalP1" class="table">
+        <thead class="table-light">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Psychological</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tr>
+          <th scope="row">1.</th>
+          <td>I like to think about things first and not jump right in.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q1" class="form-check-input" id="Psychological1"
+                name="psychologicalP1Q1" type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q1" class="form-check-input" id="Psychological1"
+                name="psychologicalP1Q1" type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2.</th>
+          <td>
+            Sometimes people think I put things off, but I still get them done.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q2" class="form-check-input" id="Psychological2"
+                name="psychologicalP1Q2" type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q2" class="form-check-input" id="Psychological2"
+                name="psychologicalP1Q2" type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3.</th>
+          <td>
+            I’d rather teachers didn’t lecture so much, because I’d rather find
+            out for myself.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q3" class="form-check-input" id="Psychological3"
+                name="psychologicalP1Q3" type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q3" class="form-check-input" id="Psychological3"
+                name="psychologicalP1Q3" type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4.</th>
+          <td>I like to finish one thing before I start another.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q4" class="form-check-input" id="Psychological4"
+                name="psychologicalP1Q4" type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q4" class="form-check-input" id="Psychological4"
+                name="psychologicalP1Q4" type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5.</th>
+          <td>
+            It drives me crazy when the teacher forgets to write things down.
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q5" class="form-check-input" id="Psychological5"
+                name="psychologicalP1Q5" type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q5" class="form-check-input" id="Psychological5"
+                name="psychologicalP1Q5" type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">6.</th>
+          <td>I can pay attention to a lot of things at the same time.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q6" class="form-check-input" id="Psychological6"
+                name="psychologicalP1Q6" type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q6" class="form-check-input" id="Psychological6"
+                name="psychologicalP1Q6" type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">7.</th>
+          <td>Things make more sense when you take them one step at a time.</td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q7" class="form-check-input" id="Psychological7"
+                name="psychologicalP1Q7" type="radio" value="1" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div class="form-check form-check-inline">
+              <input formControlName="psychologicalP1Q7" class="form-check-input" id="Psychological7"
+                name="psychologicalP1Q7" type="radio" value="0" />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h4 class="mainTitle">(Step 2) Learning Styles Inventory</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <p class="SubTittle">
+          <b>Directions (Part 2):</b> Using your answers in Part 1, complete the
+          following Dunn and Dunn matrix by indicating your learning styles and
+          processing preferences.
+        </p>
+      </div>
+    </div>
+    <div formGroupName="environmentalP2" class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Environmental</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center">
+            <th class="font-weight-normal" scope="row">
+              <b>Sound</b><br />
+              How much?<br />
+              What kind?<br />
+              <div class="form-group mt-1 inputStyle">
+                <textarea formControlName="environmentalP2Q1" class="form-control" id="comment" rows="5" name="environmentalP2Q1"></textarea>
+              </div>
+            </th>
+            <th class="font-weight-normal" scope="row">
+              <b>Light</b><br />
+              Bright or Dim?<br />
+              <br />
+              <div class="form-group mt-1 inputStyle">
+                <textarea formControlName="environmentalP2Q2" class="form-control" id="comment" rows="5" name="environmentalP2Q2"></textarea>
+              </div>
+            </th>
+            <th class="font-weight-normal" scope="row">
+              <b>Temperature</b><br />
+              Cool or Warm?<br />
+              <br />
+              <div class="form-group mt-1 inputStyle">
+                <textarea formControlName="environmentalP2Q3" class="form-control" id="comment" rows="5" name="environmentalP2Q3"></textarea>
+              </div>
+            </th>
+            <th class="font-weight-normal" scope="row">
+              <b>Design</b><br />
+              Formal or Flexible?<br />
+              <br />
+              <div class="form-group mt-1 inputStyle">
+                <textarea formControlName="environmentalP2Q4" class="form-control" id="comment" rows="5" name="environmentalP2Q4"></textarea>
+              </div>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div formGroupName="emotionalP2" class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="2" scope="col">Emotional (High, Medium or Low?)</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Motivation</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="emotionalP2Q1" class="form-control" id="comment" rows="5" name="emotionalP2Q1"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Persistence</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="emotionalP2Q2" class="form-control" id="comment" rows="5" name="emotionalP2Q2"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Responsibility</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="emotionalP2Q3" class="form-control" id="comment" rows="5" name="emotionalP2Q3"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <b>Structure</b><br />
+                  External or Self-directed?<br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="emotionalP2Q4" class="form-control" id="comment" rows="5" name="emotionalP2Q4"></textarea>
+                  </div>
+                </th>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+    <div formGroupName="sociologicalP2" class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="2" scope="col">
+              Sociological (Whom do you like to work with? When?)
+            </th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Self</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="sociologicalP2Q1" class="form-control" id="comment" rows="5" name="sociologicalP2Q1"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Pair</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="sociologicalP2Q2" class="form-control" id="comment" rows="5" name="sociologicalP2Q2"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Peers</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="sociologicalP2Q3" class="form-control" id="comment" rows="5" name="sociologicalP2Q3"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Team</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="sociologicalP2Q4" class="form-control" id="comment" rows="5" name="sociologicalP2Q4"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Adult</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="sociologicalP2Q5" class="form-control" id="comment" rows="5" name="sociologicalP2Q5"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <br />
+                  <b>Varied</b><br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="sociologicalP2Q6" class="form-control" id="comment" rows="5" name="sociologicalP2Q6"></textarea>
+                  </div>
+                </th>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+    <div formGroupName="physicalP2" class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="2" scope="col">Physical</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <th class="font-weight-normal" scope="row">
+                  <b>Perceptual</b><br />
+                  Auditory?<br />
+                  Visual?<br />
+                  Body Kinesthetic?<br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="physicalP2Q1" class="form-control" id="comment" rows="5" name="physicalP2Q1"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <b>Food/Drink</b><br />
+                  Frequent<br />
+                  snacks desired<br />
+                  or not?
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="physicalP2Q2" class="form-control" id="comment" rows="5" name="physicalP2Q2"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <b>Time</b><br />
+                  Morning,<br />
+                  Afternoon, or<br />
+                  Evening?
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="physicalP2Q3" class="form-control" id="comment" rows="5" name="physicalP2Q3"></textarea>
+                  </div>
+                </th>
+                <th class="font-weight-normal" scope="row">
+                  <b>Mobility</b><br />
+                  Move around or<br />
+                  sit still?<br />
+                  <br />
+                  <div class="form-group mt-1 inputStyle">
+                    <textarea formControlName="physicalP2Q4" class="form-control" id="comment" rows="5" name="physicalP2Q4"></textarea>
+                  </div>
+                </th>
+              </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--Container ends here-->
+  <input class="btn btn-primary btn-block" name="LearningStyle" type="submit" value="Submit" />
+</form>
