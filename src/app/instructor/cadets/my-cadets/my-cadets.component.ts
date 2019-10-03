@@ -25,8 +25,8 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.filterForm = new FormGroup({
-      let: new FormControl('All'),
-      period: new FormControl('All')
+      let: new FormControl('all'),
+      period: new FormControl('all')
     })
 
     this.subscription.add(
@@ -36,11 +36,6 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
         this.filterRoster = this.battalionRoster;
       })
     );
-
-    this.filterForm.setValue({
-      let: 'all',
-      period: 'all'
-    })
 
   }
 

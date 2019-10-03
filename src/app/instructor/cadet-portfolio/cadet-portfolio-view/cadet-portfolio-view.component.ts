@@ -24,10 +24,15 @@ export class CadetPortfolioViewComponent implements OnInit {
       this.searchUid = params.uid.replace(/\s/g, "").replace("[%]","");
       return this.db.collection('battalions').doc(battalionCode).collection('cadets').doc(this.searchUid).valueChanges();
     })).subscribe( data => {
+      console.log(data);
       this.searchCadet = data;
     });
 
 
+  }
+
+  getWidth() {
+    return '100%';
   }
 
 }

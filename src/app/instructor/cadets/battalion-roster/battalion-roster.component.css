@@ -1,0 +1,13 @@
+.filter-button{
+    float: right;
+}
+
+@media screen and (max-width: 990px) {
+    .filter-button{
+        float: left;
+    }
+}
+
+form label, form select {
+    margin-right: 5px;
+}

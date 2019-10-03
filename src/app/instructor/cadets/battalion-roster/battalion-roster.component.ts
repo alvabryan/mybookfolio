@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-battalion-roster',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BattalionRosterComponent implements OnInit {
 
+  filterForm: FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+    this.filterForm = new FormGroup({
+      let: new FormControl('all'),
+      period: new FormControl('all')
+    })
   }
 
 }

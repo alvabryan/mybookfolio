@@ -24,7 +24,8 @@
                     <a class="nav-link active">Cadet Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/instructor/cadet-portfolio/cadet-information" [queryParams]="{uid: 'etURkGdh4PUO8bqIPLb7XJb88A92'}">Cadet Information</a>
+                    <a class="nav-link" routerLink="/instructor/cadet-portfolio/cadet-information"
+                        [queryParams]="{uid: 'etURkGdh4PUO8bqIPLb7XJb88A92'}">Cadet Information</a>
                 </li>
             </ul>
         </div>
@@ -34,15 +35,11 @@
                 <!-- card starts -->
                 <div class="card mb-3">
 
-                    <div class="card-header">
-                        <i class="fas fa-pencil-square"></i> Let 2 <span class="date">date</span>
-                    </div>
-
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Awards
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width:100%;"
-                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">100%
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
+                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%
                                 </div>
                             </div>
                             <div class="row mx-auto mt-2 ">
@@ -57,9 +54,8 @@
                         <li class="list-group-item rounded-0">Four Year Goals
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                                    <a>100%</a></div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: searchCadet?.progress.yearlyGoals.let3 ? searchCadet?.progress.yearlyGoals.let3 + '%' : '0%' }"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{searchCadet?.progress.yearlyGoals.let3  }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -73,8 +69,8 @@
                         <li class="list-group-item rounded-0">Success Profiler & Personal Growth Plan
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: searchCadet?.progress.successProfiler.let3 ? searchCadet?.progress.successProfiler.let3 + '%'  : '0%' }"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ searchCadet?.progress.successProfiler.let3  }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -89,8 +85,8 @@
                         <li class="list-group-item rounded-0">Learning Styles Inventory
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -105,8 +101,8 @@
                         <li class="list-group-item rounded-0">Course Work
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success " role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success " role="progressbar" style="width: 0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -120,8 +116,8 @@
                         <li class="list-group-item rounded-0">Winning Colors
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: searchCadet?.progress.winningColors.let3 ? searchCadet?.progress.winningColors.let3 + '%' : '0%' }"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ searchCadet?.progress.winningColors.let3 }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -136,8 +132,8 @@
                         <li class="list-group-item rounded-0">Personal Ad
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -151,8 +147,8 @@
                         <li class="list-group-item rounded-0">Cadet Challenge
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -167,8 +163,8 @@
                         <li class="list-group-item rounded-0">Human Graph Activity
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width:100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -182,8 +178,8 @@
                         <li class="list-group-item rounded-0">Jrotc Essay / Course
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -197,8 +193,8 @@
                         <li class="list-group-item rounded-0">Resume & Awards
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -212,8 +208,8 @@
                         <li class="list-group-item rounded-0">Let 1-4 Lesson Evidence
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -228,8 +224,8 @@
                         <li class="list-group-item rounded-0">Service Learning
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -244,8 +240,8 @@
                         <li class="list-group-item rounded-0">Written Summary
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -260,8 +256,8 @@
                         <li class="list-group-item rounded-0">Financial Planning
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success " role="progressbar" style="width: 100%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success " role="progressbar" style="width:0%;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
