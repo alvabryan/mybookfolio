@@ -31,6 +31,7 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.portfolioService.getBattalionRoster().subscribe(data => {
+        console.log(data);
         const values = Object.values(data[0]);
         this.battalionRoster = values;
         this.filterRoster = this.battalionRoster;
@@ -54,7 +55,7 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
       if(letLevel == 'all' && period == 'all') {
         this.filterRoster = this.battalionRoster;
       } else if (letLevel != 'all' && period == 'all') {
-        if( data.let == letLevel) {
+        if( data.letLevel == letLevel) {
           this.filterRoster.push(data);
         }
       } else if (letLevel == 'all' && period != 'all') {
@@ -62,7 +63,7 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
           this.filterRoster.push(data);
         }
       } else if (letLevel != 'all' && period != 'all' ) {
-        if( data.period == period && data.let == letLevel) {
+        if( data.period == period && data.letLevel == letLevel) {
           this.filterRoster.push(data);
         }
       }

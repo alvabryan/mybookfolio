@@ -3,8 +3,9 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subject, Observable } from 'rxjs';
-import { User } from './user.model';
 import { take, map, tap, mergeMap } from 'rxjs/operators';
+import { firestore } from 'firebase';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class AuthService {
 
   // new user variable
   newUser: any;
+
+
+  // new battalion Code
+  newBattalionCode: string;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFirestore, private router: Router ) { }
 
@@ -108,30 +113,61 @@ export class AuthService {
     }
   }
 
-  // signup method
+  // method used to validate user battalion code
   createUser(user) {
     this.newUser = user;
 
-    this.db.doc(`battalions/battalionCodeTrack`).valueChanges().pipe(take(1)).subscribe( (data: any) => {
-      if (data.battalionCode.includes(this.newUser.data.battalionCode)) { 
-        this.afAuth.auth.createUserWithEmailAndPassword(user.data.email, user.data.password).then( userCredential => {
 
-          userCredential.user.updateProfile({
-            displayName: user.data.firstName + ' ' + user.data.lastName
-          });
-  
-           this.insertUserData(userCredential);
-        }).then(()=>{
-            this.login(this.newUser.data.email, this.newUser.data.password);
-        }).catch( error => {
-          this.authErrorHandling(error);
+    if(this.newUser.type === 'cadet') {
+        this.checkBattalionCode(this.newUser.data.battalionCode).then( () => {
+          this.authErrorHandling({code: 'battalionCode'});
+        }).catch( () => {
+          this.createUserInDB(user);
         });
-      } else {
-        this.authErrorHandling({code: 'battalionCode'});
-        return;
-      }
-    });
+    } else {
+      this.newBattalionCode = this.generateBattalionCode();
 
+      this.checkBattalionCode(this.newBattalionCode).then( () => {
+        this.createUserInDB(user);
+      }).catch( () => {
+        this.authErrorHandling({code: 'battalionCode'});
+        this.createUser(user);
+      });
+      
+    }
+
+    
+
+  }
+
+
+  // check db if battalion code exists already
+  checkBattalionCode(code: string) {
+    return new Promise ( (resolve, reject) => {
+      this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1)).subscribe( (data: any) => {
+        if (data.codes.includes(code)) { 
+          reject();
+        } else {
+          resolve();
+        }
+      });
+    });
+  }
+
+  // used to create user in firebase and insert their data
+  createUserInDB(user: any) {
+    this.afAuth.auth.createUserWithEmailAndPassword(user.data.email, user.data.password).then( userCredential => {
+
+      userCredential.user.updateProfile({
+        displayName: user.data.firstName + ' ' + user.data.lastName
+      });
+
+       this.insertUserData(userCredential);
+    }).then(()=>{
+        this.login(this.newUser.data.email, this.newUser.data.password);
+    }).catch( error => {
+      this.authErrorHandling(error);
+    });
   }
 
   // signup user method
@@ -141,7 +177,7 @@ export class AuthService {
         const appUserData = { 
           firstName: this.newUser.data.firstName, 
           lastName: this.newUser.data.lastName, 
-          let: this.newUser.data.letLevel, 
+          letLevel: this.newUser.data.letLevel, 
           period: this.newUser.data.classPeriod, 
           progress: {
           successProfiler: { let1: 0, let2: 0, let3: 0, let4: 0},
@@ -174,7 +210,7 @@ export class AuthService {
           firstName: this.newUser.data.firstName,
           lastName: this.newUser.data.lastName,
           letLevel: this.newUser.data.letLevel,
-          classPeriod: this.newUser.data.classPeriod
+          period: this.newUser.data.classPeriod
         }
       }).then(()=>{
         return this.db.doc(`battalions/${this.newUser.data.battalionCode}/cadetsRoster/${this.newUser.data.battalionCode}`).set({
@@ -182,7 +218,7 @@ export class AuthService {
             firstName: this.newUser.data.firstName,
             lastName: this.newUser.data.lastName,
             letLevel: this.newUser.data.letLevel,
-            classPeriod: this.newUser.data.classPeriod,
+            period: this.newUser.data.classPeriod,
             uid: userCredential.user.uid
           }
         },{ merge: true});
@@ -195,23 +231,27 @@ export class AuthService {
 
     } else if ( this.newUser.type === 'instructor') {
 
+      
+
       return this.db.doc(`users/${userCredential.user.uid}`).set({
         userType: this.newUser.type,
         data: {
-          battalionCode: this.newUser.data.battalionCode,
+          battalionCode: this.newBattalionCode,
           firstName: this.newUser.data.firstName,
           lastName: this.newUser.data.lastName,
           instructorType: this.newUser.data.instructorType,
           phoneNumber: this.newUser.data.phoneNumber
         }
       }).then(() => {
-        this.db.doc(`battalions/${this.newUser.data.battalionCode}`).set({
+        this.db.doc(`battalions/${this.newBattalionCode}`).set({
           schoolName: this.newUser.data.schoolName,
           state: this.newUser.data.state,
           city: this.newUser.data.city,
           zipCode: this.newUser.data.zipCode,
-          battalionCode: this.newUser.data.battalionCode
+          battalionCode: this.newBattalionCode
         });
+      }).then(()=>{
+        this.db.doc(`battalionCodeTracker/battalionCode`).update({codes:  firebase.firestore.FieldValue.arrayUnion(this.newBattalionCode)});
       });
 
 
@@ -238,6 +278,12 @@ export class AuthService {
     this.user.next(null);
     this.router.navigate(['/']);
     return this.afAuth.auth.signOut();
+  }
+
+
+  // generate insturctor battalionCode
+  generateBattalionCode(){
+    return Math.random().toString(36).substring(2, 7).toUpperCase();
   }
 
 }

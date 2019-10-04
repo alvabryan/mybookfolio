@@ -63,8 +63,8 @@
                   <th>#</th>
                   <th>Last Name</th>
                   <th>First Name</th>
-                  <th>Period</th>
                   <th>Let</th>
+                  <th>Period</th>
                   <th>View</th>
                 </tr>
               </thead>
@@ -73,8 +73,8 @@
                   <th>#</th>
                   <th>Last Name</th>
                   <th>First Name</th>
-                  <th>Period</th>
                   <th>Let</th>
+                  <th>Period</th>
                   <th>View</th>
                 </tr>
               </tfoot>
@@ -83,8 +83,8 @@
                       <td>{{ i + 1 }}</td>
                       <td>{{ cadet.lastName }}</td>
                       <td>{{ cadet.firstName }}</td>
+                      <td>{{ cadet.letLevel }}</td>
                       <td>{{ cadet.period }}</td>
-                      <td>{{ cadet.let }}</td>
                       <td><button (click)="toCadetPortfolio(cadet.uid)" class="btn btn-primary">View</button></td>
                     </tr>
 
