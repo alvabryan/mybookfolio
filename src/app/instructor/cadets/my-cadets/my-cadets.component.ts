@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { InstructorService } from '../../instructor.service';
+import { FilterServiceService } from '../../shared-services/filter-service.service';
 
 @Component({
   selector: 'app-my-cadets',
@@ -20,12 +21,17 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
   filterRoster: Array<any>;
   battalionRoster: Array<any>;
 
-  constructor(private auth: AuthService , private db: AngularFirestore, private router: Router, private instructorService: InstructorService) { }
+  constructor(
+    private auth: AuthService, 
+    private db: AngularFirestore, 
+    private router: Router, 
+    private instructorService: InstructorService, 
+    private filterService: FilterServiceService) { }
 
   ngOnInit() {
 
     this.filterForm = new FormGroup({
-      let: new FormControl('all'),
+      letLevel: new FormControl('all'),
       period: new FormControl('all')
     })
 
@@ -33,7 +39,7 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
       this.instructorService.battalionRoster.subscribe(data => {
         const values = Object.values(data);
         this.battalionRoster = values;
-        this.filterRoster = this.battalionRoster;
+        this.filterRoster = values;
       })
     );
 
@@ -46,27 +52,12 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
   }
 
   onFilter(){
-    this.filterRoster = [];
-    const letLevel = this.filterForm.value.let;
+    // this.filterRoster = [];
+    const letLevel = this.filterForm.value.letLevel;
     const period = this.filterForm.value.period;
 
-    this.battalionRoster.forEach((data)=>{
-      if(letLevel == 'all' && period == 'all') {
-        this.filterRoster = this.battalionRoster;
-      } else if (letLevel != 'all' && period == 'all') {
-        if( data.letLevel == letLevel) {
-          this.filterRoster.push(data);
-        }
-      } else if (letLevel == 'all' && period != 'all') {
-        if( data.period == period) {
-          this.filterRoster.push(data);
-        }
-      } else if (letLevel != 'all' && period != 'all' ) {
-        if( data.period == period && data.letLevel == letLevel) {
-          this.filterRoster.push(data);
-        }
-      }
-    })
+    this.filterRoster = this.filterService.filter(letLevel,period,this.battalionRoster);
+
   }
 
   ngOnDestroy() {

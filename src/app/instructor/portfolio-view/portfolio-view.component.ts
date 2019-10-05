@@ -4,6 +4,8 @@ import { take } from 'rxjs/operators';
 import { InstructorService } from '../instructor.service';
 import { Subscription } from 'rxjs';
 import { PortfolioViewService } from './portfolio-view.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { FilterServiceService } from '../shared-services/filter-service.service';
 
 @Component({
   selector: 'app-portfolio-view',
@@ -17,11 +19,24 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
   pageTitle: string;
   pageUrl: string;
 
-  cadetsData: any;
+  filterForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private instructorService: InstructorService, private portfolioViewService: PortfolioViewService) { }
+  filterData: Array<any>;
+  cadetsData: Array<any>;
+
+  constructor(
+    private route: ActivatedRoute, 
+    private instructorService: InstructorService, 
+    private portfolioViewService: PortfolioViewService, 
+    private filterService: FilterServiceService) { }
 
   ngOnInit() {
+
+    this.filterForm = new FormGroup({
+      letLevel: new FormControl('all'),
+      period: new FormControl('all')
+    })
+
     this.subscription.add(
       this.route.queryParams.pipe(take(1)).subscribe( (params: Params) => {
         this.pageTitle = params['name'];
@@ -33,10 +48,19 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
       this.instructorService.getPortfolioProgress().subscribe(data => {
         const values = Object.values(data);
         this.cadetsData = values;
+        this.filterData = values;
       })
     );
     
     
+  }
+
+  onFilter() {
+    // this.filterRoster = [];
+    const letLevel = this.filterForm.value.letLevel;
+    const period = this.filterForm.value.period;
+
+    this.filterData = this.filterService.filter(letLevel,period,this.cadetsData);
   }
 
   progress(i: number) {
