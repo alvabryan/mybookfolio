@@ -6,13 +6,13 @@
         <div col="col">
             <div class="d-block float-lg-right mr-4">
                 <button class="btn btn-sm btn-outline-primary ml-1 active" (click)="setLetLevel(1)"
-                    [ngClass]="{active: searchCadet?.let === 1}">Let 1</button>
+                    [ngClass]="{active: searchCadet?.letLevel === 1}">Let 1</button>
                 <button class="btn btn-sm btn-outline-primary btn-active ml-1" (click)="setLetLevel(2)"
-                    [ngClass]="{active: searchCadet?.let  === 2}">Let 2</button>
+                    [ngClass]="{active: searchCadet?.letLevel  === 2}">Let 2</button>
                 <button class="btn btn-sm btn-outline-primary ml-1" (click)="setLetLevel(3)"
-                    [ngClass]="{active: searchCadet?.let  === 3}">Let 3</button>
+                    [ngClass]="{active: searchCadet?.letLevel  === 3}">Let 3</button>
                 <button class="btn btn-sm btn-outline-primary ml-1" (click)="setLetLevel(4)"
-                    [ngClass]="{active: searchCadet?.let  === 4}">Let 4</button>
+                    [ngClass]="{active: searchCadet?.letLevel  === 4}">Let 4</button>
             </div>
         </div>
     </div>
@@ -24,8 +24,7 @@
                     <a class="nav-link active">Cadet Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/instructor/cadet-portfolio/cadet-information"
-                        [queryParams]="{uid: 'etURkGdh4PUO8bqIPLb7XJb88A92'}">Cadet Information</a>
+                    <a class="nav-link" (click)="toCadetInformation()">Cadet Information</a>
                 </li>
             </ul>
         </div>
@@ -54,8 +53,8 @@
                         <li class="list-group-item rounded-0">Four Year Goals
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: searchCadet?.progress.yearlyGoals.let3 ? searchCadet?.progress.yearlyGoals.let3 + '%' : '0%' }"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{searchCadet?.progress.yearlyGoals.let3  }}</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]=""
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -69,8 +68,8 @@
                         <li class="list-group-item rounded-0">Success Profiler & Personal Growth Plan
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: searchCadet?.progress.successProfiler.let3 ? searchCadet?.progress.successProfiler.let3 + '%'  : '0%' }"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ searchCadet?.progress.successProfiler.let3  }}</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]=""
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -116,8 +115,8 @@
                         <li class="list-group-item rounded-0">Winning Colors
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: searchCadet?.progress.winningColors.let3 ? searchCadet?.progress.winningColors.let3 + '%' : '0%' }"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ searchCadet?.progress.winningColors.let3 }}</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]=""
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">

@@ -179,28 +179,9 @@ export class AuthService {
           lastName: this.newUser.data.lastName, 
           letLevel: this.newUser.data.letLevel, 
           period: this.newUser.data.classPeriod, 
-          progress: {
-          successProfiler: { let1: 0, let2: 0, let3: 0, let4: 0},
-          winningColors: { let1: 0, let2: 0, let3: 0, let4: 0},
-          yearlyGoals: { let1: 0, let2: 0, let3: 0, let4: 0},
-          learningStyle: { let1: 0, let2: 0, let3: 0, let4: 0},
-          personalAd: { let1: 0, let2: 0, let3: 0, let4: 0},
-          humanGraph: { let1: 0, let2: 0, let3: 0, let4: 0},
-          resume:  { let1: 0, let2: 0, let3: 0, let4: 0},
-          financialPlanning1: { let1: 0, let2: 0, let3: 0, let4: 0},
-          financialPlanning2: { let1: 0, let2: 0, let3: 0, let4: 0},
-          financialPlanning3: { let1: 0, let2: 0, let3: 0, let4: 0},
-          financialPlanning4: { let1: 0, let2: 0, let3: 0, let4: 0},
-          financialPlanning5: { let1: 0, let2: 0, let3: 0, let4: 0},
-          financialPlanning6: { let1: 0, let2: 0, let3: 0, let4: 0},
-          courseWork: { let1: 0, let2: 0, let3: 0, let4: 0},
-          essay: { let1: 0, let2: 0, let3: 0, let4: 0},
-          lessonEvidence: { let1: 0, let2: 0, let3: 0, let4: 0},
-          writtenSummary: { let1: 0, let2: 0, let3: 0, let4: 0},
-          achievements:  { let1: 0, let2: 0, let3: 0, let4: 0},
-          cadetChallenge: { let1: 0, let2: 0, let3: 0, let4: 0},
-          serviceLearning:  { let1: 0, let2: 0, let3: 0, let4: 0}
-      }}
+          uid: userCredential.user.uid,
+          progress: {}
+        }
       
 
       return this.db.doc(`users/${userCredential.user.uid}`).set({

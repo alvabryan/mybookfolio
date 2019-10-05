@@ -1,48 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { InstructorService } from '../instructor.service';
+import { Subscription } from 'rxjs';
+import { PortfolioViewService } from './portfolio-view.service';
 
 @Component({
   selector: 'app-portfolio-view',
   templateUrl: './portfolio-view.component.html',
   styleUrls: ['./portfolio-view.component.css']
 })
-export class PortfolioViewComponent implements OnInit {
+export class PortfolioViewComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   pageTitle: string;
   pageUrl: string;
 
-  cadetsData = [
-    {
-      lastName: 'Alvarenga',  
-      firstName: 'Bryan',
-      period: 5,
-      let: 3,
-      progress: 50
-    },
-    {
-      lastName: 'Alvarenga',  
-      firstName: 'Jairo',
-      period: 7,
-      let: 4,
-      progress: 30
-    },
-    {
-      lastName: 'Alvarenga',  
-      firstName: 'Odalys',
-      period: 8,
-      let: 2,
-      progress: 100
-    },
-  ];
+  cadetsData: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private instructorService: InstructorService, private portfolioViewService: PortfolioViewService) { }
 
   ngOnInit() {
-    this.route.queryParams.pipe(take(1)).subscribe( (params: Params) => {
-      this.pageTitle = params['name'];
-      this.pageUrl = params['url'];
-    });
+    this.subscription.add(
+      this.route.queryParams.pipe(take(1)).subscribe( (params: Params) => {
+        this.pageTitle = params['name'];
+        this.pageUrl = params['url'];
+      })
+    );
+
+    this.subscription.add(
+      this.instructorService.getPortfolioProgress().subscribe(data => {
+        const values = Object.values(data);
+        this.cadetsData = values;
+      })
+    );
+    
+    
+  }
+
+  progress(i: number) {
+    return this.portfolioViewService.getProgress(i,this.pageTitle, this.cadetsData);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

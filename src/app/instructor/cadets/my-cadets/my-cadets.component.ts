@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { PortfolioService } from '../../services/portfolio.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
+import { InstructorService } from '../../instructor.service';
 
 @Component({
   selector: 'app-my-cadets',
@@ -20,7 +20,7 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
   filterRoster: Array<any>;
   battalionRoster: Array<any>;
 
-  constructor(private auth: AuthService ,private portfolioService: PortfolioService, private db: AngularFirestore, private router: Router) { }
+  constructor(private auth: AuthService , private db: AngularFirestore, private router: Router, private instructorService: InstructorService) { }
 
   ngOnInit() {
 
@@ -30,16 +30,15 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
     })
 
     this.subscription.add(
-      this.portfolioService.getBattalionRoster().subscribe(data => {
-        console.log(data);
-        const values = Object.values(data[0]);
+      this.instructorService.battalionRoster.subscribe(data => {
+        const values = Object.values(data);
         this.battalionRoster = values;
         this.filterRoster = this.battalionRoster;
       })
     );
 
   }
-
+ 
   toCadetPortfolio(uid) {
     const cadetUid = uid.replace(/\s/g, "");
     console.log(uid);

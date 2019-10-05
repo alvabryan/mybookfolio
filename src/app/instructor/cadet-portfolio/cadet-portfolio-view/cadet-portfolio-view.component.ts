@@ -1,38 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { PortfolioService } from '../../services/portfolio.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ActivatedRoute, Params } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { switchMap, throwIfEmpty } from 'rxjs/operators';
+import { InstructorService } from '../../instructor.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cadet-portfolio-view',
   templateUrl: './cadet-portfolio-view.component.html',
   styleUrls: ['./cadet-portfolio-view.component.css']
 })
-export class CadetPortfolioViewComponent implements OnInit {
+export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   searchUid: any;
   searchCadet: any;
 
-  constructor(private portfolioService: PortfolioService, private db: AngularFirestore, private route: ActivatedRoute) { }
+  constructor( private db: AngularFirestore, private router: Router, private route: ActivatedRoute, private instructorService: InstructorService) { }
 
   ngOnInit() {
 
-    const battalionCode = this.portfolioService.battalionCode;
-
-    this.route.queryParams.pipe(switchMap((params: Params)=>{
-      this.searchUid = params.uid.replace(/\s/g, "").replace("[%]","");
-      return this.db.collection('battalions').doc(battalionCode).collection('cadets').doc(this.searchUid).valueChanges();
-    })).subscribe( data => {
-      console.log(data);
-      this.searchCadet = data;
-    });
+    this.subscription.add(
+      this.route.queryParams.subscribe((params: Params) => {
+        this.searchUid = params.uid.replace(/\s/g, "").replace("[%]","");
+  
+        this.instructorService.getCadetInformation().subscribe(data => {
+          this.searchCadet = data[this.searchUid];
+        });
+      })
+    );
+    
 
 
   }
 
+  toCadetInformation(){
+    //routerLink="/instructor/cadet-portfolio/cadet-information" [queryParams]="{uid: 'etURkGdh4PUO8bqIPLb7XJb88A92'}"
+    this.router.navigate(['/instructor/cadet-portfolio/cadet-information'], {queryParams: {'uid': this.searchUid}});
+  }
+
   getWidth() {
     return '100%';
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
