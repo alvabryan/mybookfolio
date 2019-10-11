@@ -4,6 +4,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap, throwIfEmpty } from 'rxjs/operators';
 import { InstructorService } from '../../instructor.service';
 import { Subscription } from 'rxjs';
+import { ProgressService } from './progress.service';
 
 @Component({
   selector: 'app-cadet-portfolio-view',
@@ -15,9 +16,40 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   searchUid: any;
-  searchCadet: any;
+  searchCadet: {
+    firstName: string,
+    lastName: string,
+    letLevel: number,
+    period: number,
+    progress: {
+      [key: string]: any
+    }
+  };
 
-  constructor( private db: AngularFirestore, private router: Router, private route: ActivatedRoute, private instructorService: InstructorService) { }
+  progress = {
+      yearlyGoals: 0,
+      winningColors: 0,
+      successProfiler: 0,
+      learningStyle: 0,
+      personalAd: 0,
+      humanGraph: 0,
+      resume: 0,
+      financialPlanning: 0,
+      courseWork: 0,
+      essay: 0,
+      lessonEvidence: 0,
+      writtenSummary: 0,
+      achievements: 0,
+      cadetChallenge: 0,
+      serviceLearning: 0
+  }
+
+  constructor( 
+    private db: AngularFirestore, 
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private instructorService: InstructorService,
+    private progressService: ProgressService) { }
 
   ngOnInit() {
 
@@ -26,7 +58,10 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
         this.searchUid = params.uid.replace(/\s/g, "").replace("[%]","");
   
         this.instructorService.getCadetInformation().subscribe(data => {
-          this.searchCadet = data[this.searchUid];
+          this.searchCadet = data[this.searchUid]
+          if (this. searchCadet) {
+            this.getProgress();
+          }
         });
       })
     );
@@ -40,8 +75,8 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
     this.router.navigate(['/instructor/cadet-portfolio/cadet-information'], {queryParams: {'uid': this.searchUid}});
   }
 
-  getWidth() {
-    return '100%';
+  getProgress(){
+    this.progress = this.progressService.getProgress(this.searchCadet.letLevel, this.searchCadet.progress);
   }
 
   ngOnDestroy() {

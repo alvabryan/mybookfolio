@@ -37,9 +37,8 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Awards
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%
-                                </div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.achievements + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.achievements + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -48,13 +47,13 @@
                             </div>
                         </li>
                     </ul>
-
+ 
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Four Year Goals
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]=""
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.yearlyGoals + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.yearlyGoals + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -68,8 +67,8 @@
                         <li class="list-group-item rounded-0">Success Profiler & Personal Growth Plan
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]=""
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.successProfiler + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.successProfiler + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -84,8 +83,8 @@
                         <li class="list-group-item rounded-0">Learning Styles Inventory
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.learningStyle + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.learningStyle + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -100,8 +99,8 @@
                         <li class="list-group-item rounded-0">Course Work
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success " role="progressbar" style="width: 0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success " role="progressbar" [ngStyle]="{width: progress.courseWork + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.courseWork + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -115,8 +114,8 @@
                         <li class="list-group-item rounded-0">Winning Colors
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]=""
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.winningColors + '%'}"
+                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">{{ progress.winningColors + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -131,8 +130,8 @@
                         <li class="list-group-item rounded-0">Personal Ad
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.personalAd + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.personalAd + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -146,8 +145,8 @@
                         <li class="list-group-item rounded-0">Cadet Challenge
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.cadetChallenge + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.cadetChallenge + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -162,8 +161,8 @@
                         <li class="list-group-item rounded-0">Human Graph Activity
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.humanGraph + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.humanGraph + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -177,8 +176,8 @@
                         <li class="list-group-item rounded-0">Jrotc Essay / Course
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.essay + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.essay + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -189,11 +188,11 @@
                     </ul>
 
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Resume & Awards
+                        <li class="list-group-item rounded-0">Resume
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.resume + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.resume + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -207,8 +206,8 @@
                         <li class="list-group-item rounded-0">Let 1-4 Lesson Evidence
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.lessonEvidence + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.lessonEvidence + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -223,8 +222,8 @@
                         <li class="list-group-item rounded-0">Service Learning
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.serviceLearning + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.serviceLearning + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -239,8 +238,8 @@
                         <li class="list-group-item rounded-0">Written Summary
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" style="width:0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.writtenSummary + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.writtenSummary + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
@@ -255,8 +254,8 @@
                         <li class="list-group-item rounded-0">Financial Planning
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success " role="progressbar" style="width:0%;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                <div class="progress-bar bg-success " role="progressbar" [ngStyle]="{width: progress.financialPlanning + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
