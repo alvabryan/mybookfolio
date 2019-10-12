@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { InstructorService } from '../../instructor.service';
 import { FilterServiceService } from '../../shared-services/filter-service.service';
+import { CadetPortfolioService } from '../../portfolio/cadet-portfolio.service';
 
 @Component({
   selector: 'app-my-cadets',
@@ -26,7 +27,8 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
     private db: AngularFirestore, 
     private router: Router, 
     private instructorService: InstructorService, 
-    private filterService: FilterServiceService) { }
+    private filterService: FilterServiceService,
+    private cadetPortfolioService: CadetPortfolioService) { }
 
   ngOnInit() {
 
@@ -45,7 +47,7 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
 
   }
  
-  toCadetPortfolio(uid) {
+  toCadetPortfolio(uid: string) {
     const cadetUid = uid.replace(/\s/g, "");
     console.log(uid);
     this.router.navigate(['/instructor/cadet-portfolio'], {queryParams:{uid:cadetUid}});

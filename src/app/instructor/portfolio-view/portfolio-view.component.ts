@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { PortfolioViewService } from './portfolio-view.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FilterServiceService } from '../shared-services/filter-service.service';
+import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
 
 @Component({
   selector: 'app-portfolio-view',
@@ -28,7 +29,8 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute, 
     private instructorService: InstructorService, 
     private portfolioViewService: PortfolioViewService, 
-    private filterService: FilterServiceService) { }
+    private filterService: FilterServiceService,
+    private cadetPortfolioSerivce: CadetPortfolioService) { }
 
   ngOnInit() {
 
@@ -54,6 +56,7 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     
     
   }
+
 
   onFilter() {
     // this.filterRoster = [];

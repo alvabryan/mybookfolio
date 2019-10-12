@@ -6,17 +6,17 @@
         <div col="col">
             <div class="d-block float-lg-right mr-4">
                 <button class="btn btn-sm btn-outline-primary ml-1 active" (click)="setLetLevel(1)"
-                    [ngClass]="{active: searchCadet?.letLevel === 1}">Let 1</button>
+                    [ngClass]="{active: filterLetLevel === 1}">Let 1</button>
                 <button class="btn btn-sm btn-outline-primary btn-active ml-1" (click)="setLetLevel(2)"
-                    [ngClass]="{active: searchCadet?.letLevel  === 2}">Let 2</button>
+                    [ngClass]="{active: filterLetLevel  === 2}">Let 2</button>
                 <button class="btn btn-sm btn-outline-primary ml-1" (click)="setLetLevel(3)"
-                    [ngClass]="{active: searchCadet?.letLevel  === 3}">Let 3</button>
+                    [ngClass]="{active: filterLetLevel  === 3}">Let 3</button>
                 <button class="btn btn-sm btn-outline-primary ml-1" (click)="setLetLevel(4)"
-                    [ngClass]="{active: searchCadet?.letLevel  === 4}">Let 4</button>
+                    [ngClass]="{active: filterLetLevel  === 4}">Let 4</button>
             </div>
         </div>
     </div>
-
+ 
     <div class="container-fluid p-3">
         <div class="row pl-3 pr-3">
             <ul class="nav nav-tabs">
@@ -42,7 +42,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaAwards" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.achievements" [routerLink]="['/instructor/portfolio/achievements']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaGoals" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.yearlyGoals" [routerLink]="['/instructor/portfolio/four-year-goals']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -72,8 +72,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaSuccessProfiler" class="btn btn-primary float-right"
-                                        role="button">View</a>
+                                    <button [disabled]="!progress.successProfiler" [routerLink]="['/instructor/portfolio/success-profiler']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -88,8 +87,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaLearningStyle" class="btn btn-primary float-right"
-                                        role="button">View</a>
+                                    <button [disabled]="!progress.learningStyle" [routerLink]="['/instructor/portfolio/learning-style']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -104,7 +102,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaCourseWork" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.courseWork" [routerLink]="['/instructor/portfolio/course-work']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -119,8 +117,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaWinningColors" class="btn btn-primary float-right"
-                                        role="button">View</a>
+                                    <button [disabled]="!progress.winningColors" [routerLink]="['/instructor/portfolio/winning-colors']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -135,7 +132,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaPersonalAd" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.personalAd" [routerLink]="['/instructor/portfolio/personal-ad']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -150,8 +147,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="cadetChallenge.php" class="btn btn-primary float-right"
-                                        role="button">View</a>
+                                    <button [disabled]="!progress.cadetChallenge" [routerLink]="['/instructor/portfolio/']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -166,7 +162,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaHumanGraph" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.humanGraph" [routerLink]="['/instructor/portfolio/human-graph']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -181,7 +177,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaEssay" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.essay" [routerLink]="['/instructor/portfolio/essay']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -196,7 +192,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="#" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.resume" [routerLink]="['/instructor/portfolio/resume']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -211,8 +207,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaLessonEvidence" class="btn btn-primary float-right"
-                                        role="button">View</a>
+                                    <button [disabled]="!progress.lessonEvidence" [routerLink]="['/instructor/portfolio/lesson-evidence']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -227,8 +222,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaServiceLearning" class="btn btn-primary float-right"
-                                        role="button">View</a>
+                                    <button [disabled]="!progress.serviceLearning" [routerLink]="['/instructor/portfolio/service-learning']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -243,8 +237,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="jpaWrittenSummary" class="btn btn-primary float-right"
-                                        role="button">View</a>
+                                    <button [disabled]="!progress.writtenSummary" [routerLink]="['/instructor/portfolio/written-summary']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -259,7 +252,7 @@
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <a href="#" class="btn btn-primary float-right" role="button">View</a>
+                                    <button [disabled]="!progress.financialPlanning" [routerLink]="['/instructor/portfolio/']" [queryParams]="{uid: searchUid}" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>

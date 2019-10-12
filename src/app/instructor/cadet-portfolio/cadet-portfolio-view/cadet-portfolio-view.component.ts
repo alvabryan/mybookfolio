@@ -26,6 +26,8 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
     }
   };
 
+  filterLetLevel: number;
+
   progress = {
       yearlyGoals: 0,
       winningColors: 0,
@@ -57,9 +59,10 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
       this.route.queryParams.subscribe((params: Params) => {
         this.searchUid = params.uid.replace(/\s/g, "").replace("[%]","");
   
-        this.instructorService.getCadetInformation().subscribe(data => {
+        this.instructorService.getCadetInformation().subscribe((data) => {
           this.searchCadet = data[this.searchUid]
           if (this. searchCadet) {
+            this.filterLetLevel = data[this.searchUid]['letLevel'];
             this.getProgress();
           }
         });
@@ -76,7 +79,12 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   }
 
   getProgress(){
-    this.progress = this.progressService.getProgress(this.searchCadet.letLevel, this.searchCadet.progress);
+    this.progress = this.progressService.getProgress(this.filterLetLevel, this.searchCadet.progress);
+  }
+
+  setLetLevel(letLevel: number){
+    this.filterLetLevel = letLevel;
+    this.getProgress();
   }
 
   ngOnDestroy() {
