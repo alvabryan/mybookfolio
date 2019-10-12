@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { CadetPortfolioService } from '../cadet-portfolio.service';
+import { Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-four-year-goals',
@@ -8,15 +12,20 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class FourYearGoalsComponent implements OnInit {
 
+  subscription: Subscription = new Subscription();
   editorForm: FormGroup;
 
-  constructor() { }
+  constructor(private cadetPortfolioService: CadetPortfolioService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     // creates a new form group
     this.editorForm = new FormGroup({
       editor: new FormControl('')
     });
+
+    
+
+    
   }
 
   editorStyle = {

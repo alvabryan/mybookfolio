@@ -10,7 +10,7 @@
     <div class="container-fluid p-2">
       <div class="row">
         <div class="col ml-2">
-          <h3>Bryan Alvarenga</h3>
+          <h3>{{ cadetData.firstName + ' ' + cadetData.lastName }}</h3>
           <p style="font-size: 13px;" *ngIf="lastUpdated"><b>Updated:</b> {{ lastUpdated | date:'yyyy/MM/dd h:mm:ss a' }}</p>
           <p style="font-size: 13px;" *ngIf="!lastUpdated"><b>Updated:</b> No data submitted yet</p>
         </div>
@@ -18,16 +18,16 @@
           <div class="d-block float-lg-right mr-4">
             <button class="btn btn-sm btn-outline-primary ml-1 active"
             (click)="setLetLevel(1)"
-            [ngClass]="{active: letLevel === 1}">Let 1</button>
+            [ngClass]="{active: cadetData.letLevel == 1}">Let 1</button>
             <button class="btn btn-sm btn-outline-primary btn-active ml-1"
             (click)="setLetLevel(2)"
-            [ngClass]="{active: letLevel === 2}">Let 2</button>
+            [ngClass]="{active: cadetData.letLevel == 2}">Let 2</button>
             <button class="btn btn-sm btn-outline-primary ml-1"
             (click)="setLetLevel(3)"
-            [ngClass]="{active: letLevel === 3}">Let 3</button>
+            [ngClass]="{active: cadetData.letLevel == 3}">Let 3</button>
             <button class="btn btn-sm btn-outline-primary ml-1"
             (click)="setLetLevel(4)"
-            [ngClass]="{active: letLevel === 4}">Let 4</button>
+            [ngClass]="{active: cadetData.letLevel == 4}">Let 4</button>
           </div>
         </div>
       </div>
