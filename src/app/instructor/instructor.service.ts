@@ -9,6 +9,9 @@ import { take } from 'rxjs/operators';
 })
 export class InstructorService {
 
+  // instructor data
+  instructorData = new BehaviorSubject({});
+
   //battalionCode
   battalionCode: string;
 
@@ -25,8 +28,9 @@ export class InstructorService {
   searchData = new BehaviorSubject([]);
 
   constructor(private auth: AuthService ,private db: AngularFirestore) { 
-    this.auth.user.pipe(take(1)).subscribe(data => {
+    this.auth.user.subscribe(data => {
       this.battalionCode = data.data.battalionCode;
+      this.instructorData.next(data.data);
     })
   }
 

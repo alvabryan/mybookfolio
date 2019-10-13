@@ -7,13 +7,13 @@
 
           <div class="row mt-5">
             <div class="col d-flex justify-content-center">
-              <img src="https://www.mybookfolio.com/instructor/profilePictures/placeHolder.png" height="150px"
+              <img [src]="instructorData.photoURL ? instructorData.photoURL : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png'" height="150px"
                 width="150px" style="border-radius: 100px;" />
               <div id="imgUpload">
                 <form [formGroup]="profileImage" id="file_form" enctype="multipart/form-data">
-                  <input formControlName="file" type="file" name="file" id="file">
+                  <input formControlName="file" type="file" name="file" id="file" #file (change)="uploadProfileImage($event)">
                   <input id="submitButton" type="submit" name="submitProfileImage">
-                  <p id="clickFile">Change Image</p>
+                  <p id="clickFile" (click)="file.click()">Change Image</p>
                 </form>
               </div>
             </div>
@@ -46,7 +46,7 @@
 
             <div class="row">
               <div class="col">
-                <input type="button" class="btn btn-primary float-right" name="update">
+                <input type="button" class="btn btn-primary float-right" name="update" value="Update">
               </div>
             </div>
           </form>

@@ -11,6 +11,10 @@
     font-size: 13px;
 }
 
+#imageUpload input{
+    z-index: 100;
+}
+
 input[type='file']{
     display: none;
 }

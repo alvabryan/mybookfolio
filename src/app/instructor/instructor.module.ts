@@ -41,6 +41,7 @@ import { CadetPortfolioComponent } from './cadet-portfolio/cadet-portfolio.compo
 import { CadetPortfolioViewComponent } from './cadet-portfolio/cadet-portfolio-view/cadet-portfolio-view.component';
 import { CadetInformationComponent } from './cadet-portfolio/cadet-information/cadet-information.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     QuillModule,
     ReactiveFormsModule,
     FormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   exports: [],
   providers: [],
