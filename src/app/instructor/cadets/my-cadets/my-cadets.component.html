@@ -85,7 +85,7 @@
                       <td>{{ cadet.firstName }}</td>
                       <td>{{ cadet.letLevel }}</td>
                       <td>{{ cadet.period }}</td>
-                      <td><button (click)="toCadetPortfolio(cadet.uid)" class="btn btn-primary">View</button></td>
+                      <td><button (click)="setSearchData(cadet.uid, cadet.firstName, cadet.lastName, cadet.letLevel)" class="btn btn-primary">View</button></td>
                     </tr>
 
               </tbody>

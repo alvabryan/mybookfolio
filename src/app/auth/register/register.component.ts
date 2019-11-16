@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -7,17 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  isLoading: boolean;
-
   signupType: string;
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit() { }
 
   // signup type? instructor : cadet
   setSignup(type: string) {
     this.signupType = type;
+  }
+
+  back(){
+    if(this.signupType){
+      this.signupType = null;
+    }else{
+      this.route.navigate(['/']);
+    }
   }
 
 }

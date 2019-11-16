@@ -33,11 +33,10 @@
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <div class="row">
           <div class="col" style="padding: 0px 0px 0px 30px">
-            <img class="rounded-circle mx-auto" [src]="instructorData.photoURL ? instructorData.photoURL : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png' " alt="6179593-profile-pics" width="60px" height="60px"/>
+            <img class="rounded-circle mx-auto" [src]="instructorData.photoUrl ? instructorData.photoUrl : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png' " alt="6179593-profile-pics" width="60px" height="60px"/>
           </div>
           <div class="col" style="padding: 5px 30px 0px 0px;">
-                <span class="profileName">{{ instructorData.lastName }}</span><br />
-                <span class="profileName">{{ instructorData.firstName }}</span>
+                <span class="profileName">{{ instructorData.displayName }}</span><br />
           </div>
         </div>
         <div class="dropdown-divider"></div>

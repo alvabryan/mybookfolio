@@ -1,5 +1,4 @@
-<app-spinner *ngIf="!userLoaded || !user"></app-spinner>
-<app-navigation *ngIf="userLoaded && user"></app-navigation>
-<app-sidebar *ngIf="userLoaded && user">
+<app-navigation></app-navigation>
+<app-sidebar>
   <router-outlet></router-outlet>
 </app-sidebar>

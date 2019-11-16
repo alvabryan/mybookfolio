@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+//ngrx
+import { Store } from '@ngrx/store';
+import * as fromInstructor from '../../store/index';
+import * as PortfolioActions from '../store/portfolio.actions';
 @Component({
   selector: 'app-winning-colors',
   templateUrl: './winning-colors.component.html',
@@ -10,9 +14,11 @@ export class WinningColorsComponent implements OnInit {
 
   winningColorsForm: FormGroup;
 
-  constructor() { }
+  constructor(private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Winning Colors'}));
+
     this.winningColorsForm = new FormGroup({
       A: new FormGroup({
         A1: new FormControl('0'),

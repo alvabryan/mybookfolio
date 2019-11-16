@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ToggleSideBarService } from '../toggle-side-bar.service';
-import { AuthService } from 'src/app/auth/auth.service';
-import { InstructorService } from '../../instructor.service';
 import { Subscription } from 'rxjs';
+
+//ngrx
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../../store/index';
+import * as AuthActions from '../../..//auth/store/auth.actions';
+
 
 @Component({
   selector: 'app-navigation',
@@ -15,12 +19,12 @@ export class NavigationComponent implements OnInit {
 
   subscription: Subscription = new Subscription();
 
-  constructor(private toggleSideBar: ToggleSideBarService, private auth: AuthService, private instructorService: InstructorService) { }
+  constructor(private store: Store<fromRoot.State>,private toggleSideBar: ToggleSideBarService) { }
 
   ngOnInit() {
     this.subscription.add(
-      this.instructorService.instructorData.subscribe((data: any) => {
-        this.instructorData = data;
+      this.store.select('auth').subscribe(data => {
+        this.instructorData = data.user;
       })
     );
   }
@@ -30,7 +34,7 @@ export class NavigationComponent implements OnInit {
   }
 
   signout() {
-    this.auth.logout();
+    this.store.dispatch(AuthActions.logout());
   }
 
 }

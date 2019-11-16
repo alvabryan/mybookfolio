@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToggleSideBarService } from '../toggle-side-bar.service';
-import { AuthService } from 'src/app/auth/auth.service';
+
+//ngrx
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../../store/index';
+import * as AuthActions from '../../../auth/store/auth.actions';
 
 @Component({
   selector: 'app-navigation',
@@ -9,7 +13,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(private toggleSideBar: ToggleSideBarService, private auth: AuthService) { }
+  constructor(private store: Store<fromRoot.State>,private toggleSideBar: ToggleSideBarService) { }
 
   ngOnInit() {
   }
@@ -19,7 +23,7 @@ export class NavigationComponent implements OnInit {
   }
 
   signout() {
-    this.auth.logout();
+    this.store.dispatch(AuthActions.logout());
   }
 
 }

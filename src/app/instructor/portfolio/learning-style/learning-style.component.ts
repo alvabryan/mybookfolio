@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
+//ngrx
+import { Store } from '@ngrx/store';
+import * as fromInstructor from '../../store/index';
+import * as PortfolioActions from '../store/portfolio.actions';
+
 @Component({
   selector: 'app-learning-style',
   templateUrl: './learning-style.component.html',
@@ -10,9 +15,11 @@ export class LearningStyleComponent implements OnInit {
 
   learningStyle: FormGroup;
 
-  constructor() { }
+  constructor(private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Learning Style Inventory'}));
+    
     this.learningStyle = new FormGroup({
       environmentalP1: new FormGroup({
         environmentalP1Q1: new FormControl(''),

@@ -1,21 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CadetPortfolioService } from '../cadet-portfolio.service';
-import { Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Subscription, EMPTY, of, from } from 'rxjs';
+import { take, mergeMap, switchMap } from 'rxjs/operators';
 import { ActivatedRoute, Params } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+//ngrx
+import { Store } from '@ngrx/store';
+import * as fromInstructor from '../../store/index';
+import * as PortfolioActions from '../store/portfolio.actions';
 
 @Component({
   selector: 'app-four-year-goals',
   templateUrl: './four-year-goals.component.html',
   styleUrls: ['./four-year-goals.component.css']
 })
-export class FourYearGoalsComponent implements OnInit {
+export class FourYearGoalsComponent implements OnInit, OnDestroy {
 
   subscription: Subscription = new Subscription();
   editorForm: FormGroup;
 
-  constructor(private cadetPortfolioService: CadetPortfolioService, private activatedRoute: ActivatedRoute) { }
+  cadetData: any;
+
+  constructor(
+    private db: AngularFirestore, 
+    private activatedRoute: ActivatedRoute, 
+    private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
     // creates a new form group
@@ -23,7 +34,17 @@ export class FourYearGoalsComponent implements OnInit {
       editor: new FormControl('')
     });
 
-    
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Four Year Goals'}));
+
+    // this.subscription.add(
+    //   this.store.select('instructor').pipe(switchMap(data => {
+    //     const cadetUid = data.portfolio.cadetSearchData.uid;
+    //     return from(this.db.collection(`portfolio`).doc(`${cadetUid}`).collection('yearlyGoals').doc(`${cadetUid}`).valueChanges())
+    //   })).subscribe(data => {
+    //     this.cadetData = data;
+    //     console.log(this.cadetData);
+    //   })
+    // )
 
     
   }
@@ -53,6 +74,10 @@ export class FourYearGoalsComponent implements OnInit {
 
   onSubmit(){
 
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }

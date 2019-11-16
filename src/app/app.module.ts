@@ -25,6 +25,15 @@ import { SharedModule } from './shared/shared.module';
 // Quil module
 import { QuillModule } from 'ngx-quill';
 
+// ngrx dev tools 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+//ngrx store
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/index';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -39,7 +48,14 @@ import { QuillModule } from 'ngx-quill';
     ReactiveFormsModule,
     FlashMessagesModule.forRoot(),
     SharedModule,
-    QuillModule.forRoot()
+    HttpClientModule,
+    QuillModule.forRoot(),
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production
+    }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

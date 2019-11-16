@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
 
@@ -15,13 +14,13 @@ export class CadetComponent implements OnInit, OnDestroy  {
   user: firebase.User;
   userLoaded = false;
 
-  constructor(private auth: AuthService, private db: AngularFirestore) { }
+  constructor( private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.cadetSubscription.add(this.auth.user.subscribe( user => {
-      this.user = user;
-      this.userLoaded = true;
-    }));
+    // this.cadetSubscription.add(this.auth.user.subscribe( user => {
+    //   this.user = user;
+    //   this.userLoaded = true;
+    // }));
 
   }
 

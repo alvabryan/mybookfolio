@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/auth/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { take } from 'rxjs/operators';
 
@@ -13,7 +12,7 @@ export class ResetPasswordComponent implements OnInit {
 
   isLoading: boolean;
 
-  constructor(private auth: AuthService, private flashMessages: FlashMessagesService) { }
+  constructor(private flashMessages: FlashMessagesService) { }
 
   ngOnInit() {
   }
@@ -26,14 +25,14 @@ export class ResetPasswordComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.auth.passwordReset(form.value.email);
+    // this.auth.passwordReset(form.value.email);
 
-    this.auth.authError.pipe(take(1)).subscribe( error => {
-      this.isLoading = false;
-      const showError = String(error);
+    // this.auth.authError.pipe(take(1)).subscribe( error => {
+    //   this.isLoading = false;
+    //   const showError = String(error);
 
-      this.flashMessages.show(showError, {cssClass: 'alert-danger', timeout: 2000});
-    });
+    //   this.flashMessages.show(showError, {cssClass: 'alert-danger', timeout: 2000});
+    // });
 
     this.flashMessages.show('Please check your email.', {cssClass: 'alert-success', timeout: 2000});
     this.isLoading = false;

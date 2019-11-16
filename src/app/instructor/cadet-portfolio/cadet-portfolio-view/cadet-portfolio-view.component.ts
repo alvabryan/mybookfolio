@@ -6,6 +6,10 @@ import { InstructorService } from '../../instructor.service';
 import { Subscription } from 'rxjs';
 import { ProgressService } from './progress.service';
 
+//ngrx
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/index';
+
 @Component({
   selector: 'app-cadet-portfolio-view',
   templateUrl: './cadet-portfolio-view.component.html',
@@ -16,17 +20,11 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   searchUid: any;
-  searchCadet: {
-    firstName: string,
-    lastName: string,
-    letLevel: number,
-    period: number,
-    progress: {
-      [key: string]: any
-    }
-  };
+  searchCadet: any;
 
   filterLetLevel: number;
+
+  queryParams: any;
 
   progress = {
       yearlyGoals: 0,
@@ -50,41 +48,56 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
     private db: AngularFirestore, 
     private router: Router, 
     private route: ActivatedRoute, 
-    private instructorService: InstructorService,
+    private store: Store<fromRoot.State>,
     private progressService: ProgressService) { }
 
   ngOnInit() {
 
+    // this.subscription.add(
+    //   this.route.queryParams.subscribe((params: Params) => {
+    //     if(this.searchUid){
+    //       this.store.select('instructor').subscribe((data: any) => {
+    //         const progressData = data.cadetData.cadetProgress;
+    //         this.searchCadet = progressData[this.searchUid];
+    //         if(this.searchCadet){
+    //           this.filterLetLevel = this.searchCadet.letLevel;
+    //           console.log(this.searchCadet.progress)
+    //           this.getProgress(this.filterLetLevel, this.searchCadet.progress);
+    //         }
+    //         this.queryParams = {'uid': this.searchUid, 'firstName': this.searchCadet.firstName, 'lastName': this.searchCadet.lastName, 'letLevel': this.filterLetLevel};
+    //       })
+    //     }
+    //   })
+    // );
+
     this.subscription.add(
-      this.route.queryParams.subscribe((params: Params) => {
-        this.searchUid = params.uid.replace(/\s/g, "").replace("[%]","");
-  
-        this.instructorService.getCadetInformation().subscribe((data) => {
-          this.searchCadet = data[this.searchUid]
-          if (this. searchCadet) {
-            this.filterLetLevel = data[this.searchUid]['letLevel'];
-            this.getProgress();
-          }
-        });
+      this.store.select('instructor').subscribe((data: any) => {
+        const progressData = data.cadetData.cadetProgress;
+        this.searchCadet = progressData[data.portfolio.cadetSearchData.uid];
+
+        if(this.searchCadet){
+          this.filterLetLevel = data.portfolio.cadetSearchData.letLevel;
+          this.getProgress(this.filterLetLevel, this.searchCadet.progress);
+        }
+
       })
     );
     
-
-
   }
 
   toCadetInformation(){
     //routerLink="/instructor/cadet-portfolio/cadet-information" [queryParams]="{uid: 'etURkGdh4PUO8bqIPLb7XJb88A92'}"
-    this.router.navigate(['/instructor/cadet-portfolio/cadet-information'], {queryParams: {'uid': this.searchUid}});
+    this.router.navigate(['/instructor/cadet-portfolio/cadet-information'], 
+    {queryParams: {'uid': this.searchUid, 'firstName': this.searchCadet.firstName, 'lastName': this.searchCadet.lastName, 'letLevel': this.filterLetLevel}});
   }
 
-  getProgress(){
-    this.progress = this.progressService.getProgress(this.filterLetLevel, this.searchCadet.progress);
+  getProgress(filterLet, searchCadetProgress){
+    this.progress = this.progressService.getProgress(filterLet,searchCadetProgress);
   }
 
   setLetLevel(letLevel: number){
     this.filterLetLevel = letLevel;
-    this.getProgress();
+    this.getProgress(this.filterLetLevel, this.searchCadet.progress);
   }
 
   ngOnDestroy() {

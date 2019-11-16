@@ -9,7 +9,6 @@ export class ProgressService {
 
 
   getProgress(letLevelNum, data) {
-
     let checkProgressFor = [
       'yearlyGoals',
       'winningColors',

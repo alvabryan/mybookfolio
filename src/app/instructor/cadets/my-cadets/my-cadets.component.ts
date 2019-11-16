@@ -1,12 +1,17 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from 'src/app/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { InstructorService } from '../../instructor.service';
 import { FilterServiceService } from '../../shared-services/filter-service.service';
 import { CadetPortfolioService } from '../../portfolio/cadet-portfolio.service';
+
+
+//ngrx
+import { Store, select } from '@ngrx/store';
+import * as fromRoot from '../../store/index';
+import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
 
 @Component({
   selector: 'app-my-cadets',
@@ -23,12 +28,12 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
   battalionRoster: Array<any>;
 
   constructor(
-    private auth: AuthService, 
     private db: AngularFirestore, 
     private router: Router, 
     private instructorService: InstructorService, 
     private filterService: FilterServiceService,
-    private cadetPortfolioService: CadetPortfolioService) { }
+    private cadetPortfolioService: CadetPortfolioService,
+    private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
 
@@ -38,13 +43,14 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
     })
 
     this.subscription.add(
-      this.instructorService.battalionRoster.subscribe(data => {
-        const values = Object.values(data);
-        this.battalionRoster = values;
-        this.filterRoster = values;
+      this.store.select('instructor').subscribe((data: any) => {
+        if(data.cadetData.cadetRoster){
+          const values = Object.values(data.cadetData.cadetRoster);
+          this.filterRoster = values;
+          this.battalionRoster = values;
+        }
       })
-    );
-
+    )
   }
  
   toCadetPortfolio(uid: string) {
@@ -60,6 +66,18 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
 
     this.filterRoster = this.filterService.filter(letLevel,period,this.battalionRoster);
 
+  }
+
+  setSearchData(uid: string, firstname: string, lastName: string, letLevel: number ){
+    
+    this.store.dispatch(PortfolioActions.searchCadet({
+      uid: uid,
+      firstName: firstname,
+      lastName: lastName,
+      letLevel: letLevel
+    }))
+
+    this.router.navigate(['/instructor/cadet-portfolio']);
   }
 
   ngOnDestroy() {

@@ -1,6 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AuthService } from 'src/app/auth/auth.service';
 import { Subject, BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CadetService } from '../../service/cadet.service';
@@ -22,12 +21,12 @@ export class FirebasePortfolioService {
   // last updated subject
   lastUpdated = new Subject();
 
-  constructor(private cadetService: CadetService, private db: AngularFirestore, private auth: AuthService) {
+  constructor(private cadetService: CadetService, private db: AngularFirestore) {
     // gets user from auth
-    this.auth.user.subscribe(data => {
-      this.user = data;
-      this.selectLetLevel.next(data.data.letLevel);
-    });
+    // this.auth.user.subscribe(data => {
+    //   this.user = data;
+    //   this.selectLetLevel.next(data.data.letLevel);
+    // });
   }
 
   // change let level

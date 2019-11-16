@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { BehaviorSubject } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
-import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,28 +25,28 @@ export class InstructorService {
   // search data
   searchData = new BehaviorSubject([]);
 
-  constructor(private auth: AuthService ,private db: AngularFirestore) { 
-    this.auth.user.subscribe(data => {
-      this.battalionCode = data.data.battalionCode;
-      this.instructorData.next(data.data);
-    })
+  constructor(private db: AngularFirestore) { 
+    // this.auth.user.subscribe(data => {
+    //   this.battalionCode = data.data.battalionCode;
+    //   this.instructorData.next(data.data);
+    // })
   }
 
   // used to retrieve cadets progress
   getData() {
-    // cadets progress
-    this.db.doc(`battalions/${this.battalionCode}/cadetsProgress/${this.battalionCode}`).valueChanges().subscribe( (data: any) => {
-      // const cadetsArray = Object.values(data);
-      this.battalionData.next(data);
-      console.log(data);
-    });
+    // // cadets progress
+    // this.db.doc(`battalions/${this.battalionCode}/cadetsProgress/${this.battalionCode}`).valueChanges().subscribe( (data: any) => {
+    //   // const cadetsArray = Object.values(data);
+    //   this.battalionData.next(data);
+    //   console.log(data);
+    // });
 
-    // cadets battalion roster
-    this.db.collection('battalions').doc(this.battalionCode).collection('cadetsRoster').valueChanges().subscribe((data: any) => {
-      this.battalionRoster.next(data[0]);
-    });
+    // // cadets battalion roster
+    // this.db.collection('battalions').doc(this.battalionCode).collection('cadetsRoster').valueChanges().subscribe((data: any) => {
+    //   this.battalionRoster.next(data[0]);
+    // });
 
-    console.log('get data ran');
+    // console.log('get data ran');
   }
 
 
@@ -56,13 +54,13 @@ export class InstructorService {
   // used to get cadet portfolio progres
   // link: instructor/portfolio-view
   getPortfolioProgress() {
-    return this.battalionData;
+    // return this.battalionData;
   }
 
   // used to show specific cadet progress and data
   // link: cadet-portfolio-view
   getCadetInformation() {
-    return this.battalionData;
+    // return this.battalionData;
   }
 
   

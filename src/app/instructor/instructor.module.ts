@@ -43,6 +43,12 @@ import { CadetInformationComponent } from './cadet-portfolio/cadet-information/c
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
+//ngrx
+import { StoreModule } from '@ngrx/store';
+import * as InstructorIndex from './store/index';
+import { EffectsModule } from '@ngrx/effects';
+import * as InstructorEffects from './store/instructor.effects';
+import * as PortfolioEffects from './portfolio/store/portolio.effects';
 @NgModule({
   declarations: [
     InstructorComponent,
@@ -90,7 +96,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     ReactiveFormsModule,
     FormsModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    StoreModule.forFeature('instructor',InstructorIndex.reducers),
+    EffectsModule.forFeature([InstructorEffects.InstructorEffects, PortfolioEffects.PortfolioEffects])
   ],
   exports: [],
   providers: [],

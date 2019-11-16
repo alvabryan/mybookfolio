@@ -8,6 +8,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FilterServiceService } from '../shared-services/filter-service.service';
 import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
 
+//ngrx
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../store/index';
+import * as InstructorActions from '../store/instructor.actions';
+
 @Component({
   selector: 'app-portfolio-view',
   templateUrl: './portfolio-view.component.html',
@@ -30,10 +35,10 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     private instructorService: InstructorService, 
     private portfolioViewService: PortfolioViewService, 
     private filterService: FilterServiceService,
-    private cadetPortfolioSerivce: CadetPortfolioService) { }
+    private cadetPortfolioSerivce: CadetPortfolioService,
+    private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
-
     this.filterForm = new FormGroup({
       letLevel: new FormControl('all'),
       period: new FormControl('all')
@@ -47,10 +52,13 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.instructorService.getPortfolioProgress().subscribe(data => {
-        const values = Object.values(data);
-        this.cadetsData = values;
-        this.filterData = values;
+      this.store.select('instructor').subscribe((data: any) => {
+       if(data.cadetData.cadetProgress){
+          const values = Object.values(data.cadetData.cadetProgress);
+          this.cadetsData = values;
+          this.filterData = values;
+          }
+        
       })
     );
     

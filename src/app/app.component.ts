@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from './auth/auth.service';
-import { Subscription } from 'rxjs';
+
+import { Store } from '@ngrx/store';
+import * as fromRoot from './store/index';
+import * as AuthActions from './auth/store/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,9 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private auth: AuthService) {}
+  constructor(private store: Store<fromRoot.State>) {}
 
   ngOnInit() {
-    this.auth.autoLogin();
+    this.store.dispatch(AuthActions.refreshWindow());
   }
 }
