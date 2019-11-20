@@ -8,7 +8,7 @@ export interface State {
         lastName: string,
         letLevel: string
     },
-    viewData: {view: string, [key: string]: any},
+    viewData: {[key: string]: any},
     pageName: string
 }
 
@@ -26,7 +26,13 @@ const portfolioReducer = createReducer(
         lastName: data.lastName,
         letLevel: data.letLevel
     }})),
-    on(PortfolioActions.setPortfolioPageType, (state, data: any) => ({...state, pageName: data.pageName}))
+    on(PortfolioActions.setPortfolioPageType, (state, data: any) => ({...state, pageName: data.pageName})),
+    on(PortfolioActions.searchCadetData, (state, data: any)=> ({...state, viewData: {
+        let1: data.let1,
+        let2: data.let2,
+        let3: data.let3,
+        let4: data.let4
+    }}))
 )
 
 export function reducer(state: State | undefined, action: Action){

@@ -14,7 +14,7 @@ export class SuccessProfilerComponent implements OnInit {
   constructor(private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Success Profiler & Personal Growth Plan'}));
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Success Profiler'}));
   }
 
 }

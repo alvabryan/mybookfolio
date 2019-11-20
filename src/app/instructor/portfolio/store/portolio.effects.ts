@@ -4,26 +4,12 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 // portfolio actions
 import * as PortfolioActions from './portfolio.actions';
 import { tap, switchMap, withLatestFrom, map } from 'rxjs/operators';
-import { EMPTY, of, from } from 'rxjs';
+import { EMPTY, of, from, Observable } from 'rxjs';
 
 //ngrx
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import { AngularFirestore } from '@angular/fire/firestore';
-
-const getPortfolioData = (pageName: string, uid: string) => {
-    let returnObservalbe: any;
-
-    switch(pageName){
-        case 'Four Year Goals':
-                returnObservalbe = from(this.db.collection(`portfolio`).doc(`${uid}`).collection('yearlyGoals').doc(`${uid}`).valueChanges())
-            break;
-        default:
-            returnObservalbe = EMPTY;
-    }
-
-    return EMPTY;
-}
 
 @Injectable()
 export class PortfolioEffects {
@@ -47,6 +33,7 @@ export class PortfolioEffects {
         }
     ))
 
+
     getCadetPortfolioData = createEffect(()=>this.actions$.pipe(
         ofType(PortfolioActions.setPortfolioPageType),
         withLatestFrom(this.store.select('instructor')),
@@ -58,7 +45,31 @@ export class PortfolioEffects {
         }),
         tap(data => console.log(data)),
         switchMap((data: any) => {
-            return getPortfolioData(data.pageName,data.uid)
+            if(data.pageName === 'Four Year Goals'){
+                return from(this.db.collection(`portfolio/${data.uid}/yearlyGoals`).doc(`${data.uid}`).valueChanges()).pipe(map((data)=>{
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
+
+            if(data.pageName === 'Learning Style Inventory'){
+                return from(this.db.collection(`portfolio/${data.uid}/learningStyle`).doc(`${data.uid}`).valueChanges()).pipe(map((data)=>{
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
+
+            if(data.pageName === 'Success Profiler'){
+                return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).valueChanges()).pipe(map((data)=>{
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
+
+            if(data.pageName === 'Winning Colors'){
+                return from(this.db.collection(`portfolio/${data.uid}/winningColors`).doc(`${data.uid}`).valueChanges()).pipe(map((data)=>{
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
+
+            return EMPTY;
         })
     ))
 
