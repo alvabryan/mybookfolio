@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
 import { User } from '../user.model';
 
-import { switchMap, exhaustMap, mergeMap, catchError, tap, map, delay, take } from 'rxjs/operators';
+import { switchMap, exhaustMap, mergeMap, catchError, tap, map, delay, take, withLatestFrom } from 'rxjs/operators';
 
 // auth action
 import * as AuthActions from './auth.actions';
@@ -11,20 +11,27 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/index';
 
-const handleAuthentication = (userType:string,displayName: string, email: string, phoneNumber:string, photoUrl: string, providerId: string, battalionCode: string, uid: string) => {
-    const user = new User(userType,displayName, email, phoneNumber, photoUrl, providerId, battalionCode, uid);
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+
+const handleAuthentication = (userType:string,displayName: string, firstName: string, lastName: string, email: string, phoneNumber:string, photoUrl: string, providerId: string, battalionCode: string, uid: string) => {
+    const user = new User(userType,displayName, firstName, lastName, email, phoneNumber, photoUrl, providerId, battalionCode, uid);
     localStorage.setItem('userData', JSON.stringify(user));
 
     return AuthActions.authenticationSuccess({
         userType: userType,
         displayName: user.displayName,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
         phoneNumber: user.phoneNumber,
         photoUrl: user.photoUrl,
         providerId: user.providerId,
         battalionCode: battalionCode,
-        uid: user.uniqueId
+        uid: user.uid
     })
 }
 
@@ -73,7 +80,7 @@ export class AuthEffects {
         switchMap((action) => {
             return from(this.afAuth.auth.signInWithEmailAndPassword(action.email,action.password)).pipe(mergeMap((data: any)=>{
                 return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(map((userDataType: any)=>{
-                    return handleAuthentication(userDataType.userType,data.user.displayName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid)
+                    return handleAuthentication(userDataType.userType,data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid)
                 }));
             }), catchError(err => {console.log(err); return handleError(err.code, err.message);}))
         })
@@ -88,12 +95,14 @@ export class AuthEffects {
             return of(AuthActions.authenticationSuccess({
                 userType: userData.userType,
                 displayName: userData.displayName,
+                firstName: userData.firstName,
+                lastName: userData.lastName,
                 email: userData.email,
                 phoneNumber: userData.phoneNumber,
                 photoUrl: userData.photoUrl,
                 providerId: userData.providerId,
                 battalionCode: userData.battalionCode,
-                uid: userData.uniqueId
+                uid: userData.uid
             }));
         } else {
             return EMPTY;
@@ -219,7 +228,63 @@ export class AuthEffects {
     ))
 
 
+    // profile settings
 
+    updateProfileImage = createEffect(()=> this.actions$.pipe(
+        ofType(AuthActions.changeProfileImage),
+        tap((data) => {
+            this.afAuth.auth.currentUser.updateProfile({
+                photoURL: data.imageUrl
+            })
+            
+            const dataFromLocalStorage = JSON.parse(localStorage.getItem('userData'));
+            dataFromLocalStorage.photoUrl = data.imageUrl;
+            localStorage.setItem('userData', JSON.stringify(dataFromLocalStorage));
+        })
+    ), {dispatch: false})
+
+    // update user info
+    updateUserInfo = createEffect(()=> this.actions$.pipe(
+        ofType(AuthActions.updateUserInfo),
+        withLatestFrom(this.store.select('auth')),
+        tap((data) => {
+            this.afAuth.auth.currentUser.updateProfile({
+                displayName: data[0].firstName + ' ' + data[0].lastName
+            })
+
+            this.db.collection('users').doc(`${data[1].user.uid}`).update({
+                "data.firstName": data[0].firstName,
+                "data.lastName": data[0].lastName
+            })
+
+            const dataFromLocalStorageInfo = JSON.parse(localStorage.getItem('userData'));
+            dataFromLocalStorageInfo.displayName = data[0].firstName + ' ' + data[0].lastName;
+            dataFromLocalStorageInfo.firstName = data[0].firstName;
+            dataFromLocalStorageInfo.lastName = data[0].lastName;
+            localStorage.setItem('userData', JSON.stringify(dataFromLocalStorageInfo));
+            
+        })
+    ), {dispatch: false})
+
+    // update user password 
+    updateUserPassword = createEffect(() => this.actions$.pipe(
+        ofType(AuthActions.passwordUpdate),
+        withLatestFrom(this.store.select('auth')),
+        switchMap((data: any) => {
+            let updateStatus = null;
+            const credentials = firebase.auth.EmailAuthProvider.credential(data[1].user.email, data[0].oldPassword);
+
+
+            return this.afAuth.auth.currentUser.reauthenticateWithCredential(credentials).then(returnData => {
+                return this.afAuth.auth.currentUser.updatePassword(data[0].newPassword);
+            }).then((data: any)=>{
+                return AuthActions.passwordUpdateStatus({status: 'success'})
+            }).catch((error)=>{
+                return AuthActions.passwordUpdateStatus({status: 'error'})
+            })
+
+        })
+    ))
 
 
 
@@ -228,6 +293,7 @@ export class AuthEffects {
         private actions$: Actions, 
         private afAuth: AngularFireAuth, 
         private db: AngularFirestore,
-        private router: Router
+        private router: Router,
+        private store: Store<fromRoot.State>
     ){}
 }

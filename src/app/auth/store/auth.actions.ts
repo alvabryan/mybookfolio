@@ -7,6 +7,8 @@ export const loginStart = createAction('[Auth] login Start', props<{email: strin
 export const authenticationSuccess = createAction('[Auth] Authenticate Success', props<{
     userType: string,
     displayName: string,
+    firstName: string,
+    lastName: string,
     email: string,
     phoneNumber: string,
     photoUrl: string,
@@ -40,3 +42,13 @@ export const clearError = createAction('[Auth] Clear Error');
 // logout
 export const logout = createAction('[Auth] logout');
 
+// change profile image
+export const imageUploadLoading = createAction('[User Settings] profile loading');
+export const changeProfileImage = createAction('[User Settings] profile image', props<{imageUrl: string}>());
+
+// update firstname and lastname
+export const updateUserInfo = createAction('[User Settings] profile name', props<{firstName: string, lastName: string}>());
+
+// password update
+export const passwordUpdate = createAction('[User Settings] update password', props<{oldPassword: string,newPassword: string}>());
+export const passwordUpdateStatus = createAction('[User Settings] update status', props<{status: string}>());

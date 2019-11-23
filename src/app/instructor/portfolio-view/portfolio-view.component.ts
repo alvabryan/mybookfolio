@@ -67,7 +67,6 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
 
 
   onFilter() {
-    // this.filterRoster = [];
     const letLevel = this.filterForm.value.letLevel;
     const period = this.filterForm.value.period;
 

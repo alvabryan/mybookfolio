@@ -25,9 +25,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
       this.store.select('instructor').subscribe(data => {
         this.cadetData = data.portfolio.cadetSearchData;
         this.pageName = data.portfolio.pageName;
-        console.log(this.cadetData);
       })
-    );
+    )
   }
 
 

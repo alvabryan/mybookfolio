@@ -34,6 +34,7 @@ export class PortfolioEffects {
     ))
 
 
+
     getCadetPortfolioData = createEffect(()=>this.actions$.pipe(
         ofType(PortfolioActions.setPortfolioPageType),
         withLatestFrom(this.store.select('instructor')),
@@ -43,8 +44,8 @@ export class PortfolioEffects {
                 'uid': data[1].portfolio.cadetSearchData.uid
             }
         }),
-        tap(data => console.log(data)),
         switchMap((data: any) => {
+            
             if(data.pageName === 'Four Year Goals'){
                 return from(this.db.collection(`portfolio/${data.uid}/yearlyGoals`).doc(`${data.uid}`).valueChanges()).pipe(map((data)=>{
                     return PortfolioActions.searchCadetData(data)
@@ -57,8 +58,9 @@ export class PortfolioEffects {
                 }))
             }
 
+            // needs restructure of data
             if(data.pageName === 'Success Profiler'){
-                return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).valueChanges()).pipe(map((data)=>{
+                return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).collection(`let1`).doc(`qBOwfh4FlNPAmZbQ3cXn`).valueChanges()).pipe(map((data) => {
                     return PortfolioActions.searchCadetData(data)
                 }))
             }
