@@ -43,8 +43,9 @@ export const clearError = createAction('[Auth] Clear Error');
 export const logout = createAction('[Auth] logout');
 
 // change profile image
+export const imageUpload = createAction('[User Settings] Image Upload', props<{image: any}>());
 export const imageUploadLoading = createAction('[User Settings] profile loading');
-export const changeProfileImage = createAction('[User Settings] profile image', props<{imageUrl: string}>());
+export const changeProfileImage = createAction('[User Settings] profile image', props<{imageUrl: any}>());
 
 // update firstname and lastname
 export const updateUserInfo = createAction('[User Settings] profile name', props<{firstName: string, lastName: string}>());

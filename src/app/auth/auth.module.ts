@@ -26,6 +26,7 @@ const routes: Routes = [
 import * as fromAuth from './store/auth.reducer';
 import * as fromAuthEffects from './store/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { EffectsModule } from '@ngrx/effects';
     FlashMessagesModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    AngularFireStorageModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('auth', fromAuth.reducer),
     EffectsModule.forFeature([fromAuthEffects.AuthEffects])

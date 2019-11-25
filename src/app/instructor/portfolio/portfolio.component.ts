@@ -18,7 +18,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   cadetData = {};
   pageName = '';
 
-  constructor(private store: Store<fromRoot.State>) { }
+  constructor(private activatedRoute: ActivatedRoute ,private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
     this.subscription.add(

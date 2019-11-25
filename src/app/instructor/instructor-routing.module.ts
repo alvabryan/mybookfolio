@@ -64,10 +64,10 @@ const routes: Routes = [
       {path: 'resume', component: PortfolioResumeComponent},
       {path: 'financial-planning', component: FinancialPlanningComponent},
       {path: 'course-work', component: CourseWorkComponent},
-      {path: 'essay', component: EssayComponent},
+      {path: 'essay/:firstname', component: EssayComponent},
       {path: 'lesson-evidence', component: LessonEvidenceComponent},
       {path: 'written-summary', component: WrittenSummaryComponent},
-      {path: 'achievements', component: AchievementsComponent},
+      {path: 'achievements/:firstname', component: AchievementsComponent},
       {path: 'portfolio-cadet-challenge', component: PortfolioCadetChallengeComponent},
       {path: 'service-learning', component: ServiceLearningComponent}
     ]}

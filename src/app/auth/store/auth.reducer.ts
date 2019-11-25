@@ -6,7 +6,7 @@ export interface State {
   user: User;
   authError: string;
   loading: boolean;
-  profileImageUpload: boolean;
+  uploadingProfileImage: boolean;
   passwordUpdateStatus: string;
 }
 
@@ -14,7 +14,7 @@ export const initialState: State = {
     user: null,
     authError: null,
     loading: false,
-    profileImageUpload: false,
+    uploadingProfileImage: false,
     passwordUpdateStatus: null
 };
 
@@ -34,14 +34,14 @@ const authReducer = createReducer(
     on(AuthActions.cadetRegister, state => ({...state, authError: null, loading: true})),
     on(AuthActions.authenticateFail, (state, authError: any) => ({...state, user: null, authError: authError, loading: false})),
     on(AuthActions.clearError, state => ({...state, authError: null})),
-    on(AuthActions.imageUploadLoading, state => ({...state, profileImageUpload: true})),
+    on(AuthActions.imageUpload, state => ({...state, uploadingProfileImage: true})),
     on(AuthActions.changeProfileImage, (state, data: any) => {
       const user = state.user;
       user.photoUrl = data.imageUrl;
       return {
         ...state,
         user: user,
-        profileImageUpload: false
+        uploadingProfileImage: false
       }
     }),
     on(AuthActions.updateUserInfo, (state, data: any) => {

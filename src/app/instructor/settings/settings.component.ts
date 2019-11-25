@@ -69,38 +69,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
 
 
-  // profile image upload
-  image: any;
-  uploadProgress: any;
-  uploadProgressData = false;
-  uploadState: any;
-  downloadUrl: any;
-
-  uploadProfileImage(image){
-
-    this.store.dispatch(AuthActions.imageUploadLoading());
-
-    // creates random string 
-    const path = `instructorProfileImage/${Date.now()}_${image.target.files[0].name}`;
-
-    // reference
-    const ref = this.storage.ref(path);
-
-    // image your going to upload
-    this.image = this.storage.upload(path, image.target.files[0]);
-
-    // upload proccess
-    this.uploadProgress = this.image.percentageChanges();
-    
-    // final
-    this.uploadState = this.image.snapshotChanges().subscribe(data => console.log(data));
-
-    this.image.then(()=>{
-      ref.getDownloadURL().subscribe(url => {
-        this.downloadUrl = url;
-        this.store.dispatch(AuthActions.changeProfileImage({imageUrl: url}));
-      })
-    })
+  uploadProfileImage(imageData: any){
+    this.store.dispatch(AuthActions.imageUpload({image: imageData}));
   }
 
   updateSettings(){

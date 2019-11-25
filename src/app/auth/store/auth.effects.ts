@@ -16,6 +16,7 @@ import * as fromRoot from '../../store/index';
 
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 const handleAuthentication = (userType:string,displayName: string, firstName: string, lastName: string, email: string, phoneNumber:string, photoUrl: string, providerId: string, battalionCode: string, uid: string) => {
     const user = new User(userType,displayName, firstName, lastName, email, phoneNumber, photoUrl, providerId, battalionCode, uid);
@@ -136,7 +137,6 @@ export class AuthEffects {
 
 
     // cadet signup
-
     cadetSignupStart = createEffect(()=> 
         this.actions$.pipe(
             ofType(AuthActions.cadetSignupStart),
@@ -227,12 +227,52 @@ export class AuthEffects {
         })
     ))
 
+    //Image Upload
+    uploadProfileImage = createEffect(()=> this.actions$.pipe(
+            ofType(AuthActions.imageUpload),
+            withLatestFrom(this.store.select('auth')),
+            tap(data => console.log(data)),
+            switchMap((data: any)=>{
+                let image;
+
+                // creates random string 
+                const pathFolder = 'instructorProfileImage';
+                const ImageName = `${Date.now()}_${data[0].image.target.files[0].name}`;
+                const path = `${pathFolder}/${ImageName}`;
+
+                // reference
+                const ref = this.storage.ref(path);
+
+                // image 
+                image = this.storage.upload(path, data[0].image.target.files[0]);
+
+                return forkJoin(
+                    from(image.snapshotChanges()),
+                    from(image)
+                ).pipe(tap(()=>{
+                    this.storage.storage.refFromURL(`${data[1].user.photoUrl}`).delete();
+                }),switchMap(()=>{
+                    return from(ref.getDownloadURL()).pipe(tap((url)=>{
+                        this.db.collection('users').doc(`${data[1].user.uid}`).update({
+                            'data.profileImage': url
+                        })
+                    }),map(url => {
+                        return AuthActions.changeProfileImage({imageUrl: url})
+                    }))
+                }), catchError((err)=>{
+                    console.log(err);
+                    return EMPTY;
+                }))
+
+            })
+    ));
 
     // profile settings
 
     updateProfileImage = createEffect(()=> this.actions$.pipe(
         ofType(AuthActions.changeProfileImage),
         tap((data) => {
+            console.log(data);
             this.afAuth.auth.currentUser.updateProfile({
                 photoURL: data.imageUrl
             })
@@ -292,6 +332,7 @@ export class AuthEffects {
         private http: HttpClient,
         private actions$: Actions, 
         private afAuth: AngularFireAuth, 
+        private storage: AngularFireStorage,
         private db: AngularFirestore,
         private router: Router,
         private store: Store<fromRoot.State>
