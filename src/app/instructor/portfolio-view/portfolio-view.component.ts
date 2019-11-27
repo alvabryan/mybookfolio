@@ -12,6 +12,7 @@ import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
 import * as InstructorActions from '../store/instructor.actions';
+import * as PortfolioActions from '../portfolio/store/portfolio.actions';
 
 @Component({
   selector: 'app-portfolio-view',
@@ -65,6 +66,15 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     
   }
 
+  setCadetSearchData(searchCadetDataIndex: number){
+    const searchCadet = this.cadetsData[searchCadetDataIndex];
+    this.store.dispatch(PortfolioActions.searchCadet({
+      uid: searchCadet.uid,
+      firstName: searchCadet.firstName,
+      lastName: searchCadet.lastName,
+      letLevel: searchCadet.letLevel
+    }))
+  }
 
   onFilter() {
     const letLevel = this.filterForm.value.letLevel;
