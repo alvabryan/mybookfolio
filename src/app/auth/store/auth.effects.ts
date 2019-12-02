@@ -125,16 +125,13 @@ export class AuthEffects {
 
     
     // log user out
-    logout = createEffect(() => this.actions$.pipe(
-        ofType(AuthActions.logout),
-        tap(()=> {
-            this.router.navigate(['/']);
-            localStorage.clear();
-        })
-    ), {dispatch: false})
-
-
-
+    // logout = createEffect(() => this.actions$.pipe(
+    //     ofType(AuthActions.logout),
+    //     tap(()=> {
+    //         this.router.navigate(['/']);
+    //         localStorage.clear();
+    //     })
+    // ), {dispatch: false})
 
     // cadet signup
     cadetSignupStart = createEffect(()=> 
