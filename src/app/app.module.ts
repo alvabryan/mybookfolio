@@ -34,6 +34,10 @@ import { reducers } from './store/index';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+//meta reducer
+import * as logoutMetaReducer from './store/logout-reducer/logout.reducer';
+import * as logoutEffects from './store/logout-reducer/logout.effects';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -50,12 +54,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SharedModule,
     HttpClientModule,
     QuillModule.forRoot(),
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers, {metaReducers: [logoutMetaReducer.clearState]}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production
     }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([logoutEffects.LogoutEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]

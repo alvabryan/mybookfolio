@@ -76,7 +76,7 @@
                             </div>
                         </td>
                         <td>
-                            <button [disabled]="!progress(i)" [routerLink]="['/instructor/portfolio',pageUrl]" class="btn btn-primary">View</button>
+                            <button [disabled]="!progress(i)" [routerLink]="['/instructor/portfolio',pageUrl]" (click)="setCadetSearchData(i)" class="btn btn-primary">View</button>
                         </td>
                     </tr>
                 </tbody>

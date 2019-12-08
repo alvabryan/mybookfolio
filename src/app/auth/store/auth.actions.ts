@@ -39,9 +39,6 @@ export const cadetSignupSuccess = createAction('[Auth] Signup Success', props<{[
 // auth error
 export const clearError = createAction('[Auth] Clear Error');
 
-// logout
-export const logout = createAction('[Auth] logout');
-
 // change profile image
 export const imageUpload = createAction('[User Settings] Image Upload', props<{image: any}>());
 export const imageUploadLoading = createAction('[User Settings] profile loading');

@@ -6,4 +6,3 @@ export const setCadetData = createAction('[Instructor Init] set cadet data', pro
 
 export const getCadetProgress = createAction('[Instructor Portfolio] load cadet progress');
 export const setCadetProgress = createAction('[Instructor Portfolio] set cadet progress', props<{[key: string]: any}>());
-

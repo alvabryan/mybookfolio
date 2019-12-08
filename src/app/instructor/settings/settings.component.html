@@ -4,13 +4,12 @@
       <div class="card">
         <div class="card-body">
 
-
-          <div class="row mt-5">
+          <div class="row mt-5" *ngIf="!uploadingImage else uploadingInProgress">
             <div class="col d-flex justify-content-center">
               <img [src]="instructorData.photoUrl ? instructorData.photoUrl : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png'" height="150px"
                 width="150px" style="border-radius: 100px;" />
               <div id="imgUpload">
-                <form [formGroup]="profileImage" id="file_form" enctype="multipart/form-data">
+                <form *ngIf="!uploadingImage" [formGroup]="profileImage" id="file_form" enctype="multipart/form-data">
                   <input formControlName="file" type="file" name="file" id="file" #file (change)="uploadProfileImage($event)">
                   <input id="submitButton" type="submit" name="submitProfileImage">
                   <p id="clickFile" (click)="file.click()">Change Image</p>
@@ -19,15 +18,14 @@
             </div>
           </div>
 
-          <div class="row mt-5" *ngIf="uploadingImage">
-              <div class="col-12 d-flex justify-content-center">
-                  <div class="mx-auto spinner-grow text-muted"></div>
+          <ng-template #uploadingInProgress>
+            <div class="col-12 d-flex justify-content-center">
+              <div class="mx-auto spinner-grow text-muted"></div>
               </div>
               <div class="col-12 d-flex justify-content-center">
-                  <h4 class="mx-auto mt-2">uploading...</h4>
+                  <h5 class="mx-auto mt-2">Uploading Your Image...</h5>
               </div>
-          </div>
-
+          </ng-template>
 
           <form [formGroup]="settingForm" (ngSubmit)="updateSettings()" class="mt-5">
             <p class="card-description font-weight-bold">

@@ -125,16 +125,13 @@ export class AuthEffects {
 
     
     // log user out
-    logout = createEffect(() => this.actions$.pipe(
-        ofType(AuthActions.logout),
-        tap(()=> {
-            this.router.navigate(['/']);
-            localStorage.clear();
-        })
-    ), {dispatch: false})
-
-
-
+    // logout = createEffect(() => this.actions$.pipe(
+    //     ofType(AuthActions.logout),
+    //     tap(()=> {
+    //         this.router.navigate(['/']);
+    //         localStorage.clear();
+    //     })
+    // ), {dispatch: false})
 
     // cadet signup
     cadetSignupStart = createEffect(()=> 
@@ -250,7 +247,9 @@ export class AuthEffects {
                     from(image.snapshotChanges()),
                     from(image)
                 ).pipe(tap(()=>{
-                    this.storage.storage.refFromURL(`${data[1].user.photoUrl}`).delete();
+                    if(data[1].user.photoUrl){
+                        this.storage.storage.refFromURL(`${data[1].user.photoUrl}`).delete();
+                    }
                 }),switchMap(()=>{
                     return from(ref.getDownloadURL()).pipe(tap((url)=>{
                         this.db.collection('users').doc(`${data[1].user.uid}`).update({
@@ -260,7 +259,6 @@ export class AuthEffects {
                         return AuthActions.changeProfileImage({imageUrl: url})
                     }))
                 }), catchError((err)=>{
-                    console.log(err);
                     return EMPTY;
                 }))
 
@@ -272,14 +270,14 @@ export class AuthEffects {
     updateProfileImage = createEffect(()=> this.actions$.pipe(
         ofType(AuthActions.changeProfileImage),
         tap((data) => {
-            console.log(data);
             this.afAuth.auth.currentUser.updateProfile({
                 photoURL: data.imageUrl
-            })
-            
+            });
+
             const dataFromLocalStorage = JSON.parse(localStorage.getItem('userData'));
             dataFromLocalStorage.photoUrl = data.imageUrl;
             localStorage.setItem('userData', JSON.stringify(dataFromLocalStorage));
+            
         })
     ), {dispatch: false})
 

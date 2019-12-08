@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../store/index';
 import * as AuthActions from '../../..//auth/store/auth.actions';
 
+import * as LogoutActions from '../../../store/logout-reducer/logout.actions';
 
 @Component({
   selector: 'app-navigation',
@@ -34,7 +35,7 @@ export class NavigationComponent implements OnInit {
   }
 
   signout() {
-    this.store.dispatch(AuthActions.logout());
+    this.store.dispatch(new LogoutActions.Logout());
   }
 
 }

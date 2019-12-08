@@ -26,13 +26,11 @@ export class SettingsComponent implements OnInit, OnDestroy {
   settingForm: FormGroup;
   passwordForm: FormGroup;
 
-  uploadingImage: boolean = true;
+  uploadingImage: boolean = false;
   updatingPasswordStatus: boolean = false;
 
   constructor(
-    private storage: AngularFireStorage, 
-    private db: AngularFirestore, 
-    private afAuth: AngularFireAuth, 
+    private afAuth: AngularFireAuth,
     private store: Store<fromInstructor.State>
     ) { }
 
@@ -60,17 +58,22 @@ export class SettingsComponent implements OnInit, OnDestroy {
             lastName: this.instructorData.lastName
           })
         }
-
-
-        this.uploadingImage = data.profileImageUpload;
       })
     )
   }
 
-
-
   uploadProfileImage(imageData: any){
+    this.uploadingImage = true; 
+    
     this.store.dispatch(AuthActions.imageUpload({image: imageData}));
+
+    this.profileImage.reset();
+
+    this.store.select('auth').subscribe(data => {
+      if(!data.uploadingProfileImage){
+        this.uploadingImage = data.uploadingProfileImage;
+      }
+    })
   }
 
   updateSettings(){

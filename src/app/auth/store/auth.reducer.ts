@@ -29,7 +29,6 @@ const authReducer = createReducer(
         loading: false
       }
     }),
-    on(AuthActions.logout, state => ({...state, user: null, userType: null})),
     on(AuthActions.loginStart, state => ({...state, authError: null, loading: true})),
     on(AuthActions.cadetRegister, state => ({...state, authError: null, loading: true})),
     on(AuthActions.authenticateFail, (state, authError: any) => ({...state, user: null, authError: authError, loading: false})),
