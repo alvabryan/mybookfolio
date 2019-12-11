@@ -32,7 +32,16 @@ const portfolioReducer = createReducer(
         let2: data.let2,
         let3: data.let3,
         let4: data.let4
-    }}))
+    }})),
+    on(PortfolioActions.updateCadetSearchLetLevel, (state, data: any) => {
+        const user = state.cadetSearchData;
+        user.letLevel = data.letLevel;
+
+        return {
+            ...state,
+            cadetSearchData: user
+        }
+    })
 )
 
 export function reducer(state: State | undefined, action: Action){

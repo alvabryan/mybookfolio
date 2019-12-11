@@ -53,13 +53,12 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.store.select('instructor').subscribe((data: any) => {
-       if(data.cadetData.cadetProgress){
+      this.store.select('instructor').subscribe( (data: any) => {
+        if(data.cadetData.cadetProgress){
           const values = Object.values(data.cadetData.cadetProgress);
           this.cadetsData = values;
           this.filterData = values;
-          }
-        
+        }
       })
     );
     

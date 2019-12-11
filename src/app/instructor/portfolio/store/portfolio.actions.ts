@@ -13,3 +13,5 @@ export const searchCadetLoad = createAction('[Portfolio searchCadetLoad] load da
 export const setPortfolioPageType = createAction('[Portfolio setPageType] page type', props<{pageName: string}>());
 
 export const searchCadetData = createAction('[Portfolio searchCadetData] set data', props<{[key: string]: any}>());
+
+export const updateCadetSearchLetLevel = createAction('[Portfolio updateLetLevel] update let', props<{letLevel: number}>());

@@ -1,0 +1,16 @@
+.breadcrumb-row{
+    background-color: rgb(241, 241, 241);
+    border-radius: 10px;
+}
+
+.breadcrumb-row div{
+    height: 50px;
+}
+
+.breadcrumb-row div:first-of-type p{
+    font-size: 18px;
+}
+
+.breadcrumb-row div:nth-child(2) form select {
+    margin-top: 5px;
+}

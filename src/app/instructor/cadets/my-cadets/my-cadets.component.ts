@@ -43,9 +43,9 @@ export class MyCadetsComponent implements OnInit, OnDestroy {
     })
 
     this.subscription.add(
-      this.store.select('instructor').subscribe((data: any) => {
-        if(data.cadetData.cadetRoster){
-          const values = Object.values(data.cadetData.cadetRoster);
+      this.store.select('instructor').subscribe((data:any) => {
+        if(data.cadetData.cadetProgress){
+          const values = Object.values(data.cadetData.cadetProgress);
           this.filterRoster = values;
           this.battalionRoster = values;
         }

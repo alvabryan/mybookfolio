@@ -33,6 +33,19 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
     this.editorForm = new FormGroup({
       editor: new FormControl('')
     });
+
+    this.subscription.add(
+      this.store.select('instructor').subscribe(data => {
+        if(data.portfolio.viewData){
+          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
+          if(data.portfolio.viewData[letLevel].goalContent){
+            this.editorForm.setValue({
+              editor: data.portfolio.viewData[letLevel].goalContent
+            })
+          }
+        }
+      })
+    )
     
     this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Four Year Goals'}));
     
