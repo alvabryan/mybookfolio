@@ -52,24 +52,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
     private progressService: ProgressService) { }
 
   ngOnInit() {
-
-    // this.subscription.add(
-    //   this.route.queryParams.subscribe((params: Params) => {
-    //     if(this.searchUid){
-    //       this.store.select('instructor').subscribe((data: any) => {
-    //         const progressData = data.cadetData.cadetProgress;
-    //         this.searchCadet = progressData[this.searchUid];
-    //         if(this.searchCadet){
-    //           this.filterLetLevel = this.searchCadet.letLevel;
-    //           console.log(this.searchCadet.progress)
-    //           this.getProgress(this.filterLetLevel, this.searchCadet.progress);
-    //         }
-    //         this.queryParams = {'uid': this.searchUid, 'firstName': this.searchCadet.firstName, 'lastName': this.searchCadet.lastName, 'letLevel': this.filterLetLevel};
-    //       })
-    //     }
-    //   })
-    // );
-
+  
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
         const progressData = data.cadetData.cadetProgress;

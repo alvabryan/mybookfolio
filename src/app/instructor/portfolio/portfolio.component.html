@@ -2,27 +2,27 @@
     <!-- Breadcrumbs-->
     <div class="container-fluid">
       <div class="row pr-2 pl-2 pt-1 pb-1 breadcrumb-row">
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-8 col-sm-7 col-md-6 col-lg-6">
           <p style="margin-top: 10px" class="align-middle"><a routerLink="./">Portfolio</a> / {{ pageName }}</p>
         </div>
-        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+        <div class="col-4 col-sm-5 col-md-6 col-lg-6">
           <form [formGroup]="portfolioViewSelect" (change)="changePortfolioView()">
-            <select name="pageViewName" formControlName="pageViewName" class="form-control">
-              <option value="Four Year Goals" selected>Four Year Goals</option>
-              <option value="Winning Colors">WinningColors</option>
-              <option value="Success Profiler">Success Profiler & Personal Growth Plan</option>
-              <option value="Learning Style Inventory">Learning Style Inventory</option>
-              <option value="Personal Ad">Personal Ad</option>
-              <option value="Human Graph">Human Graph Activity</option>
-              <option value="Resume">Resume</option>
-              <option value="Financial Planning">Financial Planning</option>
-              <option value="Course Work">Course Work</option>
-              <option value="Essay">Essay</option>
-              <option value="Lesson Evidence">Let 1-4 Lesson Evidence</option>
-              <option value="Written Summary">Written Summary</option>
-              <option value="Achievements">Achievements</option>
-              <option value="Cadet Challenge">Cadet Challenge</option>
-              <option value="Service Learning">Service Learning</option>
+            <select name="pageViewName" formControlName="pageViewName" class="form-control pageView">
+              <option [disabled]="!cadetProgressData.yearlyGoals ? true : null" value="Four Year Goals" selected>Four Year Goals</option>
+              <option [disabled]="!cadetProgressData.winningColors ? true : null" value="Winning Colors">WinningColors</option>
+              <option [disabled]="!cadetProgressData.successProfiler ? true : null" value="Success Profiler">Success Profiler & Personal Growth Plan</option>
+              <option [disabled]="!cadetProgressData.learningStyle ? true : null" value="Learning Style Inventory">Learning Style Inventory</option>
+              <option [disabled]="!cadetProgressData.personalAd ? true : null" value="Personal Ad">Personal Ad</option>
+              <option [disabled]="!cadetProgressData.humanGraph ? true : null" value="Human Graph">Human Graph Activity</option>
+              <option [disabled]="!cadetProgressData.resume ? true : null" value="Resume">Resume</option>
+              <option [disabled]="!cadetProgressData.financialPlanning ? true : null" value="Financial Planning">Financial Planning</option>
+              <option [disabled]="!cadetProgressData.courseWork ? true : null" value="Course Work">Course Work</option>
+              <option [disabled]="!cadetProgressData.essay ? true : null" value="Essay">Essay</option>
+              <option [disabled]="!cadetProgressData.lessonEvidence ? true : null" value="Lesson Evidence">Let 1-4 Lesson Evidence</option>
+              <option [disabled]="!cadetProgressData.writtenSummary ? true : null" value="Written Summary">Written Summary</option>
+              <option [disabled]="!cadetProgressData.achievements ? true : null" value="Achievements">Achievements</option>
+              <option [disabled]="!cadetProgressData.cadetChallenge ? true : null" value="Cadet Challenge">Cadet Challenge</option>
+              <option [disabled]="!cadetProgressData.serviceLearning ? true : null" value="Service Learning">Service Learning</option>
             </select>
           </form>
         </div>

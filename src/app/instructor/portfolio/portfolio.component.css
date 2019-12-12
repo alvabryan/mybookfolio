@@ -1,5 +1,5 @@
 .breadcrumb-row{
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(250, 250, 250);
     border-radius: 10px;
 }
 
@@ -13,4 +13,15 @@
 
 .breadcrumb-row div:nth-child(2) form select {
     margin-top: 5px;
+}
+
+.pageView {
+    max-width: 205px;
+    float: right;
+}
+
+@media screen and (max-width: 592px){
+    .pageView {
+        max-width: 100px;
+    }
 }

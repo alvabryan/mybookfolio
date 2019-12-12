@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
 import * as PortfolioActions from './store/portfolio.actions';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
+import { ProgressService } from '../cadet-portfolio/cadet-portfolio-view/progress.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -24,10 +25,13 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   pageName: any;
   lastUpdated: any;
 
+  cadetProgressData: any = {};
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store<fromRoot.State>,
-    private router: Router) { }
+    private router: Router,
+    private cadetProgressService: ProgressService) { }
 
   ngOnInit() {
 
@@ -52,6 +56,13 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
           const letLevel = 'let' + cadetData.letLevel;
 
+          if(data.cadetData.cadetProgress){
+            const progressData = data.cadetData.cadetProgress;
+            const lookUpLetLevel = cadetData.letLevel;
+            const cadetProgress = progressData[cadetData.uid];
+            this.cadetProgressData = this.getProgress(lookUpLetLevel, cadetProgress.progress);
+          }
+
           if(data.portfolio.viewData){
             this.cadetViewData = data.portfolio.viewData;
             if(data.portfolio.viewData[letLevel].dateSubmitted){
@@ -75,6 +86,11 @@ export class PortfolioComponent implements OnInit, OnDestroy {
     this.store.dispatch(PortfolioActions.updateCadetSearchLetLevel({letLevel: newLet}));
   }
 
+  getProgress(filterLet, searchCadetProgress){
+    const progressReturned = this.cadetProgressService.getProgress(filterLet,searchCadetProgress);
+    return progressReturned;
+  }
+
   changePortfolioView(){
     const pageName = this.portfolioViewSelect.value.pageViewName;
     switch(pageName){
@@ -83,6 +99,45 @@ export class PortfolioComponent implements OnInit, OnDestroy {
       break;
       case 'Winning Colors':
           this.router.navigate(['instructor/portfolio/winning-colors']);
+      break;
+      case 'Success Profiler':
+          this.router.navigate(['instructor/portfolio/success-profiler']);
+      break;
+      case 'Learning Style Inventory':
+          this.router.navigate(['instructor/portfolio/learning-style']);
+      break;
+      case 'Personal Ad':
+          this.router.navigate(['instructor/portfolio/personal-ad']);
+      break;
+      case 'Human Graph':
+          this.router.navigate(['instructor/portfolio/human-graph']);
+      break;
+      case 'Resume':
+          this.router.navigate(['instructor/portfolio/resume']);
+      break;
+      case 'Financial Planning':
+          this.router.navigate(['instructor/portfolio/financial-planning']);
+      break;
+      case 'Course Work':
+          this.router.navigate(['instructor/portfolio/course-work']);
+      break;
+      case 'Essay':
+          this.router.navigate(['instructor/portfolio/essay']);
+      break;
+      case 'Lesson Evidence':
+          this.router.navigate(['instructor/portfolio/lesson-evidence']);
+      break;
+      case 'Written Summary':
+          this.router.navigate(['instructor/portfolio/written-summary']);
+      break;
+      case 'Achievements':
+          this.router.navigate(['instructor/portfolio/achievements']);
+      break;
+      case 'Cadet Challenge':
+          this.router.navigate(['instructor/portfolio/portfolio-cadet-challenge']);
+      break;
+      case 'Service Learning':
+          this.router.navigate(['instructor/portfolio/service-learning']);
       break;
       default:
         console.log('error');
