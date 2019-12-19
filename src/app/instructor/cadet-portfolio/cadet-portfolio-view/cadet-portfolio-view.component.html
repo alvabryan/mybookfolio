@@ -33,21 +33,7 @@
             <div class="col">
                 <!-- card starts -->
                 <div class="card mb-3">
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Awards
-                            <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.achievements + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.achievements + '%' }}</div>
-                            </div>
-                            <div class="row mx-auto mt-2 ">
-                                <div class="col mt-1">
-                                    <button [disabled]="!progress.achievements" [routerLink]="['/instructor/portfolio/achievements']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
- 
+                    <!-- four year goals -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Four Year Goals
 
@@ -63,51 +49,7 @@
                         </li>
                     </ul>
 
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Success Profiler & Personal Growth Plan
-
-                            <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.successProfiler + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.successProfiler + '%' }}</div>
-                            </div>
-                            <div class="row mx-auto mt-2 ">
-                                <div class="col mt-1">
-                                    <button [disabled]="!progress.successProfiler" [routerLink]="['/instructor/portfolio/success-profiler']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Learning Styles Inventory
-
-                            <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.learningStyle + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.learningStyle + '%' }}</div>
-                            </div>
-                            <div class="row mx-auto mt-2 ">
-                                <div class="col mt-1">
-                                    <button [disabled]="!progress.learningStyle" [routerLink]="['/instructor/portfolio/learning-style']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Course Work
-
-                            <div class="progress ">
-                                <div class="progress-bar bg-success " role="progressbar" [ngStyle]="{width: progress.courseWork + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.courseWork + '%' }}</div>
-                            </div>
-                            <div class="row mx-auto mt-2 ">
-                                <div class="col mt-1">
-                                    <button [disabled]="!progress.courseWork" [routerLink]="['/instructor/portfolio/course-work']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
+                    <!-- winning colors -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Winning Colors
 
@@ -123,6 +65,39 @@
                         </li>
                     </ul>
 
+                    <!-- success profiler -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Success Profiler & Personal Growth Plan
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.successProfiler + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.successProfiler + '%' }}</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <button [disabled]="!progress.successProfiler" [routerLink]="['/instructor/portfolio/success-profiler']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- learning style inventory -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Learning Styles Inventory
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.learningStyle + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.learningStyle + '%' }}</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <button [disabled]="!progress.learningStyle" [routerLink]="['/instructor/portfolio/learning-style']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- personal ad -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Personal Ad
 
@@ -138,21 +113,7 @@
                         </li>
                     </ul>
 
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Cadet Challenge
-
-                            <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.cadetChallenge + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.cadetChallenge + '%' }}</div>
-                            </div>
-                            <div class="row mx-auto mt-2 ">
-                                <div class="col mt-1">
-                                    <button [disabled]="!progress.cadetChallenge" [routerLink]="['/instructor/portfolio/']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
+                    <!-- human graph activity -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Human Graph Activity
 
@@ -168,21 +129,7 @@
                         </li>
                     </ul>
 
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Jrotc Essay / Course
-
-                            <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.essay + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.essay + '%' }}</div>
-                            </div>
-                            <div class="row mx-auto mt-2 ">
-                                <div class="col mt-1">
-                                    <button [disabled]="!progress.essay" [routerLink]="['/instructor/portfolio/essay']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
+                    <!-- resume -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Resume
 
@@ -198,6 +145,55 @@
                         </li>
                     </ul>
 
+                    <!-- financial planning -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Financial Planning
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success " role="progressbar" [ngStyle]="{width: progress.financialPlanning + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <button [disabled]="!progress.financialPlanning" [routerLink]="['/instructor/portfolio/']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- course work -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Course Work
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success " role="progressbar" [ngStyle]="{width: progress.courseWork + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.courseWork + '%' }}</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <button [disabled]="!progress.courseWork" [routerLink]="['/instructor/portfolio/course-work']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- essay -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Jrotc Essay / Course
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.essay + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.essay + '%' }}</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <button [disabled]="!progress.essay" [routerLink]="['/instructor/portfolio/essay']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- lesson evidence -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Let 1-4 Lesson Evidence
 
@@ -213,21 +209,7 @@
                         </li>
                     </ul>
 
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Service Learning
-
-                            <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.serviceLearning + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.serviceLearning + '%' }}</div>
-                            </div>
-                            <div class="row mx-auto mt-2 ">
-                                <div class="col mt-1">
-                                    <button [disabled]="!progress.serviceLearning" [routerLink]="['/instructor/portfolio/service-learning']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-
+                    <!-- written summary -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Written Summary
 
@@ -243,20 +225,56 @@
                         </li>
                     </ul>
 
+                    <!-- awards -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item rounded-0">Financial Planning
-
+                        <li class="list-group-item rounded-0">Awards
                             <div class="progress ">
-                                <div class="progress-bar bg-success " role="progressbar" [ngStyle]="{width: progress.financialPlanning + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.achievements + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.achievements + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <button [disabled]="!progress.financialPlanning" [routerLink]="['/instructor/portfolio/']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                    <button [disabled]="!progress.achievements" [routerLink]="['/instructor/portfolio/achievements']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
                     </ul>
+
+                    <!-- cadet challenge -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Cadet Challenge
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.cadetChallenge + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.cadetChallenge + '%' }}</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <button [disabled]="!progress.cadetChallenge" [routerLink]="['/instructor/portfolio/']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- service learning -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item rounded-0">Service Learning
+
+                            <div class="progress ">
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.serviceLearning + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.serviceLearning + '%' }}</div>
+                            </div>
+                            <div class="row mx-auto mt-2 ">
+                                <div class="col mt-1">
+                                    <button [disabled]="!progress.serviceLearning" [routerLink]="['/instructor/portfolio/service-learning']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    
+
+                    
 
 
                     <!--Container ends here-->

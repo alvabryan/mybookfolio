@@ -15,3 +15,5 @@ export const setPortfolioPageType = createAction('[Portfolio setPageType] page t
 export const searchCadetData = createAction('[Portfolio searchCadetData] set data', props<{[key: string]: any}>());
 
 export const updateCadetSearchLetLevel = createAction('[Portfolio updateLetLevel] update let', props<{letLevel: number}>());
+
+export const clearUserPortfolio = createAction('[Portfolio clearPortfolio] clear portfolio');

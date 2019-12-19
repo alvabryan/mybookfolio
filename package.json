@@ -27,6 +27,7 @@
     "angularfire2": "^5.2.1",
     "bootstrap": "^3.4.1",
     "firebase": "^6.6.2",
+    "ngx-doc-viewer": "^0.1.24",
     "ngx-quill": "^7.2.0",
     "quill": "^1.3.6",
     "rxjs": "~6.4.0",

@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-winning-colors',
   templateUrl: './winning-colors.component.html',
@@ -14,7 +15,7 @@ export class WinningColorsComponent implements OnInit {
 
   winningColorsForm: FormGroup;
 
-  constructor(private store: Store<fromInstructor.State>) { }
+  constructor(private store: Store<fromInstructor.State>, private router: Router) { }
 
   ngOnInit() {
     this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Winning Colors'}));
@@ -49,6 +50,49 @@ export class WinningColorsComponent implements OnInit {
         D5: new FormControl('0')
       })
     });
+
+    this.store.select('instructor').subscribe(data => {
+      if(data.portfolio.viewData){
+        const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
+        if(data.portfolio.viewData[letLevel].data){
+          const cadetData = data.portfolio.viewData[letLevel].data;
+          this.setCadetData(cadetData);
+        }
+      }
+    })
+  }
+
+  setCadetData(cadetData: any){
+    this.winningColorsForm.setValue({
+      A: {
+        A1: cadetData.secA.one,
+        A2: cadetData.secA.two,
+        A3: cadetData.secA.three,
+        A4: cadetData.secA.four,
+        A5: cadetData.secA.five
+      },
+      B: {
+        B1: cadetData.secB.one,
+        B2: cadetData.secB.two,
+        B3: cadetData.secB.three,
+        B4: cadetData.secB.four,
+        B5: cadetData.secB.five
+      },
+      C: {
+        C1: cadetData.secC.one,
+        C2: cadetData.secC.two,
+        C3: cadetData.secC.three,
+        C4: cadetData.secC.four,
+        C5: cadetData.secC.five
+      },
+      D: {
+        D1: cadetData.secD.one,
+        D2: cadetData.secD.two,
+        D3: cadetData.secD.three,
+        D4: cadetData.secD.four,
+        D5: cadetData.secD.five
+      }
+    })
   }
 
 }

@@ -29,6 +29,8 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
     private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Four Year Goals'}));
+
     // creates a new form group
     this.editorForm = new FormGroup({
       editor: new FormControl('')
@@ -46,8 +48,6 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
         }
       })
     )
-    
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Four Year Goals'}));
     
   }
 

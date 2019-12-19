@@ -9,6 +9,7 @@ import { ProgressService } from './progress.service';
 //ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/index';
+import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
 
 @Component({
   selector: 'app-cadet-portfolio-view',
@@ -75,10 +76,12 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   }
 
   getProgress(filterLet, searchCadetProgress){
-    this.progress = this.progressService.getProgress(filterLet,searchCadetProgress);
+    const cadetProgress = this.progressService.getProgress(filterLet,searchCadetProgress);
+    this.progress = cadetProgress;
   }
 
   setLetLevel(letLevel: number){
+    this.store.dispatch(PortfolioActions.updateCadetSearchLetLevel({letLevel: letLevel}));
     this.filterLetLevel = letLevel;
     this.getProgress(this.filterLetLevel, this.searchCadet.progress);
   }

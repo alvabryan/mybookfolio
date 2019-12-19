@@ -42,6 +42,7 @@ import { CadetPortfolioViewComponent } from './cadet-portfolio/cadet-portfolio-v
 import { CadetInformationComponent } from './cadet-portfolio/cadet-information/cadet-information.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { NgxDocViewerModule } from 'node_modules/ngx-doc-viewer';
 
 //ngrx
 import { StoreModule } from '@ngrx/store';
@@ -98,7 +99,8 @@ import * as PortfolioEffects from './portfolio/store/portolio.effects';
     AngularFirestoreModule,
     AngularFireStorageModule,
     StoreModule.forFeature('instructor',InstructorIndex.reducers),
-    EffectsModule.forFeature([InstructorEffects.InstructorEffects, PortfolioEffects.PortfolioEffects])
+    EffectsModule.forFeature([InstructorEffects.InstructorEffects, PortfolioEffects.PortfolioEffects]),
+    NgxDocViewerModule
   ],
   exports: [],
   providers: [],

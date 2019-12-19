@@ -59,11 +59,11 @@ export class PortfolioEffects {
             }
 
             // needs restructure of data
-            // if(data.pageName === 'Success Profiler'){
-            //     return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).collection(`let1`).doc(`qBOwfh4FlNPAmZbQ3cXn`).valueChanges()).pipe(map((data) => {
-            //         return PortfolioActions.searchCadetData(data)
-            //     }))
-            // }
+            if(data.pageName === 'Success Profiler'){
+                return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
 
             if(data.pageName === 'Winning Colors'){
                 return from(this.db.collection(`portfolio/${data.uid}/winningColors`).doc(`${data.uid}`).valueChanges()).pipe(map((data)=>{

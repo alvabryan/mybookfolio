@@ -41,6 +41,13 @@ const portfolioReducer = createReducer(
             ...state,
             cadetSearchData: user
         }
+    }),
+    on(PortfolioActions.clearUserPortfolio, (state)=>{
+        return {
+            ...state,
+            viewData: null,
+            pageName: null
+        }
     })
 )
 

@@ -43,35 +43,34 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('instructor').subscribe((data:any) => {
-        if(data.portfolio){
 
-          if(data.portfolio.pageName){
             this.pageName = data.portfolio.pageName;
             this.setPortfolioViewForm();
-          }
 
-          
-          const cadetData =  data.portfolio.cadetSearchData;
-          this.cadetData = cadetData;
+          if(data.portfolio.cadetSearchData && data.portfolio.viewData){
+            const cadetData = data.portfolio.cadetSearchData;
+            const letLevel = 'let' + cadetData.letLevel;
 
-          const letLevel = 'let' + cadetData.letLevel;
+            this.cadetData = cadetData;
 
-          if(data.cadetData.cadetProgress){
-            const progressData = data.cadetData.cadetProgress;
-            const lookUpLetLevel = cadetData.letLevel;
-            const cadetProgress = progressData[cadetData.uid];
-            this.cadetProgressData = this.getProgress(lookUpLetLevel, cadetProgress.progress);
-          }
+            if(data.cadetData.cadetProgress){
+              const progressData = data.cadetData.cadetProgress;
+              const lookUpLetLevel = cadetData.letLevel;
+              const cadetProgress = progressData[cadetData.uid];
+              this.cadetProgressData = this.getProgress(lookUpLetLevel,cadetProgress.progress);
+            }
 
-          if(data.portfolio.viewData){
-            this.cadetViewData = data.portfolio.viewData;
-            if(data.portfolio.viewData[letLevel].dateSubmitted){
-              this.lastUpdated = data.portfolio.viewData[letLevel].dateSubmitted;
+            if(data.portfolio.viewData){
+              this.cadetViewData = data.portfolio.viewData;
+              if(data.portfolio.viewData[letLevel].dateSubmitted){
+                  this.lastUpdated = data.portfolio.viewData[letLevel].dateSubmitted;
+              }
+            }else{
+              this.lastUpdated = null;
             }
           }
-
           
-        }
+
       })
     )
   }
@@ -146,6 +145,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    this.store.dispatch(PortfolioActions.clearUserPortfolio());
   }
 
 }
