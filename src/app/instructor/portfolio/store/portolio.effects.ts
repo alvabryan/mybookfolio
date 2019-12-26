@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 // portfolio actions
 import * as PortfolioActions from './portfolio.actions';
 import { tap, switchMap, withLatestFrom, map } from 'rxjs/operators';
-import { EMPTY, of, from, Observable } from 'rxjs';
+import { EMPTY, of, from } from 'rxjs';
 
 //ngrx
 import { Store } from '@ngrx/store';
@@ -58,11 +58,47 @@ export class PortfolioEffects {
                 }))
             }
 
-            // needs restructure of data
+
             if(data.pageName === 'Success Profiler'){
                 return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
                     return PortfolioActions.searchCadetData(data)
                 }))
+            }
+
+            if(data.pageName === 'Course Work'){
+                return from(this.db.collection(`portfolio/${data.uid}/courseWork`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
+
+            if(data.pageName === 'Resume'){
+                return from(this.db.collection(`portfolio/${data.uid}/resume`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
+
+            if(data.pageName === 'Course Work'){
+                return of(PortfolioActions.searchCadetData(null))
+            }
+
+            if(data.pageName === 'Essay'){
+                return of(PortfolioActions.searchCadetData(null))
+            }
+
+            if(data.pageName === 'Lesson Evidence'){
+                return of(PortfolioActions.searchCadetData(null))
+            }
+
+            if(data.pageName === 'Written Summary'){
+                return of(PortfolioActions.searchCadetData(null))
+            }
+
+            if(data.pageName === 'Achievements'){
+                return of(PortfolioActions.searchCadetData(null))
+            }
+
+            if(data.pageName === 'Service Learning'){
+                return of(PortfolioActions.searchCadetData(null))
             }
 
             if(data.pageName === 'Winning Colors'){

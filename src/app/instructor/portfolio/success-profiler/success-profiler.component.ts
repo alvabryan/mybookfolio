@@ -24,7 +24,7 @@ export class SuccessProfilerComponent implements OnInit {
       if(data.portfolio.viewData){
         const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
         if(data.portfolio.viewData[letLevel]){
-          const cadetData = data.portfolio.viewData[letLevel].successContent;
+          const cadetData = data.portfolio.viewData[letLevel].content;
           this.cadetData = cadetData;
         }
       }

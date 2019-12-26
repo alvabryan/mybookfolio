@@ -49,10 +49,16 @@ export class ProgressService {
 
     checkProgressFor.forEach((taskName)=>{
       if(data[taskName]){
-        if(taskName == 'successProfiler'){
-          progress[taskName] = data[taskName][letLevel] != undefined ? 100 : 0;
-        }else{
-          progress[taskName] = data[taskName][letLevel] === undefined ? 0 : data[taskName][letLevel];
+        const searchData = data[taskName][letLevel];
+        switch(taskName){
+          case 'successProfiler':
+            progress[taskName] = searchData != undefined ? 100 : 0;
+          break;
+          case 'resume':
+            progress[taskName] = searchData > 100 ? 100 : searchData;
+          break;
+          default:
+            progress[taskName] = searchData === undefined ? 0 : searchData;
         }
       } else {
         progress[taskName] = 0;

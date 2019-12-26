@@ -7,12 +7,31 @@ export class PortfolioViewService {
 
   constructor() { }
 
+  checkCourseContent(title,progress){
+    switch(title){
+      case 'courseWork':
+        return progress > 100 ? 100 : progress;
+      break;
+      case 'resume':
+        return progress > 100 ? 100 : progress;
+      break;
+      case 'successProfiler':
+        return progress > 100 ? 100 : progress;
+      break;
+      default:
+        return progress;
+    }
+  }
 
   checkDataForProgress(index, dbTitle, data, letLevel){
-    if( data[index].progress.hasOwnProperty(dbTitle)){
-      if ( data[index].progress[dbTitle].hasOwnProperty(letLevel)) {
-        return  data[index].progress[dbTitle][letLevel]
-      } else {
+    if(data[index].progress){
+      if(data[index].progress[dbTitle]){
+        if(data[index].progress[dbTitle][letLevel]){
+          return this.checkCourseContent(dbTitle, data[index].progress[dbTitle][letLevel]);
+        }else {
+          return 0;
+        }
+      }else {
         return 0;
       }
     } else {

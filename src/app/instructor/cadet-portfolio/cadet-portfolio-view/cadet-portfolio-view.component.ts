@@ -1,8 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { switchMap, throwIfEmpty } from 'rxjs/operators';
-import { InstructorService } from '../../instructor.service';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProgressService } from './progress.service';
 
@@ -46,9 +43,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   }
 
   constructor( 
-    private db: AngularFirestore, 
     private router: Router, 
-    private route: ActivatedRoute, 
     private store: Store<fromRoot.State>,
     private progressService: ProgressService) { }
 
@@ -61,7 +56,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
 
         if(this.searchCadet){
           this.filterLetLevel = data.portfolio.cadetSearchData.letLevel;
-          this.getProgress(this.filterLetLevel, this.searchCadet.progress);
+          this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
         }
 
       })
@@ -70,20 +65,20 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   }
 
   toCadetInformation(){
-    //routerLink="/instructor/cadet-portfolio/cadet-information" [queryParams]="{uid: 'etURkGdh4PUO8bqIPLb7XJb88A92'}"
     this.router.navigate(['/instructor/cadet-portfolio/cadet-information'], 
     {queryParams: {'uid': this.searchUid, 'firstName': this.searchCadet.firstName, 'lastName': this.searchCadet.lastName, 'letLevel': this.filterLetLevel}});
   }
 
-  getProgress(filterLet, searchCadetProgress){
+  getCadetProgress(filterLet, searchCadetProgress){
     const cadetProgress = this.progressService.getProgress(filterLet,searchCadetProgress);
     this.progress = cadetProgress;
+    console.log(cadetProgress);
   }
 
   setLetLevel(letLevel: number){
     this.store.dispatch(PortfolioActions.updateCadetSearchLetLevel({letLevel: letLevel}));
     this.filterLetLevel = letLevel;
-    this.getProgress(this.filterLetLevel, this.searchCadet.progress);
+    this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
   }
 
   ngOnDestroy() {

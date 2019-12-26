@@ -57,19 +57,12 @@ const routes: Routes = [
       {path: '', pathMatch: 'full', redirectTo: '/instructor'},
       {path: 'four-year-goals', component: FourYearGoalsComponent},
       {path: 'winning-colors', component: WinningColorsComponent},
-      {path: 'success-profiler', component: SuccessProfilerComponent},
       {path: 'learning-style', component: LearningStyleComponent},
       {path: 'personal-ad', component: PersonalAdComponent},
       {path: 'human-graph', component: HumanGraphComponent},
-      {path: 'resume', component: PortfolioResumeComponent},
       {path: 'financial-planning', component: FinancialPlanningComponent},
-      {path: 'course-work', component: CourseWorkComponent},
-      {path: 'essay', component: EssayComponent},
-      {path: 'lesson-evidence', component: LessonEvidenceComponent},
-      {path: 'written-summary', component: WrittenSummaryComponent},
-      {path: 'achievements', component: AchievementsComponent},
-      {path: 'portfolio-cadet-challenge', component: PortfolioCadetChallengeComponent},
-      {path: 'service-learning', component: ServiceLearningComponent}
+      {path: 'course-work/:name', component: CourseWorkComponent},
+      {path: 'portfolio-cadet-challenge', component: PortfolioCadetChallengeComponent}
     ]}
   ]}
 ];

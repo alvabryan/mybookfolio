@@ -25,6 +25,7 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
 
   pageTitle: string;
   pageUrl: string;
+  subPageUrl: string;
 
   filterForm: FormGroup;
 
@@ -32,11 +33,9 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
   cadetsData: Array<any>;
 
   constructor(
-    private route: ActivatedRoute, 
-    private instructorService: InstructorService, 
+    private route: ActivatedRoute,  
     private portfolioViewService: PortfolioViewService, 
     private filterService: FilterServiceService,
-    private cadetPortfolioSerivce: CadetPortfolioService,
     private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
@@ -48,7 +47,14 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.route.queryParams.pipe(take(1)).subscribe( (params: Params) => {
         this.pageTitle = params['name'];
-        this.pageUrl = params['url'];
+        const url = params['url'].split('_');
+        if(url.length == 2){
+          this.pageUrl = url[0];
+          this.subPageUrl = url[1];
+        }else {
+          this.pageUrl = url[0];
+          this.subPageUrl = '';
+        }
       })
     );
 

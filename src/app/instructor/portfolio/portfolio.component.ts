@@ -100,7 +100,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
           this.router.navigate(['instructor/portfolio/winning-colors']);
       break;
       case 'Success Profiler':
-          this.router.navigate(['instructor/portfolio/success-profiler']);
+          this.router.navigate(['instructor/portfolio/course-work/successProfiler']);
       break;
       case 'Learning Style Inventory':
           this.router.navigate(['instructor/portfolio/learning-style']);
@@ -112,31 +112,31 @@ export class PortfolioComponent implements OnInit, OnDestroy {
           this.router.navigate(['instructor/portfolio/human-graph']);
       break;
       case 'Resume':
-          this.router.navigate(['instructor/portfolio/resume']);
+          this.router.navigate(['instructor/portfolio/course-work/resume']);
       break;
       case 'Financial Planning':
           this.router.navigate(['instructor/portfolio/financial-planning']);
       break;
       case 'Course Work':
-          this.router.navigate(['instructor/portfolio/course-work']);
+          this.router.navigate(['instructor/portfolio/course-work/courseWork']);
       break;
       case 'Essay':
-          this.router.navigate(['instructor/portfolio/essay']);
+          this.router.navigate(['instructor/portfolio/course-work/essay']);
       break;
       case 'Lesson Evidence':
-          this.router.navigate(['instructor/portfolio/lesson-evidence']);
+          this.router.navigate(['instructor/portfolio/course-work/lessonEvidence']);
       break;
       case 'Written Summary':
-          this.router.navigate(['instructor/portfolio/written-summary']);
+          this.router.navigate(['instructor/portfolio/course-work/writtenSummary']);
       break;
       case 'Achievements':
-          this.router.navigate(['instructor/portfolio/achievements']);
+          this.router.navigate(['instructor/portfolio/course-work/achievements']);
       break;
       case 'Cadet Challenge':
           this.router.navigate(['instructor/portfolio/portfolio-cadet-challenge']);
       break;
       case 'Service Learning':
-          this.router.navigate(['instructor/portfolio/service-learning']);
+          this.router.navigate(['instructor/portfolio/course-work/serviceLearning']);
       break;
       default:
         console.log('error');
