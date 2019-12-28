@@ -6,7 +6,7 @@ import { take, mergeMap, switchMap } from 'rxjs/operators';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
@@ -17,40 +17,6 @@ import * as PortfolioActions from '../store/portfolio.actions';
   styleUrls: ['./four-year-goals.component.css']
 })
 export class FourYearGoalsComponent implements OnInit, OnDestroy {
-
-  subscription: Subscription = new Subscription();
-  editorForm: FormGroup;
-
-  cadetData: any;
-
-  constructor(
-    private db: AngularFirestore, 
-    private activatedRoute: ActivatedRoute, 
-    private store: Store<fromInstructor.State>) { }
-
-  ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Four Year Goals'}));
-
-    // creates a new form group
-    this.editorForm = new FormGroup({
-      editor: new FormControl('')
-    });
-
-    this.subscription.add(
-      this.store.select('instructor').subscribe(data => {
-        if(data.portfolio.viewData){
-          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          if(data.portfolio.viewData[letLevel].goalContent){
-            this.editorForm.setValue({
-              editor: data.portfolio.viewData[letLevel].goalContent
-            })
-          }
-        }
-      })
-    )
-    
-  }
-
   editorStyle = {
     height: '150px'
   };
@@ -72,13 +38,45 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
       // link and image, video
       ['link']
     ]
-  }; 
+  };
 
-  onSubmit(){
+  subscription: Subscription = new Subscription();
+  editorForm: FormGroup;
+
+  cadetData: any;
+
+  constructor(
+    private db: AngularFirestore,
+    private activatedRoute: ActivatedRoute,
+    private store: Store<fromInstructor.State>) { }
+
+  ngOnInit() {
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Four Year Goals'}));
+
+    // creates a new form group
+    this.editorForm = new FormGroup({
+      editor: new FormControl('')
+    });
+
+    this.subscription.add(
+      this.store.select('instructor').subscribe(data => {
+        if (data.portfolio.viewData) {
+          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
+          if (data.portfolio.viewData[letLevel].content) {
+            this.editorForm.setValue({
+              editor: data.portfolio.viewData[letLevel].content
+            });
+          }
+        }
+      })
+    );
+  }
+
+  onSubmit() {
 
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 

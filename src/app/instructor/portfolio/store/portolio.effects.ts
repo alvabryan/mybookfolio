@@ -77,6 +77,12 @@ export class PortfolioEffects {
                 }))
             }
 
+            if(data.pageName === 'Personal Ad'){
+                return from(this.db.collection(`portfolio/${data.uid}/personalAd`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+                    return PortfolioActions.searchCadetData(data)
+                }))
+            }
+
             if(data.pageName === 'Course Work'){
                 return of(PortfolioActions.searchCadetData(null))
             }

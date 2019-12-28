@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
 import * as PortfolioActions from './store/portfolio.actions';
@@ -39,111 +39,112 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
     this.portfolioViewSelect = new FormGroup({
       pageViewName: new FormControl('')
-    })
+    });
 
     this.subscription.add(
-      this.store.select('instructor').subscribe((data:any) => {
+      this.store.select('instructor').subscribe((data: any) => {
 
-            this.pageName = data.portfolio.pageName;
-            this.setPortfolioViewForm();
+          this.pageName = data.portfolio.pageName;
+          this.setPortfolioViewForm();
 
-          if(data.portfolio.cadetSearchData && data.portfolio.viewData){
+          if (data.portfolio.cadetSearchData && data.portfolio.viewData) {
             const cadetData = data.portfolio.cadetSearchData;
             const letLevel = 'let' + cadetData.letLevel;
 
             this.cadetData = cadetData;
 
-            if(data.cadetData.cadetProgress){
+            if (data.cadetData.cadetProgress) {
               const progressData = data.cadetData.cadetProgress;
               const lookUpLetLevel = cadetData.letLevel;
               const cadetProgress = progressData[cadetData.uid];
-              this.cadetProgressData = this.getProgress(lookUpLetLevel,cadetProgress.progress);
+              this.cadetProgressData = this.getProgress(lookUpLetLevel, cadetProgress.progress);
             }
 
-            if(data.portfolio.viewData){
+            if (data.portfolio.viewData) {
               this.cadetViewData = data.portfolio.viewData;
-              if(data.portfolio.viewData[letLevel].dateSubmitted){
+              if (data.portfolio.viewData[letLevel].dateSubmitted) {
                   this.lastUpdated = data.portfolio.viewData[letLevel].dateSubmitted;
+              } else {
+                this.lastUpdated = data.portfolio.viewData[letLevel].content[((data.portfolio.viewData[letLevel].content).length - 1)].dateSubmitted;
               }
-            }else{
+            } else {
               this.lastUpdated = null;
             }
           }
-          
 
       })
-    )
+    );
   }
 
-  setPortfolioViewForm(){
+  setPortfolioViewForm() {
     this.portfolioViewSelect.setValue({
       pageViewName: this.pageName
-    })
+    });
   }
 
-  setLetLevel(newLet){
+  setLetLevel(newLet) {
     this.store.dispatch(PortfolioActions.updateCadetSearchLetLevel({letLevel: newLet}));
   }
 
-  getProgress(filterLet, searchCadetProgress){
-    const progressReturned = this.cadetProgressService.getProgress(filterLet,searchCadetProgress);
+  getProgress(filterLet, searchCadetProgress) {
+    const progressReturned = this.cadetProgressService.getProgress(filterLet, searchCadetProgress);
     return progressReturned;
   }
 
-  changePortfolioView(){
+  changePortfolioView() {
     const pageName = this.portfolioViewSelect.value.pageViewName;
-    switch(pageName){
+    switch (pageName) {
       case 'Four Year Goals':
           this.router.navigate(['instructor/portfolio/four-year-goals']);
-      break;
+          break;
       case 'Winning Colors':
           this.router.navigate(['instructor/portfolio/winning-colors']);
-      break;
+          break;
       case 'Success Profiler':
           this.router.navigate(['instructor/portfolio/course-work/successProfiler']);
-      break;
+          break;
       case 'Learning Style Inventory':
           this.router.navigate(['instructor/portfolio/learning-style']);
-      break;
+          break;
       case 'Personal Ad':
           this.router.navigate(['instructor/portfolio/personal-ad']);
-      break;
+          break;
       case 'Human Graph':
           this.router.navigate(['instructor/portfolio/human-graph']);
-      break;
+          break;
       case 'Resume':
           this.router.navigate(['instructor/portfolio/course-work/resume']);
-      break;
+          break;
       case 'Financial Planning':
           this.router.navigate(['instructor/portfolio/financial-planning']);
-      break;
+          break;
       case 'Course Work':
           this.router.navigate(['instructor/portfolio/course-work/courseWork']);
-      break;
+          break;
       case 'Essay':
           this.router.navigate(['instructor/portfolio/course-work/essay']);
-      break;
+          break;
       case 'Lesson Evidence':
           this.router.navigate(['instructor/portfolio/course-work/lessonEvidence']);
-      break;
+          break;
       case 'Written Summary':
           this.router.navigate(['instructor/portfolio/course-work/writtenSummary']);
-      break;
+          break;
       case 'Achievements':
           this.router.navigate(['instructor/portfolio/course-work/achievements']);
-      break;
+          break;
       case 'Cadet Challenge':
           this.router.navigate(['instructor/portfolio/portfolio-cadet-challenge']);
-      break;
+          break;
       case 'Service Learning':
           this.router.navigate(['instructor/portfolio/course-work/serviceLearning']);
-      break;
+          break;
       default:
         console.log('error');
     }
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
     this.store.dispatch(PortfolioActions.clearUserPortfolio());
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
@@ -18,7 +18,7 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
 
   subscription: Subscription = new Subscription();
 
-  constructor(private activatedRoute: ActivatedRoute,private store: Store<fromInstructor.State>, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private store: Store<fromInstructor.State>, private router: Router) { }
 
   cadetData: Array<any> = [];
   cadetViewData: any;
@@ -27,62 +27,58 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.subscription.add(
-      this.activatedRoute.params.pipe(tap(data => {
-        console.log(data.name)
-      }),map(data => {
-        switch(data.name){
+      this.activatedRoute.params.pipe(map(data => {
+        switch (data.name) {
           case 'successProfiler':
-            return 'Success Profiler'
-          break;
+            return 'Success Profiler';
+            break;
           case 'resume':
             return 'Resume';
-          break;
+            break;
           case 'courseWork':
             return 'Course Work';
-          break;
+            break;
           case 'essay':
             return 'Essay';
-          break;
+            break;
           case 'lessonEvidence':
             return 'Lesson Evidence';
-          break;
+            break;
           case 'writtenSummary':
             return 'Written Summary';
-          break;
+            break;
           case 'achievements':
             return 'Achievements';
-          break;
+            break;
           case 'serviceLearning':
             return 'Service Learning';
-          break;
+            break;
           default:
             return 'Course Work 2';
         }
       })).subscribe((data: any) => {
-        console.log(data);
         this.pageName = data;
         this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: data}));
       })
     );
 
     this.store.select('instructor').subscribe(data => {
-      if(data.portfolio.viewData){
+      if (data.portfolio.viewData) {
         const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-        if(data.portfolio.viewData[letLevel]){
+        if (data.portfolio.viewData[letLevel]) {
           const cadetData = data.portfolio.viewData[letLevel].content;
           this.cadetData = cadetData;
         }
       }
-    })
+    });
   }
 
-  showModel(fileIndex: number){
+  showModel(fileIndex: number) {
     this.cadetViewData = this.cadetData[fileIndex];
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    
   }
 
 }

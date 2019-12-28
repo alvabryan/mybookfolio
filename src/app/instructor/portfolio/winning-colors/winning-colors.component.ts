@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
@@ -52,17 +52,17 @@ export class WinningColorsComponent implements OnInit {
     });
 
     this.store.select('instructor').subscribe(data => {
-      if(data.portfolio.viewData){
+      if (data.portfolio.viewData) {
         const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-        if(data.portfolio.viewData[letLevel].data){
-          const cadetData = data.portfolio.viewData[letLevel].data;
+        if (data.portfolio.viewData[letLevel].content) {
+          const cadetData = data.portfolio.viewData[letLevel].content;
           this.setCadetData(cadetData);
         }
       }
-    })
+    });
   }
 
-  setCadetData(cadetData: any){
+  setCadetData(cadetData: any) {
     this.winningColorsForm.setValue({
       A: {
         A1: cadetData.secA.one,
@@ -92,7 +92,7 @@ export class WinningColorsComponent implements OnInit {
         D4: cadetData.secD.four,
         D5: cadetData.secD.five
       }
-    })
+    });
   }
 
 }

@@ -7,31 +7,31 @@ export class PortfolioViewService {
 
   constructor() { }
 
-  checkCourseContent(title,progress){
-    switch(title){
+  checkCourseContent(title, progress) {
+    switch (title) {
       case 'courseWork':
         return progress > 100 ? 100 : progress;
-      break;
+        break;
       case 'resume':
         return progress > 100 ? 100 : progress;
-      break;
+        break;
       case 'successProfiler':
         return progress > 100 ? 100 : progress;
-      break;
+        break;
       default:
         return progress;
     }
   }
 
-  checkDataForProgress(index, dbTitle, data, letLevel){
-    if(data[index].progress){
-      if(data[index].progress[dbTitle]){
-        if(data[index].progress[dbTitle][letLevel]){
+  checkDataForProgress(index, dbTitle, data, letLevel) {
+    if (data[index].progress) {
+      if (data[index].progress[dbTitle]) {
+        if (data[index].progress[dbTitle][letLevel]) {
           return this.checkCourseContent(dbTitle, data[index].progress[dbTitle][letLevel]);
-        }else {
+        } else {
           return 0;
         }
-      }else {
+      } else {
         return 0;
       }
     } else {
@@ -45,49 +45,49 @@ export class PortfolioViewService {
     switch (pageTitle) {
       case 'Four Year Goals':
         return this.checkDataForProgress(index, 'yearlyGoals', data, letLevel);
-      break;
+        break;
       case 'Winning colors':
           return this.checkDataForProgress(index, 'winningColors', data, letLevel);
-      break;
+          break;
       case 'Success Profiler and Personal Growth Plan':
           return this.checkDataForProgress(index, 'successProfiler', data, letLevel);
-      break;
+          break;
       case 'Learning Style Inventory':
           return this.checkDataForProgress(index, 'learningStyle', data, letLevel);
-      break;
+          break;
       case 'Personal Ad':
           return this.checkDataForProgress(index, 'personalAd', data, letLevel);
-      break;
+          break;
       case 'Human Graph Activity':
-          return this.checkDataForProgress(index, 'humanGraph', data, letLevel);
-      break;
+          return this.checkDataForProgress(index, 'humanGraphActivity', data, letLevel);
+          break;
       case 'Resume':
           return this.checkDataForProgress(index, 'resume', data, letLevel);
-      break;
+          break;
       case 'Financial Planning':
           return this.checkDataForProgress(index, 'financialPlanning1', data, letLevel);
-      break;
+          break;
       case 'Course Work':
           return this.checkDataForProgress(index, 'courseWork', data, letLevel);
-      break;
+          break;
       case 'Essay':
           return this.checkDataForProgress(index, 'essay', data, letLevel);
-      break;
+          break;
       case 'Let 1-4 Lesson Evidence':
           return this.checkDataForProgress(index, 'lessonEvidence', data, letLevel);
-      break;
+          break;
       case 'Written Summary':
           return this.checkDataForProgress(index, 'writtenSummary', data, letLevel);
-      break;
+          break;
       case 'Achievements':
           return this.checkDataForProgress(index, 'achievements', data, letLevel);
-      break;
+          break;
       case 'Cadet Challenge':
           return this.checkDataForProgress(index, 'cadetChallenge', data, letLevel);
-      break;
+          break;
       case 'Service Learning':
           return this.checkDataForProgress(index, 'serviceLearning', data, letLevel);
-      break;
+          break;
       default:
           return 0;
     }

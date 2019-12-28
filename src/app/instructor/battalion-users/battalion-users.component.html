@@ -1,128 +1,106 @@
 <div class="container-fluid" style="padding: 30px">
-
-
-
-    <div class="row">
-        <div class="col">
-            <!-- card 1 starts -->
-            <div class="card mb-3">
-
-                <div class="card-header">
-                    <i class="fas fa-user"></i> Assigned Cadet Staff
-                    <i class="fa fa-plus-square float-right" aria-hidden="true" style="font-size: 25px;"></i>
-                </div>
-
-
-
-                <div class="container-fluid">
-                    <!-- content here -->
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Lastname</th>
-                                    <th scope="col">Firstname</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Position</th>
-                                    <th scope="col">Un-assign</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
-
-                </div>
-
-            </div>
-            <!--Container ends here-->
-
-
-            <!-- card 2 starts -->
-            <div class="card mb-3">
-
-                <div class="card-header">
-                    <i class="fas fa-user"></i> Army Instructor Sign Up
-
-                </div>
-
-
-
-                <div class="container-fluid">
-                    <!-- content here -->
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Lastname</th>
-                                    <th scope="col">Firstname</th>
-                                    <th scope="col">JROTC Position</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">User Level</th>
-                                
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
-
-                </div>
-
-            </div>
-            <!--Container ends here-->
-
-            <!-- card 3 starts -->
-            <div class="card mb-3">
-
-                <div class="card-header">
-                    <i class="fas fa-user"></i> Instructor Let Assign
-                </div>
-
-
-
-                <div class="container-fluid">
-                    <!-- content here -->
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Let 1</th>
-                                    <th scope="col">Let 2</th>
-                                    <th scope="col">Let 3</th>
-                                    <th scope="col">Let 4</th>
-                                    <th scope="col">Update</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-
-
-
-
-                </div>
-
-            </div>
-            <!--Container ends here-->
-
+  <div class="row">
+    <div class="col">
+      <!-- card 1 starts -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-user"></i> Cadet Staff
+          <i class="fa fa-plus-square float-right" aria-hidden="true" style="font-size: 25px;"></i>
         </div>
 
+        <div class="container-fluid">
+          <!-- content here -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Position</th>
+                  <th scope="col">Remove</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--Container ends here-->
+
+      <!-- card 2 starts -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-user"></i> Linked Instructors
+        </div>
+
+        <div class="container-fluid">
+          <!-- content here -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Position</th>
+                  <th scope="col">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of linkedInstructors; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ data.lastName }}</td>
+                  <td>{{ data.firstName }}</td>
+                  <td>{{ data.position }}</td>
+                  <td><button class="btn btn-danger btn-sm">Remove</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--Container ends here-->
+
+      <!-- card 3 starts -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fas fa-user"></i> Instructor Let Level
+        </div>
+
+        <div class="container-fluid">
+          <!-- content here -->
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Let 1</th>
+                  <th scope="col">Let 2</th>
+                  <th scope="col">Let 3</th>
+                  <th scope="col">Let 4</th>
+                  <th scope="col">Update</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let data of linkedInstructors; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ data.lastName }}</td>
+                  <td>{{ data.firstName }}</td>
+                  <td><input type="checkbox" [checked]="data.letLevelAssigned[0] == 1 ? true : false"></td>
+                  <td><input type="checkbox" [checked]="data.letLevelAssigned[1] == 2 ? true : false"></td>
+                  <td><input type="checkbox" [checked]="data.letLevelAssigned[2] == 3 ? true : false"></td>
+                  <td><input type="checkbox" [checked]="data.letLevelAssigned[3] == 4 ? true : false"></td>
+                  <td><button class="btn btn-success btn-sm">Update</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--Container ends here-->
     </div>
-
-
+  </div>
 </div>

@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
- 
+
     <div class="container-fluid p-3">
         <div class="row pl-3 pr-3">
             <ul class="nav nav-tabs">
@@ -118,12 +118,12 @@
                         <li class="list-group-item rounded-0">Human Graph Activity
 
                             <div class="progress ">
-                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.humanGraph + '%'}"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.humanGraph + '%' }}</div>
+                                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.humanGraphActivity + '%'}"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.humanGraphActivity + '%' }}</div>
                             </div>
                             <div class="row mx-auto mt-2 ">
                                 <div class="col mt-1">
-                                    <button [disabled]="!progress.humanGraph" [routerLink]="['/instructor/portfolio/human-graph']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
+                                    <button [disabled]="!progress.humanGraphActivity" [routerLink]="['/instructor/portfolio/human-graph']" [queryParams]="queryParams" class="btn btn-primary float-right">View</button>
                                 </div>
                             </div>
                         </li>
@@ -226,7 +226,7 @@
                     </ul>
 
                     <!-- awards -->
-                    <ul class="list-group list-group-flush"> 
+                    <ul class="list-group list-group-flush">
                         <li class="list-group-item rounded-0">Awards
                             <div class="progress ">
                                 <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.achievements + '%'}"
@@ -272,9 +272,9 @@
                         </li>
                     </ul>
 
-                    
 
-                    
+
+
 
 
                     <!--Container ends here-->

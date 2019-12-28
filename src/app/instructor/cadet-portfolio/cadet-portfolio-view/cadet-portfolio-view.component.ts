@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ProgressService } from './progress.service';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/index';
 import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
@@ -30,7 +30,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
       successProfiler: 0,
       learningStyle: 0,
       personalAd: 0,
-      humanGraph: 0,
+      humanGraphActivity: 0,
       resume: 0,
       financialPlanning: 0,
       courseWork: 0,
@@ -40,43 +40,43 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
       achievements: 0,
       cadetChallenge: 0,
       serviceLearning: 0
-  }
+  };
 
-  constructor( 
-    private router: Router, 
+  constructor(
+    private router: Router,
     private store: Store<fromRoot.State>,
     private progressService: ProgressService) { }
 
   ngOnInit() {
-  
+
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
         const progressData = data.cadetData.cadetProgress;
         this.searchCadet = progressData[data.portfolio.cadetSearchData.uid];
 
-        if(this.searchCadet){
+        if (this.searchCadet) {
           this.filterLetLevel = data.portfolio.cadetSearchData.letLevel;
           this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
         }
 
       })
     );
-    
+
   }
 
-  toCadetInformation(){
-    this.router.navigate(['/instructor/cadet-portfolio/cadet-information'], 
-    {queryParams: {'uid': this.searchUid, 'firstName': this.searchCadet.firstName, 'lastName': this.searchCadet.lastName, 'letLevel': this.filterLetLevel}});
+  toCadetInformation() {
+    this.router.navigate(['/instructor/cadet-portfolio/cadet-information'],
+    {queryParams: {uid: this.searchUid, firstName: this.searchCadet.firstName, lastName: this.searchCadet.lastName, letLevel: this.filterLetLevel}});
   }
 
-  getCadetProgress(filterLet, searchCadetProgress){
-    const cadetProgress = this.progressService.getProgress(filterLet,searchCadetProgress);
+  getCadetProgress(filterLet, searchCadetProgress) {
+    const cadetProgress = this.progressService.getProgress(filterLet, searchCadetProgress);
     this.progress = cadetProgress;
     console.log(cadetProgress);
   }
 
-  setLetLevel(letLevel: number){
-    this.store.dispatch(PortfolioActions.updateCadetSearchLetLevel({letLevel: letLevel}));
+  setLetLevel(letLevel: number) {
+    this.store.dispatch(PortfolioActions.updateCadetSearchLetLevel({letLevel}));
     this.filterLetLevel = letLevel;
     this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
   }

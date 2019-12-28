@@ -1,104 +1,66 @@
-<form #personalAd="ngForm" (ngSubmit)="onSubmit(personalAd)">
-    <div class="wrapper" style="height: auto; padding: 10px 10px 50px 0px;">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p><b>Directions:</b> As individuals, you have to sell yourself based on who you are. You are
-                        looking for a job, a date, or to join a team. Draw from the list of Winning Colors® power words
-                        and write a personal ad that is: personal, positive, includes emotion, and is in the present
-                        tense. Provide specific behavioral examples to support your analysis.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-4">
-
-                    <table class="table table-sm table-bordered text-center">
-
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="font-weight-normal">
-                                    <b><u>Planner Power Words</u></b>
-                                    <br>Changing
-                                    <br>Improving
-                                    <br>Being my best
-                                    <br>Dreaming
-                                    <br>Inner Life
-                                    <br>Thinking
-                                    <br>Inventing
-                                    <br>Knowing More
-                                    <br>Exactness
-                                    <br>Planning
-                                    <br>Revolution
-                                    <br>Knowing the Future
-                                    <br>Freedom of Thought
-                                </th>
-                                <td class="font-weight-normal">
-                                    <b><u>Builder Power Words</u></b>
-                                    <br> Leader
-                                    <br> Powerful
-                                    <br>Decisive
-                                    <br>Results-oriented
-                                    <br>Responsible
-                                    <br>Tradition
-                                    <br>Duty
-                                    <br>Money
-                                    <br>Preparation
-                                    <br>Achievement
-                                    <br>Expectation
-                                    <br>Accomplishment
-                                    <br>Structured
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row" class="font-weight-normal">
-                                    <b><u>Relator Power Words</u></b>
-                                    <br>Friendly
-                                    <br>Romantic
-                                    <br>Loyal
-                                    <br>Kind
-                                    <br>Attentive
-                                    <br>Thoughtful
-                                    <br>Affectionate
-                                    <br>Work together
-                                    <br>Understanding
-                                    <br>Considerate
-                                    <br>Appreciative
-                                    <br>Dependable
-                                    <br>Aware
-                                </th>
-                                <td class="font-weight-normal">
-                                    <b><u>Adventurer Power Words</u></b>
-                                    <br>Action-oriented
-                                    <br>Fun-loving
-                                    <br>Brave
-                                    <br>Bold
-                                    <br>Spontaneous
-                                    <br>React quickly
-                                    <br>Mover and shaker
-                                    <br>High energy
-                                    <br>Challenging
-                                    <br>Freedom
-                                    <br>Quick thinker
-                                    <br>Test the limits
-                                    <br>Out of bounds
-                                </td>
-
-                            </tr>
-
-                        </tbody>
-                    </table>
-
-                </div>
-
-                <div class="col -sm-12 col-md-8 col-log-8">
-                    <div class="form-group" style="height: 150px; margin-bottom: 150px;">
-                        <label for="comment">Personal Ad:</label>
-                        <quill-editor style="height: 150px;"></quill-editor>
-                    </div>
-                </div>
-            </div>
-            <input class="btn btn-primary btn-block btn-submit mt-2 p-2" name="essay" type="submit" value="Submit">
-        </div>
+<div class="wrapper" style="height: auto; padding: 10px 10px 50px 0px;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <p>
+          <b>Directions:</b> As individuals, you have to sell yourself based on
+          who you are. You are looking for a job, a date, or to join a team.
+          Draw from the list of Winning Colors® power words and write a personal
+          ad that is: personal, positive, includes emotion, and is in the
+          present tense. Provide specific behavioral examples to support your
+          analysis.
+        </p>
+      </div>
     </div>
-</form>
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-lg-4">
+        <table class="table table-sm table-bordered text-center">
+          <tbody>
+            <tr>
+              <th scope="row" class="font-weight-normal">
+                <b><u>Planner Power Words</u></b>
+                <br />Changing <br />Improving <br />Being my best
+                <br />Dreaming <br />Inner Life <br />Thinking <br />Inventing
+                <br />Knowing More <br />Exactness <br />Planning
+                <br />Revolution <br />Knowing the Future <br />Freedom of
+                Thought
+              </th>
+              <td class="font-weight-normal">
+                <b><u>Builder Power Words</u></b>
+                <br />
+                Leader <br />
+                Powerful <br />Decisive <br />Results-oriented <br />Responsible
+                <br />Tradition <br />Duty <br />Money <br />Preparation
+                <br />Achievement <br />Expectation <br />Accomplishment
+                <br />Structured
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="font-weight-normal">
+                <b><u>Relator Power Words</u></b>
+                <br />Friendly <br />Romantic <br />Loyal <br />Kind
+                <br />Attentive <br />Thoughtful <br />Affectionate <br />Work
+                together <br />Understanding <br />Considerate
+                <br />Appreciative <br />Dependable <br />Aware
+              </th>
+              <td class="font-weight-normal">
+                <b><u>Adventurer Power Words</u></b>
+                <br />Action-oriented <br />Fun-loving <br />Brave <br />Bold
+                <br />Spontaneous <br />React quickly <br />Mover and shaker
+                <br />High energy <br />Challenging <br />Freedom <br />Quick
+                thinker <br />Test the limits <br />Out of bounds
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col -sm-12 col-md-8 col-log-8">
+        <div class="form-group" style="height: 400px; margin-bottom: 150px;">
+          <label for="comment">Personal Ad:</label>
+          <quill-editor style="height: 200px;" [(ngModel)]="cadetData"></quill-editor>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,13 +9,13 @@ export class ProgressService {
 
 
   getProgress(letLevelNum, data) {
-    let checkProgressFor = [
+    const checkProgressFor = [
       'yearlyGoals',
       'winningColors',
       'successProfiler',
       'learningStyle',
       'personalAd',
-      'humanGraph',
+      'humanGraphActivity',
       'resume',
       'financialPlanning',
       'courseWork',
@@ -27,15 +27,15 @@ export class ProgressService {
       'serviceLearning'
     ];
 
-    let letLevel = `let${letLevelNum}`;
+    const letLevel = `let${letLevelNum}`;
 
-    let progress = {
+    const progress = {
       yearlyGoals: 0,
       winningColors: 0,
       successProfiler: 0,
       learningStyle: 0,
       personalAd: 0,
-      humanGraph: 0,
+      humanGraphActivity: 0,
       resume: 0,
       financialPlanning: 0,
       courseWork: 0,
@@ -45,25 +45,25 @@ export class ProgressService {
       achievements: 0,
       cadetChallenge: 0,
       serviceLearning: 0
-    }
+    };
 
-    checkProgressFor.forEach((taskName)=>{
-      if(data[taskName]){
+    checkProgressFor.forEach((taskName) => {
+      if (data[taskName]) {
         const searchData = data[taskName][letLevel];
-        switch(taskName){
+        switch (taskName) {
           case 'successProfiler':
-            progress[taskName] = searchData != undefined ? 100 : 0;
-          break;
+            progress[taskName] = searchData !== undefined ? 100 : 0;
+            break;
           case 'resume':
             progress[taskName] = searchData > 100 ? 100 : searchData;
-          break;
+            break;
           default:
             progress[taskName] = searchData === undefined ? 0 : searchData;
         }
       } else {
         progress[taskName] = 0;
       }
-    })
+    });
 
 
 

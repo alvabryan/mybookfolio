@@ -25,16 +25,16 @@ import { SharedModule } from './shared/shared.module';
 // Quil module
 import { QuillModule } from 'ngx-quill';
 
-// ngrx dev tools 
+// ngrx dev tools
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-//ngrx store
+// ngrx store
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/index';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
-//meta reducer
+// meta reducer
 import * as logoutMetaReducer from './store/logout-reducer/logout.reducer';
 import * as logoutEffects from './store/logout-reducer/logout.effects';
 

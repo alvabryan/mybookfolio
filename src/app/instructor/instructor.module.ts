@@ -37,12 +37,14 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgxDocViewerModule } from 'node_modules/ngx-doc-viewer';
 
-//ngrx
+// ngrx
 import { StoreModule } from '@ngrx/store';
 import * as InstructorIndex from './store/index';
 import { EffectsModule } from '@ngrx/effects';
 import * as InstructorEffects from './store/instructor.effects';
 import * as PortfolioEffects from './portfolio/store/portolio.effects';
+import * as BattalionUsersEffect from './battalion-users/store/battalion-users.effects';
+
 @NgModule({
   declarations: [
     InstructorComponent,
@@ -84,8 +86,8 @@ import * as PortfolioEffects from './portfolio/store/portolio.effects';
     FormsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    StoreModule.forFeature('instructor',InstructorIndex.reducers),
-    EffectsModule.forFeature([InstructorEffects.InstructorEffects, PortfolioEffects.PortfolioEffects]),
+    StoreModule.forFeature('instructor', InstructorIndex.reducers),
+    EffectsModule.forFeature([InstructorEffects.InstructorEffects, PortfolioEffects.PortfolioEffects, BattalionUsersEffect.BattalionUsersEFfect]),
     NgxDocViewerModule
   ],
   exports: [],

@@ -8,7 +8,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { FilterServiceService } from '../shared-services/filter-service.service';
 import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
 import * as InstructorActions from '../store/instructor.actions';
@@ -33,8 +33,8 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
   cadetsData: Array<any>;
 
   constructor(
-    private route: ActivatedRoute,  
-    private portfolioViewService: PortfolioViewService, 
+    private route: ActivatedRoute,
+    private portfolioViewService: PortfolioViewService,
     private filterService: FilterServiceService,
     private store: Store<fromRoot.State>) { }
 
@@ -42,16 +42,16 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     this.filterForm = new FormGroup({
       letLevel: new FormControl('all'),
       period: new FormControl('all')
-    })
+    });
 
     this.subscription.add(
       this.route.queryParams.pipe(take(1)).subscribe( (params: Params) => {
-        this.pageTitle = params['name'];
-        const url = params['url'].split('_');
-        if(url.length == 2){
+        this.pageTitle = params.name;
+        const url = params.url.split('_');
+        if (url.length === 2) {
           this.pageUrl = url[0];
           this.subPageUrl = url[1];
-        }else {
+        } else {
           this.pageUrl = url[0];
           this.subPageUrl = '';
         }
@@ -60,36 +60,34 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('instructor').subscribe( (data: any) => {
-        if(data.cadetData.cadetProgress){
+        if (data.cadetData.cadetProgress) {
           const values = Object.values(data.cadetData.cadetProgress);
           this.cadetsData = values;
           this.filterData = values;
         }
       })
     );
-    
-    
   }
 
-  setCadetSearchData(searchCadetDataIndex: number){
+  setCadetSearchData(searchCadetDataIndex: number) {
     const searchCadet = this.cadetsData[searchCadetDataIndex];
     this.store.dispatch(PortfolioActions.searchCadet({
       uid: searchCadet.uid,
       firstName: searchCadet.firstName,
       lastName: searchCadet.lastName,
       letLevel: searchCadet.letLevel
-    }))
+    }));
   }
 
   onFilter() {
     const letLevel = this.filterForm.value.letLevel;
     const period = this.filterForm.value.period;
 
-    this.filterData = this.filterService.filter(letLevel,period,this.cadetsData);
+    this.filterData = this.filterService.filter(letLevel, period, this.cadetsData);
   }
 
   progress(i: number) {
-    return this.portfolioViewService.getProgress(i,this.pageTitle, this.cadetsData);
+    return this.portfolioViewService.getProgress(i, this.pageTitle, this.cadetsData);
   }
 
   ngOnDestroy() {

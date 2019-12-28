@@ -11,6 +11,8 @@ import { Store } from '@ngrx/store';
 import * as fromInstructor from '../store/index';
 import * as AuthActions from '../../auth/store/auth.actions';
 
+type NewType = boolean;
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -26,8 +28,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
   settingForm: FormGroup;
   passwordForm: FormGroup;
 
-  uploadingImage: boolean = false;
-  updatingPasswordStatus: boolean = false;
+  uploadingImage: NewType = false;
+  updatingPasswordStatus: NewType = false;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -52,56 +54,56 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select('auth').subscribe((data: any) => {
         this.instructorData = data.user;
-        if(this.instructorData){
+        if (this.instructorData) {
           this.settingForm.patchValue({
             firstName: this.instructorData.firstName,
             lastName: this.instructorData.lastName
-          })
+          });
         }
       })
-    )
+    );
   }
 
-  uploadProfileImage(imageData: any){
-    this.uploadingImage = true; 
-    
+  uploadProfileImage(imageData: any) {
+    this.uploadingImage = true;
+
     this.store.dispatch(AuthActions.imageUpload({image: imageData}));
 
     this.profileImage.reset();
 
     this.store.select('auth').subscribe(data => {
-      if(!data.uploadingProfileImage){
+      if (!data.uploadingProfileImage) {
         this.uploadingImage = data.uploadingProfileImage;
       }
-    })
+    });
   }
 
-  updateSettings(){
+  updateSettings() {
     this.store.dispatch(AuthActions.updateUserInfo(this.settingForm.value));
   }
 
-  updatePassword(){
+  updatePassword() {
     const oldPassword = this.passwordForm.value.oldPassword;
     const newPassword = this.passwordForm.value.newPassword;
-   
-    this.store.dispatch(AuthActions.passwordUpdate({oldPassword: oldPassword, newPassword: newPassword}));
+
+    this.store.dispatch(AuthActions.passwordUpdate({oldPassword, newPassword}));
     this.store.dispatch(AuthActions.passwordUpdateStatus({status: 'loading'}));
 
     this.store.select('auth').subscribe(data => {
-      if(data.passwordUpdateStatus == 'loading'){
+      if (data.passwordUpdateStatus === 'loading') {
         this.updatingPasswordStatus = true;
-      } else if(data.passwordUpdateStatus === 'error' || data.passwordUpdateStatus === 'success'){
+      } else if (data.passwordUpdateStatus === 'error' || data.passwordUpdateStatus === 'success') {
         this.updatingPasswordStatus = false;
-        if(data.passwordUpdateStatus === 'error'){
+        if (data.passwordUpdateStatus === 'error') {
           alert('Error: Your current password is incorrect!');
-        }else{
+        } else {
           this.passwordForm.reset();
         }
       }
-    })
+    });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
