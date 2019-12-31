@@ -17,8 +17,6 @@ import { SupportComponent } from './support/support.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
-import { MyCadetsComponent } from './cadets/my-cadets/my-cadets.component';
-import { BattalionRosterComponent } from './cadets/battalion-roster/battalion-roster.component';
 import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
 import { FourYearGoalsComponent } from './portfolio/four-year-goals/four-year-goals.component';
 import { WinningColorsComponent } from './portfolio/winning-colors/winning-colors.component';
@@ -62,8 +60,6 @@ import * as BattalionUsersEffect from './battalion-users/store/battalion-users.e
     SettingsComponent,
     DocumentationComponent,
     PortfolioComponent,
-    MyCadetsComponent,
-    BattalionRosterComponent,
     PortfolioViewComponent,
     FourYearGoalsComponent,
     WinningColorsComponent,

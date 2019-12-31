@@ -9,6 +9,7 @@ export class User {
     public photoUrl: string,
     public providerId: string,
     public battalionCode: string,
-    public uid: string
+    public uid: string,
+    public letAssigned: any
   ) {}
 }

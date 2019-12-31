@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
 import { User } from '../user.model';
 
@@ -18,11 +18,19 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
 
-const handleAuthentication = (userType:string,displayName: string, firstName: string, lastName: string, email: string, phoneNumber:string, photoUrl: string, providerId: string, battalionCode: string, uid: string) => {
-    const user = new User(userType,displayName, firstName, lastName, email, phoneNumber, photoUrl, providerId, battalionCode, uid);
+interface InstructorLetAssign {
+    let1: boolean;
+    let2: boolean;
+    let3: boolean;
+    let4: boolean;
+}
+
+const handleAuthentication = (userType: string, displayName: string, firstName: string, lastName: string, email: string, phoneNumber: string, photoUrl: string, providerId: string, battalionCode: string, uid: string, letAssign: InstructorLetAssign) => {
+    const user = new User(userType, displayName, firstName, lastName, email, phoneNumber, photoUrl, providerId, battalionCode, uid, letAssign);
     localStorage.setItem('userData', JSON.stringify(user));
 
     return AuthActions.authenticationSuccess({
+        // tslint:disable-next-line: object-literal-shorthand
         userType: userType,
         displayName: user.displayName,
         firstName: user.firstName,
@@ -31,10 +39,12 @@ const handleAuthentication = (userType:string,displayName: string, firstName: st
         phoneNumber: user.phoneNumber,
         photoUrl: user.photoUrl,
         providerId: user.providerId,
+        // tslint:disable-next-line: object-literal-shorthand
         battalionCode: battalionCode,
-        uid: user.uid
-    })
-}
+        uid: user.uid,
+        letAssigned: letAssign
+    });
+};
 
 const handleError = (errorCode: any, message: any) => {
     let errorMessage = 'An unknown error occurred!';
@@ -56,43 +66,50 @@ const handleError = (errorCode: any, message: any) => {
         errorMessage = 'Too many unsuccessful login attempts. Please try again later';
         break;
     default:
-        errorMessage = message
+        errorMessage = message;
     }
 
     // of creates a new observable
     return of(AuthActions.authenticateFail({error: errorMessage}));
-}
+};
 
 
 @Injectable()
 export class AuthEffects {
 
     // clear auth error
-    clearError = createEffect(()=>this.actions$.pipe(
+    clearError = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.authenticateFail),
-        map(()=>{
+        map(() => {
             return AuthActions.clearError();
         })
-    ))
+    ));
 
     // login effect
     authLogin = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.loginStart),
         switchMap((action) => {
-            return from(this.afAuth.auth.signInWithEmailAndPassword(action.email,action.password)).pipe(mergeMap((data: any)=>{
-                return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(map((userDataType: any)=>{
-                    return handleAuthentication(userDataType.userType,data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid)
+            return from(this.afAuth.auth.signInWithEmailAndPassword(action.email, action.password)).pipe(mergeMap((data: any) => {
+                return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(mergeMap((userDataType: any) => {
+                    return this.db.doc(`battalions/${userDataType.data.battalionCode}`).valueChanges().pipe(tap((userLetData: any) => {
+                        const instructUid = data.user.uid;
+                        const instructLet = userLetData.instructors[instructUid].letLevelAssigned;
+                    }), map((userLetData: any) => {
+                        const instructUid = data.user.uid;
+                        const instructLet = userLetData.instructors[instructUid].letLevelAssigned;
+                        return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, instructLet );
+                    }));
                 }));
-            }), catchError(err => {console.log(err); return handleError(err.code, err.message);}))
+            }), catchError(err => {console.log(err); return handleError(err.code, err.message); }));
         })
-    )) 
+    )) ;
 
     // refresh page auto login
     @Effect()
     autoLogin = this.actions$.pipe(ofType(AuthActions.refreshWindow), () => {
         const userData = JSON.parse(localStorage.getItem('userData'));
 
-        if(userData){
+        if (userData) {
             return of(AuthActions.authenticationSuccess({
                 userType: userData.userType,
                 displayName: userData.displayName,
@@ -103,88 +120,79 @@ export class AuthEffects {
                 photoUrl: userData.photoUrl,
                 providerId: userData.providerId,
                 battalionCode: userData.battalionCode,
-                uid: userData.uid
+                uid: userData.uid,
+                letAssigned: userData.letAssigned
             }));
         } else {
             return EMPTY;
         }
-        
-    })
+
+    });
 
     // redirect user based on type
-    authRedirect = createEffect(()=> this.actions$.pipe(
+    authRedirect = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.authenticationSuccess),
-        tap((data)=>{
-           if(data.userType == 'cadet') {
-            this.router.navigate(['/cadet'])
-           } else if (data.userType == 'instructor') {
+        tap((data) => {
+           if (data.userType === 'cadet') {
+            this.router.navigate(['/cadet']);
+           } else if (data.userType === 'instructor') {
                this.router.navigate(['/instructor']);
            }
         })
-    ), {dispatch: false})
-
-    
-    // log user out
-    // logout = createEffect(() => this.actions$.pipe(
-    //     ofType(AuthActions.logout),
-    //     tap(()=> {
-    //         this.router.navigate(['/']);
-    //         localStorage.clear();
-    //     })
-    // ), {dispatch: false})
+    ), {dispatch: false});
 
     // cadet signup
-    cadetSignupStart = createEffect(()=> 
+    cadetSignupStart = createEffect(() =>
         this.actions$.pipe(
             ofType(AuthActions.cadetSignupStart),
-            switchMap((data:any) => {
-                return this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1),map((callBackData: any)=>{
+            switchMap((data: any) => {
+                return this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1), map((callBackData: any) => {
                     console.log(callBackData);
-                    if(callBackData.codes.includes(data.battalionCode)) {
-                        return AuthActions.cadetRegister({...data})
-                    }else{
+                    if (callBackData.codes.includes(data.battalionCode)) {
+                        return AuthActions.cadetRegister({...data});
+                    } else {
                         return AuthActions.authenticateFail({error: 'Battalion Code not found'});
                     }
-                }))
+                }));
             })
         )
-    )
+    );
 
 
-    cadetSignup = createEffect(()=> this.actions$.pipe(
+    cadetSignup = createEffect(() => this.actions$.pipe(
             ofType(AuthActions.cadetRegister),
-            switchMap((data:any) => {
-                return from(this.afAuth.auth.createUserWithEmailAndPassword(data.email,data.password)).pipe(
+            switchMap((data: any) => {
+                return from(this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password)).pipe(
                     tap((userCredential) => {
                         userCredential.user.updateProfile({
                             displayName: data.firstName + ' ' + data.lastName,
                             photoURL: null
-                        })  
+                        });
                     }),
-                    map((userCredential)=>{
+                    map((userCredential) => {
                         console.log(userCredential);
-                        return AuthActions.cadetSignupSuccess({...data,...userCredential});
+                        return AuthActions.cadetSignupSuccess({...data, ...userCredential});
                     }),
-                    catchError((err)=>{
-                        return handleError(err.code,err.message)
+                    catchError((err) => {
+                        return handleError(err.code, err.message);
                     })
-                )
+                );
             })
         )
-    ) 
+    );
 
     cadetSignupSuccess = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.cadetSignupSuccess),
-        switchMap((data:any) => {
-            const appUserData = { 
-                firstName: data.firstName, 
-                lastName: data.lastName, 
-                letLevel: data.letLevel, 
-                period: data.classPeriod, 
+        switchMap((data: any) => {
+            const appUserData = {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                letLevel: data.letLevel,
+                period: data.classPeriod,
                 uid: data.user.uid,
                 progress: {}
-              }
-            
+              };
+
             return forkJoin(
                 from(
                     this.db.doc(`users/${data.user.uid}`).set({
@@ -206,7 +214,7 @@ export class AuthEffects {
                       period: data.classPeriod,
                       uid: data.user.uid
                     }
-                  },{ merge: true})
+                  }, { merge: true})
                 ),
                 from(
                     this.db.doc(`battalions/${data.battalionCode}/cadets/${data.user.uid}`).set(appUserData)
@@ -214,25 +222,25 @@ export class AuthEffects {
                 from(
                     this.db.doc(`battalions/${data.battalionCode}/cadetsProgress/${data.battalionCode}`).set({ [data.user.uid] : { ...appUserData } }, {merge: true})
                 )
-            ).pipe(map(()=>{
+            ).pipe(map(() => {
                 return AuthActions.loginStart({email: data.email, password: data.password});
-            }))
+            }));
         }),
         tap((data: any) => {
             console.log(data);
 
         })
-    ))
+    ));
 
-    //Image Upload
-    uploadProfileImage = createEffect(()=> this.actions$.pipe(
+    // Image Upload
+    uploadProfileImage = createEffect(() => this.actions$.pipe(
             ofType(AuthActions.imageUpload),
             withLatestFrom(this.store.select('auth')),
             tap(data => console.log(data)),
-            switchMap((data: any)=>{
+            switchMap((data: any) => {
                 let image;
 
-                // creates random string 
+                // creates random string
                 const pathFolder = 'instructorProfileImage';
                 const ImageName = `${Date.now()}_${data[0].image.target.files[0].name}`;
                 const path = `${pathFolder}/${ImageName}`;
@@ -240,34 +248,34 @@ export class AuthEffects {
                 // reference
                 const ref = this.storage.ref(path);
 
-                // image 
+                // image
                 image = this.storage.upload(path, data[0].image.target.files[0]);
 
                 return forkJoin(
                     from(image.snapshotChanges()),
                     from(image)
-                ).pipe(tap(()=>{
-                    if(data[1].user.photoUrl){
+                ).pipe(tap(() => {
+                    if (data[1].user.photoUrl) {
                         this.storage.storage.refFromURL(`${data[1].user.photoUrl}`).delete();
                     }
-                }),switchMap(()=>{
-                    return from(ref.getDownloadURL()).pipe(tap((url)=>{
+                }), switchMap(() => {
+                    return from(ref.getDownloadURL()).pipe(tap((url) => {
                         this.db.collection('users').doc(`${data[1].user.uid}`).update({
                             'data.profileImage': url
-                        })
-                    }),map(url => {
-                        return AuthActions.changeProfileImage({imageUrl: url})
-                    }))
-                }), catchError((err)=>{
+                        });
+                    }), map(url => {
+                        return AuthActions.changeProfileImage({imageUrl: url});
+                    }));
+                }), catchError((err) => {
                     return EMPTY;
-                }))
+                }));
 
             })
     ));
 
     // profile settings
 
-    updateProfileImage = createEffect(()=> this.actions$.pipe(
+    updateProfileImage = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.changeProfileImage),
         tap((data) => {
             this.afAuth.auth.currentUser.updateProfile({
@@ -277,62 +285,62 @@ export class AuthEffects {
             const dataFromLocalStorage = JSON.parse(localStorage.getItem('userData'));
             dataFromLocalStorage.photoUrl = data.imageUrl;
             localStorage.setItem('userData', JSON.stringify(dataFromLocalStorage));
-            
+
         })
-    ), {dispatch: false})
+    ), {dispatch: false});
 
     // update user info
-    updateUserInfo = createEffect(()=> this.actions$.pipe(
+    updateUserInfo = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.updateUserInfo),
         withLatestFrom(this.store.select('auth')),
         tap((data) => {
             this.afAuth.auth.currentUser.updateProfile({
                 displayName: data[0].firstName + ' ' + data[0].lastName
-            })
+            });
 
             this.db.collection('users').doc(`${data[1].user.uid}`).update({
-                "data.firstName": data[0].firstName,
-                "data.lastName": data[0].lastName
-            })
+                'data.firstName': data[0].firstName,
+                'data.lastName': data[0].lastName
+            });
 
             const dataFromLocalStorageInfo = JSON.parse(localStorage.getItem('userData'));
             dataFromLocalStorageInfo.displayName = data[0].firstName + ' ' + data[0].lastName;
             dataFromLocalStorageInfo.firstName = data[0].firstName;
             dataFromLocalStorageInfo.lastName = data[0].lastName;
             localStorage.setItem('userData', JSON.stringify(dataFromLocalStorageInfo));
-            
-        })
-    ), {dispatch: false})
 
-    // update user password 
+        })
+    ), {dispatch: false});
+
+    // update user password
     updateUserPassword = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.passwordUpdate),
         withLatestFrom(this.store.select('auth')),
         switchMap((data: any) => {
-            let updateStatus = null;
+            const updateStatus = null;
             const credentials = firebase.auth.EmailAuthProvider.credential(data[1].user.email, data[0].oldPassword);
 
 
             return this.afAuth.auth.currentUser.reauthenticateWithCredential(credentials).then(returnData => {
                 return this.afAuth.auth.currentUser.updatePassword(data[0].newPassword);
-            }).then((data: any)=>{
-                return AuthActions.passwordUpdateStatus({status: 'success'})
-            }).catch((error)=>{
-                return AuthActions.passwordUpdateStatus({status: 'error'})
-            })
+            }).then(() => {
+                return AuthActions.passwordUpdateStatus({status: 'success'});
+            }).catch((error) => {
+                return AuthActions.passwordUpdateStatus({status: 'error'});
+            });
 
         })
-    ))
+    ));
 
 
 
     constructor(
         private http: HttpClient,
-        private actions$: Actions, 
-        private afAuth: AngularFireAuth, 
+        private actions$: Actions,
+        private afAuth: AngularFireAuth,
         private storage: AngularFireStorage,
         private db: AngularFirestore,
         private router: Router,
         private store: Store<fromRoot.State>
-    ){}
+    ) {}
 }

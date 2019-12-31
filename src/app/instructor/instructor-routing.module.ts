@@ -12,8 +12,6 @@ import { SupportComponent } from './support/support.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DocumentationComponent } from './documentation/documentation.component';
-import { MyCadetsComponent } from './cadets/my-cadets/my-cadets.component';
-import { BattalionRosterComponent } from './cadets/battalion-roster/battalion-roster.component';
 import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
 import { FourYearGoalsComponent } from './portfolio/four-year-goals/four-year-goals.component';
 import { WinningColorsComponent } from './portfolio/winning-colors/winning-colors.component';
@@ -30,10 +28,7 @@ import { CadetInformationComponent } from './cadet-portfolio/cadet-information/c
 const routes: Routes = [
   {path: '', canActivate: [AuthInstructor] , component: InstructorComponent, children: [
     {path: '', component: DashboardComponent},
-    {path: 'cadets', component: CadetsComponent, children: [
-      {path: '', component: MyCadetsComponent},
-      {path: 'battalion', component: BattalionRosterComponent}
-    ]},
+    {path: 'cadets', component: CadetsComponent},
     {path: 'portfolio-view', component: PortfolioViewComponent},
     {path: 'analytics', component: AnalyticsComponent},
     {path: 'cadet-data-request', component: CadetDataRequestComponent},

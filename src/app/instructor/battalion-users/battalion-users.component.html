@@ -85,16 +85,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let data of linkedInstructors; let i = index">
-                  <td>{{ i + 1 }}</td>
-                  <td>{{ data.lastName }}</td>
-                  <td>{{ data.firstName }}</td>
-                  <td><input type="checkbox" [checked]="data.letLevelAssigned[0] == 1 ? true : false"></td>
-                  <td><input type="checkbox" [checked]="data.letLevelAssigned[1] == 2 ? true : false"></td>
-                  <td><input type="checkbox" [checked]="data.letLevelAssigned[2] == 3 ? true : false"></td>
-                  <td><input type="checkbox" [checked]="data.letLevelAssigned[3] == 4 ? true : false"></td>
-                  <td><button class="btn btn-success btn-sm">Update</button></td>
-                </tr>
+                  <tr *ngFor="let data of linkedInstructors; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ data.lastName }}</td>
+                    <td>{{ data.firstName }}</td>
+                    <td><input #v1 name="checkBox1-{{i}}" type="checkbox" [checked]="data.letLevelAssigned.let1 ? true : false"></td>
+                    <td><input #v2 name="checkBox2-{{i}}" type="checkbox" [checked]="data.letLevelAssigned.let2 ? true : false"></td>
+                    <td><input #v3 name="checkBox3-{{i}}" type="checkbox" [checked]="data.letLevelAssigned.let3 ? true : false"></td>
+                    <td><input #v4 name="checkBox4-{{i}}" type="checkbox" [checked]="data.letLevelAssigned.let4 ? true : false"></td>
+                    <td><button class="btn btn-success btn-sm" (click)="formMethod(data.uid, v1, v2, v3, v4)">Update</button></td>
+                  </tr>
               </tbody>
             </table>
           </div>

@@ -14,18 +14,19 @@ export const authenticationSuccess = createAction('[Auth] Authenticate Success',
     photoUrl: string,
     providerId: string,
     battalionCode: string,
-    uid: string
+    uid: string,
+    letAssigned: any
 }>());
 
 export const authenticateFail = createAction('[Auth] Authenticate Fail', props<{error: string}>());
 
 export const refreshWindow = createAction('[Auth] Refresh Window');
 
-//cadet sign up
+// cadet sign up
 export const cadetSignupStart = createAction('[Auth] Check Battalion Code', props<{[key: string]: any}>());
 
 export const cadetRegister = createAction('[Auth] Signup Start', props<{
-    battalionCode: string, 
+    battalionCode: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -34,7 +35,7 @@ export const cadetRegister = createAction('[Auth] Signup Start', props<{
     password: string
 }>());
 
-export const cadetSignupSuccess = createAction('[Auth] Signup Success', props<{[key: string]: any}>())
+export const cadetSignupSuccess = createAction('[Auth] Signup Success', props<{[key: string]: any}>());
 
 // auth error
 export const clearError = createAction('[Auth] Clear Error');
@@ -48,5 +49,5 @@ export const changeProfileImage = createAction('[User Settings] profile image', 
 export const updateUserInfo = createAction('[User Settings] profile name', props<{firstName: string, lastName: string}>());
 
 // password update
-export const passwordUpdate = createAction('[User Settings] update password', props<{oldPassword: string,newPassword: string}>());
+export const passwordUpdate = createAction('[User Settings] update password', props<{oldPassword: string, newPassword: string}>());
 export const passwordUpdateStatus = createAction('[User Settings] update status', props<{status: string}>());

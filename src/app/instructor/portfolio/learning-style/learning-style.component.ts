@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
@@ -20,7 +20,7 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Learning Style Inventory'}));
-    
+
     this.learningStyle = new FormGroup({
       environmentalP1: new FormGroup({
         environmentalP1Q1: new FormControl(''),
@@ -100,20 +100,20 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
     });
 
     this.store.select('instructor').subscribe(data => {
-      if(data.portfolio.viewData && data.portfolio.pageName === 'Learning Style Inventory'){
+      if (data.portfolio.viewData && data.portfolio.pageName === 'Learning Style Inventory') {
         const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-        if(data.portfolio.viewData[letLevel].multipleChoiceData || data.portfolio.viewData[letLevel].fillInSection){
+        if (data.portfolio.viewData[letLevel].content.multipleChoiceData || data.portfolio.viewData[letLevel].content.fillInSection) {
           const cadetData = data.portfolio.viewData[letLevel];
           this.setCadetData(cadetData);
         }
       }
-    })
+    });
   }
 
 
-  setCadetData(cadetData: any){
-    const multipleChoiceData = cadetData.multipleChoiceSection;
-    const fillInData = cadetData.fillInSection;
+  setCadetData(cadetData: any) {
+    const multipleChoiceData = cadetData.content.multipleChoiceSection;
+    const fillInData = cadetData.content.fillInSection;
     this.learningStyle.setValue({
       environmentalP1: {
         environmentalP1Q1: multipleChoiceData.enviOne,
@@ -184,16 +184,16 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
         sociologicalP2Q5: fillInData.socFive,
         sociologicalP2Q6: fillInData.socSix
       },
-      physicalP2:{
+      physicalP2: {
         physicalP2Q1: fillInData.phyOne,
         physicalP2Q2: fillInData.phyTwo,
         physicalP2Q3: fillInData.phyThree,
         physicalP2Q4: fillInData.phyFour
       }
-    })
+    });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.learningStyle.reset();
   }
 

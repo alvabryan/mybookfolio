@@ -1,21 +1,96 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
-//ngrx
+
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
-import * as InstructorActions from '../store/instructor.actions';
+import * as PortfolioActions from '../portfolio/store/portfolio.actions';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import { InstructorService } from '../instructor.service';
+import { FilterServiceService } from '../shared-services/filter-service.service';
+import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
 
 @Component({
   selector: 'app-cadets',
   templateUrl: './cadets.component.html',
   styleUrls: ['./cadets.component.css']
 })
-export class CadetsComponent implements OnInit {
+export class CadetsComponent implements OnInit, OnDestroy {
 
-  constructor(private store: Store<fromRoot.State>) { }
+  filterForm: FormGroup;
+
+  subscription: Subscription = new Subscription();
+
+  filterRoster: Array<any>;
+  battalionRoster: Array<any>;
+
+  constructor(
+    private db: AngularFirestore,
+    private router: Router,
+    private instructorService: InstructorService,
+    private filterService: FilterServiceService,
+    private cadetPortfolioService: CadetPortfolioService,
+    private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
 
+    this.filterForm = new FormGroup({
+      letLevel: new FormControl('all'),
+      period: new FormControl('all')
+    });
+
+    this.subscription.add(
+      this.store.select('instructor').subscribe((data: any) => {
+        if (data.cadetData.cadetProgress) {
+          const values = Object.values(data.cadetData.cadetProgress);
+          this.filterRoster = values;
+          this.battalionRoster = values;
+        }
+      })
+    );
+  }
+
+  toCadetPortfolio(uid: string) {
+    const cadetUid = uid.replace(/\s/g, '');
+    console.log(uid);
+    this.router.navigate(['/instructor/cadet-portfolio'], {queryParams: {uid: cadetUid}});
+  }
+
+  onChangeSearch(event) {
+    this.store.select('instructor').subscribe(data => {
+      const letAssigned = data.battalionUsers.linkedInstructors.blx6oHJLrSg2tpUTlvmZfCllBzk2.letLevelAssigned;
+      console.log(letAssigned);
+    });
+  }
+
+  onFilter() {
+    // this.filterRoster = [];
+    const letLevel = this.filterForm.value.letLevel;
+    const period = this.filterForm.value.period;
+
+    this.filterRoster = this.filterService.filter(letLevel, period, this.battalionRoster);
+
+  }
+
+  setSearchData(uid: string, firstname: string, lastName: string, letLevel: number ) {
+
+    this.store.dispatch(PortfolioActions.searchCadet({
+      // tslint:disable-next-line: object-literal-shorthand
+      uid: uid,
+      firstName: firstname,
+      // tslint:disable-next-line: object-literal-shorthand
+      lastName: lastName,
+      // tslint:disable-next-line: object-literal-shorthand
+      letLevel: letLevel
+    }));
+
+    this.router.navigate(['/instructor/cadet-portfolio']);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
