@@ -20,9 +20,9 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'password-reset', component: ResetPasswordComponent}
   ]}
-]
+];
 
-//ngrx
+// ngrx
 import * as fromAuth from './store/auth.reducer';
 import * as fromAuthEffects from './store/auth.effects';
 import { EffectsModule } from '@ngrx/effects';

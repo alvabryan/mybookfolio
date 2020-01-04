@@ -90,15 +90,8 @@ export class AuthEffects {
         ofType(AuthActions.loginStart),
         switchMap((action) => {
             return from(this.afAuth.auth.signInWithEmailAndPassword(action.email, action.password)).pipe(mergeMap((data: any) => {
-                return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(mergeMap((userDataType: any) => {
-                    return this.db.doc(`battalions/${userDataType.data.battalionCode}`).valueChanges().pipe(tap((userLetData: any) => {
-                        const instructUid = data.user.uid;
-                        const instructLet = userLetData.instructors[instructUid].letLevelAssigned;
-                    }), map((userLetData: any) => {
-                        const instructUid = data.user.uid;
-                        const instructLet = userLetData.instructors[instructUid].letLevelAssigned;
-                        return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, instructLet );
-                    }));
+                return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(map((userDataType: any) => {
+                  return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel );
                 }));
             }), catchError(err => {console.log(err); return handleError(err.code, err.message); }));
         })
@@ -134,9 +127,9 @@ export class AuthEffects {
         ofType(AuthActions.authenticationSuccess),
         tap((data) => {
            if (data.userType === 'cadet') {
-            this.router.navigate(['/cadet']);
+              this.router.navigate(['/cadet']);
            } else if (data.userType === 'instructor') {
-               this.router.navigate(['/instructor']);
+              this.router.navigate(['/instructor']);
            }
         })
     ), {dispatch: false});
@@ -331,6 +324,16 @@ export class AuthEffects {
 
         })
     ));
+
+    // update user let assign
+    updateLetAssign = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.updateLetAssign),
+      tap((data: any) => {
+        const userData = JSON.parse(localStorage.getItem('userData'));
+        userData.letAssigned = data.letAssigned;
+        localStorage.setItem('userData', JSON.stringify(userData));
+      })
+    ), {dispatch: false});
 
 
 

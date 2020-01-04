@@ -56,7 +56,15 @@ const authReducer = createReducer(
         user: user
       };
     }),
-    on(AuthActions.passwordUpdateStatus, (state, data: any) => ({...state, passwordUpdateStatus: data.status }))
+    on(AuthActions.passwordUpdateStatus, (state, data: any) => ({...state, passwordUpdateStatus: data.status })),
+    on(AuthActions.updateLetAssign, (state, data: any) => {
+      const newUser = state.user;
+      newUser.letAssigned = data.letAssigned;
+      return {
+        ...state,
+        user: newUser
+      };
+    })
 );
 
 export function reducer(state: State | undefined, action: Action) {

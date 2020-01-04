@@ -1,13 +1,27 @@
-.filter-button{
-  float: right;
+
+.block-one {
+  border: 1px solid black;
+  width: 170px;
+  display: inline-block;
 }
 
-@media screen and (max-width: 990px) {
+.block-two {
+  border: 1px solid black;
+  width: 235px;
+  display: inline-block;
+}
+
+/* @media screen and (max-width: 990px) {
   .filter-button{
       float: left;
   }
-}
+} */
 
 form label, form select {
   margin-right: 5px;
+}
+
+.block-element {
+  white-space: nowrap;
+  border: 1px solid black;
 }

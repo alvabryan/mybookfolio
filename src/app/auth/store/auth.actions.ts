@@ -51,3 +51,7 @@ export const updateUserInfo = createAction('[User Settings] profile name', props
 // password update
 export const passwordUpdate = createAction('[User Settings] update password', props<{oldPassword: string, newPassword: string}>());
 export const passwordUpdateStatus = createAction('[User Settings] update status', props<{status: string}>());
+
+
+// update let assign
+export const updateLetAssign = createAction('[User update] let assign', props<{letAssigned: Array<any>}>());

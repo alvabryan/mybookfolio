@@ -8,27 +8,37 @@ export class FilterServiceService {
   constructor() { }
 
 
-  filter(letLevel,period,battalionData) {
-    let filterRoster: Array<any> = [];
+  filterByLetAssign() {
 
-    battalionData.forEach((data)=>{
-      if(letLevel == 'all' && period == 'all') {
+  }
+
+
+  filter(letLevel, period, battalionData) {
+    const filterRoster: Array<any> = [];
+
+    battalionData.forEach((data) => {
+      // tslint:disable-next-line: triple-equals
+      if (letLevel == 'all' && period == 'all') {
         filterRoster.push(data);
-      } else if (letLevel != 'all' && period == 'all') {
-        if( data.letLevel == letLevel) {
+      // tslint:disable-next-line: triple-equals
+      } else if (letLevel !== 'all' && period == 'all') {
+        // tslint:disable-next-line: triple-equals
+        if ( data.letLevel == letLevel) {
           filterRoster.push(data);
         }
-      } else if (letLevel == 'all' && period != 'all') {
-        if( data.period == period) {
+      // tslint:disable-next-line: triple-equals
+      } else if (letLevel == 'all' && period !== 'all') {
+        // tslint:disable-next-line: triple-equals
+        if ( data.period == period) {
           filterRoster.push(data);
         }
-      } else if (letLevel != 'all' && period != 'all' ) {
-        if( data.period == period && data.letLevel == letLevel) {
+      } else if (letLevel !== 'all' && period !== 'all' ) {
+        // tslint:disable-next-line: triple-equals
+        if ( data.period == period && data.letLevel == letLevel) {
           filterRoster.push(data);
         }
       }
-    })
-
+    });
     return filterRoster;
   }
 }

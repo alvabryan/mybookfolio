@@ -5,7 +5,8 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
 import * as PortfolioActions from '../portfolio/store/portfolio.actions';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { InstructorService } from '../instructor.service';
@@ -24,14 +25,14 @@ export class CadetsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   filterRoster: Array<any>;
+  battalionRosterFiltered: Array<any>;
   battalionRoster: Array<any>;
+  battalionFilterStatus = 'My Cadets';
 
   constructor(
     private db: AngularFirestore,
     private router: Router,
-    private instructorService: InstructorService,
     private filterService: FilterServiceService,
-    private cadetPortfolioService: CadetPortfolioService,
     private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
@@ -42,14 +43,30 @@ export class CadetsComponent implements OnInit, OnDestroy {
     });
 
     this.subscription.add(
-      this.store.select('instructor').subscribe((data: any) => {
-        if (data.cadetData.cadetProgress) {
-          const values = Object.values(data.cadetData.cadetProgress);
-          this.filterRoster = values;
-          this.battalionRoster = values;
-        }
+      combineLatest(
+        this.store.select('auth'),
+        this.store.select('instructor')
+      ).subscribe((data: any) => {
+        this.setUserData(data[0].user.letAssigned, data[1].cadetData.cadetProgress);
       })
     );
+  }
+
+  setUserData(letAssigned: Array<any>, cadetRoster: any ) {
+    const dataToFilterKeys = Object.keys(cadetRoster);
+    const dataToFilter = Object.values(cadetRoster);
+    const filteredData: Array<any> = [];
+    dataToFilter.forEach((data: any, index) => {
+      if ( letAssigned.includes(data.letLevel)) {
+        const cadetData = data;
+        cadetData.uid = dataToFilterKeys[index];
+        filteredData.push(cadetData);
+      }
+    });
+
+    this.battalionRosterFiltered = filteredData;
+    this.filterRoster = filteredData;
+    this.battalionRoster = dataToFilter;
   }
 
   toCadetPortfolio(uid: string) {
@@ -59,10 +76,13 @@ export class CadetsComponent implements OnInit, OnDestroy {
   }
 
   onChangeSearch(event) {
-    this.store.select('instructor').subscribe(data => {
-      const letAssigned = data.battalionUsers.linkedInstructors.blx6oHJLrSg2tpUTlvmZfCllBzk2.letLevelAssigned;
-      console.log(letAssigned);
-    });
+    if (event.target.value === 'All Cadets') {
+      this.filterRoster = this.battalionRoster;
+      this.battalionFilterStatus = 'All Cadets';
+    } else {
+      this.battalionFilterStatus = 'My Cadets';
+      this.filterRoster = this.battalionRosterFiltered;
+    }
   }
 
   onFilter() {
@@ -70,7 +90,9 @@ export class CadetsComponent implements OnInit, OnDestroy {
     const letLevel = this.filterForm.value.letLevel;
     const period = this.filterForm.value.period;
 
-    this.filterRoster = this.filterService.filter(letLevel, period, this.battalionRoster);
+    const dataToFilter = this.battalionFilterStatus === 'My Cadets' ? this.battalionRosterFiltered : this.battalionRoster;
+
+    this.filterRoster = this.filterService.filter(letLevel, period, dataToFilter);
 
   }
 

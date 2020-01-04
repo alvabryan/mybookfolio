@@ -44,7 +44,12 @@ export class BattalionUsersComponent implements OnInit {
   }
 
   formMethod(uid, v1, v2, v3, v4) {
-    const newLetLevelAssign = {let1: v1.checked, let2: v2.checked, let3: v3.checked, let4: v4.checked};
+    const newLetLevelAssign = [];
+    if ( v1.checked ) { newLetLevelAssign.push(1); }
+    if ( v2.checked ) { newLetLevelAssign.push(2); }
+    if ( v3.checked ) { newLetLevelAssign.push(3); }
+    if ( v4.checked ) { newLetLevelAssign.push(4); }
+
     this.store.dispatch(battalionUsersActions.updateInstructorLetAssign({instructorUid: uid, letAssigned: newLetLevelAssign}));
   }
 
