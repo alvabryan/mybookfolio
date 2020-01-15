@@ -53,20 +53,19 @@ export class CadetsComponent implements OnInit, OnDestroy {
   }
 
   setUserData(letAssigned: Array<any>, cadetRoster: any ) {
-    const dataToFilterKeys = Object.keys(cadetRoster);
-    const dataToFilter = Object.values(cadetRoster);
+
+
     const filteredData: Array<any> = [];
-    dataToFilter.forEach((data: any, index) => {
+
+    cadetRoster.forEach((data: any, index) => {
       if ( letAssigned.includes(data.letLevel)) {
         const cadetData = data;
-        cadetData.uid = dataToFilterKeys[index];
         filteredData.push(cadetData);
       }
     });
 
-    this.battalionRosterFiltered = filteredData;
-    this.filterRoster = filteredData;
-    this.battalionRoster = dataToFilter;
+    this.battalionRosterFiltered = this.filterRoster = filteredData;
+    this.battalionRoster = cadetRoster;
   }
 
   toCadetPortfolio(uid: string) {
