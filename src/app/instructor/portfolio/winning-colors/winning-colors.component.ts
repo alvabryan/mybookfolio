@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 // ngrx
@@ -6,12 +6,15 @@ import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-winning-colors',
   templateUrl: './winning-colors.component.html',
   styleUrls: ['./winning-colors.component.css']
 })
-export class WinningColorsComponent implements OnInit {
+export class WinningColorsComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   winningColorsForm: FormGroup;
 
@@ -51,15 +54,18 @@ export class WinningColorsComponent implements OnInit {
       })
     });
 
-    this.store.select('instructor').subscribe(data => {
-      if (data.portfolio.viewData) {
-        const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-        if (data.portfolio.viewData[letLevel].content) {
-          const cadetData = data.portfolio.viewData[letLevel].content;
-          this.setCadetData(cadetData);
+    this.subscription.add(
+      this.store.select('instructor').subscribe(data => {
+        if (data.portfolio.viewData) {
+          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
+          if (data.portfolio.viewData[letLevel].content) {
+            const cadetData = data.portfolio.viewData[letLevel].content;
+            this.setCadetData(cadetData);
+          }
         }
-      }
-    });
+      })
+    );
+
   }
 
   setCadetData(cadetData: any) {
@@ -93,6 +99,10 @@ export class WinningColorsComponent implements OnInit {
         D5: cadetData.secD.five
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

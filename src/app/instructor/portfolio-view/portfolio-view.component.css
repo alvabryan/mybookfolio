@@ -1,4 +1,13 @@
-.filter-button{
+.block-one, .filter-button{
+  display: inline-block;
+}
+
+.block-one{
+  margin-right: 10px;
+}
+
+
+/* .filter-button{
     float: right;
 }
 
@@ -6,4 +15,4 @@
     .filter-button{
         float: left;
     }
-}
+} */

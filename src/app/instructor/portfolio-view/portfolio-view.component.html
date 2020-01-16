@@ -1,9 +1,15 @@
 <div class="container-fluid" style="padding: 30px;">
     <div class="row">
-        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="col-12 col-4 col-md-4 border">
             <h3>{{ pageTitle }}</h3>
         </div>
-        <div class="col col-6 col-md-6">
+        <div class="col-12 col-8 col-md-8 border">
+            <div class="block-one">
+              <select class="form-control" style="width: 150px;" (change)="onChangeSearch($event)">
+                <option value="My Cadets">My Cadets</option>
+                <option value="All Cadets">All Cadets</option>
+              </select>
+            </div>
             <div class="filter-button">
                 <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="form-inline">
                     <label for="let">Let</label>
@@ -61,7 +67,7 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr *ngFor="let data of filterData; let i = index">
+                    <tr *ngFor="let data of filterRoster; let i = index">
                         <td>{{ i + 1 }}</td>
                         <td>{{ data.lastName }}</td>
                         <td>{{ data.firstName }}</td>

@@ -56,7 +56,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
             if (data.cadetData.cadetProgress) {
               const progressData = data.cadetData.cadetProgress;
               const lookUpLetLevel = cadetData.letLevel;
-              const cadetProgress = progressData[cadetData.uid];
+              const cadetProgress: any = progressData[cadetData.uid];
               this.cadetProgressData = this.getProgress(lookUpLetLevel, cadetProgress.progress);
             }
 

@@ -72,7 +72,6 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   getCadetProgress(filterLet, searchCadetProgress) {
     const cadetProgress = this.progressService.getProgress(filterLet, searchCadetProgress);
     this.progress = cadetProgress;
-    console.log(cadetProgress);
   }
 
   setLetLevel(letLevel: number) {

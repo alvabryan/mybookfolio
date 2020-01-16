@@ -47,18 +47,19 @@ export class CadetsComponent implements OnInit, OnDestroy {
         this.store.select('auth'),
         this.store.select('instructor')
       ).subscribe((data: any) => {
-        this.setUserData(data[0].user.letAssigned, data[1].cadetData.cadetProgress);
+        const cadetProgress = Object.values(data[1].cadetData.cadetProgress);
+        this.setUserData(data[0].user.letAssigned, cadetProgress);
       })
     );
   }
 
-  setUserData(letAssigned: Array<any>, cadetRoster: any ) {
+  setUserData(letAssigned: Array<any>, cadetRoster: any) {
 
 
     const filteredData: Array<any> = [];
 
-    cadetRoster.forEach((data: any, index) => {
-      if ( letAssigned.includes(data.letLevel)) {
+    cadetRoster.forEach((data: any, ) => {
+      if (letAssigned.includes(data.letLevel)) {
         const cadetData = data;
         filteredData.push(cadetData);
       }
@@ -70,8 +71,7 @@ export class CadetsComponent implements OnInit, OnDestroy {
 
   toCadetPortfolio(uid: string) {
     const cadetUid = uid.replace(/\s/g, '');
-    console.log(uid);
-    this.router.navigate(['/instructor/cadet-portfolio'], {queryParams: {uid: cadetUid}});
+    this.router.navigate(['/instructor/cadet-portfolio'], { queryParams: { uid: cadetUid } });
   }
 
   onChangeSearch(event) {
@@ -82,6 +82,8 @@ export class CadetsComponent implements OnInit, OnDestroy {
       this.battalionFilterStatus = 'My Cadets';
       this.filterRoster = this.battalionRosterFiltered;
     }
+
+    this.filterForm.setValue({ letLevel: 'all', period: 'all' });
   }
 
   onFilter() {
@@ -95,7 +97,7 @@ export class CadetsComponent implements OnInit, OnDestroy {
 
   }
 
-  setSearchData(uid: string, firstname: string, lastName: string, letLevel: number ) {
+  setSearchData(uid: string, firstname: string, lastName: string, letLevel: number) {
 
     this.store.dispatch(PortfolioActions.searchCadet({
       // tslint:disable-next-line: object-literal-shorthand

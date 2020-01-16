@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 import { InstructorService } from '../instructor.service';
 import { Subscription } from 'rxjs';
 import { PortfolioViewService } from './portfolio-view.service';
@@ -11,7 +12,6 @@ import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
 // ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
-import * as InstructorActions from '../store/instructor.actions';
 import * as PortfolioActions from '../portfolio/store/portfolio.actions';
 
 @Component({
@@ -29,8 +29,12 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
 
   filterForm: FormGroup;
 
-  filterData: Array<any>;
-  cadetsData: Array<any>;
+  filterRoster: Array<any>;
+  battalionRosterFiltered: Array<any>;
+  battalionRoster: Array<any>;
+  battalionFilterStatus = 'My Cadets';
+
+
 
   constructor(
     private route: ActivatedRoute,
@@ -59,16 +63,46 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.store.select('instructor').subscribe( (data: any) => {
-        if (data.cadetData.cadetProgress) {
-          this.cadetsData = this.filterData = data.cadetData.cadetProgress;
-        }
+      combineLatest(
+        this.store.select('auth'),
+        this.store.select('instructor')
+      ).subscribe((data: any) => {
+        const cadetProgress = Object.values(data[1].cadetData.cadetProgress);
+        this.setCadetRoster(data[0].user.letAssigned, cadetProgress);
       })
     );
   }
 
+  onChangeSearch(event) {
+    if (event.target.value === 'All Cadets') {
+      this.filterRoster = this.battalionRoster;
+      this.battalionFilterStatus = 'All Cadets';
+    } else {
+      this.battalionFilterStatus = 'My Cadets';
+      this.filterRoster = this.battalionRosterFiltered;
+    }
+
+    this.filterForm.setValue({ letLevel: 'all', period: 'all' });
+  }
+
+  setCadetRoster(letAssigned: Array<any>, cadetRoster: any) {
+
+
+    const filteredData: Array<any> = [];
+
+    cadetRoster.forEach((data: any, ) => {
+      if (letAssigned.includes(data.letLevel)) {
+        const cadetData = data;
+        filteredData.push(cadetData);
+      }
+    });
+
+    this.battalionRosterFiltered = this.filterRoster = filteredData;
+    this.battalionRoster = cadetRoster;
+  }
+
   setCadetSearchData(searchCadetDataIndex: number) {
-    const searchCadet = this.cadetsData[searchCadetDataIndex];
+    const searchCadet = this.filterRoster[searchCadetDataIndex];
     this.store.dispatch(PortfolioActions.searchCadet({
       uid: searchCadet.uid,
       firstName: searchCadet.firstName,
@@ -81,11 +115,13 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     const letLevel = this.filterForm.value.letLevel;
     const period = this.filterForm.value.period;
 
-    this.filterData = this.filterService.filter(letLevel, period, this.cadetsData);
+    const dataToFilter = this.battalionFilterStatus === 'My Cadets' ? this.battalionRosterFiltered : this.battalionRoster;
+
+    this.filterRoster = this.filterService.filter(letLevel, period, dataToFilter);
   }
 
   progress(i: number) {
-    return this.portfolioViewService.getProgress(i, this.pageTitle, this.cadetsData);
+    return this.portfolioViewService.getProgress(i, this.pageTitle, this.filterRoster);
   }
 
   ngOnDestroy() {

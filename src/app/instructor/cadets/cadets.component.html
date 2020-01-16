@@ -5,91 +5,86 @@
     </div>
     <div class="col-12 col-sm-8 col-md-8">
 
-        <div class="block-element float-right" style="width: 420px; height: 100%;">
-          <div class="block-one">
-            <select class="form-control" style="width: 150px;" (change)="onChangeSearch($event)">
-              <option value="My Cadets">My Cadets</option>
-              <option value="All Cadets">All Cadets</option>
+      <div class="block-element float-right" style="width: 420px; height: 100%;">
+        <div class="block-one">
+          <select class="form-control" style="width: 150px;" (change)="onChangeSearch($event)">
+            <option value="My Cadets">My Cadets</option>
+            <option value="All Cadets">All Cadets</option>
+          </select>
+        </div>
+        <div class="block-two">
+          <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="form-inline filter-button">
+            <label for="let">Let</label>
+            <select name="let" id="let" formControlName="letLevel" class="form-control">
+              <option value="all">All</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
             </select>
-          </div>
-          <div class="block-two">
-            <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="form-inline filter-button">
-              <label for="let">Let</label>
-              <select name="let" id="let" formControlName="letLevel" class="form-control">
-                <option value="all">All</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <label for="period">Period</label>
-              <select name="period" id="period" formControlName="period" class="form-control">
-                <option value="all">All</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-              </select>
-              <button type="submit" class="btn btn-success">Filter</button>
-            </form>
-          </div>
+            <label for="period">Period</label>
+            <select name="period" id="period" formControlName="period" class="form-control">
+              <option value="all">All</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <button type="submit" class="btn btn-success">Filter</button>
+          </form>
         </div>
       </div>
-
-
-
-
-
     </div>
   </div>
-  <div class="container-fluid" style="padding: 0px 30px;">
+</div>
+<div class="container-fluid" style="padding: 0px 30px;">
 
-    <div class="table-contain mt-3">
-      <div class="table-responsive">
-        <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Last Name</th>
-              <th>First Name</th>
-              <th>Let</th>
-              <th>Period</th>
-              <th>View</th>
-            </tr>
-          </thead>
-          <tfoot>
-            <tr>
-              <th>#</th>
-              <th>Last Name</th>
-              <th>First Name</th>
-              <th>Let</th>
-              <th>Period</th>
-              <th>View</th>
-            </tr>
-          </tfoot>
-          <tbody>
-            <tr *ngFor="let cadet of filterRoster; let i = index">
-              <td>{{ i + 1 }}</td>
-              <td>{{ cadet.lastName }}</td>
-              <td>{{ cadet.firstName }}</td>
-              <td>{{ cadet.letLevel }}</td>
-              <td>{{ cadet.period }}</td>
-              <td><button (click)="setSearchData(cadet.uid, cadet.firstName, cadet.lastName, cadet.letLevel)"
-                  class="btn btn-primary">View</button></td>
-            </tr>
+  <div class="table-contain mt-3">
+    <div class="table-responsive">
+      <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Let</th>
+            <th>Period</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>#</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Let</th>
+            <th>Period</th>
+            <th>View</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr *ngFor="let cadet of filterRoster; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ cadet.lastName }}</td>
+            <td>{{ cadet.firstName }}</td>
+            <td>{{ cadet.letLevel }}</td>
+            <td>{{ cadet.period }}</td>
+            <td><button (click)="setSearchData(cadet.uid, cadet.firstName, cadet.lastName, cadet.letLevel)"
+                class="btn btn-primary">View</button></td>
+          </tr>
 
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
-
-
   </div>
+
+
+</div>

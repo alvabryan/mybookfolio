@@ -13,7 +13,7 @@
               <option [disabled]="!cadetProgressData.successProfiler ? true : null" value="Success Profiler">Success Profiler & Personal Growth Plan</option>
               <option [disabled]="!cadetProgressData.learningStyle ? true : null" value="Learning Style Inventory">Learning Style Inventory</option>
               <option [disabled]="!cadetProgressData.personalAd ? true : null" value="Personal Ad">Personal Ad</option>
-              <option [disabled]="!cadetProgressData.humanGraph ? true : null" value="Human Graph">Human Graph Activity</option>
+              <option [disabled]="!cadetProgressData.humanGraphActivity ? true : null" value="Human Graph">Human Graph Activity</option>
               <option [disabled]="!cadetProgressData.resume ? true : null" value="Resume">Resume</option>
               <option [disabled]="!cadetProgressData.financialPlanning ? true : null" value="Financial Planning">Financial Planning</option>
               <option [disabled]="!cadetProgressData.courseWork ? true : null" value="Course Work">Course Work</option>
@@ -29,7 +29,7 @@
       </div>
     </div>
 
-    <div class="container-fluid" *ngIf="cadetData.firstName && cadetData.lastName; else loading">
+    <div class="container-fluid" *ngIf="cadetData.firstName && cadetData.lastName">
       <div class="row p-2">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6">
           <h3>{{ cadetData.firstName + ' ' + cadetData.lastName }}</h3>
@@ -38,22 +38,22 @@
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6">
           <div class="float-lg-right float-md-right">
-            <button 
+            <button
             class="btn btn-sm btn-outline-primary ml-1 active"
             (click)="setLetLevel(1)"
             [disabled]="!cadetViewData.let1 ? true : null"
             [ngClass]="{active: cadetData.letLevel == 1}">Let 1</button>
-            <button 
+            <button
             class="btn btn-sm btn-outline-primary btn-active ml-1"
             (click)="setLetLevel(2)"
             [disabled]="!cadetViewData.let2 ? true : null"
             [ngClass]="{active: cadetData.letLevel == 2}">Let 2</button>
-            <button 
+            <button
             class="btn btn-sm btn-outline-primary ml-1"
             (click)="setLetLevel(3)"
             [disabled]="!cadetViewData.let3 ? true : null"
             [ngClass]="{active: cadetData.letLevel == 3}">Let 3</button>
-            <button 
+            <button
             class="btn btn-sm btn-outline-primary ml-1"
             (click)="setLetLevel(4)"
             [disabled]="!cadetViewData.let4 ? true : null"
@@ -68,4 +68,3 @@
     </div>
 
   </div>
-  
