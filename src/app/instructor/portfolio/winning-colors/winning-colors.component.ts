@@ -58,10 +58,10 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
       this.store.select('instructor').subscribe(data => {
         if (data.portfolio.viewData) {
           const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          if (data.portfolio.viewData[letLevel].content) {
-            const cadetData = data.portfolio.viewData[letLevel].content;
-            this.setCadetData(cadetData);
-          }
+          const dataToSearch = data.portfolio.viewData[letLevel].content;
+          const cadetData = data.portfolio.viewData[letLevel].content;
+          this.setCadetData(cadetData);
+
         }
       })
     );
@@ -103,6 +103,8 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+
+    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

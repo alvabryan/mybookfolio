@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 
@@ -13,7 +13,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './personal-ad.component.html',
   styleUrls: ['./personal-ad.component.css']
 })
-export class PersonalAdComponent implements OnInit {
+export class PersonalAdComponent implements OnInit, OnDestroy {
 
   cadetData = 'test';
   subscription: Subscription = new Subscription();
@@ -36,6 +36,12 @@ export class PersonalAdComponent implements OnInit {
         }
       })
     );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+
+    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

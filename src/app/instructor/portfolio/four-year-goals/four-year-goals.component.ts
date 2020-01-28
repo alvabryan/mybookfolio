@@ -78,6 +78,8 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+
+    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

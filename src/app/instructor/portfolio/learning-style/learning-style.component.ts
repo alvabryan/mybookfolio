@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./learning-style.component.css']
 })
 export class LearningStyleComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   learningStyle: FormGroup;
 
@@ -99,15 +102,17 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
       })
     });
 
-    this.store.select('instructor').subscribe(data => {
-      if (data.portfolio.viewData && data.portfolio.pageName === 'Learning Style Inventory') {
-        const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-        if (data.portfolio.viewData[letLevel].content.multipleChoiceData || data.portfolio.viewData[letLevel].content.fillInSection) {
-          const cadetData = data.portfolio.viewData[letLevel];
-          this.setCadetData(cadetData);
+    this.subscription.add(
+      this.store.select('instructor').subscribe(data => {
+        if (data.portfolio.viewData && data.portfolio.pageName === 'Learning Style Inventory') {
+          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
+          if (data.portfolio.viewData[letLevel].content.multipleChoiceData || data.portfolio.viewData[letLevel].content.fillInSection) {
+            const cadetData = data.portfolio.viewData[letLevel];
+            this.setCadetData(cadetData);
+          }
         }
-      }
-    });
+      })
+    );
   }
 
 
@@ -195,6 +200,8 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.learningStyle.reset();
+    this.subscription.unsubscribe();
+    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

@@ -25,7 +25,6 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
   pageName: any;
 
   ngOnInit() {
-
     this.subscription.add(
       this.activatedRoute.params.pipe(map(data => {
         switch (data.name) {
@@ -79,6 +78,8 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+
+    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

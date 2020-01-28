@@ -5,7 +5,7 @@ export const searchCadet = createAction('[Portfolio searchCadet] search data', p
     firstName: string,
     lastName: string,
     letLevel: number
-}>())
+}>());
 
 
 export const searchCadetLoad = createAction('[Portfolio searchCadetLoad] load data when refresh');
@@ -17,3 +17,5 @@ export const searchCadetData = createAction('[Portfolio searchCadetData] set dat
 export const updateCadetSearchLetLevel = createAction('[Portfolio updateLetLevel] update let', props<{letLevel: number}>());
 
 export const clearUserPortfolio = createAction('[Portfolio clearPortfolio] clear portfolio');
+
+export const clearCadetPortfolioViewData = createAction('[Instructor Portfolio] clear cadet view data');

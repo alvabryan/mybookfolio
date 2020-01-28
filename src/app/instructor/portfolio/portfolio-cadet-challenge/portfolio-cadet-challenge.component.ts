@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
