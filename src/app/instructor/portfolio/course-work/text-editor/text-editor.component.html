@@ -1,0 +1,8 @@
+<h3 class="w-100 text-left ml-2">Write Your Essay Here:</h3>
+<form [formGroup]="courseWorkEditor" (ngSubmit)="onSubmit()">
+  <div class="wrapper" style="height: 500px; margin: 10px 10px 50px 10px; padding: 0px 0px 50px 0px;">
+      <quill-editor formControlName="editor" [style]="editorStyle" theme="snow" [modules]="editorOptions"></quill-editor>
+      <input class="btn btn-primary btn-sm btn-submit btn-block mt-2 p-2" name="goalsOne" type="submit" value="Submit" >
+  </div>
+</form>
+

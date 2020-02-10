@@ -42,6 +42,8 @@ import { EffectsModule } from '@ngrx/effects';
 import * as InstructorEffects from './store/instructor.effects';
 import * as PortfolioEffects from './portfolio/store/portolio.effects';
 import * as BattalionUsersEffect from './battalion-users/store/battalion-users.effects';
+import { PostSecondaryGoalsComponent } from './portfolio/four-year-goals/post-secondary-goals/post-secondary-goals.component';
+import { TextEditorComponent } from './portfolio/course-work/text-editor/text-editor.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import * as BattalionUsersEffect from './battalion-users/store/battalion-users.e
     PortfolioCadetChallengeComponent,
     CadetPortfolioComponent,
     CadetPortfolioViewComponent,
-    CadetInformationComponent
+    CadetInformationComponent,
+    PostSecondaryGoalsComponent,
+    TextEditorComponent
   ],
   imports: [
     CommonModule,

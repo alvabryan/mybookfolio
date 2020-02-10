@@ -15,7 +15,7 @@ export class FinancialPlanningComponent implements OnInit {
   constructor(private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Financial Planning'}));
+
   }
 
 }

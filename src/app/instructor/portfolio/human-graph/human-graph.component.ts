@@ -20,7 +20,6 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({ pageName: 'Human Graph' }));
 
     this.humanGraphForm = new FormGroup({
       questionOne: new FormControl(''),
@@ -52,8 +51,6 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-
-    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

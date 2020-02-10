@@ -22,7 +22,6 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromInstructor.State>, private router: Router) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Learning Style Inventory'}));
 
     this.learningStyle = new FormGroup({
       environmentalP1: new FormGroup({
@@ -201,7 +200,6 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.learningStyle.reset();
     this.subscription.unsubscribe();
-    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

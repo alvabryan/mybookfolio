@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { CadetPortfolioService } from '../cadet-portfolio.service';
-import { Subscription, EMPTY, of, from } from 'rxjs';
-import { take, mergeMap, switchMap } from 'rxjs/operators';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 // ngrx
@@ -51,7 +49,6 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
     private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Four Year Goals'}));
 
     // creates a new form group
     this.editorForm = new FormGroup({
@@ -78,8 +75,6 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-
-    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

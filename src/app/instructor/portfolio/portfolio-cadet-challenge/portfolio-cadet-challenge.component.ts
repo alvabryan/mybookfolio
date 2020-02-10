@@ -14,7 +14,7 @@ export class PortfolioCadetChallengeComponent implements OnInit {
   constructor(private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Cadet Challenge'}));
+
   }
 
 }

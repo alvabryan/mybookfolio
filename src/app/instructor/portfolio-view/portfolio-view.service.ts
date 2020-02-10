@@ -46,7 +46,7 @@ export class PortfolioViewService {
       case 'Four Year Goals':
         return this.checkDataForProgress(index, 'yearlyGoals', data, letLevel);
         break;
-      case 'Winning colors':
+      case 'Winning Colors':
           return this.checkDataForProgress(index, 'winningColors', data, letLevel);
           break;
       case 'Success Profiler and Personal Growth Plan':

@@ -65,7 +65,8 @@ export class PortfolioComponent implements OnInit, OnDestroy {
               if (data.portfolio.viewData[letLevel].dateSubmitted) {
                   this.lastUpdated = data.portfolio.viewData[letLevel].dateSubmitted;
               } else {
-                this.lastUpdated = data.portfolio.viewData[letLevel].content[((data.portfolio.viewData[letLevel].content).length - 1)].dateSubmitted;
+                // this.lastUpdated = data.portfolio.viewData[letLevel].content[((data.portfolio.viewData[letLevel].content).length - 1)].dateSubmitted;
+                this.lastUpdated = null;
               }
             } else {
               this.lastUpdated = null;
@@ -93,55 +94,58 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   changePortfolioView() {
     const pageName = this.portfolioViewSelect.value.pageViewName;
+    let newTaskPath = [];
     switch (pageName) {
       case 'Four Year Goals':
-          this.router.navigate(['instructor/portfolio/four-year-goals']);
+          newTaskPath = ['instructor/portfolio/four-year-goals'];
           break;
       case 'Winning Colors':
-          this.router.navigate(['instructor/portfolio/winning-colors']);
+          newTaskPath = ['instructor/portfolio/winning-colors'];
           break;
-      case 'Success Profiler':
-          this.router.navigate(['instructor/portfolio/course-work/successProfiler']);
+      case 'Success Profiler and Personal Growth Plan':
+          newTaskPath = ['instructor/portfolio/course-work/successProfiler'];
           break;
       case 'Learning Style Inventory':
-          this.router.navigate(['instructor/portfolio/learning-style']);
+          newTaskPath = ['instructor/portfolio/learning-style'];
           break;
       case 'Personal Ad':
-          this.router.navigate(['instructor/portfolio/personal-ad']);
+          newTaskPath = ['instructor/portfolio/personal-ad'];
           break;
-      case 'Human Graph':
-          this.router.navigate(['instructor/portfolio/human-graph']);
+      case 'Human Graph Activity':
+          newTaskPath = ['instructor/portfolio/human-graph'];
           break;
       case 'Resume':
-          this.router.navigate(['instructor/portfolio/course-work/resume']);
+          newTaskPath = ['instructor/portfolio/course-work/resume'];
           break;
       case 'Financial Planning':
-          this.router.navigate(['instructor/portfolio/financial-planning']);
+          newTaskPath = ['instructor/portfolio/financial-planning'];
           break;
       case 'Course Work':
-          this.router.navigate(['instructor/portfolio/course-work/courseWork']);
+          newTaskPath = ['instructor/portfolio/course-work/courseWork'];
           break;
       case 'Essay':
-          this.router.navigate(['instructor/portfolio/course-work/essay']);
+          newTaskPath = ['instructor/portfolio/course-work/essay'];
           break;
       case 'Lesson Evidence':
-          this.router.navigate(['instructor/portfolio/course-work/lessonEvidence']);
+          newTaskPath = ['instructor/portfolio/course-work/lessonEvidence'];
           break;
       case 'Written Summary':
-          this.router.navigate(['instructor/portfolio/course-work/writtenSummary']);
+          newTaskPath = ['instructor/portfolio/course-work/writtenSummary'];
           break;
       case 'Achievements':
-          this.router.navigate(['instructor/portfolio/course-work/achievements']);
+          newTaskPath = ['instructor/portfolio/course-work/achievements'];
           break;
       case 'Cadet Challenge':
-          this.router.navigate(['instructor/portfolio/portfolio-cadet-challenge']);
+          newTaskPath = ['instructor/portfolio/portfolio-cadet-challenge'];
           break;
       case 'Service Learning':
-          this.router.navigate(['instructor/portfolio/course-work/serviceLearning']);
+          newTaskPath = ['instructor/portfolio/course-work/serviceLearning'];
           break;
       default:
         console.log('error');
     }
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName}));
+    this.router.navigate(newTaskPath);
   }
 
   ngOnDestroy() {

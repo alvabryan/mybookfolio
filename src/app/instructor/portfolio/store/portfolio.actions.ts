@@ -18,4 +18,6 @@ export const updateCadetSearchLetLevel = createAction('[Portfolio updateLetLevel
 
 export const clearUserPortfolio = createAction('[Portfolio clearPortfolio] clear portfolio');
 
-export const clearCadetPortfolioViewData = createAction('[Instructor Portfolio] clear cadet view data');
+export const deleteFile = createAction('[Instructor Portfolio] delete file from db', props<{filesData: any, fileIndex: number, pageName: string}>());
+
+export const onReload = createAction('[Instructor Portfolio] on reload set data');

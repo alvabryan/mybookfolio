@@ -21,7 +21,6 @@ export class PersonalAdComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Personal Ad'}));
 
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
@@ -40,8 +39,6 @@ export class PersonalAdComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-
-    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

@@ -21,7 +21,6 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromInstructor.State>, private router: Router) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: 'Winning Colors'}));
 
     this.winningColorsForm = new FormGroup({
       A: new FormGroup({
@@ -58,10 +57,10 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
       this.store.select('instructor').subscribe(data => {
         if (data.portfolio.viewData) {
           const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          const dataToSearch = data.portfolio.viewData[letLevel].content;
-          const cadetData = data.portfolio.viewData[letLevel].content;
-          this.setCadetData(cadetData);
-
+          const cadetData: any = data.portfolio.viewData[letLevel].content;
+          if (cadetData) {
+            this.setCadetData(cadetData);
+          }
         }
       })
     );
@@ -69,6 +68,9 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
   }
 
   setCadetData(cadetData: any) {
+    if (!cadetData.secA.one) {
+      return ;
+    }
     this.winningColorsForm.setValue({
       A: {
         A1: cadetData.secA.one,
@@ -103,8 +105,6 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-
-    this.store.dispatch(PortfolioActions.clearCadetPortfolioViewData());
   }
 
 }

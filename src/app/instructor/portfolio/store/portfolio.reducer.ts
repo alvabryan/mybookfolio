@@ -28,7 +28,7 @@ const portfolioReducer = createReducer(
       letLevel: data.letLevel
     }
   })),
-  on(PortfolioActions.setPortfolioPageType, (state, data: any) => ({ ...state, pageName: data.pageName })),
+  on(PortfolioActions.setPortfolioPageType, (state, data: any) => ({ ...state, pageName: data.pageName, viewData: null})),
   on(PortfolioActions.searchCadetData, (state, data: any) => ({
     ...state, viewData: {
       let1: data.let1,
@@ -53,7 +53,6 @@ const portfolioReducer = createReducer(
       pageName: null
     };
   }),
-  on(PortfolioActions.clearCadetPortfolioViewData, (state) => ({ ...state, viewData: null })),
 );
 
 export function reducer(state: State | undefined, action: Action) {

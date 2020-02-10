@@ -109,6 +109,8 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
       lastName: searchCadet.lastName,
       letLevel: searchCadet.letLevel
     }));
+
+    this.setTaskName();
   }
 
   onFilter() {
@@ -122,6 +124,10 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
 
   progress(i: number) {
     return this.portfolioViewService.getProgress(i, this.pageTitle, this.filterRoster);
+  }
+
+  setTaskName(taskName = this.pageTitle) {
+    this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: taskName}));
   }
 
   ngOnDestroy() {

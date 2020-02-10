@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, forkJoin, of, EMPTY } from 'rxjs';
 
-//ngrx
+// ngrx
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from './store/index';
 import * as InstructorActions from './store/instructor.actions';
@@ -27,22 +27,23 @@ export class InstructorComponent implements OnInit, OnDestroy {
     this.cadetSubscription.add(
 
       this.store.select(fromRoot.authUserSelector).subscribe(data => {
-        if(data){
+        if (data) {
           this.user = data;
           this.store.dispatch(InstructorActions.getCadetData());
           this.store.dispatch(InstructorActions.getCadetProgress());
           this.store.dispatch(PortfolioActions.searchCadetLoad());
+          this.store.dispatch(PortfolioActions.onReload());
         }
       })
-    )
+    );
 
     this.cadetSubscription.add(
       this.store.select(fromRoot.instructorSelector).subscribe((data: any) => {
-        if(data.cadetData.cadetRoster && data.cadetData.cadetProgress){
+        if (data.cadetData.cadetRoster && data.cadetData.cadetProgress) {
           this.userLoaded = true;
         }
       })
-    )
+    );
 
   }
 

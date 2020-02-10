@@ -10,6 +10,8 @@ import { EMPTY, of, from } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../../store/index';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { firestore } from 'firebase';
 
 @Injectable()
 export class PortfolioEffects {
@@ -33,7 +35,83 @@ export class PortfolioEffects {
         }
     ));
 
+    deleteFile = createEffect(() => this.actions$.pipe(
+      ofType(PortfolioActions.deleteFile),
+      withLatestFrom(this.store.select('instructor'), this.store.select('auth')),
+      tap((data: any) => {
+        const battalionCode = data[2].user.battalionCode;
+        const cadetUid = data[1].portfolio.cadetSearchData.uid;
+        const cadetLetLevel = 'let' + data[1].portfolio.cadetSearchData.letLevel;
+        const pageName = data[0].pageName;
+        const filesData = data[0].filesData;
+        const deleteFileIndex = data[0].fileIndex;
+        const imageUrlToDelete = filesData[deleteFileIndex].downloadUrl;
+        const progressDecrement = -50;
+        let dbPath = null;
 
+        const newFilesData = filesData.filter((obj, index) => {
+          if (index !== deleteFileIndex) {
+            return obj;
+          }
+        });
+
+        switch (pageName) {
+          case 'Success Profiler and Personal Growth Plan':
+            dbPath = 'successProfiler';
+            break;
+          case 'Resume':
+            dbPath = 'resume';
+            break;
+          case 'Course Work':
+            dbPath = 'courseWork';
+            break;
+          case 'Essay':
+            dbPath = 'essay';
+            break;
+          case 'Achievements':
+            dbPath = 'achievements';
+            break;
+          case 'Service Learning':
+            dbPath = 'serviceLearning';
+            break;
+          default:
+            dbPath = null;
+        }
+
+        if (dbPath) {
+          this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({[cadetLetLevel]: {content: newFilesData}}, {merge: true});
+          this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+            [cadetUid]: {
+              progress: {
+                [dbPath]: {
+                  [cadetLetLevel]: firestore.FieldValue.increment(-50)
+                }
+              }
+            }
+          }, {merge: true});
+          this.storage.storage.refFromURL(`${imageUrlToDelete}`).delete();
+        }
+      })
+    ), {dispatch: false});
+
+    setPageName = createEffect(() => this.actions$.pipe(
+      ofType(PortfolioActions.setPortfolioPageType),
+      tap((data) => {
+        if (data.pageName) {
+          localStorage.removeItem('taskName');
+          const taskNameData = JSON.stringify(data.pageName);
+          localStorage.setItem('taskName', taskNameData);
+        }
+      })
+    ), {dispatch: false});
+
+    onReload = createEffect(() => this.actions$.pipe(
+      ofType(PortfolioActions.onReload),
+      map(() => {
+        const localPageName = JSON.parse(localStorage.getItem('taskName'));
+        return PortfolioActions.setPortfolioPageType({pageName: localPageName});
+      })
+    ));
 
     getCadetPortfolioData = createEffect(() => this.actions$.pipe(
         ofType(PortfolioActions.setPortfolioPageType),
@@ -61,7 +139,7 @@ export class PortfolioEffects {
             }
 
 
-            if (data.pageName === 'Success Profiler') {
+            if (data.pageName === 'Success Profiler and Personal Growth Plan') {
                 // tslint:disable-next-line: no-shadowed-variable
                 return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
                     return PortfolioActions.searchCadetData(data);
@@ -97,7 +175,7 @@ export class PortfolioEffects {
                 return of(PortfolioActions.searchCadetData(null));
             }
 
-            if (data.pageName === 'Lesson Evidence') {
+            if (data.pageName === 'Let 1-4 Lesson Evidence') {
                 return of(PortfolioActions.searchCadetData(null));
             }
 
@@ -120,7 +198,7 @@ export class PortfolioEffects {
                 }));
             }
 
-            if (data.pageName === 'Human Graph') {
+            if (data.pageName === 'Human Graph Activity') {
               // tslint:disable-next-line: no-shadowed-variable
               return from(this.db.collection(`portfolio/${data.uid}/humanGraphActivity`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
                   return PortfolioActions.searchCadetData(data);
@@ -131,5 +209,5 @@ export class PortfolioEffects {
         })
     ));
 
-    constructor(private actions$: Actions, private store: Store<fromInstructor.State>, private db: AngularFirestore) {}
+    constructor(private actions$: Actions, private store: Store<fromInstructor.State>, private db: AngularFirestore, private storage: AngularFireStorage) {}
 }
