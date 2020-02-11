@@ -25,3 +25,10 @@ form label, form select {
   white-space: nowrap;
   border: 1px solid black;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: stretch;
+}

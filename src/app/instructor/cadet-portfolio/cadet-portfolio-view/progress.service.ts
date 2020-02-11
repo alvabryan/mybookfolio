@@ -52,13 +52,13 @@ export class ProgressService {
         const searchData = data[taskName][letLevel];
         switch (taskName) {
           case 'successProfiler':
-            progress[taskName] = searchData !== undefined ? 100 : 0;
+            progress[taskName] = searchData !== 0 || undefined ? 100 : 0;
             break;
           case 'resume':
             progress[taskName] = searchData > 100 ? 100 : searchData;
             break;
           default:
-            progress[taskName] = searchData === undefined ? 0 : searchData;
+            progress[taskName] = searchData === 0 || undefined ? 0 : searchData;
         }
       } else {
         progress[taskName] = 0;
