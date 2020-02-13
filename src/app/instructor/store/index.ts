@@ -1,6 +1,6 @@
 import * as fromRoot from '../../store/index';
 import * as InstructorReducer from './instructor.reducer';
-import * as PortfolioReducer from '../portfolio/store/portfolio.reducer';
+import * as PortfolioReducer from '../../portfolio/store/portfolio.reducer';
 import * as battalionUsersReducer from '../battalion-users/store/battalion-users.reducer';
 import * as fromAuth from '../../auth/store/auth.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';

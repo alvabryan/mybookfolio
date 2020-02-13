@@ -4,11 +4,10 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { tap, finalize, mergeMap } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { InstructorService } from '../instructor.service';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import * as fromInstructor from '../store/index';
+import * as fromInstructor from '../../instructor/store/index';
 import * as AuthActions from '../../auth/store/auth.actions';
 
 type NewType = boolean;

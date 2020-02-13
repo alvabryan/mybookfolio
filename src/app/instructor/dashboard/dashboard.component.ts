@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { InstructorService } from '../instructor.service';
 import { Store, select } from '@ngrx/store';
 
 import * as fromRoot from '../../store/index';
@@ -11,7 +10,7 @@ import * as fromRoot from '../../store/index';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private instructorService: InstructorService, private store: Store<fromRoot.State>) { }
+  constructor(private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
   }

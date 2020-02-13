@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 // ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
-import * as PortfolioActions from './store/portfolio.actions';
+import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 import { ProgressService } from '../cadet-portfolio/cadet-portfolio-view/progress.service';
 

@@ -5,7 +5,7 @@ import { Subscription, forkJoin, of, EMPTY } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from './store/index';
 import * as InstructorActions from './store/instructor.actions';
-import * as PortfolioActions from './portfolio/store/portfolio.actions';
+import * as PortfolioActions from '../portfolio/store/portfolio.actions';
 import { take, delay, tap, switchMap, mergeMap } from 'rxjs/operators';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 

@@ -2,17 +2,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
-import { InstructorService } from '../instructor.service';
 import { Subscription } from 'rxjs';
 import { PortfolioViewService } from './portfolio-view.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FilterServiceService } from '../shared-services/filter-service.service';
-import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
 
 // ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
-import * as PortfolioActions from '../portfolio/store/portfolio.actions';
+import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
 
 @Component({
   selector: 'app-portfolio-view',

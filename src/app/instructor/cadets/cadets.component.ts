@@ -3,15 +3,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
-import * as PortfolioActions from '../portfolio/store/portfolio.actions';
+import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription, combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { InstructorService } from '../instructor.service';
 import { FilterServiceService } from '../shared-services/filter-service.service';
-import { CadetPortfolioService } from '../portfolio/cadet-portfolio.service';
+
 
 @Component({
   selector: 'app-cadets',

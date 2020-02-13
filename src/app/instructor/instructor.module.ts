@@ -9,23 +9,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardsComponent } from './dashboard/cards/cards.component';
 import { CardItemComponent } from './dashboard/cards/card-item/card-item.component';
 import { CadetsComponent } from './cadets/cadets.component';
-import { AnalyticsComponent } from './analytics/analytics.component';
 import { CadetDataRequestComponent } from './cadet-data-request/cadet-data-request.component';
-import { CadetChallengeComponent } from './cadet-challenge/cadet-challenge.component';
 import { BattalionUsersComponent } from './battalion-users/battalion-users.component';
 import { SupportComponent } from './support/support.component';
-import { SettingsComponent } from './settings/settings.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
-import { FourYearGoalsComponent } from './portfolio/four-year-goals/four-year-goals.component';
-import { WinningColorsComponent } from './portfolio/winning-colors/winning-colors.component';
-import { LearningStyleComponent } from './portfolio/learning-style/learning-style.component';
-import { PersonalAdComponent } from './portfolio/personal-ad/personal-ad.component';
-import { HumanGraphComponent } from './portfolio/human-graph/human-graph.component';
-import { FinancialPlanningComponent } from './portfolio/financial-planning/financial-planning.component';
-import { CourseWorkComponent } from './portfolio/course-work/course-work.component';
-import { PortfolioCadetChallengeComponent } from './portfolio/portfolio-cadet-challenge/portfolio-cadet-challenge.component';
 import { QuillModule } from 'ngx-quill';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CadetPortfolioComponent } from './cadet-portfolio/cadet-portfolio.component';
@@ -40,10 +29,10 @@ import { StoreModule } from '@ngrx/store';
 import * as InstructorIndex from './store/index';
 import { EffectsModule } from '@ngrx/effects';
 import * as InstructorEffects from './store/instructor.effects';
-import * as PortfolioEffects from './portfolio/store/portolio.effects';
+import * as PortfolioEffects from '../portfolio/store/portolio.effects';
 import * as BattalionUsersEffect from './battalion-users/store/battalion-users.effects';
-import { PostSecondaryGoalsComponent } from './portfolio/four-year-goals/post-secondary-goals/post-secondary-goals.component';
-import { TextEditorComponent } from './portfolio/course-work/text-editor/text-editor.component';
+import { SettingInstructorComponent } from './setting-instructor/setting-instructor.component';
+import { PortfolioModule } from '../portfolio/portfolio.module';
 
 @NgModule({
   declarations: [
@@ -54,28 +43,16 @@ import { TextEditorComponent } from './portfolio/course-work/text-editor/text-ed
     CardsComponent,
     CardItemComponent,
     CadetsComponent,
-    AnalyticsComponent,
     CadetDataRequestComponent,
-    CadetChallengeComponent,
     BattalionUsersComponent,
     SupportComponent,
-    SettingsComponent,
     DocumentationComponent,
     PortfolioComponent,
     PortfolioViewComponent,
-    FourYearGoalsComponent,
-    WinningColorsComponent,
-    LearningStyleComponent,
-    PersonalAdComponent,
-    HumanGraphComponent,
-    FinancialPlanningComponent,
-    CourseWorkComponent,
-    PortfolioCadetChallengeComponent,
     CadetPortfolioComponent,
     CadetPortfolioViewComponent,
     CadetInformationComponent,
-    PostSecondaryGoalsComponent,
-    TextEditorComponent
+    SettingInstructorComponent
   ],
   imports: [
     CommonModule,
@@ -88,7 +65,8 @@ import { TextEditorComponent } from './portfolio/course-work/text-editor/text-ed
     AngularFireStorageModule,
     StoreModule.forFeature('instructor', InstructorIndex.reducers),
     EffectsModule.forFeature([InstructorEffects.InstructorEffects, PortfolioEffects.PortfolioEffects, BattalionUsersEffect.BattalionUsersEFfect]),
-    NgxDocViewerModule
+    NgxDocViewerModule,
+    PortfolioModule
   ],
   exports: [],
   providers: [],

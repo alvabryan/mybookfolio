@@ -6,7 +6,7 @@ import { ProgressService } from './progress.service';
 // ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/index';
-import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
+import * as PortfolioActions from '../../../portfolio/store/portfolio.actions';
 
 @Component({
   selector: 'app-cadet-portfolio-view',

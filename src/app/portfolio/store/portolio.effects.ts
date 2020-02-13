@@ -8,7 +8,7 @@ import { EMPTY, of, from } from 'rxjs';
 
 // ngrx
 import { Store } from '@ngrx/store';
-import * as fromInstructor from '../../store/index';
+import * as fromInstructor from '../../instructor/store/index';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { firestore } from 'firebase';
