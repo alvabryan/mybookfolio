@@ -10,12 +10,14 @@ export interface State {
   };
   viewData: { [key: string]: any };
   pageName: string;
+  uploading: boolean;
 }
 
 export const initialState: State = {
   cadetSearchData: null,
   viewData: null,
-  pageName: null
+  pageName: null,
+  uploading: false
 };
 
 const portfolioReducer = createReducer(
@@ -53,6 +55,8 @@ const portfolioReducer = createReducer(
       pageName: null
     };
   }),
+  on(PortfolioActions.uploadFile, (state) => ({...state, uploading: true})),
+  on(PortfolioActions.uploadingFile, (state) => ({...state, uploading: false}))
 );
 
 export function reducer(state: State | undefined, action: Action) {

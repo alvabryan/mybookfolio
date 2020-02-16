@@ -23,3 +23,5 @@ export const deleteFile = createAction('[Instructor Portfolio] delete file from 
 export const uploadFile = createAction('[Portfolio file] file upload', props<{fileName: string, file: any, description: string}>());
 
 export const onReload = createAction('[Instructor Portfolio] on reload set data');
+
+export const uploadingFile = createAction('[Portfolio uploading] file upload');

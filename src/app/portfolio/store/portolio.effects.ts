@@ -4,14 +4,15 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 // portfolio actions
 import * as PortfolioActions from './portfolio.actions';
 import { tap, switchMap, withLatestFrom, map } from 'rxjs/operators';
-import { EMPTY, of, from } from 'rxjs';
+import { EMPTY, of, from, forkJoin } from 'rxjs';
 
 // ngrx
 import { Store } from '@ngrx/store';
 import * as fromPortfolio from '../store/index';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { firestore } from 'firebase';
+
+import { firestore } from 'firebase/app';
 
 @Injectable()
 export class PortfolioEffects {
@@ -40,8 +41,8 @@ export class PortfolioEffects {
       withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
       tap((data: any) => {
         const battalionCode = data[2].user.battalionCode;
-        const cadetUid = data[1].portfolio.cadetSearchData.uid;
-        const cadetLetLevel = 'let' + data[1].portfolio.cadetSearchData.letLevel;
+        const cadetUid = data[1].cadetSearchData.uid;
+        const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
         const pageName = data[0].pageName;
         const filesData = data[0].filesData;
         const deleteFileIndex = data[0].fileIndex;
@@ -211,10 +212,40 @@ export class PortfolioEffects {
 
     uploadFile = createEffect(() => this.actions$.pipe(
       ofType(PortfolioActions.uploadFile),
-      tap((data: any) => {
-        console.log(data);
+      switchMap((data: any) => {
+
+        const pathFolder = 'successProfiler';
+        const uploadDate = Date.now();
+        const imageName = `${Date.now()}_${data.file.target.files[0].name}`;
+        const path = `${pathFolder}/${imageName}`;
+
+        const ref = this.storage.ref(path);
+
+        const image = this.storage.upload(path, data.file.target.files[0]);
+
+        return forkJoin(
+          from(image.snapshotChanges()),
+          from(image)
+        ).pipe(switchMap(() => {
+            return from(ref.getDownloadURL()).pipe(tap((url: any) => {
+              this.db.collection('portfolio/oCoeGDow4TUspZWRoBzfTQJ7otz1/successProfiler').doc(`oCoeGDow4TUspZWRoBzfTQJ7otz1`).update({
+                ['let3.content']: firestore.FieldValue.arrayUnion({
+                  attachDescription: data.description,
+                  attachName: data.fileName,
+                  dataSubmitted: uploadDate,
+                  downloadUrl: url,
+                  fileName: imageName,
+                  fileType: 'image'
+                })
+            });
+            }), map(() => {
+              return PortfolioActions.uploadingFile();
+            }));
+
+          }));
+
       })
-    ), {dispatch: false});
+    ));
 
     constructor(private actions$: Actions, private store: Store<fromPortfolio.State>, private db: AngularFirestore, private storage: AngularFireStorage) {}
 }

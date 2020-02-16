@@ -73,7 +73,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
           }
 
 
-          if (data) {
+          if (data.cadetSearchData) {
             const cadetData = data.cadetSearchData;
             const letLevel = 'let' + cadetData.letLevel;
 
