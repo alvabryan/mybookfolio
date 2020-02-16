@@ -1,12 +1,12 @@
 <!-- card view model -->
-<div class="modal fade" id="uploadModal">
-  <div class="modal-dialog modal-dialog-centered">
+<div [hidden]="isModalShow" class="modal fade" id="uploadModal">
+  <div [hidden]="isModalShow" class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">File Upload</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" *ngIf="!loading">&times;</button>
       </div>
 
       <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
@@ -33,7 +33,10 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Upload</button>
+          <button type="submit" class="btn btn-success" *ngIf="!loading else spinner">Upload</button>
+          <ng-template #spinner>
+            <app-spinner></app-spinner>
+          </ng-template>
         </div>
     </form>
 

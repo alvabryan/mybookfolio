@@ -14,7 +14,7 @@
         <img *ngIf="cadetViewData.fileType === 'image' else documentView" [src]="cadetViewData.downloadUrl"
           style="width:100%;height:500px;">
         <ng-template #documentView>
-          <ngx-doc-viewer [url]="cadetViewData.downloadUrl" viewer="google" style="width:300px;height:500px;">
+          <ngx-doc-viewer [url]="cadetViewData.downloadUrl" viewer="google" style="width:100%; height:500px;">
           </ngx-doc-viewer>
         </ng-template>
       </div>
@@ -30,6 +30,10 @@
 <app-file-upload></app-file-upload>
 <div class="container-fluid">
 
+  <div class="container" *ngIf="cadetData.length > 0">
+    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#uploadModal">Upload File</button>
+  </div>
+
   <div class="row mt-3 mb-4">
     <div class="col text-center">
       <h3 class="text-center mt-5">{{ pageName }}</h3>
@@ -38,7 +42,7 @@
   <div class=" mb-4">
 
     <!-- file card -->
-    <div class="m-5 mx-auto d-flex justify-content-center" *ngIf="cadetData.attachmentName else noData">
+    <div class="m-5 mx-auto d-flex justify-content-center" *ngIf="cadetData?.length > 0 else noData">
       <div class="d-inline-flex card mr-2 ml-2" style="width: 18rem; height: auto;"
         *ngFor="let card of cadetData; let i = index">
         <img [src]="card.fileType === 'image' ? card.downloadUrl : 'https://www.mybookfolio.com/cadets/images/doc.png'"
