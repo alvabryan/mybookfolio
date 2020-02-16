@@ -1,6 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as fromCadet from './store/index';
+import * as PortfolioActions from '../portfolio/store/portfolio.actions';
 
 @Component({
   selector: 'app-cadet',
@@ -14,14 +17,10 @@ export class CadetComponent implements OnInit, OnDestroy  {
   user: firebase.User;
   userLoaded = false;
 
-  constructor( private db: AngularFirestore) { }
+  constructor( private db: AngularFirestore, private store: Store<fromCadet.State>) { }
 
   ngOnInit() {
-    // this.cadetSubscription.add(this.auth.user.subscribe( user => {
-    //   this.user = user;
-    //   this.userLoaded = true;
-    // }));
-
+    this.store.dispatch(PortfolioActions.onReload());
   }
 
   ngOnDestroy(): void {

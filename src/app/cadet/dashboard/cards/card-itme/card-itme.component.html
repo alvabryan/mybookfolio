@@ -1,5 +1,4 @@
-<div class="card cardJpa mt-5">
-  <a  routerLink="{{ '/cadet/portfolio/' + card.url }}" style="text-decoration:none">
+<div class="card cardJpa mt-5" (click)="onSetCard(card.name)">
     <div class="card-body">
       <p class="card-title cardTitleJpa mt-2">{{card.name}}</p>
       <img [src]="card.imageUrl" class="mt-4 mb-3" alt="unknown"
@@ -9,5 +8,4 @@
           aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: card.progress }"></div>
       </div>
     </div>
-  </a>
 </div>

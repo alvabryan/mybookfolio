@@ -69,7 +69,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
     const newUrl = taskUrl.split('/').flat();
     const pathUrl = defaultUrl.concat(newUrl);
 
-    this.router.navigate(pathUrl);
+    this.router.navigate(defaultUrl);
 
     this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: taskName}));
   }

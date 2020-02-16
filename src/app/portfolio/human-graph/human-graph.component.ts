@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 // ngrx
 import { Store } from '@ngrx/store';
-import * as fromInstructor from '../../instructor/store/index';
+import * as fromPortfolio from '../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
 
 @Component({
@@ -17,7 +17,7 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
   humanGraphForm: FormGroup;
 
-  constructor(private store: Store<fromInstructor.State>) { }
+  constructor(private store: Store<fromPortfolio.State>) { }
 
   ngOnInit() {
 
@@ -31,17 +31,17 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
     });
 
     this.subscription.add(
-      this.store.select('instructor').subscribe((data: any) => {
-        if (data.portfolio.viewData) {
-          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          if (data.portfolio.viewData[letLevel].content) {
+      this.store.select('portfolio').subscribe((data: any) => {
+        if (data.viewData) {
+          const letLevel = 'let' + data.cadetSearchData.letLevel;
+          if (data.viewData[letLevel].content) {
             this.humanGraphForm.setValue({
-              questionOne: data.portfolio.viewData[letLevel].content.questionOne.toString(),
-              questionTwo: data.portfolio.viewData[letLevel].content.questionTwo.toString(),
-              questionThree: data.portfolio.viewData[letLevel].content.questionThree.toString(),
-              questionFour: data.portfolio.viewData[letLevel].content.questionFour.toString(),
-              questionFive: data.portfolio.viewData[letLevel].content.questionFive.toString(),
-              questionSix: data.portfolio.viewData[letLevel].content.questionSix.toString(),
+              questionOne: data.viewData[letLevel].content.questionOne.toString(),
+              questionTwo: data.viewData[letLevel].content.questionTwo.toString(),
+              questionThree: data.viewData[letLevel].content.questionThree.toString(),
+              questionFour: data.viewData[letLevel].content.questionFour.toString(),
+              questionFive: data.viewData[letLevel].content.questionFive.toString(),
+              questionSix: data.viewData[letLevel].content.questionSix.toString(),
             });
           }
         }

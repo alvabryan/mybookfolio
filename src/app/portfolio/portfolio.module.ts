@@ -16,6 +16,15 @@ import { NgxDocViewerModule } from 'ngx-doc-viewer';
 import { TextEditorComponent } from './course-work/text-editor/text-editor.component';
 import { PostSecondaryGoalsComponent } from './four-year-goals/post-secondary-goals/post-secondary-goals.component';
 
+// ngrx
+import { StoreModule } from '@ngrx/store';
+import * as FromPortfolioIndex from './store/index';
+import * as FromPortfolioEffects from './store/portolio.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { PortfolioComponent } from './portfolio.component';
+import { SharedModule } from '../shared/shared.module';
+import { FileUploadComponent } from './course-work/file-upload/file-upload.component';
+
 @NgModule({
   declarations: [
     CourseWorkComponent,
@@ -27,7 +36,9 @@ import { PostSecondaryGoalsComponent } from './four-year-goals/post-secondary-go
     PortfolioCadetChallengeComponent,
     WinningColorsComponent,
     TextEditorComponent,
-    PostSecondaryGoalsComponent
+    PostSecondaryGoalsComponent,
+    PortfolioComponent,
+    FileUploadComponent
   ],
   imports: [
     CommonModule,
@@ -36,17 +47,13 @@ import { PostSecondaryGoalsComponent } from './four-year-goals/post-secondary-go
     FormsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    NgxDocViewerModule
+    NgxDocViewerModule,
+    StoreModule.forFeature('portfolio', FromPortfolioIndex.reducers),
+    EffectsModule.forFeature([FromPortfolioEffects.PortfolioEffects]),
+    SharedModule
   ],
   exports: [
-    CourseWorkComponent,
-    FinancialPlanningComponent,
-    FourYearGoalsComponent,
-    HumanGraphComponent,
-    LearningStyleComponent,
-    PersonalAdComponent,
-    PortfolioCadetChallengeComponent,
-    WinningColorsComponent
+    PortfolioComponent
   ]
 })
 export class PortfolioModule { }

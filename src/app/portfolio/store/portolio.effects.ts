@@ -8,7 +8,7 @@ import { EMPTY, of, from } from 'rxjs';
 
 // ngrx
 import { Store } from '@ngrx/store';
-import * as fromInstructor from '../../instructor/store/index';
+import * as fromPortfolio from '../store/index';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { firestore } from 'firebase';
@@ -37,7 +37,7 @@ export class PortfolioEffects {
 
     deleteFile = createEffect(() => this.actions$.pipe(
       ofType(PortfolioActions.deleteFile),
-      withLatestFrom(this.store.select('instructor'), this.store.select('auth')),
+      withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
       tap((data: any) => {
         const battalionCode = data[2].user.battalionCode;
         const cadetUid = data[1].portfolio.cadetSearchData.uid;
@@ -115,11 +115,11 @@ export class PortfolioEffects {
 
     getCadetPortfolioData = createEffect(() => this.actions$.pipe(
         ofType(PortfolioActions.setPortfolioPageType),
-        withLatestFrom(this.store.select('instructor')),
-        map(data => {
+        withLatestFrom(this.store.select('portfolio')),
+        map((data: any) => {
             return {
                 pageName: data[0].pageName,
-                uid: data[1].portfolio.cadetSearchData.uid
+                uid: data[1].cadetSearchData.uid
             };
         }),
         switchMap((data: any) => {
@@ -209,5 +209,12 @@ export class PortfolioEffects {
         })
     ));
 
-    constructor(private actions$: Actions, private store: Store<fromInstructor.State>, private db: AngularFirestore, private storage: AngularFireStorage) {}
+    uploadFile = createEffect(() => this.actions$.pipe(
+      ofType(PortfolioActions.uploadFile),
+      tap((data: any) => {
+        console.log(data);
+      })
+    ), {dispatch: false});
+
+    constructor(private actions$: Actions, private store: Store<fromPortfolio.State>, private db: AngularFirestore, private storage: AngularFireStorage) {}
 }

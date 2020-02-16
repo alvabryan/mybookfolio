@@ -4,8 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 // ngrx
 import { Store } from '@ngrx/store';
-import * as fromInstructor from '../../instructor/store/index';
-import * as PortfolioActions from '../store/portfolio.actions';
+import * as fromPortfolio from '../store/index';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +18,7 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
 
   learningStyle: FormGroup;
 
-  constructor(private store: Store<fromInstructor.State>, private router: Router) { }
+  constructor(private store: Store<fromPortfolio.State>, private router: Router) { }
 
   ngOnInit() {
 
@@ -102,11 +101,11 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
     });
 
     this.subscription.add(
-      this.store.select('instructor').subscribe(data => {
-        if (data.portfolio.viewData && data.portfolio.pageName === 'Learning Style Inventory') {
-          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          if (data.portfolio.viewData[letLevel].content.multipleChoiceData || data.portfolio.viewData[letLevel].content.fillInSection) {
-            const cadetData = data.portfolio.viewData[letLevel];
+      this.store.select('portfolio').subscribe((data: any) => {
+        if (data.viewData && data.pageName === 'Learning Style Inventory') {
+          const letLevel = 'let' + data.cadetSearchData.letLevel;
+          if (data.viewData[letLevel].content.multipleChoiceData || data.viewData[letLevel].content.fillInSection) {
+            const cadetData = data.viewData[letLevel];
             this.setCadetData(cadetData);
           }
         }

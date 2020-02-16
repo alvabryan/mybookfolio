@@ -7,7 +7,7 @@ import { CadetsComponent } from './cadets/cadets.component';
 import { CadetDataRequestComponent } from './cadet-data-request/cadet-data-request.component';
 import { BattalionUsersComponent } from './battalion-users/battalion-users.component';
 import { SupportComponent } from './support/support.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
+import { InstructorPortfolioComponent } from './instructor-portfolio/instructor-portfolio.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
 import { CadetPortfolioComponent } from './cadet-portfolio/cadet-portfolio.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
       {path: '', component: CadetPortfolioViewComponent},
       {path: 'cadet-information', component: CadetInformationComponent}
     ]},
-    {path: 'portfolio', component: PortfolioComponent}
+    {path: 'portfolio', component: InstructorPortfolioComponent}
   ]}
 ];
 

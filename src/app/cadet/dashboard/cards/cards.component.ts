@@ -14,7 +14,7 @@ export class CardsComponent implements OnInit {
         // tslint:disable-next-line: max-line-length
         {name: 'Four Year Goals', url: 'four-year-goals', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/goal.png', progress: '100%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Winning colors', url: 'winning-colors', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/paper.png', progress: '100%'},
+        {name: 'Winning Colors', url: 'winning-colors', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/paper.png', progress: '100%'},
         // tslint:disable-next-line: max-line-length
         {name: 'Success Profiler and Personal Growth Plan', url: 'success-profiler', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/successPro.png', progress: '100%'},
         // tslint:disable-next-line: max-line-length

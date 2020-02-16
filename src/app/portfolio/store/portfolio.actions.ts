@@ -20,4 +20,6 @@ export const clearUserPortfolio = createAction('[Portfolio clearPortfolio] clear
 
 export const deleteFile = createAction('[Instructor Portfolio] delete file from db', props<{filesData: any, fileIndex: number, pageName: string}>());
 
+export const uploadFile = createAction('[Portfolio file] file upload', props<{fileName: string, file: any, description: string}>());
+
 export const onReload = createAction('[Instructor Portfolio] on reload set data');

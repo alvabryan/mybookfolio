@@ -13,7 +13,6 @@ import { CadetDataRequestComponent } from './cadet-data-request/cadet-data-reque
 import { BattalionUsersComponent } from './battalion-users/battalion-users.component';
 import { SupportComponent } from './support/support.component';
 import { DocumentationComponent } from './documentation/documentation.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioViewComponent } from './portfolio-view/portfolio-view.component';
 import { QuillModule } from 'ngx-quill';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -33,6 +32,7 @@ import * as PortfolioEffects from '../portfolio/store/portolio.effects';
 import * as BattalionUsersEffect from './battalion-users/store/battalion-users.effects';
 import { SettingInstructorComponent } from './setting-instructor/setting-instructor.component';
 import { PortfolioModule } from '../portfolio/portfolio.module';
+import { InstructorPortfolioComponent } from './instructor-portfolio/instructor-portfolio.component';
 
 @NgModule({
   declarations: [
@@ -47,12 +47,12 @@ import { PortfolioModule } from '../portfolio/portfolio.module';
     BattalionUsersComponent,
     SupportComponent,
     DocumentationComponent,
-    PortfolioComponent,
     PortfolioViewComponent,
     CadetPortfolioComponent,
     CadetPortfolioViewComponent,
     CadetInformationComponent,
-    SettingInstructorComponent
+    SettingInstructorComponent,
+    InstructorPortfolioComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +64,7 @@ import { PortfolioModule } from '../portfolio/portfolio.module';
     AngularFirestoreModule,
     AngularFireStorageModule,
     StoreModule.forFeature('instructor', InstructorIndex.reducers),
-    EffectsModule.forFeature([InstructorEffects.InstructorEffects, PortfolioEffects.PortfolioEffects, BattalionUsersEffect.BattalionUsersEFfect]),
+    EffectsModule.forFeature([InstructorEffects.InstructorEffects, BattalionUsersEffect.BattalionUsersEFfect]),
     NgxDocViewerModule,
     PortfolioModule
   ],

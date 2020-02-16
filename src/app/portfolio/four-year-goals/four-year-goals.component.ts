@@ -6,8 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 // ngrx
 import { Store } from '@ngrx/store';
-import * as fromInstructor from '../../instructor/store/index';
-import * as PortfolioActions from '../store/portfolio.actions';
+import * as fromPortfolio from '../store/index';
 
 @Component({
   selector: 'app-four-year-goals',
@@ -46,7 +45,7 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
   constructor(
     private db: AngularFirestore,
     private activatedRoute: ActivatedRoute,
-    private store: Store<fromInstructor.State>) { }
+    private store: Store<fromPortfolio.State>) { }
 
   ngOnInit() {
 
@@ -56,12 +55,12 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
     });
 
     this.subscription.add(
-      this.store.select('instructor').subscribe(data => {
-        if (data.portfolio.viewData) {
-          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          if (data.portfolio.viewData[letLevel].content) {
+      this.store.select('portfolio').subscribe((data: any) => {
+        if (data.viewData) {
+          const letLevel = 'let' + data.cadetSearchData.letLevel;
+          if (data.viewData[letLevel].content) {
             this.editorForm.setValue({
-              editor: data.portfolio.viewData[letLevel].content
+              editor: data.viewData[letLevel].content
             });
           }
         }

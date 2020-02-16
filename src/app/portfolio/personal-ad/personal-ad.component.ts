@@ -24,10 +24,10 @@ export class PersonalAdComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
-        if (data.portfolio.viewData && data.portfolio.pageName === 'Personal Ad') {
-          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          if (data.portfolio.viewData[letLevel].content) {
-            const cadetData = data.portfolio.viewData[letLevel].content;
+        if (data.viewData && data.pageName === 'Personal Ad') {
+          const letLevel = 'let' + data.cadetSearchData.letLevel;
+          if (data.viewData[letLevel].content) {
+            const cadetData = data.viewData[letLevel].content;
             this.cadetData = cadetData;
           } else {
             this.cadetData = '';
