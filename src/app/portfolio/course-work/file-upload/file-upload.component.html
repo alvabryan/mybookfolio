@@ -1,0 +1,42 @@
+<!-- card view model -->
+<div class="modal fade" id="uploadModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">File Upload</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+        <!-- Modal body -->
+        <div class="modal-body">
+
+            <div class="container mb-2">
+              <span>File Name:</span>
+              <input class="form-control" type="text" name="fileName" formControlName="fileName">
+            </div>
+            <div class="container mb-2">
+              <span>File:</span>
+              <div class="custom-file">
+                <input name="file" type="file" class="custom-file-input" id="customFile" (change)="onFileSelect($event)" >
+                <label class="custom-file-label" for="customFile">Choose file</label>
+              </div>
+            </div>
+            <div class="container">
+              <span>Description:</span>
+              <textarea name="description" formControlName="description"  class="form-control"></textarea>
+            </div>
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Upload</button>
+        </div>
+    </form>
+
+    </div>
+  </div>
+</div>

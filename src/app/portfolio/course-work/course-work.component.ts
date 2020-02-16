@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 // ngrx
 import { Store } from '@ngrx/store';
-import * as fromInstructor from '../../instructor/store/index';
+import * as fromPortfolio from '../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -18,7 +18,7 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
 
   subscription: Subscription = new Subscription();
 
-  constructor(private activatedRoute: ActivatedRoute, private store: Store<fromInstructor.State>, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private store: Store<fromPortfolio.State>, private router: Router) { }
 
   cadetData: any = [];
   cadetViewData: any;
@@ -26,16 +26,16 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscription.add(
-      this.store.select('instructor').subscribe((data: any) => {
-        this.pageName = data.portfolio.pageName;
+      this.store.select('portfolio').subscribe((data: any) => {
+        this.pageName = data.pageName;
       })
     );
     this.subscription.add(
-      this.store.select('instructor').subscribe(data => {
-        if (data.portfolio.viewData) {
-          const letLevel = 'let' + data.portfolio.cadetSearchData.letLevel;
-          if (data.portfolio.viewData[letLevel]) {
-            const cadetData = data.portfolio.viewData[letLevel].content;
+      this.store.select('portfolio').subscribe((data: any) => {
+        if (data.viewData) {
+          const letLevel = 'let' + data.cadetSearchData.letLevel;
+          if (data.viewData[letLevel]) {
+            const cadetData = data.viewData[letLevel].content;
             this.cadetData = cadetData;
           }
         }
