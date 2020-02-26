@@ -54,9 +54,9 @@ export class PortfolioComponent implements OnInit, OnDestroy {
               'Essay',
               'Let 1-4 Lesson Evidence',
               'Written Summary',
-              'Achievments',
+              'Achievements',
               'Cadet Challenge',
-              'Service Learnign'];
+              'Service Learning'];
 
             if (courseWorkTask.includes(data.pageName)) {
               this.pageName = {
@@ -88,7 +88,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
             if (data.viewData) {
               this.cadetViewData = data.viewData;
-              if (data.viewData[letLevel].dateSubmitted) {
+              if (data.viewData[letLevel]) {
                   this.lastUpdated = data.viewData[letLevel].dateSubmitted;
               } else {
                 // this.lastUpdated = data.portfolio.viewData[letLevel].content[((data.portfolio.viewData[letLevel].content).length - 1)].dateSubmitted;

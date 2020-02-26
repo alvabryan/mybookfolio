@@ -6,7 +6,7 @@
         <p style="margin-top: 10px" class="align-middle"><a routerLink="./">Portfolio</a> / {{ pageName.subPage }}</p>
       </div>
       <div class="col-4 col-sm-5 col-md-6 col-lg-6">
-        <form [formGroup]="portfolioViewSelect" (change)="changePortfolioView()">
+        <!-- <form [formGroup]="portfolioViewSelect" (change)="changePortfolioView()">
           <select name="pageViewName" formControlName="pageViewName" class="form-control pageView">
             <option [disabled]="!cadetProgressData.yearlyGoals ? true : null" value="Four Year Goals" selected>Four Year Goals</option>
             <option [disabled]="!cadetProgressData.winningColors ? true : null" value="Winning Colors">WinningColors</option>
@@ -24,41 +24,39 @@
             <option [disabled]="!cadetProgressData.cadetChallenge ? true : null" value="Cadet Challenge">Cadet Challenge</option>
             <option [disabled]="!cadetProgressData.serviceLearning ? true : null" value="Service Learning">Service Learning</option>
           </select>
-        </form>
+        </form> -->
       </div>
     </div>
   </div>
-
-
   <div>
     <div class="container-fluid">
       <div class="row p-2">
         <div class="col-12 col-sm-6 col-md-6 col-lg-6">
           <h3>{{ cadetData.firstName + ' ' + cadetData.lastName }}</h3>
-          <p style="font-size: 13px;" *ngIf="lastUpdated"><b>Updated:</b> {{ lastUpdated.toDate() | date:'yyyy/MM/dd h:mm:ss a' }}</p>
-          <p style="font-size: 13px;" *ngIf="!lastUpdated"><b>Updated:</b> No data submitted yet</p>
+          <!-- <p style="font-size: 13px;" *ngIf="lastUpdated"><b>Updated:</b> {{ lastUpdated.toDate() | date:'yyyy/MM/dd h:mm:ss a' }}</p>
+          <p style="font-size: 13px;" *ngIf="!lastUpdated"><b>Updated:</b> No data submitted yet</p> -->
         </div>
         <div class="col-12 col-sm-6 col-md-6 col-lg-6">
           <div class="float-lg-right float-md-right">
             <button
             class="btn btn-sm btn-outline-primary ml-1 active"
             (click)="setLetLevel(1)"
-            [disabled]="!cadetViewData.let1 ? true : null"
+
             [ngClass]="{active: cadetData.letLevel == 1}">Let 1</button>
             <button
             class="btn btn-sm btn-outline-primary btn-active ml-1"
             (click)="setLetLevel(2)"
-            [disabled]="!cadetViewData.let2 ? true : null"
+
             [ngClass]="{active: cadetData.letLevel == 2}">Let 2</button>
             <button
             class="btn btn-sm btn-outline-primary ml-1"
             (click)="setLetLevel(3)"
-            [disabled]="!cadetViewData.let3 ? true : null"
+
             [ngClass]="{active: cadetData.letLevel == 3}">Let 3</button>
             <button
             class="btn btn-sm btn-outline-primary ml-1"
             (click)="setLetLevel(4)"
-            [disabled]="!cadetViewData.let4 ? true : null"
+
             [ngClass]="{active: cadetData.letLevel == 4}">Let 4</button>
           </div>
         </div>
@@ -78,7 +76,7 @@
         </div>
     </div>
   </div>
-  <ng-template #spinner>
-    <app-spinner></app-spinner>
-  </ng-template>
 </div>
+<ng-template #spinner>
+  <app-spinner></app-spinner>
+</ng-template>

@@ -10,14 +10,14 @@ export interface State {
   };
   viewData: { [key: string]: any };
   pageName: string;
-  uploading: boolean;
+  uploading: string;
 }
 
 export const initialState: State = {
   cadetSearchData: null,
   viewData: null,
   pageName: null,
-  uploading: false
+  uploading: 'not submitted'
 };
 
 const portfolioReducer = createReducer(
@@ -55,8 +55,9 @@ const portfolioReducer = createReducer(
       pageName: null
     };
   }),
-  on(PortfolioActions.uploadFile, (state) => ({...state, uploading: true})),
-  on(PortfolioActions.uploadingFile, (state) => ({...state, uploading: false}))
+  on(PortfolioActions.uploadFile, (state) => ({...state, uploading: 'uploading'})),
+  on(PortfolioActions.uploadingFile, (state) => ({...state, uploading: 'uploaded'})),
+  on(PortfolioActions.resetUploadFileStatus, (state) => ({...state, uploading: 'not submitted'}))
 );
 
 export function reducer(state: State | undefined, action: Action) {

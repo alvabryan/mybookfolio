@@ -24,6 +24,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { PortfolioComponent } from './portfolio.component';
 import { SharedModule } from '../shared/shared.module';
 import { FileUploadComponent } from './course-work/file-upload/file-upload.component';
+import { ViewModalComponent } from './course-work/view-modal/view-modal.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FileUploadComponent } from './course-work/file-upload/file-upload.compo
     TextEditorComponent,
     PostSecondaryGoalsComponent,
     PortfolioComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    ViewModalComponent
   ],
   imports: [
     CommonModule,

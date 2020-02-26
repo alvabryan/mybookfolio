@@ -28,15 +28,14 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select('portfolio').subscribe((data: any) => {
         this.pageName = data.pageName;
-      })
-    );
-    this.subscription.add(
-      this.store.select('portfolio').subscribe((data: any) => {
+
         if (data.viewData) {
           const letLevel = 'let' + data.cadetSearchData.letLevel;
           if (data.viewData[letLevel]) {
-            const cadetData = data.viewData[letLevel].content;
-            this.cadetData = cadetData;
+              const cadetData = data.viewData[letLevel].content;
+              this.cadetData = cadetData;
+          } else {
+            this.cadetData = [];
           }
         }
       })

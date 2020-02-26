@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 
 // ngrx
@@ -18,8 +18,7 @@ export class FileUploadComponent implements OnInit, OnDestroy {
 
   fileUploadForm: FormGroup;
   fileData: any;
-  loading = false;
-  isModalShow = false;
+  loading = 'not submitted';
 
   constructor(private store: Store<fromPortfolio.PortfolioState>) { }
 
@@ -35,7 +34,7 @@ export class FileUploadComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.loading = true;
+    this.loading = 'uploading';
     const formData = this.fileUploadForm.value;
     this.store.dispatch(PortfolioActions.uploadFile({
       fileName: formData.fileName,
@@ -46,9 +45,18 @@ export class FileUploadComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select('portfolio').subscribe((data: any) => {
         this.loading = data.uploading;
-        this.isModalShow = true;
       })
     );
+
+  }
+
+  changeLoadingStatus() {
+    this.fileData = null;
+    this.fileUploadForm.reset();
+    setTimeout(() => {
+      this.loading = 'not submitted';
+      this.store.dispatch(PortfolioActions.resetUploadFileStatus());
+    }, 1000);
   }
 
   ngOnDestroy() {

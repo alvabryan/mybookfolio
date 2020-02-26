@@ -1,0 +1,30 @@
+<!-- card view model -->
+<div class="modal fade" id="myModal" *ngIf="cadetViewData">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{ cadetViewData.attachName }}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <img *ngIf="cadetViewData.fileType === 'image' else documentView" [src]="cadetViewData.downloadUrl"
+          style="width:100%;height:500px;">
+        <ng-template #documentView>
+          <p class="text-center">Document viewer may take a moment to load</p>
+          <ngx-doc-viewer [url]="cadetViewData.downloadUrl" viewer="google" style="width:100%; height:500px;">
+          </ngx-doc-viewer>
+        </ng-template>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
