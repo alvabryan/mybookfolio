@@ -56,7 +56,7 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
       this.store.select('portfolio').subscribe((data: any) => {
         if (data.viewData) {
           const letLevel = 'let' + data.cadetSearchData.letLevel;
-          const cadetData: any = data.viewData[letLevel].content;
+          const cadetData: any = data.viewData[letLevel] ? data.viewData[letLevel].content : null;
           if (cadetData) {
             this.setCadetData(cadetData);
           }

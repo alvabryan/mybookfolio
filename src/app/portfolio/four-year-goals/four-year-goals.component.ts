@@ -58,11 +58,14 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
       this.store.select('portfolio').subscribe((data: any) => {
         if (data.viewData) {
           const letLevel = 'let' + data.cadetSearchData.letLevel;
-          if (data.viewData[letLevel].content) {
-            this.editorForm.setValue({
-              editor: data.viewData[letLevel].content
-            });
-          }
+          const goalContent = data.viewData[letLevel] ? data.viewData[letLevel].content : null;
+          this.editorForm.setValue({
+            editor: goalContent
+          });
+        } else {
+          this.editorForm.setValue({
+            editor: ''
+          });
         }
       })
     );

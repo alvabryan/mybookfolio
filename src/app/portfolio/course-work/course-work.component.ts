@@ -21,6 +21,7 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
   constructor(private activatedRoute: ActivatedRoute, private store: Store<fromPortfolio.State>, private router: Router) { }
 
   cadetData: any = [];
+  // data for model to display
   cadetViewData: any;
   pageName: any;
 
@@ -32,8 +33,7 @@ export class CourseWorkComponent implements OnInit, OnDestroy {
         if (data.viewData) {
           const letLevel = 'let' + data.cadetSearchData.letLevel;
           if (data.viewData[letLevel]) {
-              const cadetData = data.viewData[letLevel].content;
-              this.cadetData = cadetData;
+              this.cadetData = data.viewData[letLevel].content;
           } else {
             this.cadetData = [];
           }

@@ -34,7 +34,8 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
       this.store.select('portfolio').subscribe((data: any) => {
         if (data.viewData) {
           const letLevel = 'let' + data.cadetSearchData.letLevel;
-          if (data.viewData[letLevel].content) {
+          const humanGraphData = data.viewData[letLevel] ? data.viewData[letLevel].content : null;
+          if (humanGraphData) {
             this.humanGraphForm.setValue({
               questionOne: data.viewData[letLevel].content.questionOne.toString(),
               questionTwo: data.viewData[letLevel].content.questionTwo.toString(),
@@ -42,6 +43,15 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
               questionFour: data.viewData[letLevel].content.questionFour.toString(),
               questionFive: data.viewData[letLevel].content.questionFive.toString(),
               questionSix: data.viewData[letLevel].content.questionSix.toString(),
+            });
+          } else {
+            this.humanGraphForm.setValue({
+              questionOne: null,
+              questionTwo: null,
+              questionThree: null,
+              questionFour: null,
+              questionFive: null,
+              questionSix: null,
             });
           }
         }

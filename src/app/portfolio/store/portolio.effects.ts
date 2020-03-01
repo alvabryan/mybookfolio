@@ -13,6 +13,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 
 import { firestore } from 'firebase/app';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 const pageNameSetter = (pageName) => {
   let dbPath = null;
@@ -50,11 +51,50 @@ const pageNameSetter = (pageName) => {
     case 'Achievements':
       dbPath = 'achievements';
       break;
+    case 'Learning Style Inventory':
+      dbPath = 'learningStyle';
+      break;
+    // non coursework files
+    case 'Four Year Goals':
+      dbPath = 'yearlyGoals';
+      break;
+    case 'Personal Ad':
+      dbPath = 'personalAd';
+      break;
+    case 'Winning Colors':
+      dbPath = 'winningColors';
+      break;
+    case 'Human Graph Activity':
+      dbPath = 'humanGraphActivity';
+      break;
     default:
       dbPath = null;
   }
   return dbPath;
 };
+
+const fileProgressCalculator = (fileContent: any, uploadType: string) => {
+  const fileProgress = fileContent.content.length > 0 ? (fileContent.content.length * 50) : 0;
+  const writtenContent = fileContent.writtenContent ? fileContent.writtenContent ? 50 : 0 : 0;
+
+  if (uploadType === 'upload') {
+    return (fileProgress + writtenContent) + 50;
+  } else if (uploadType === 'delete') {
+    return (fileProgress + writtenContent) - 50;
+  } else {
+    return fileProgress;
+  }
+
+};
+
+const fileEditorProgressCalculator = (editorValue, fileContentData) => {
+  if (editorValue) {
+    return fileProgressCalculator(fileContentData, 'any') + 50;
+  } else {
+    return fileProgressCalculator(fileContentData, 'any');
+  }
+};
+
 
 @Injectable()
 export class PortfolioEffects {
@@ -108,120 +148,126 @@ export class PortfolioEffects {
         }),
         switchMap((data: any) => {
 
-            if (data.pageName === 'Four Year Goals') {
-                // tslint:disable-next-line: no-shadowed-variable
-                return from(this.db.collection(`portfolio/${data.uid}/yearlyGoals`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                    return PortfolioActions.searchCadetData(data);
-                }));
-            }
+          const dbPath = pageNameSetter(data.pageName);
+          if (dbPath) {
+            return from(this.db.collection(`portfolio/${data.uid}/${dbPath}`).doc(`${data.uid}`).valueChanges()).pipe(map((returnData) => {
+                return PortfolioActions.searchCadetData(returnData);
+            }));
+          }
 
-            if (data.pageName === 'Learning Style Inventory') {
-                // tslint:disable-next-line: no-shadowed-variable
-                return from(this.db.collection(`portfolio/${data.uid}/learningStyle`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                    return PortfolioActions.searchCadetData(data);
-                }));
-            }
+            // if (data.pageName === 'Four Year Goals') {
+            //     // tslint:disable-next-line: no-shadowed-variable
+            //     return from(this.db.collection(`portfolio/${data.uid}/yearlyGoals`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //         return PortfolioActions.searchCadetData(data);
+            //     }));
+            // }
+
+            // if (data.pageName === 'Learning Style Inventory') {
+            //     // tslint:disable-next-line: no-shadowed-variable
+            //     return from(this.db.collection(`portfolio/${data.uid}/learningStyle`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //         return PortfolioActions.searchCadetData(data);
+            //     }));
+            // }
 
 
-            if (data.pageName === 'Success Profiler and Personal Growth Plan') {
-                // tslint:disable-next-line: no-shadowed-variable
-                return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                    return PortfolioActions.searchCadetData(data);
-                }));
-            }
+            // if (data.pageName === 'Success Profiler and Personal Growth Plan') {
+            //     // tslint:disable-next-line: no-shadowed-variable
+            //     return from(this.db.collection(`portfolio/${data.uid}/successProfiler`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //         return PortfolioActions.searchCadetData(data);
+            //     }));
+            // }
 
-            if (data.pageName === 'Course Work') {
-                // tslint:disable-next-line: no-shadowed-variable
-                return from(this.db.collection(`portfolio/${data.uid}/courseWork`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                    return PortfolioActions.searchCadetData(data);
-                }));
-            }
+            // if (data.pageName === 'Course Work') {
+            //     // tslint:disable-next-line: no-shadowed-variable
+            //     return from(this.db.collection(`portfolio/${data.uid}/courseWork`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //         return PortfolioActions.searchCadetData(data);
+            //     }));
+            // }
 
-            if (data.pageName === 'Resume') {
-                // tslint:disable-next-line: no-shadowed-variable
-                return from(this.db.collection(`portfolio/${data.uid}/resume`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                    return PortfolioActions.searchCadetData(data);
-                }));
-            }
+            // if (data.pageName === 'Resume') {
+            //     // tslint:disable-next-line: no-shadowed-variable
+            //     return from(this.db.collection(`portfolio/${data.uid}/resume`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //         return PortfolioActions.searchCadetData(data);
+            //     }));
+            // }
 
-            if (data.pageName === 'Personal Ad') {
-                // tslint:disable-next-line: no-shadowed-variable
-                return from(this.db.collection(`portfolio/${data.uid}/personalAd`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                    return PortfolioActions.searchCadetData(data);
-                }));
-            }
+            // if (data.pageName === 'Personal Ad') {
+            //     // tslint:disable-next-line: no-shadowed-variable
+            //     return from(this.db.collection(`portfolio/${data.uid}/personalAd`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //         return PortfolioActions.searchCadetData(data);
+            //     }));
+            // }
 
-            if (data.pageName === 'Course Work') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/courseWork`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Course Work') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/courseWork`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //     return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            if (data.pageName === 'Essay') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/essay`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Essay') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/essay`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //     return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            if (data.pageName === 'Let 1-4 Lesson Evidence') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/lessonEvidence`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Let 1-4 Lesson Evidence') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/lessonEvidence`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //     return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            if (data.pageName === 'Written Summary') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/writtenSummary`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Written Summary') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/writtenSummary`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //     return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            if (data.pageName === 'Cadet Challenge') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/cadetChallenge`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Cadet Challenge') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/cadetChallenge`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //     return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            if (data.pageName === 'Service Learning') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/serviceLearning`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Service Learning') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/serviceLearning`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //     return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            if (data.pageName === 'Winning Colors') {
-                // tslint:disable-next-line: no-shadowed-variable
-                return from(this.db.collection(`portfolio/${data.uid}/winningColors`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                    return PortfolioActions.searchCadetData(data);
-                }));
-            }
+            // if (data.pageName === 'Winning Colors') {
+            //     // tslint:disable-next-line: no-shadowed-variable
+            //     return from(this.db.collection(`portfolio/${data.uid}/winningColors`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //         return PortfolioActions.searchCadetData(data);
+            //     }));
+            // }
 
-            if (data.pageName === 'Achievements') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/achievements`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                  return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Achievements') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/achievements`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //       return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            if (data.pageName === 'Human Graph Activity') {
-              // tslint:disable-next-line: no-shadowed-variable
-              return from(this.db.collection(`portfolio/${data.uid}/humanGraphActivity`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
-                  return PortfolioActions.searchCadetData(data);
-              }));
-            }
+            // if (data.pageName === 'Human Graph Activity') {
+            //   // tslint:disable-next-line: no-shadowed-variable
+            //   return from(this.db.collection(`portfolio/${data.uid}/humanGraphActivity`).doc(`${data.uid}`).valueChanges()).pipe(map((data) => {
+            //       return PortfolioActions.searchCadetData(data);
+            //   }));
+            // }
 
-            return EMPTY;
+          return EMPTY;
         })
     ));
 
     uploadFile = createEffect(() => this.actions$.pipe(
       ofType(PortfolioActions.uploadFile),
       withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-      tap((data) => console.log(data)),
       switchMap((data: any) => {
 
         // battalion code
@@ -244,6 +290,9 @@ export class PortfolioEffects {
         const fileName = data[0].file.target.files[0].name;
         const imageName = `${Date.now()}_${fileName}`;
         const path = `${pageName}/${imageName}`;
+
+        // calculate the progress plus the new file
+        const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'upload');
 
         // file type
         const fileTypeSplit = (uploadFileType) => {
@@ -290,7 +339,7 @@ export class PortfolioEffects {
                     [`${cadetUid}`]: {
                       progress: {
                         [`${dbPath}`]: {
-                          [`${cadetLetLevel}`]: firestore.FieldValue.increment(50)
+                          [`${cadetLetLevel}`]: courseWorkProgress
                         }
                       }
                     }
@@ -311,7 +360,7 @@ export class PortfolioEffects {
       ofType(PortfolioActions.deleteFile),
       withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
       tap((data: any) => {
-        // battalion coe
+        // battalion code
         const battalionCode = data[2].user.battalionCode;
 
         // current cadet
@@ -331,6 +380,9 @@ export class PortfolioEffects {
         // coursework database path
         const dbPath = pageNameSetter(pageName);
 
+        // calculate the progress plus the new file
+        const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'delete');
+
         const newFilesData = filesData.filter((obj, index) => {
           if (index !== deleteFileIndex) {
             return obj;
@@ -343,13 +395,58 @@ export class PortfolioEffects {
             [cadetUid]: {
               progress: {
                 [dbPath]: {
-                  [cadetLetLevel]: firestore.FieldValue.increment(-50)
+                  [cadetLetLevel]: courseWorkProgress
                 }
               }
             }
           }, {merge: true});
           this.storage.storage.refFromURL(`${imageUrlToDelete}`).delete();
         }
+      })
+    ), {dispatch: false});
+
+    fileEditorUpdate = createEffect(() => this.actions$.pipe(
+      ofType(PortfolioActions.fileUploadEditorUpdate),
+      withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+      tap((data: any) => {
+        // battalion code
+        const battalionCode = data[2].user.battalionCode;
+
+        // editor text
+        const editorValue = data[0].editorText.editor;
+
+        // database path
+        const dbPath = pageNameSetter(data[1].pageName);
+
+        // current cadet
+        const cadetUid = data[1].cadetSearchData.uid;
+
+        // current cadet let level
+        const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
+
+        // calculate the progress minus the new file
+        const courseWorkProgress = fileEditorProgressCalculator(editorValue, data[1].viewData[cadetLetLevel]);
+
+        forkJoin(
+          from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
+            [cadetLetLevel]: {
+              writtenContent: {
+                content: editorValue,
+                dateSubmitted: firestore.FieldValue.serverTimestamp()
+              }
+            }
+          }, {merge: true})),
+          from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+            [cadetUid]: {
+              progress: {
+                [dbPath]: {
+                  [cadetLetLevel]: courseWorkProgress
+                }
+              }
+            }
+          }, {merge: true}))
+        );
+
       })
     ), {dispatch: false});
 

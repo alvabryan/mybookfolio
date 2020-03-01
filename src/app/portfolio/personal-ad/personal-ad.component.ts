@@ -15,7 +15,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class PersonalAdComponent implements OnInit, OnDestroy {
 
-  cadetData = 'test';
+  cadetData = '';
   subscription: Subscription = new Subscription();
 
   constructor(private store: Store<fromInstructor.State>) { }
@@ -26,12 +26,7 @@ export class PersonalAdComponent implements OnInit, OnDestroy {
       this.store.select('instructor').subscribe((data: any) => {
         if (data.viewData && data.pageName === 'Personal Ad') {
           const letLevel = 'let' + data.cadetSearchData.letLevel;
-          if (data.viewData[letLevel].content) {
-            const cadetData = data.viewData[letLevel].content;
-            this.cadetData = cadetData;
-          } else {
-            this.cadetData = '';
-          }
+          this.cadetData = data.viewData[letLevel] ? data.viewData[letLevel].content : null;
         }
       })
     );

@@ -33,6 +33,10 @@ export class FileUploadComponent implements OnInit, OnDestroy {
     this.fileData = uploadFileData;
   }
 
+  deleteCurrentUploadFile() {
+    this.fileData = null;
+  }
+
   onSubmit() {
     this.loading = 'uploading';
     const formData = this.fileUploadForm.value;

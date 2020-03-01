@@ -24,6 +24,8 @@ export const uploadFile = createAction('[Portfolio file] file upload', props<{fi
 
 export const uploadingFile = createAction('[Portfolio uploading] file upload');
 
+export const fileUploadEditorUpdate = createAction('[Portfolio file editor] editor upload', props<{editorText: string}>());
+
 export const resetUploadFileStatus = createAction('[Portfolio reset] file upload');
 
 export const onReload = createAction('[Instructor Portfolio] on reload set data');
