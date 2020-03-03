@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InstructorComponent } from './instructor.component';
-import { AuthInstructor } from '../auth/auth-instructor.guard';
+import { AuthInstructor } from './auth-instructor.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CadetsComponent } from './cadets/cadets.component';
 import { CadetDataRequestComponent } from './cadet-data-request/cadet-data-request.component';

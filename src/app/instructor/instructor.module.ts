@@ -33,6 +33,7 @@ import * as BattalionUsersEffect from './battalion-users/store/battalion-users.e
 import { SettingInstructorComponent } from './setting-instructor/setting-instructor.component';
 import { PortfolioModule } from '../portfolio/portfolio.module';
 import { InstructorPortfolioComponent } from './instructor-portfolio/instructor-portfolio.component';
+import { AuthInstructor } from './auth-instructor.guard';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { InstructorPortfolioComponent } from './instructor-portfolio/instructor-
     PortfolioModule
   ],
   exports: [],
-  providers: [],
+  providers: [AuthInstructor],
 })
 
 

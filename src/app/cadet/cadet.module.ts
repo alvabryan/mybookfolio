@@ -27,6 +27,7 @@ import { PortfolioModule } from '../portfolio/portfolio.module';
 import { StoreModule } from '@ngrx/store';
 
 import * as fromCadet from './store/index';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -56,6 +57,9 @@ import * as fromCadet from './store/index';
     AngularFirestoreModule,
     PortfolioModule,
     StoreModule.forFeature('cadet', fromCadet.reducers)
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 
