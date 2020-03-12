@@ -48,7 +48,6 @@ export class PortfolioComponent implements OnInit, OnDestroy {
           if (data.pageName) {
             const courseWorkTask = [
               'Success Profiler and Personal Growth Plan',
-              'Learning Style Inventory',
               'Resume',
               'Course Work',
               'Essay',

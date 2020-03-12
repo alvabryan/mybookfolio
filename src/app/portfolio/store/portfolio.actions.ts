@@ -28,6 +28,14 @@ export const fileUploadEditorUpdate = createAction('[Portfolio file editor] edit
 
 export const resetUploadFileStatus = createAction('[Portfolio reset] file upload');
 
+export const fourYearGoalsUpdate = createAction('[Portfolio yearlyGaols] update', props<{yearlyGoals: string}>());
+
+export const postSecondaryGoalsUpdate = createAction('[Portfolio postSecondary] update', props<{postSecondaryGoals: string}>());
+
+export const winningColorsUpdate = createAction('[Portfolio update] winning colors', props<{winningColorsData: any}>());
+
+export const learningStyleUpdate = createAction('[Portfoli update] learning style', props<{learningStyleData: any}>());
+
 export const onReload = createAction('[Instructor Portfolio] on reload set data');
 
 

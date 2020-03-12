@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromPortfolio from '../store/index';
 import { Router } from '@angular/router';
+import * as PortfolioActions from '../store/portfolio.actions';
 
 @Component({
   selector: 'app-learning-style',
@@ -23,80 +24,66 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.learningStyle = new FormGroup({
-      environmentalP1: new FormGroup({
-        environmentalP1Q1: new FormControl(''),
-        environmentalP1Q2: new FormControl(''),
-        environmentalP1Q3: new FormControl(''),
-        environmentalP1Q4: new FormControl(''),
-        environmentalP1Q5: new FormControl(''),
-        environmentalP1Q6: new FormControl(''),
-        environmentalP1Q7: new FormControl('')
+      multipleChoiceSection: new FormGroup({
+        enviOne: new FormControl(''),
+        enviTwo: new FormControl(''),
+        enviThree: new FormControl(''),
+        enviFour: new FormControl(''),
+        enviFive: new FormControl(''),
+        enviSix: new FormControl(''),
+        enviSeven: new FormControl(''),
+        emoOne: new FormControl(''),
+        emoTwo: new FormControl(''),
+        emoThree: new FormControl(''),
+        emoFour: new FormControl(''),
+        emoFive: new FormControl(''),
+        emoSix: new FormControl(''),
+        emoSeven: new FormControl(''),
+        socOne: new FormControl(''),
+        socTwo: new FormControl(''),
+        socThree: new FormControl(''),
+        socFour: new FormControl(''),
+        socFive: new FormControl(''),
+        socSix: new FormControl(''),
+        socSeven: new FormControl(''),
+        psyOne: new FormControl(''),
+        psyTwo: new FormControl(''),
+        psyThree: new FormControl(''),
+        psyFour: new FormControl(''),
+        psyFive: new FormControl(''),
+        psySix: new FormControl(''),
+        psySeven: new FormControl(''),
+        phyOne: new FormControl(''),
+        phyTwo: new FormControl(''),
+        phyThree: new FormControl(''),
+        phyFour: new FormControl(''),
+        phyFive: new FormControl(''),
+        phySix: new FormControl(''),
+        phySeven: new FormControl(''),
+        phyEight: new FormControl(''),
+        phyNine: new FormControl(''),
+        phyTen: new FormControl(''),
+        phyEleven: new FormControl('')
       }),
-      emotionalP1: new FormGroup({
-        emotionalP1Q1: new FormControl(''),
-        emotionalP1Q2: new FormControl(''),
-        emotionalP1Q3: new FormControl(''),
-        emotionalP1Q4: new FormControl(''),
-        emotionalP1Q5: new FormControl(''),
-        emotionalP1Q6: new FormControl(''),
-        emotionalP1Q7: new FormControl('')
-      }),
-      sociologicalP1: new FormGroup({
-        sociologicalP1Q1: new FormControl(''),
-        sociologicalP1Q2: new FormControl(''),
-        sociologicalP1Q3: new FormControl(''),
-        sociologicalP1Q4: new FormControl(''),
-        sociologicalP1Q5: new FormControl(''),
-        sociologicalP1Q6: new FormControl(''),
-        sociologicalP1Q7: new FormControl('')
-      }),
-      physicalP1: new FormGroup({
-        physicalP1Q1: new FormControl(''),
-        physicalP1Q2: new FormControl(''),
-        physicalP1Q3: new FormControl(''),
-        physicalP1Q4: new FormControl(''),
-        physicalP1Q5: new FormControl(''),
-        physicalP1Q6: new FormControl(''),
-        physicalP1Q7: new FormControl(''),
-        physicalP1Q8: new FormControl(''),
-        physicalP1Q9: new FormControl(''),
-        physicalP1Q10: new FormControl(''),
-        physicalP1Q11: new FormControl('')
-      }),
-      psychologicalP1: new FormGroup({
-        psychologicalP1Q1: new FormControl(''),
-        psychologicalP1Q2: new FormControl(''),
-        psychologicalP1Q3: new FormControl(''),
-        psychologicalP1Q4: new FormControl(''),
-        psychologicalP1Q5: new FormControl(''),
-        psychologicalP1Q6: new FormControl(''),
-        psychologicalP1Q7: new FormControl('')
-      }),
-      environmentalP2: new FormGroup({
-        environmentalP2Q1: new FormControl(''),
-        environmentalP2Q2: new FormControl(''),
-        environmentalP2Q3: new FormControl(''),
-        environmentalP2Q4: new FormControl('')
-      }),
-      emotionalP2: new FormGroup({
-        emotionalP2Q1: new FormControl(''),
-        emotionalP2Q2: new FormControl(''),
-        emotionalP2Q3: new FormControl(''),
-        emotionalP2Q4: new FormControl('')
-      }),
-      sociologicalP2: new FormGroup({
-        sociologicalP2Q1: new FormControl(''),
-        sociologicalP2Q2: new FormControl(''),
-        sociologicalP2Q3: new FormControl(''),
-        sociologicalP2Q4: new FormControl(''),
-        sociologicalP2Q5: new FormControl(''),
-        sociologicalP2Q6: new FormControl(''),
-      }),
-      physicalP2: new FormGroup({
-        physicalP2Q1: new FormControl(''),
-        physicalP2Q2: new FormControl(''),
-        physicalP2Q3: new FormControl(''),
-        physicalP2Q4: new FormControl('')
+      fillInSection: new FormGroup({
+        emoOne: new FormControl(''),
+        emoTwo: new FormControl(''),
+        emoThree: new FormControl(''),
+        emoFour: new FormControl(''),
+        envOne: new FormControl(''),
+        envTwo: new FormControl(''),
+        envThree: new FormControl(''),
+        envFour: new FormControl(''),
+        socOne: new FormControl(''),
+        socTwo: new FormControl(''),
+        socThree: new FormControl(''),
+        socFour: new FormControl(''),
+        socFive: new FormControl(''),
+        socSix: new FormControl(''),
+        phyOne: new FormControl(''),
+        phyTwo: new FormControl(''),
+        phyThree: new FormControl(''),
+        phyFour: new FormControl('')
       })
     });
 
@@ -115,85 +102,82 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
 
 
   setCadetData(cadetData: any) {
-    const multipleChoiceData = cadetData.content.multipleChoiceSection;
-    const fillInData = cadetData.content.fillInSection;
-    this.learningStyle.setValue({
-      environmentalP1: {
-        environmentalP1Q1: multipleChoiceData.enviOne,
-        environmentalP1Q2: multipleChoiceData.enviTwo,
-        environmentalP1Q3: multipleChoiceData.enviThree,
-        environmentalP1Q4: multipleChoiceData.enviFour,
-        environmentalP1Q5: multipleChoiceData.enviFive,
-        environmentalP1Q6: multipleChoiceData.enviSix,
-        environmentalP1Q7: multipleChoiceData.enviSeven
-      },
-      emotionalP1: {
-        emotionalP1Q1: multipleChoiceData.emoOne,
-        emotionalP1Q2: multipleChoiceData.emoTwo,
-        emotionalP1Q3: multipleChoiceData.emoThree,
-        emotionalP1Q4: multipleChoiceData.emoFour,
-        emotionalP1Q5: multipleChoiceData.emoFive,
-        emotionalP1Q6: multipleChoiceData.emoSix,
-        emotionalP1Q7: multipleChoiceData.emoSeven
-      },
-      sociologicalP1: {
-        sociologicalP1Q1: multipleChoiceData.socOne,
-        sociologicalP1Q2: multipleChoiceData.socTwo,
-        sociologicalP1Q3: multipleChoiceData.socThree,
-        sociologicalP1Q4: multipleChoiceData.socFour,
-        sociologicalP1Q5: multipleChoiceData.socFive,
-        sociologicalP1Q6: multipleChoiceData.socSix,
-        sociologicalP1Q7: multipleChoiceData.socSeven
-      },
-      physicalP1: {
-        physicalP1Q1:  multipleChoiceData.phyOne,
-        physicalP1Q2:  multipleChoiceData.phyTwo,
-        physicalP1Q3:  multipleChoiceData.phyThree,
-        physicalP1Q4:  multipleChoiceData.phyFour,
-        physicalP1Q5:  multipleChoiceData.phyFive,
-        physicalP1Q6:  multipleChoiceData.phySix,
-        physicalP1Q7:  multipleChoiceData.phySeven,
-        physicalP1Q8:  multipleChoiceData.phyEight,
-        physicalP1Q9:  multipleChoiceData.phyNine,
-        physicalP1Q10: multipleChoiceData.phyTen,
-        physicalP1Q11: multipleChoiceData.phyEleven
-      },
-      psychologicalP1: {
-        psychologicalP1Q1: multipleChoiceData.psyOne,
-        psychologicalP1Q2: multipleChoiceData.psyTwo,
-        psychologicalP1Q3: multipleChoiceData.psyThree,
-        psychologicalP1Q4: multipleChoiceData.psyFour,
-        psychologicalP1Q5: multipleChoiceData.psyFive,
-        psychologicalP1Q6: multipleChoiceData.psySix,
-        psychologicalP1Q7: multipleChoiceData.psySeven
-      },
-      environmentalP2: {
-        environmentalP2Q1: fillInData.envOne,
-        environmentalP2Q2: fillInData.envTwo,
-        environmentalP2Q3: fillInData.envThree,
-        environmentalP2Q4: fillInData.envFour
-      },
-      emotionalP2: {
-        emotionalP2Q1: fillInData.emoOne,
-        emotionalP2Q2: fillInData.emoTwo,
-        emotionalP2Q3: fillInData.emoThree,
-        emotionalP2Q4: fillInData.emoFour
-      },
-      sociologicalP2: {
-        sociologicalP2Q1: fillInData.socOne,
-        sociologicalP2Q2: fillInData.socTwo,
-        sociologicalP2Q3: fillInData.socThree,
-        sociologicalP2Q4: fillInData.socFour,
-        sociologicalP2Q5: fillInData.socFive,
-        sociologicalP2Q6: fillInData.socSix
-      },
-      physicalP2: {
-        physicalP2Q1: fillInData.phyOne,
-        physicalP2Q2: fillInData.phyTwo,
-        physicalP2Q3: fillInData.phyThree,
-        physicalP2Q4: fillInData.phyFour
-      }
-    });
+    const cadetDataCheck = cadetData ? cadetData.content : null;
+    const multipleChoiceData = cadetDataCheck ? cadetDataCheck.multipleChoiceSection : null ;
+    const fillInData = cadetDataCheck ? cadetDataCheck.fillInSection : null;
+
+    if (cadetDataCheck) {
+      this.learningStyle.setValue({
+        multipleChoiceSection: {
+          enviOne: multipleChoiceData.enviOne,
+          enviTwo: multipleChoiceData.enviTwo,
+          enviThree: multipleChoiceData.enviThree,
+          enviFour: multipleChoiceData.enviFour,
+          enviFive: multipleChoiceData.enviFive,
+          enviSix: multipleChoiceData.enviSix,
+          enviSeven: multipleChoiceData.enviSeven,
+          emoOne: multipleChoiceData.emoOne,
+          emoTwo: multipleChoiceData.emoTwo,
+          emoThree: multipleChoiceData.emoThree,
+          emoFour: multipleChoiceData.emoFour,
+          emoFive: multipleChoiceData.emoFive,
+          emoSix: multipleChoiceData.emoSix,
+          emoSeven: multipleChoiceData.emoSeven,
+          socOne: multipleChoiceData.socOne,
+          socTwo: multipleChoiceData.socTwo,
+          socThree: multipleChoiceData.socThree,
+          socFour: multipleChoiceData.socFour,
+          socFive: multipleChoiceData.socFive,
+          socSix: multipleChoiceData.socSix,
+          socSeven: multipleChoiceData.socSeven,
+          psyOne: multipleChoiceData.psyOne,
+          psyTwo: multipleChoiceData.psyTwo,
+          psyThree: multipleChoiceData.psyThree,
+          psyFour: multipleChoiceData.psyFour,
+          psyFive: multipleChoiceData.psyFive,
+          psySix: multipleChoiceData.psySix,
+          psySeven: multipleChoiceData.psySeven,
+          phyOne: multipleChoiceData.phyOne,
+          phyTwo: multipleChoiceData.phyTwo,
+          phyThree: multipleChoiceData.phyThree,
+          phyFour: multipleChoiceData.phyFour,
+          phyFive: multipleChoiceData.phyFive,
+          phySix: multipleChoiceData.phySix,
+          phySeven: multipleChoiceData.phySeven,
+          phyEight: multipleChoiceData.phyEight,
+          phyNine: multipleChoiceData.phyNine,
+          phyTen: multipleChoiceData.phyTen,
+          phyEleven: multipleChoiceData.phyEleven
+        },
+        fillInSection: {
+          emoOne: fillInData.emoOne,
+          emoTwo: fillInData.emoTwo,
+          emoThree: fillInData.emoThree,
+          emoFour: fillInData.emoFour,
+          envOne: fillInData.envOne,
+          envTwo: fillInData.envTwo,
+          envThree: fillInData.envThree,
+          envFour: fillInData.envFour,
+          socOne: fillInData.socOne,
+          socTwo: fillInData.socTwo,
+          socThree: fillInData.socThree,
+          socFour: fillInData.socFour,
+          socFive: fillInData.socFive,
+          socSix: fillInData.socSix,
+          phyOne: fillInData.phyOne,
+          phyTwo: fillInData.phyTwo,
+          phyThree: fillInData.phyThree,
+          phyFour: fillInData.phyFour
+        }
+      });
+    }
+
+
+  }
+
+  onSubmit() {
+    const learningStyleUpdateData = this.learningStyle.value;
+    this.store.dispatch(PortfolioActions.learningStyleUpdate({learningStyleData: learningStyleUpdateData}));
   }
 
   ngOnDestroy() {
