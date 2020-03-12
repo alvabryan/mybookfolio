@@ -12,12 +12,18 @@ export class AuthInstructor implements CanActivate   {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     const userData = JSON.parse(localStorage.getItem('userData'));
-    if (userData.userType === 'instructor') {
-      return true;
-    }
 
-    if (userData.userType === 'cadet') {
-      this.router.navigate(['/cadet']);
+    if (userData) {
+      if (userData.userType === 'instructor') {
+        return true;
+      }
+
+      if (userData.userType === 'cadet') {
+        this.router.navigate(['/cadet']);
+        return false;
+      }
+    } else {
+      this.router.navigate(['/']);
       return false;
     }
 

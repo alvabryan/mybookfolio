@@ -560,6 +560,51 @@ export class PortfolioEffects {
     })
   ), {dispatch: false});
 
+  // personal Ad update
+  personalAd = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.personalAdUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data: any) => {
+
+      // goals data
+      const personalAd = data[0].personalAd;
+
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
+
+      // database path
+      const dbPath = pageNameSetter(data[1].pageName);
+
+      // current cadet
+      const cadetUid = data[1].cadetSearchData.uid;
+
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
+
+      // personal ad progress
+      const personalAdProgress = personalAd ? 100 : 0;
+
+      forkJoin(
+        from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
+          [cadetLetLevel]: {
+            content: personalAd,
+            dateSubmitted: firestore.FieldValue.serverTimestamp()
+          }
+        }, {merge: true})),
+        from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+          [cadetUid]: {
+            progress: {
+              [dbPath]: {
+                [cadetLetLevel]: personalAdProgress
+              }
+            }
+          }
+        }, {merge: true}))
+      );
+
+    })
+  ), {dispatch: false});
+
 
 
 

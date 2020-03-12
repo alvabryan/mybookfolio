@@ -36,6 +36,8 @@ export const winningColorsUpdate = createAction('[Portfolio update] winning colo
 
 export const learningStyleUpdate = createAction('[Portfoli update] learning style', props<{learningStyleData: any}>());
 
+export const personalAdUpdate = createAction('[Portfolio update] personal ad', props<{personalAd: string}>());
+
 export const onReload = createAction('[Instructor Portfolio] on reload set data');
 
 

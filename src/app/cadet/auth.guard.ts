@@ -12,12 +12,19 @@ export class AuthGuard implements CanActivate   {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
     const userData = JSON.parse(localStorage.getItem('userData'));
-    if (userData.userType === 'cadet') {
-      return true;
-    }
 
-    if (userData.userType === 'instructor') {
-      this.router.navigate(['/instructor']);
+    if (userData) {
+      if (userData.userType === 'cadet') {
+        return true;
+      }
+
+      if (userData.userType === 'instructor') {
+        this.router.navigate(['/instructor']);
+        return false;
+      }
+
+    } else {
+      this.router.navigate(['/']);
       return false;
     }
 

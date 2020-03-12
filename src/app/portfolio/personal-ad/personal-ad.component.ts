@@ -15,6 +15,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class PersonalAdComponent implements OnInit, OnDestroy {
 
+  personalAdForm: FormGroup;
+
   cadetData = '';
   subscription: Subscription = new Subscription();
 
@@ -30,6 +32,10 @@ export class PersonalAdComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onSubmit() {
+    this.store.dispatch(PortfolioActions.personalAdUpdate({personalAd: this.cadetData}));
   }
 
   ngOnDestroy() {
