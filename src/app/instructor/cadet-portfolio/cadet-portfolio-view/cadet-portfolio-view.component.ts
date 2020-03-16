@@ -51,12 +51,14 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
-        console.log(data);
+        const searchedCadet = data.cadetSearchData.cadetSearchData.uid;
+        const searchedCadetLevetLevel = data.cadetSearchData.cadetSearchData.letLevel;
+        console.log(searchedCadet);
         const progressData = data.cadetData.cadetProgress;
-        this.searchCadet = progressData[data.portfolio.cadetSearchData.uid];
+        this.searchCadet = progressData[searchedCadet];
 
         if (this.searchCadet) {
-          this.filterLetLevel = data.portfolio.cadetSearchData.letLevel;
+          this.filterLetLevel = searchedCadetLevetLevel;
           this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
         }
 
@@ -83,6 +85,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   getCadetProgress(filterLet, searchCadetProgress) {
     const cadetProgress = this.progressService.getProgress(filterLet, searchCadetProgress);
     this.progress = cadetProgress;
+    console.log(cadetProgress);
   }
 
   setLetLevel(letLevel: number) {

@@ -229,12 +229,13 @@ export class AuthEffects {
     uploadProfileImage = createEffect(() => this.actions$.pipe(
             ofType(AuthActions.imageUpload),
             withLatestFrom(this.store.select('auth')),
-            tap(data => console.log(data)),
             switchMap((data: any) => {
                 let image;
 
+                const userType = data[1].user.userType;
+
                 // creates random string
-                const pathFolder = 'instructorProfileImage';
+                const pathFolder = `${userType}ProfileImage`;
                 const ImageName = `${Date.now()}_${data[0].image.target.files[0].name}`;
                 const path = `${pathFolder}/${ImageName}`;
 
@@ -324,6 +325,22 @@ export class AuthEffects {
 
         })
     ));
+
+    // update cadet personal data
+    updateCadetInfo = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.updateCadetInfo),
+      tap((data: any) => {
+        console.log(data);
+      })
+    ), {dispatch: false});
+
+    // update cadet battalion code
+    updateBattalionCode = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.updateBattalionCode),
+      tap((data: any) => {
+        console.log(data);
+      })
+    ), {dispatch: false});
 
     // update user let assign
     updateLetAssign = createEffect(() => this.actions$.pipe(

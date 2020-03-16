@@ -1,19 +1,19 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import * as cadetActions from './cadet.actions';
+import * as CadetActions from './cadet.actions';
 
 
 export interface State {
-  test: string;
+  cadetData: any;
 }
 
 
 export const intialState = {
-  test: null
+  cadetData: null
 };
 
 const cadetReducer = createReducer(
   intialState,
-  on(cadetActions.test, (state, cadetAction: any) => ({ ...state, test: cadetAction.name}))
+  on(CadetActions.setCadetData, (state, newData: any) => ({ ...state, cadetData: newData.data}))
 );
 
 export function reducer(state: State | undefined, action: Action) {

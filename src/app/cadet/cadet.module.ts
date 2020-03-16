@@ -28,7 +28,8 @@ import { StoreModule } from '@ngrx/store';
 
 import * as fromCadet from './store/index';
 import { AuthGuard } from './auth.guard';
-
+import * as CadetEffects from './store/cadet.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { AuthGuard } from './auth.guard';
     QuillModule,
     AngularFirestoreModule,
     PortfolioModule,
-    StoreModule.forFeature('cadet', fromCadet.reducers)
+    StoreModule.forFeature('cadet', fromCadet.reducers),
+    EffectsModule.forFeature([CadetEffects.CadetEffects])
   ],
   providers: [
     AuthGuard

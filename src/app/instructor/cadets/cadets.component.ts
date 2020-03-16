@@ -4,6 +4,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
 import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
+import * as SearchCadetActions from './store-searchcadet/searchCadet.actions';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription, combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -107,6 +108,16 @@ export class CadetsComponent implements OnInit, OnDestroy {
       // tslint:disable-next-line: object-literal-shorthand
       letLevel: letLevel
     }));
+
+    this.store.dispatch(SearchCadetActions.setSearchCadet({cadetData: {
+      // tslint:disable-next-line: object-literal-shorthand
+      uid: uid,
+      firstName: firstname,
+      // tslint:disable-next-line: object-literal-shorthand
+      lastName: lastName,
+      // tslint:disable-next-line: object-literal-shorthand
+      letLevel: letLevel
+    }}));
 
     this.router.navigate(['/instructor/cadet-portfolio']);
   }

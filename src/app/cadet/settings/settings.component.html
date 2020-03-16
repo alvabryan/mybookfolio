@@ -1,157 +1,163 @@
 <div class="row" style="margin: 30px;">
-    <div class="col-12 m-b-5">
-      <div class="card">
-        <div class="card-body">
+  <div class="col-12 m-b-5">
+    <div class="card">
+      <div class="card-body">
 
 
-       <div class="row mt-5">
+        <div class="row mt-5" *ngIf="!uploadingImage else uploadingInProgress">
           <div class="col d-flex justify-content-center">
-            <img src="https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png" height="150px" width="150px" style="border-radius: 100px;"/>
+            <img
+              [src]="cadetData ? cadetData.profileImage ? cadetData.profileImage : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png' : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png'"
+              height="150px" width="150px" style="border-radius: 100px;" />
             <div id="imgUpload">
-              <form method="post" id="file_form" enctype="multipart/form-data">
-                <input type="file" name="file" id="file">
+              <form *ngIf="!uploadingImage" [formGroup]="profileImage" id="file_form" enctype="multipart/form-data">
+                <input formControlName="file" type="file" name="file" id="file" #file
+                  (change)="uploadProfileImage($event)">
                 <input id="submitButton" type="submit" name="submitProfileImage">
-                <p id="clickFile">Change Image</p>
+                <p id="clickFile" (click)="file.click()">Change Image</p>
               </form>
-          </div>
+            </div>
           </div>
         </div>
 
-        <form method="post" class="mt-5">
-            <p class="card-description font-weight-bold">
-              Personal info
-            </p>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">First Name</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" name="firstName" value=""/>
-                  </div>
+        <ng-template #uploadingInProgress>
+          <div class="col-12 d-flex justify-content-center">
+            <div class="mx-auto spinner-grow text-muted"></div>
+          </div>
+          <div class="col-12 d-flex justify-content-center">
+            <h5 class="mx-auto mt-2">Uploading Your Image...</h5>
+          </div>
+        </ng-template>
+
+        <form [formGroup]="personalInfo" class="mt-5" (ngSubmit)="onSubmitPersonalInfo()">
+          <p class="card-description font-weight-bold">
+            Personal info
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">First Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="firstName" formControlName="firstName" required="true"/>
                 </div>
               </div>
+              <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                  class="alert alert-danger">
 
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Last Name</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" name="lastName" value=""/>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Current Let Level</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" name="let">
-                      <option value="1" >Let 1</option>
-                      <option value="2">Let 2</option>
-                      <option value="3">Let 3</option>
-                      <option value="4">Let 4</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Grade</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" name="grade">
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                    </select>
-
-                </div>
-                </div>
-              </div>
-
-
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Period</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" name="period">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Grade</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" name="gender">
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
-                  </div>
+                <div *ngIf="firstName.errors.required">
+                  First name is required.
                 </div>
               </div>
             </div>
 
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Last Name</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="lastName" formControlName="lastName" required="true"/>
+                </div>
+              </div>
+              <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                  class="alert alert-danger">
 
-
-
-
-
-            <div class="row">
-              <div class="col">
-                <input type="submit" class="btn btn-primary float-right" name="update">
+                <div *ngIf="lastName.errors.required">
+                  Last name is required.
+                </div>
               </div>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Let Level</label>
+                <div class="col-sm-9">
+                  <select class="form-control" name="letLevel" formControlName="letLevel">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Period</label>
+                <div class="col-sm-9">
+                  <select class="form-control" name="period" formControlName="period">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <input type="submit" class="btn btn-primary float-right" name="update" [disabled]="(lastName.invalid && (lastName.dirty || lastName.touched)) || firstName.invalid && (firstName.dirty || firstName.touched)">
+            </div>
+          </div>
         </form>
 
-        <form method="post">
+        <form [formGroup]="battalionCode" (ngSubmit)="onBattalionCodeSubmit()">
           <p class="card-description font-weight-bold">Battalion Code</p>
-  <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Code</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" name="newBattalionCode" maxlength="5" value=""/>
-                  </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Code</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" name="code" formControlName="code" maxlength="5" />
                 </div>
               </div>
-  </div>
-  <div class="row">
-              <div class="col">
-                <input type="submit" value="Update" class="btn btn-primary float-right" name="updateBattalionCode">
+              <div *ngIf="code.invalid && (code.dirty || code.touched)"
+                  class="alert alert-danger">
+
+                <div *ngIf="code.errors.required">
+                  Battalion code is required.
+                </div>
               </div>
             </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="submit" value="Update" class="btn btn-primary float-right" name="updateBattalionCode" [disabled]="code.invalid && (code.dirty || code.touched)">
+            </div>
+          </div>
         </form>
 
-        <form method="post">
+        <form [formGroup]="passwordForm" (ngSubmit)="onSubmitPassword()">
 
-            <!--Password-->
-            <p class="card-description font-weight-bold">
-              Password
-            </p>
+          <!--Password-->
+          <p class="card-description font-weight-bold">
+            Password
+          </p>
+          <div *ngIf="!updatingPasswordStatus else passwordLoading">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label ">Current Password</label>
                   <div class="col-sm-9">
-                    <input type="password" class="form-control" name="oldPw"/>
+                    <input type="password" class="form-control" name="currentPassword" formControlName="currentPassword" />
+                  </div>
+                </div>
+                <div *ngIf="currentPassord.invalid && (currentPassord.dirty || currentPassord.touched)"
+                    class="alert alert-danger">
+
+                  <div *ngIf="currentPassord.errors.required">
+                    Current password is required.
                   </div>
                 </div>
               </div>
@@ -160,7 +166,14 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">New Password</label>
                   <div class="col-sm-9">
-                    <input type="password" class="form-control" name="newPw"/>
+                    <input type="password" class="form-control" name="newPassword" formControlName="newPassword" />
+                  </div>
+                </div>
+                <div *ngIf="newPassword.invalid && (newPassword.dirty || newPassword.touched)"
+                    class="alert alert-danger">
+
+                  <div *ngIf="newPassword.errors.required">
+                    New password is required.
                   </div>
                 </div>
               </div>
@@ -168,12 +181,25 @@
 
             <div class="row">
               <div class="col">
-                <input type="submit" class="btn btn-primary float-right" name="pw_update" value="Update">
+                <input type="submit" class="btn btn-primary float-right" name="pw_update" value="Update" [disabled]="(currentPassord.invalid && (currentPassord.dirty || currentPassord.touched)) || (newPassword.invalid && (newPassword.dirty || newPassword.touched))">
               </div>
             </div>
+          </div>
+          <ng-template #passwordLoading>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                  <div class="mx-auto spinner-grow text-muted"></div>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                  <h4 class="mx-auto mt-2">Updating Password...</h4>
+                </div>
+              </div>
+            </div>
+          </ng-template>
         </form>
 
-        </div>
       </div>
     </div>
+  </div>
 </div>

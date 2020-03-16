@@ -15,7 +15,12 @@ export class NavigationComponent implements OnInit {
 
   constructor(private store: Store<fromRoot.State>,private toggleSideBar: ToggleSideBarService) { }
 
+  cadetData: any;
+
   ngOnInit() {
+    this.store.select('auth').subscribe(data => {
+      this.cadetData = data.user;
+    });
   }
 
   toggleBar() {

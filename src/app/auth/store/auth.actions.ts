@@ -48,6 +48,12 @@ export const changeProfileImage = createAction('[User Settings] profile image', 
 // update firstname and lastname
 export const updateUserInfo = createAction('[User Settings] profile name', props<{firstName: string, lastName: string}>());
 
+// update cadet data
+export const updateCadetInfo = createAction('[User Cadet] update personal data', props<{newPersonalData: any}>());
+
+// update cadet battalion code
+export const updateBattalionCode = createAction('[User Cadet] update battalion code', props<{newBattalionCode: string}>());
+
 // password update
 export const passwordUpdate = createAction('[User Settings] update password', props<{oldPassword: string, newPassword: string}>());
 export const passwordUpdateStatus = createAction('[User Settings] update status', props<{status: string}>());

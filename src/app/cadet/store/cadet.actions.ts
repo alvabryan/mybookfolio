@@ -1,3 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-export const test = createAction('[cadet test] test action', props<{name: any}>());
+export const onCadetReload = createAction('[cadet] reload data');
+export const setReloadData = createAction('[cadet] reload data');
+
+
+export const getCadetData = createAction('[cadet] get cadet data');
+export const setCadetData = createAction('[cadet] set cadet data', props<{data: any}>());

@@ -3,11 +3,13 @@ import * as InstructorReducer from './instructor.reducer';
 import * as battalionUsersReducer from '../battalion-users/store/battalion-users.reducer';
 import * as fromAuth from '../../auth/store/auth.reducer';
 import * as fromPortfolio from '../../portfolio/store/portfolio.reducer';
+import * as searchCadetReducer from '../cadets/store-searchcadet/searchCadet.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface InstructorState {
     cadetRoster: InstructorReducer.State;
     battalionUsers: battalionUsersReducer.State;
+    cadetSearchData: searchCadetReducer.State;
 }
 
 export interface State extends fromRoot.State {
@@ -16,7 +18,8 @@ export interface State extends fromRoot.State {
 
 export const reducers = {
     cadetData: InstructorReducer.reducer,
-    battalionUsers: battalionUsersReducer.reducer
+    battalionUsers: battalionUsersReducer.reducer,
+    cadetSearchData: searchCadetReducer.reducer
 };
 
 // instructor reducer selector
