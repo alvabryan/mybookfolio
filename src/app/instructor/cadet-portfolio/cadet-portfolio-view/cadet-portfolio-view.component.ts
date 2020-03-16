@@ -51,6 +51,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
+        console.log(data);
         const progressData = data.cadetData.cadetProgress;
         this.searchCadet = progressData[data.portfolio.cadetSearchData.uid];
 

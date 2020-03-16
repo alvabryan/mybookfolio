@@ -37,12 +37,12 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
           const humanGraphData = data.viewData[letLevel] ? data.viewData[letLevel].content : null;
           if (humanGraphData) {
             this.humanGraphForm.setValue({
-              questionOne: data.viewData[letLevel].content.questionOne.toString(),
-              questionTwo: data.viewData[letLevel].content.questionTwo.toString(),
-              questionThree: data.viewData[letLevel].content.questionThree.toString(),
-              questionFour: data.viewData[letLevel].content.questionFour.toString(),
-              questionFive: data.viewData[letLevel].content.questionFive.toString(),
-              questionSix: data.viewData[letLevel].content.questionSix.toString(),
+              questionOne: data.viewData[letLevel].content.questionOne ? data.viewData[letLevel].content.questionOne.toString() : null,
+              questionTwo: data.viewData[letLevel].content.questionTwo ? data.viewData[letLevel].content.questionTwo.toString() : null,
+              questionThree: data.viewData[letLevel].content.questionThree ? data.viewData[letLevel].content.questionThree.toString() : null,
+              questionFour: data.viewData[letLevel].content.questionFour ? data.viewData[letLevel].content.questionFour.toString() : null,
+              questionFive: data.viewData[letLevel].content.questionFive ? data.viewData[letLevel].content.questionFive.toString() : null,
+              questionSix: data.viewData[letLevel].content.questionSix ? data.viewData[letLevel].content.questionSix.toString() : null,
             });
           } else {
             this.humanGraphForm.setValue({
@@ -57,6 +57,11 @@ export class HumanGraphComponent implements OnInit, OnDestroy {
         }
       })
     );
+  }
+
+  onSubmit() {
+    const humanGraphUpdateData = this.humanGraphForm.value;
+    this.store.dispatch(PortfolioActions.humanGraphUpdate({humanGraphData: humanGraphUpdateData}));
   }
 
   ngOnDestroy() {

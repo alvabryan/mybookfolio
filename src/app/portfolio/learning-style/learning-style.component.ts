@@ -91,9 +91,15 @@ export class LearningStyleComponent implements OnInit, OnDestroy {
       this.store.select('portfolio').subscribe((data: any) => {
         if (data.viewData && data.pageName === 'Learning Style Inventory') {
           const letLevel = 'let' + data.cadetSearchData.letLevel;
-          if (data.viewData[letLevel].content.multipleChoiceData || data.viewData[letLevel].content.fillInSection) {
-            const cadetData = data.viewData[letLevel];
-            this.setCadetData(cadetData);
+          if (data.viewData[letLevel]) {
+            if (data.viewData[letLevel].content) {
+              if (data.viewData[letLevel].content.multipleChoiceData || data.viewData[letLevel].content.fillInSection) {
+                const cadetData = data.viewData[letLevel];
+                this.setCadetData(cadetData);
+              }
+            }
+          } else {
+            this.learningStyle.reset();
           }
         }
       })

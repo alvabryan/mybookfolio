@@ -65,9 +65,7 @@ export class FourYearGoalsComponent implements OnInit, OnDestroy {
             editor: fourYearGoalsContent
           });
         } else {
-          this.editorForm.setValue({
-            editor: ''
-          });
+          this.editorForm.reset();
         }
       })
     );

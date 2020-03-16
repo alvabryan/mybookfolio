@@ -38,6 +38,8 @@ export const learningStyleUpdate = createAction('[Portfoli update] learning styl
 
 export const personalAdUpdate = createAction('[Portfolio update] personal ad', props<{personalAd: string}>());
 
+export const humanGraphUpdate = createAction('[[Portfolio update] human graph]', props<{humanGraphData: any}>());
+
 export const onReload = createAction('[Instructor Portfolio] on reload set data');
 
 

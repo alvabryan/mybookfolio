@@ -127,6 +127,18 @@ const winningColorsProgressCaluclator = (winningData) => {
   }
 };
 
+const humanGraphProgressCalculator = (humanGraphData) => {
+  const humanGraph = humanGraphData ? humanGraphData : null;
+  const questionOne: number = humanGraph ? humanGraph.questionOne ? 16.6666666 : null : null;
+  const questionTwo: number = humanGraph ? humanGraph.questionTwo ? 16.6666666 : null : null;
+  const questionThree: number = humanGraph ? humanGraph.questionThree ? 16.6666666 : null : null;
+  const questionFour: number = humanGraph ? humanGraph.questionFour ? 16.6666666 : null : null;
+  const questionFive: number = humanGraph ? humanGraph.questionFive ? 16.66666666 : null : null;
+  const questionSix: number = humanGraph ? humanGraph.questionSix ? 16.6666666 : null : null;
+
+  return Math.floor(+questionOne + +questionTwo + +questionThree + +questionFour + +questionFive + +questionSix) + 1;
+};
+
 @Injectable()
 export class PortfolioEffects {
 
@@ -134,8 +146,8 @@ export class PortfolioEffects {
         ofType(PortfolioActions.searchCadet),
         tap((data) => {
             localStorage.setItem('searchCadetData', JSON.stringify(data));
-        })
-    ), {dispatch: false});
+        })),
+    {dispatch: false});
 
     loadSearchData = createEffect(() => this.actions$.pipe(
         ofType(PortfolioActions.searchCadetLoad),
@@ -596,6 +608,52 @@ export class PortfolioEffects {
             progress: {
               [dbPath]: {
                 [cadetLetLevel]: personalAdProgress
+              }
+            }
+          }
+        }, {merge: true}))
+      );
+
+    })
+  ), {dispatch: false});
+
+
+  // human graph update
+  humanGraph = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.humanGraphUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data: any) => {
+
+      // goals data
+      const humanGraph = data[0].humanGraphData;
+
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
+
+      // database path
+      const dbPath = pageNameSetter(data[1].pageName);
+
+      // current cadet
+      const cadetUid = data[1].cadetSearchData.uid;
+
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
+
+      // human graph progress
+      const humanGraphProgress = humanGraphProgressCalculator(humanGraph);
+
+      forkJoin(
+        from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
+          [cadetLetLevel]: {
+            content: humanGraph,
+            dateSubmitted: firestore.FieldValue.serverTimestamp()
+          }
+        }, {merge: true})),
+        from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+          [cadetUid]: {
+            progress: {
+              [dbPath]: {
+                [cadetLetLevel]: humanGraphProgress
               }
             }
           }

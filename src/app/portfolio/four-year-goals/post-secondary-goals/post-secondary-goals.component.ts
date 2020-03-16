@@ -56,9 +56,7 @@ export class PostSecondaryGoalsComponent implements OnInit, OnDestroy {
             postGoals: fourYearGoalsContent
           });
         } else {
-          this.postSecondaryGoals.setValue({
-            postGoals: ''
-          });
+          this.postSecondaryGoals.reset();
         }
       })
     );
