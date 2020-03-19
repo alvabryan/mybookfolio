@@ -30,7 +30,7 @@ export class CardsComponent implements OnInit {
         {name: 'Human Graph Activity', url: 'human-graph', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/graphActivity.png', progress: '100%'},
         {name: 'Resume', url: 'course-work_resume', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/resume.png', progress: '100%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Financial Planning', url: 'financial-planning', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/bank.png', progress: '100%'}
+        {name: 'Achievements', url: 'course-work_achievements', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/medal.png', progress: '100px'}
       ]
     },
     {
@@ -46,14 +46,29 @@ export class CardsComponent implements OnInit {
       ]
     },
     {
-      name: 'Awards', cards:
+      name: 'Miscellaneous', cards:
       [
-        // tslint:disable-next-line: max-line-length
-        {name: 'Achievements', url: 'course-work_achievements', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/medal.png', progress: '100px'},
         // tslint:disable-next-line: max-line-length
         {name: 'Cadet Challenge', url: 'portfolio-cadet-challenge', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/running-man.png', progress: '100px'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Service Learning', url: 'course-work_serviceLearning', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/serviceLearning.png', progress: '100px'}
+        {name: 'Service Learning', url: 'course-work_serviceLearning', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/serviceLearning.png', progress: '100px'},
+        // tslint:disable-next-line: max-line-length
+        {name: 'Financial Planning Module 1', url: 'financialPlanningModule1', imageUrl: 'https://image.flaticon.com/icons/svg/2693/2693663.svg', progress: '100px'},
+        // tslint:disable-next-line: max-line-length
+        {name: 'Financial Planning Module 2', url: 'financialPlanningModule2', imageUrl: 'https://image.flaticon.com/icons/svg/2709/2709722.svg', progress: '100px'},
+        // tslint:disable-next-line: max-line-length
+      ]
+    },
+    {
+      name: '', cards:
+      [
+        {name: 'Financial Planning Module 3', url: 'financialPlanningModule3', imageUrl: 'https://image.flaticon.com/icons/svg/2709/2709679.svg', progress: '100px'},
+        // tslint:disable-next-line: max-line-length
+        {name: 'Financial Planning Module 4', url: 'financialPlanningModule4', imageUrl: 'https://image.flaticon.com/icons/svg/755/755195.svg', progress: '100px'},
+        // tslint:disable-next-line: max-line-length
+        {name: 'Financial Planning Module 5', url: 'financialPlanningModule5', imageUrl: 'https://image.flaticon.com/icons/svg/639/639365.svg', progress: '100px'},
+        // tslint:disable-next-line: max-line-length
+        {name: 'Financial Planning Module 6', url: 'financialPlanningModule6', imageUrl: 'https://image.flaticon.com/icons/svg/2145/2145230.svg', progress: '100px'}
       ]
     }
   ];

@@ -1,34 +1,47 @@
-
-.block-one {
-  border: 1px solid black;
-  width: 170px;
+.inline-form {
   display: inline-block;
 }
 
-.block-two {
-  border: 1px solid black;
-  width: 235px;
-  display: inline-block;
+.inline-form label, .inline-form select {
+  display: inline;
 }
 
-/* @media screen and (max-width: 990px) {
-  .filter-button{
-      float: left;
+.inline-form label {
+ width: 100px;
+ margin: 0px 3px;
+}
+
+.inline-form select {
+  width: 45px;
+}
+
+.inline-form button {
+  margin: 0px 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .inline-form {
+    display: block;
   }
-} */
 
-form label, form select {
-  margin-right: 5px;
-}
+  .inline-form label, .inline-form select {
+    display: block;
+  }
 
-.block-element {
-  white-space: nowrap;
-  border: 1px solid black;
-}
+  .inline-form label {
+   display: block;
+   width: 100%;
+   margin: 0px 5px;
+  }
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: stretch;
+  .inline-form select {
+    display: block;
+    width: 100%;
+  }
+
+  .inline-form button {
+    display: block;
+    width: 100%;
+    margin: 5px 0px;
+  }
 }

@@ -1,43 +1,47 @@
 <div class="container-fluid">
-  <div class="flex-container">
-    <div style="flex-grow: 1;">
-      <h3>Cadets</h3>
+  <div class="row justify-content-between">
+    <div class="col-xl-7 col-lg-4 col-md-3 col-sm-12">
+      <h3 class="ml-3">Cadets</h3>
     </div>
-    <div style="flex-grow: 10;">
-      <div class="block-one">
-        <select class="form-control" style="width: 150px;" (change)="onChangeSearch($event)">
-          <option value="My Cadets">My Cadets</option>
-          <option value="All Cadets">All Cadets</option>
-        </select>
-      </div>
-      <div class="block-two">
-        <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="form-inline filter-button">
-          <label for="let">Let</label>
-          <select name="let" id="let" formControlName="letLevel" class="form-control">
-            <option value="all">All</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-          <label for="period">Period</label>
-          <select name="period" id="period" formControlName="period" class="form-control">
-            <option value="all">All</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-          <button type="submit" class="btn btn-success">Filter</button>
-        </form>
+    <div class="col-xl-4 col-lg-8 col-md-9 col-sm-12">
+      <div class="container">
+        <div class="row justify-content-end">
+          <div class="col-xl-3 col-lg-4 col-md-3 col-sm-12">
+            <select class="form-control" (change)="onChangeSearch($event)">
+              <option value="My Cadets">My Cadets</option>
+              <option value="All Cadets">All Cadets</option>
+            </select>
+          </div>
+          <div class="col-xl-9 col-lg-8 col-md-9 col-sm-12">
+            <form [formGroup]="filterForm" (ngSubmit)="onFilter()" class="inline-form">
+              <label for="let">Let</label>
+              <select name="let" id="let" formControlName="letLevel" class="form-control">
+                <option value="all">All</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+              <label for="period">Period</label>
+              <select name="period" id="period" formControlName="period" class="form-control">
+                <option value="all">All</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <button type="submit" class="btn btn-success">Filter</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

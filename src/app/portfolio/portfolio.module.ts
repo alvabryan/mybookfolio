@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseWorkComponent } from './course-work/course-work.component';
-import { FinancialPlanningComponent } from './financial-planning/financial-planning.component';
 import { FourYearGoalsComponent } from './four-year-goals/four-year-goals.component';
 import { HumanGraphComponent } from './human-graph/human-graph.component';
 import { LearningStyleComponent } from './learning-style/learning-style.component';
@@ -25,11 +24,16 @@ import { PortfolioComponent } from './portfolio.component';
 import { SharedModule } from '../shared/shared.module';
 import { FileUploadComponent } from './course-work/file-upload/file-upload.component';
 import { ViewModalComponent } from './course-work/view-modal/view-modal.component';
+import { FinancialPlanningModule1Component } from './financial-planning-module1/financial-planning-module1.component';
+import { FinancialPlanningModule2Component } from './financial-planning-module2/financial-planning-module2.component';
+import { FinancialPlanningModule3Component } from './financial-planning-module3/financial-planning-module3.component';
+import { FinancialPlanningModule4Component } from './financial-planning-module4/financial-planning-module4.component';
+import { FinancialPlanningModule5Component } from './financial-planning-module5/financial-planning-module5.component';
+import { FinancialPlanningModule6Component } from './financial-planning-module6/financial-planning-module6.component';
 
 @NgModule({
   declarations: [
     CourseWorkComponent,
-    FinancialPlanningComponent,
     FourYearGoalsComponent,
     HumanGraphComponent,
     LearningStyleComponent,
@@ -40,7 +44,13 @@ import { ViewModalComponent } from './course-work/view-modal/view-modal.componen
     PostSecondaryGoalsComponent,
     PortfolioComponent,
     FileUploadComponent,
-    ViewModalComponent
+    ViewModalComponent,
+    FinancialPlanningModule1Component,
+    FinancialPlanningModule2Component,
+    FinancialPlanningModule3Component,
+    FinancialPlanningModule4Component,
+    FinancialPlanningModule5Component,
+    FinancialPlanningModule6Component
   ],
   imports: [
     CommonModule,
