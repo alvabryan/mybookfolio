@@ -119,58 +119,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
   changePortfolioView() {
     const pageName = this.portfolioViewSelect.value.pageViewName;
-    let newTaskPath = [];
-    switch (pageName) {
-      case 'Four Year Goals':
-          newTaskPath = ['instructor/portfolio/four-year-goals'];
-          break;
-      case 'Winning Colors':
-          newTaskPath = ['instructor/portfolio/winning-colors'];
-          break;
-      case 'Success Profiler and Personal Growth Plan':
-          newTaskPath = ['instructor/portfolio/course-work/successProfiler'];
-          break;
-      case 'Learning Style Inventory':
-          newTaskPath = ['instructor/portfolio/learning-style'];
-          break;
-      case 'Personal Ad':
-          newTaskPath = ['instructor/portfolio/personal-ad'];
-          break;
-      case 'Human Graph Activity':
-          newTaskPath = ['instructor/portfolio/human-graph'];
-          break;
-      case 'Resume':
-          newTaskPath = ['instructor/portfolio/course-work/resume'];
-          break;
-      case 'Financial Planning':
-          newTaskPath = ['instructor/portfolio/financial-planning'];
-          break;
-      case 'Course Work':
-          newTaskPath = ['instructor/portfolio/course-work/courseWork'];
-          break;
-      case 'Essay':
-          newTaskPath = ['instructor/portfolio/course-work/essay'];
-          break;
-      case 'Lesson Evidence':
-          newTaskPath = ['instructor/portfolio/course-work/lessonEvidence'];
-          break;
-      case 'Written Summary':
-          newTaskPath = ['instructor/portfolio/course-work/writtenSummary'];
-          break;
-      case 'Achievements':
-          newTaskPath = ['instructor/portfolio/course-work/achievements'];
-          break;
-      case 'Cadet Challenge':
-          newTaskPath = ['instructor/portfolio/portfolio-cadet-challenge'];
-          break;
-      case 'Service Learning':
-          newTaskPath = ['instructor/portfolio/course-work/serviceLearning'];
-          break;
-      default:
-        console.log('error');
-    }
     this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName}));
-    this.router.navigate(newTaskPath);
   }
 
   ngOnDestroy() {

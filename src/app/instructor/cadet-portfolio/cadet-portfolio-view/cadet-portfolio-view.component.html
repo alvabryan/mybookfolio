@@ -43,7 +43,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.yearlyGoals" (click)="toCadetTask('four-year-goals', 'Four Year Goals')"
+                  <button (click)="toCadetTask('four-year-goals', 'Four Year Goals')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -61,7 +61,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.winningColors" (click)="toCadetTask('winning-colors', 'Winning Colors')"
+                  <button (click)="toCadetTask('winning-colors', 'Winning Colors')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -79,7 +79,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.successProfiler" (click)="toCadetTask('course-work/successProfiler', 'Success Profiler and Personal Growth Plan')"
+                  <button (click)="toCadetTask('course-work/successProfiler', 'Success Profiler and Personal Growth Plan')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -97,7 +97,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.learningStyle" (click)="toCadetTask('learning-style', 'Learning Style Inventory')"
+                  <button (click)="toCadetTask('learning-style', 'Learning Style Inventory')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -114,7 +114,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.personalAd" (click)="toCadetTask('personal-ad', 'Personal Ad')"
+                  <button (click)="toCadetTask('personal-ad', 'Personal Ad')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -132,7 +132,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.humanGraphActivity" (click)="toCadetTask('human-graph', 'Human Graph Activity')"
+                  <button (click)="toCadetTask('human-graph', 'Human Graph Activity')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -149,25 +149,23 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.resume" (click)="toCadetTask('course-work/resume', 'Resume')"
+                  <button (click)="toCadetTask('course-work/resume', 'Resume')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
             </li>
           </ul>
 
-          <!-- financial planning -->
+          <!-- Achievements -->
           <ul class="list-group list-group-flush">
-            <li class="list-group-item rounded-0">Financial Planning
-
+            <li class="list-group-item rounded-0">Achievements
               <div class="progress ">
-                <div class="progress-bar bg-success " role="progressbar"
-                  [ngStyle]="{width: progress.financialPlanning + '%'}" aria-valuenow="100" aria-valuemin="0"
-                  aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.achievements + '%'}"
+                  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.achievements + '%' }}</div>
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.financialPlanning" (click)="toCadetTask('financial-planning', 'Financial Planning')"
+                  <button (click)="toCadetTask('course-work/awards', 'Achievements')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -184,7 +182,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.courseWork" (click)="toCadetTask('course-work/courseWork', 'Course Work')"
+                  <button (click)="toCadetTask('course-work/courseWork', 'Course Work')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -201,7 +199,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.essay" (click)="toCadetTask('course-work/essay', 'Essay')"
+                  <button (click)="toCadetTask('course-work/essay', 'Essay')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -219,7 +217,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.lessonEvidence" (click)="toCadetTask('course-work/lesson-evidence', 'Lesson Evidence')"
+                  <button (click)="toCadetTask('course-work/lesson-evidence', 'Lesson Evidence')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -237,28 +235,14 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.writtenSummary" (click)="toCadetTask('course-work/writtenSummary', 'Written Summary')"
+                  <button (click)="toCadetTask('course-work/writtenSummary', 'Written Summary')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
             </li>
           </ul>
 
-          <!-- awards -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item rounded-0">Awards
-              <div class="progress ">
-                <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{width: progress.achievements + '%'}"
-                  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">{{ progress.achievements + '%' }}</div>
-              </div>
-              <div class="row mx-auto mt-2 ">
-                <div class="col mt-1">
-                  <button [disabled]="!progress.achievements" (click)="toCadetTask('course-work/awards', 'Achievements')"
-                    class="btn btn-primary float-right">View</button>
-                </div>
-              </div>
-            </li>
-          </ul>
+
 
           <!-- cadet challenge -->
           <ul class="list-group list-group-flush">
@@ -271,7 +255,7 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.cadetChallenge" (click)="toCadetTask('cadet-challenge', 'Cadet Challenge')"
+                  <button (click)="toCadetTask('cadet-challenge', 'Cadet Challenge')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
@@ -289,13 +273,120 @@
               </div>
               <div class="row mx-auto mt-2 ">
                 <div class="col mt-1">
-                  <button [disabled]="!progress.serviceLearning" (click)="toCadetTask('course-work/serviceLearning', 'Service Learning')"
+                  <button (click)="toCadetTask('course-work/serviceLearning', 'Service Learning')"
                     class="btn btn-primary float-right">View</button>
                 </div>
               </div>
             </li>
           </ul>
 
+          <!-- financial planning -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item rounded-0">Financial Planning Module 1
+
+              <div class="progress ">
+                <div class="progress-bar bg-success " role="progressbar"
+                  [ngStyle]="{width: progress.financialPlanning + '%'}" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+              </div>
+              <div class="row mx-auto mt-2 ">
+                <div class="col mt-1">
+                  <button (click)="toCadetTask('financial-planning', 'Financial Planning Module 1')"
+                    class="btn btn-primary float-right">View</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- financial planning -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item rounded-0">Financial Planning Module 2
+
+              <div class="progress ">
+                <div class="progress-bar bg-success " role="progressbar"
+                  [ngStyle]="{width: progress.financialPlanning + '%'}" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+              </div>
+              <div class="row mx-auto mt-2 ">
+                <div class="col mt-1">
+                  <button (click)="toCadetTask('financial-planning', 'Financial Planning Module 2')"
+                    class="btn btn-primary float-right">View</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- financial planning -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item rounded-0">Financial Planning Module 3
+
+              <div class="progress ">
+                <div class="progress-bar bg-success " role="progressbar"
+                  [ngStyle]="{width: progress.financialPlanning + '%'}" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+              </div>
+              <div class="row mx-auto mt-2 ">
+                <div class="col mt-1">
+                  <button (click)="toCadetTask('financial-planning', 'Financial Planning Module 3')"
+                    class="btn btn-primary float-right">View</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- financial planning -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item rounded-0">Financial Planning Module 4
+
+              <div class="progress ">
+                <div class="progress-bar bg-success " role="progressbar"
+                  [ngStyle]="{width: progress.financialPlanning + '%'}" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+              </div>
+              <div class="row mx-auto mt-2 ">
+                <div class="col mt-1">
+                  <button (click)="toCadetTask('financial-planning', 'Financial Planning Module 4')"
+                    class="btn btn-primary float-right">View</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- financial planning -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item rounded-0">Financial Planning Module 5
+
+              <div class="progress ">
+                <div class="progress-bar bg-success " role="progressbar"
+                  [ngStyle]="{width: progress.financialPlanning + '%'}" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+              </div>
+              <div class="row mx-auto mt-2 ">
+                <div class="col mt-1">
+                  <button (click)="toCadetTask('financial-planning', 'Financial Planning Module 5')"
+                    class="btn btn-primary float-right">View</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- financial planning -->
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item rounded-0">Financial Planning Module 6
+
+              <div class="progress ">
+                <div class="progress-bar bg-success " role="progressbar"
+                  [ngStyle]="{width: progress.financialPlanning + '%'}" aria-valuenow="100" aria-valuemin="0"
+                  aria-valuemax="100">{{ progress.financialPlanning + '%' }}</div>
+              </div>
+              <div class="row mx-auto mt-2 ">
+                <div class="col mt-1">
+                  <button (click)="toCadetTask('financial-planning', 'Financial Planning Module 6')"
+                    class="btn btn-primary float-right">View</button>
+                </div>
+              </div>
+            </li>
+          </ul>
 
 
 
