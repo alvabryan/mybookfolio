@@ -1,0 +1,318 @@
+body{
+	zoom: 108%;
+}
+
+/*Sticky Button*/
+.feedback {
+  background-color : #3a79df;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border-color: #3a79df;
+}
+
+#mybutton {
+  position: fixed;
+  bottom: -4px;
+  right: 10px;
+  z-index: 1000;
+}
+
+button{
+	 border: none;
+    outline:none;
+}
+
+textarea {
+  resize: none;
+}
+
+.mySlides {
+	min-height: auto;
+	box-shadow: 1px 1px 10px rgba(0,  0,  0, 0.15);
+	padding: 10px;
+}
+
+@media screen and (max-width: 420px) {
+  .mySlides {
+	overflow-x: scroll;
+	}
+}
+
+.spacingTop{
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+#boxWidth{
+	width: auto;
+	display: inline-block;
+	height: auto;
+}
+
+#boxNum{
+	max-width: 400px;
+	overflow-x: scroll !important;
+	white-space: nowrap;
+	display: inline-block;
+}
+
+.buttonOne{
+	float: left;
+	margin-right: 5px;
+}
+
+.buttonTwo{
+	float: right;
+	margin-left: 5px;
+}
+
+@media screen and (max-width: 1100px) {
+  #boxNum{
+	max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #boxNum{
+	max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  #boxNum{
+	max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  #boxNum{
+	max-width: 150px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  #boxNum{
+	max-width: 82px;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  #boxNum{
+	max-width: 70px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #boxNum{
+	max-width: 80px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .spacingTop{
+	zoom: 70%;
+
+	}
+}
+
+
+/*Page One*/
+.outerBox{
+	height: auto;
+	width: auto;
+	margin: 20px auto;
+	padding-right: 20px;
+
+}
+
+
+
+.firstTitle{
+	margin: 80px 0px 0px 50px;
+	font-size: 20px;
+}
+
+.subText{
+	margin: -2px 0px 0px 60px;
+	font-size: 18px;
+}
+
+
+.subTitle{
+	color: white;
+	font-size: 22px;
+	font-family: inherit;
+	font-weight: 700;
+	margin: 30px 0px 0px 60px !important;
+	float: left;
+	color: black;
+
+}
+
+.paragraph{
+	padding: 10px;
+	margin-left: 30px;
+	font-size: 18px;
+
+}
+
+.PageOneImage{
+	height: 350px;
+	width: 350px;
+
+}
+
+img{
+	 -webkit-user-drag: none;
+	 -khtml-user-drag: none;
+	 -moz-user-drag: none;
+	 -o-user-drag: none;
+	 user-zoom: none;
+}
+
+@media screen and (max-width: 1190px) {
+
+	.PageOneImage{
+		height: 300px;
+		width: 300px;
+		margin-top: 50px;
+	}
+}
+
+@media screen and (max-width: 1067px) {
+
+	.PageOneImage{
+		height: 250px;
+		width: 250px;
+		margin-top: 120px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+
+	.PageOneImage{
+		height: 300px;
+		width: 300px;
+		display:block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+	}
+}
+
+@media screen and (max-width: 405px) {
+
+	.PageOneImage{
+		height: 200px;
+		width: 200px;
+		display:block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0;
+	}
+}
+
+
+
+/*Page Two*/
+.floatLeft{
+	margin-left: 40px;
+	font-weight: bold;
+}
+
+/*Page Three*/
+.imageCenter{
+	margin: 0 auto;
+	display: block;
+	margin-top: 50px;
+}
+
+.textPara{
+	text-align: center;
+	margin-top: 50px;
+	font-size: 18px;
+}
+
+@media screen and (min-width: 992px) {
+
+	.textPara{
+	margin-right: 40px;
+	}
+
+}
+
+/*Page 4*/
+
+.paragraph{
+	padding: 10px;
+	margin-left: 30px;
+	font-size: 18px;
+
+}
+
+.activityTwoInput{
+	margin-left: 40px;
+	display: inline-block;
+}
+
+.activityTwoText{
+	display: inline-block;
+	margin-left: 40px;
+
+}
+
+.activityTwoText p{
+	font-size: 18px;
+
+}
+
+/*Page 5*/
+
+.imagepgFive{
+	margin: auto;
+	display: block;
+}
+
+.SmartText{
+	font-size: 18px;
+	padding: 40px;
+
+}
+
+/*Page Eight*/
+.inputSize{
+	width: 80px;
+}
+
+/*Page Seventheen*/
+.inputSeventheen{
+	width: 100px;
+}
+
+
+/*Page TwentyNine*/
+
+.inputSize{
+	border: 0;
+	outline: 0;
+  	background: transparent;
+  	border-bottom: 1px solid black;
+  	border-style: dashed;
+  	width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
