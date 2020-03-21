@@ -62,6 +62,8 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
           if (cadetData) {
             this.setCadetData(cadetData);
           }
+        } else {
+          this.winningColorsForm.reset();
         }
       })
     );
@@ -100,6 +102,8 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
           five: cadetData.secD.five
         }
       });
+    } else {
+      this.winningColorsForm.reset();
     }
   }
 

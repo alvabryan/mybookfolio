@@ -1,1 +1,2423 @@
-<p>financial-planning-module6 works!</p>
+<div class="container-fluid">
+  <div class="container-fluid">
+    <div class="mx-auto d-block mt-3" style="width: 300px;">
+      <button class="btn btn-primary" [disabled]="pageIndex === 1" (click)="onClickBack()">Back</button>
+      <p class="ml-3 mr-3 d-inline-block"> Page <input class="form-control d-inline" type="number" [value]="pageIndex" style="width: 60px;" min="1" max="40" (change)="onInputChange($event)"> of 40 </p>
+      <button class="btn btn-primary" (click)="onClickNext()" [disabled]="pageIndex === 40">Next</button>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row mt-3">
+			<div class="col-sm-12 col-12 col-md-10 col-lg-10 mx-auto">
+				<div class="w3-content mx-auto" style="max-width:800px">
+
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+
+					<form method="post">
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 1">
+						<div class="row">
+								<div class="col-12 mt-5">
+									<h6 class="firstTitle"><b>Use the tips and strategies in this guide to do the following:</b></h6><br>
+									<p class="subText">» Discover the importance of being insured.</p>
+									<p class="subText">» Investigate how insurance works.</p>
+									<p class="subText">» Choose insurance for your specific needs and situations.</p>
+									<p class="subText">» Examine automobile insurance features and processes.</p>
+									<p class="subText">» Plan ahead to minimize the cost of insurance and unexpected events.</p>
+								</div>
+
+								<div class="col-12 mt-3">
+									<p class="subTitle">MEET AARON AND KATIE</p>
+								</div>
+
+								<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+										Aaron’s interviewing for a job
+										at a local Italian restaurant. The
+										manager says that as long as the
+										high school senior can “be bonded,”
+										he can start work next Monday.
+										Not wanting to look clueless, Aaron
+										nods and says that won’t be a
+										problem. He makes a mental note
+										to ask his parents about it when he
+										gets home.
+										<br>
+										But his dad jumps on him as soon
+										as he walks in the door. Apparently,
+										he just got the car insurance bill
+										and realized that his son’s slacking
+										off last semester cost him a goodstudent
+										discount.</p>
+								</div>
+
+								<div class="col-sm-12 col-md-12 col-lg-6">
+									<img src="../../../assets/jpaFinancialPictureModuleSix/pageOne.png" alt="pageOne" width="100%" onContextMenu="return false;" />
+								</div>
+
+								<div class="col-12 mb-5">
+									<p class="paragraph">“C’mon, dad. It can’t have been that much money,” Aaron says. His dad shows him
+										the bill—and points out that the total is for six months only. “Before we added you
+										to our policy, we paid less than half that amount,” his dad says before storming out
+										of the room.
+									</p>
+								</div>
+
+						</div>
+					</div>
+
+					<!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two-->
+					<!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two-->
+					<!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two--><!--PAGE Two-->
+
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 2">
+						<div class="row">
+
+							<div class="col-12 mt-5 mb-5">
+									<p class="paragraph">
+										Katie is a forward on the soccer team but she’s sidelined for the rest of the season
+										because of a torn ligament in her knee. She’s had so many doctor and physical
+										therapy appointments that the receptionists recognize her and greet her by name.<br><br>
+										Her jaw drops as she glances at a medical bill one day. “They charge that much for
+										30 minutes of rehab?” she asks.<br><br>
+										Her mom nods and explains that, thankfully, health insurance covers most of it,
+										so they pay only $30 each time. “You should see the bill for your first appointment
+										with the orthopedist—when you had all those tests!”<br><br>
+										Katie asks what would happen if they didn’t have insurance. “We’d end up going
+										into a lot of debt, I guess,” her mom says. “What else could we do?”<br><br>
+										If you created a spending plan in <i>Module 1: Money Management,</i> you know all
+										about setting aside money for rainy days. This guide is about preparing for the
+										days when the light showers become a torrential downpour, or even a tsunami—
+										when unexpected costs are huge.<br><br>
+										For those days, it’s going to take a lot more than an emergency savings account to
+										bring the sunshine back.<br><br>
+										? Recall a situation when you or a family member had property
+										damaged, were in an accident, or were a victim of theft. What were the
+										costs, if any, to fix the damage or replace the property?<br><br>
+										Everyone thinks the odds of something bad happening are small—until
+										something bad happens. It’s not just a matter of chance, either. Actions and
+										choices you’re making right now will affect your ability to protect yourself and
+										your dreams in the future.<br><br>
+										So, join Aaron and Katie as we learn how to protect your health, your money, and
+										your property.
+									</p>
+							</div>
+
+
+
+						</div>
+					</div>
+
+
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 3">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">IT’S ALL RISKY BUSINESS</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+									Life is one big adventure, with
+									many positive and negative events
+									along the way. Some are fun, like
+									visiting a new city. Some aren’t,
+									like having your new jacket stolen.
+									Being prepared for the not-so-fun
+									occurrences will go a long way
+									toward smoothing out any rough
+									spots in your journey through life.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph" style="margin-top: 50px;">
+								<span style="font-size: 23px; font-weight: 500;">
+								"An inconvenience
+								is an adventure
+								wrongly considered."</span><br>
+								<span style="font-size: 12px;">~ English writer G.K. Chesterton</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									In <i>Module 4: Investing,</i> we talk about risk as the uncertainty of achieving a desired
+									result, and that it’s woven into virtually everything we do. The downside of risk is
+									the potential for loss. You can lose money, a relationship, your pride, your health,
+									your ability to work, or most anything you value.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3">
+								<div class="row" style="border: 4px solid gray;">
+
+									<div class="col-sm-12 col-md-12 col-lg-6">
+										<h3 class="floatLeft mt-3">U.S. CRIME COUNTDOWN1</h3>
+										<p class="paragraph">
+											Every 14 seconds, one house is burglarized.<br><br>
+											Every 44 seconds, one vehicle is stolen.
+										</p>
+									</div>
+
+									<div class="col-sm-12 col-md-12 col-lg-6">
+										<img src="../../../assets/jpaFinancialPictureModuleSix/clock.png" alt="clock" width="80%" />
+									</div>
+
+								</div>
+							</div>
+
+							<div class="col-12 mt-5">
+								<p class="paragraph" style="font-size: 12px;">
+									1 “2011 Crime Clock Statistics,” Federal Bureau of Investigation, www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2011/
+crime-in-the-u.s.-2011/offenses-known-to-law-enforcement/standard-links/national-data
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 4">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">4 STRATEGIES TO MANAGE RISK</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									The more valuable something is to you, the more its loss will hurt—and the more
+									important it is to minimize the odds of losing it. Because you can’t wave a magic
+									wand that zaps all the risks from your life, get some help by applying the four risk
+									management strategies in Figure 6.1.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph" style="text-align: center; font-weight: bold;">
+									Figure 6.1: Mission—Manage the Risk of<br>
+									Financial Loss If Your Laptop Is Stolen
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+
+									  <tr>
+									  <th class="text-center" scope="row">Strategy</th>
+									  <td class="text-center"><b>Explanation</b></td>
+									  <td class="text-center"><b>Example</b></td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Avoid
+									  </th>
+									  <td>
+											 Avoid taking on the risk at all.
+									  </td>
+									  <td>
+											 If you don’t buy a laptop, you won’t have one that can be stolen.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Reduce
+									  </th>
+									  <td>
+											 Take action to reduce the possibility of a negative impact due to the risk.
+									  </td>
+									  <td>
+											 Keep your laptop in a secure place so it isn’t an easy target for thieves.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Accept
+									  </th>
+									  <td>
+											 Accept the potential or actual negative consequences of risk.
+									  </td>
+									  <td>
+											 No big deal—if it happens, you will replace it with your own money.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Share
+									  </th>
+									  <td>
+											 Share financial resources with someone else to prepare for the possible need to cover a loss.
+									  </td>
+									  <td>
+											 Your parents agree to split the cost of a new laptop with you if yours is stolen.
+									  </td>
+									</tr>
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Of the options listed in Figure 6.1, which risk management strategy
+									would you choose and why? What are other examples of each
+									strategy for this situation?<br><br>
+									Actually, there is another option for the last strategy in Figure 6.1. Your parents
+									may not always agree to share the risk with you. That’s why the most popular way
+									to share risk is through <b>insurance.</b>
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 5">
+						<div class="row">
+
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">SHARE THE RIDE (AND THE COST!)</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									<b>Insurance</b> reimburses you for unexpected losses or damages caused by a
+									specific set of hazards (such as illness or fire) to a specific thing (such as a car or
+									your life)—for a fee, of course. But that fee (aka <b>premium)</b> is only a fraction of the
+									potential payout.<br><br>
+									For example, renters’ insurance to protect $20,000 worth of your possessions may
+									cost you just $200 a year. How can insurers afford to do this?<br><br>
+									<b>Insurance companies are numbers ninjas.</b> They know the exact odds of each
+									and every customer’s need for an insurance payout during the year. And they pool
+									small payments from millions of customers to cover the big payouts that only a
+									few will need.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3">
+								<img src="../../../assets/jpaFinancialPictureModuleSix/rocksBalanced.png" alt="rocksBalanced" style="display: block; margin: auto;" width="100%" />
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Insurers are on the ball. They know that if they pay 100 percent of each loss, some
+									customers will call about every ding on their car. And more customers would try to
+									fake thefts, disabilities, and car accidents, or even burn down their houses to get
+									new ones.<br><br>
+									So, insurers make sure that you share in the financial burden by requiring you to
+									pay a relatively small fraction of the loss, called a <b>deductible,</b> before they pay out
+									a dime.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 6">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">DID YOU KNOW?</h3>
+								<p class="paragraph">
+									» For 18- to 24-year-olds, health care expenses run an average of $1,800 a
+									year, rising to $2,700 a year between ages 25 and 44.2<br>
+									» 28 percent of 19- to 25-year-olds did not have health insurance in 2011.3<br>
+									» Wearing your seat belt slashes in half the risk of accident injuries ranging
+									from moderate to fatal.4<br>
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 6.1: Teens At Risk</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									What hazards do you and other teens face each day? Think about your daily
+									routine, and list at least three different ways you are open to risk of injury,
+									property loss or damage, or other events that might result in unexpected costs.
+									Recommend a strategy to reduce or avoid each risk you list.
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph">
+									<b>Teen Risk</b>
+								</p>
+
+								<div class="form-group mx-auto">
+									<input type="text" class="form-control" style="width: 90%; margin: auto;" name="riskOne" value="">
+								</div>
+								<div class="form-group mx-auto">
+									<input type="text" class="form-control" style="width: 90%; margin: auto;" name="riskTwo" value="">
+								</div>
+								<div class="form-group mx-auto">
+									<input type="text" class="form-control" style="width: 90%; margin: auto;" name="riskThree" value="">
+								</div>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph">
+									<b>Strategy to Avoid or Reduce the Risk</b>
+								</p>
+
+								<div class="form-group mx-auto">
+									<input type="text" class="form-control" style="width: 90%; margin: auto;" name="riskFour" value="">
+								</div>
+								<div class="form-group mx-auto">
+									<input type="text" class="form-control" style="width: 90%; margin: auto;" name="riskFive"  value="">
+								</div>
+								<div class="form-group mx-auto">
+									<input type="text" class="form-control" style="width: 90%; margin: auto;" name="riskSix" value="">
+								</div>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									? Can Katie insure the saxophone she rents from the school for jazz band
+									in case she accidentally puts a ding in the instrument?<br><br>
+									Can Aaron’s dad purchase insurance to recover the cruise fees he has paid in
+									advance if it turns out the family is unable to go on the trip they planned for
+									next summer?<br><br>
+									Read on to check your answers.
+								</p>
+							</div>
+
+							<div class="col-12 mt-4 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									2Health Care Costs: Key Information on Health Care Costs and Their Impact, Kaiser Family Foundation, May 2012<br>
+									3Number includes public and private insurance. Health Insurance Coverage of Young Adults Aged 19 to 25: 2008, 2009,
+									and 2011, U.S. Census Bureau, September 2012, www.census.gov/prod/2012pubs/acsbr11-11.pdf<br>
+									4“Traffic Safety Facts: 2010 Data,” National Highway Transportation Safety Administration, August 2012, www.nhtsa.
+									gov/nhtsa/2012ciot/stats.html
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 7">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5">
+								<p class="paragraph">
+									<img src="../../../assets/jpaFinancialPictureModuleSix/Insurance.png" alt="Insurance" width="100%" style="display: block; margin: auto;" />
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">IDENTIFY THE INSURE-ABLE</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									You’d be surprised at some of the things you can get insurance for, but you can’t
+									insure every possible misfortune. The risk in question must have certain qualities
+									to be INSURE-able:<br><br>
+									» <b>I</b>nsurable interest—There must be the potential for you to have direct financial
+									loss if something happens to the insured item or person. Aaron’s dad can
+									insure the family car he owns but not the company truck he uses at work.<br>
+									» <b>N</b>umerous—Many people must have a similar risk. This spreads the risk of loss
+									over a large pool of policyholders.<br>
+									» <b>S</b>pecific loss—Any potential loss must have a definite time, place, and cause.
+									This means being able to show evidence of the loss. Examples: a police report
+									for a car accident or a doctor’s bill for medical care.<br>
+									» <b>U</b>nintentional and unexpected—You can’t buy flood insurance as the hurricane
+									approaches or purposely smash your own car to collect insurance money.<br>
+									» <b>R</b>easonable cost—Risks that are too high, too trivial, or too frequent would
+									cost a fortune to insure.<br>
+									» <b>E</b>stimatable—Must be able to calculate both the probability and dollar value of
+									your loss. That rules out getting money for an item’s sentimental value.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 8">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">3 REASONS not to IGNORE INSURANCE</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+									Insurance may not be on your
+									top-10 list of things to buy, but quite
+									often it’s a necessity. Here’s why:<br><br>
+									1. <b>The unexpected does
+									happen.</b> Without insurance,
+									you’re stuck paying the full
+									cost of accidents and loss
+									from thefts, illnesses, injuries,
+									lawsuits, and other disasters.
+									This can have a negative
+									impact on your spending plan,
+									drain your savings, or cause
+									you to owe money.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph" style="margin-top: 80px;">
+								<span style="font-size: 23px; font-weight: 500;">
+								"Life is like a box of
+								chocolates—you never
+								know what you’re
+								going to get."</span><br>
+								<span style="font-size: 12px;">~ Movie character Forrest Gump</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									2. <b>It is mandated by law.</b> All but one state can ticket you for driving without
+									auto insurance. And as of 2014, any Americans who don’t have health
+									insurance must pay a penalty, unless they meet special exceptions.<br><br>
+									3. <b>The lender says so.</b> Your car or home can be seized by a lender for
+									repayment of your loan. Lenders don’t want to lose their investment, so they
+									insist on certain levels of coverage.<br><br>
+									Suppose you’re unable to get to work because you can’t afford to fix your car after
+									an accident or you become too sick to work. With a leaner paycheck and greater
+									expenses, could you afford to pay your bills? In fact, mountains of medical bills
+									are a top cause for bankruptcy. Insurance basically protects your dreams and
+									everything you’re working to achieve.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 9">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									? Brainstorm a list of recent local, state, or national disasters. Do
+									you recall hearing the estimated costs associated with any of
+									these disasters?
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">WHO PAYS FOR THE UNINSURED? YOU DO!</h3>
+								<p class="paragraph">
+									Most hospitals are required by law to treat everyone who seeks medical care
+									at an emergency room, whether the person has health insurance or not.
+									Every year, the public at large ends up shouldering more than $57 billion
+									in unpaid medical bills for the uninsured, through taxes and price hikes for
+									health care services.5<br><br>
+									It’s the same with auto insurance. Your insurance company has to pick up the
+									tab for your repairs and injuries if an uninsured or underinsured driver hits
+									you, even if it isn’t your fault. You may have to pay the deductible, too.<br><br>
+									Because premiums don’t offset all of the paid-out costs, insurance companies
+									end up hiking everyone’s insurance rates to make up the difference. In short,
+									insured drivers bear the brunt of uninsured drivers’ accidents, to the tune of
+									nearly $11 billion a year.6
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Challenge 6-A: Case for Insurance</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Create a 30-second ad to convince your peers of the value of purposefully
+									managing potential risks to minimize unexpected costs later.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									5 The Uninsured: A Primer, Kaiser Family Foundation, October 2012, www.kff.org/uninsured/upload/7451-08.pdf<br>
+									6 “Recession Marked by Bump in Uninsured Motorists,” Insurance Research Council, April 20, 2011, www.insuranceresearch.
+									org/sites/default/files/downloads/IRCUM2011_042111.pdf
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 10">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">LEARNING THE LINGO</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Before heading home after a rehab appointment, Katie and her mom stop at
+									the wireless store. Katie tells the clerk that she needs to get a new smartphone
+									because hers was stolen. He punches Katie’s information into the computer and
+									says she still has a year left on her wireless contract. So, she’ll have to pay full price
+									of $349 for a new phone.<br><br>
+									Shocked, Katie shakes her head. “No, we pay $7 each month for cellphone
+									insurance, so the replacement should be free.”<br><br>
+									The clerk explains, “Our insurance doesn’t cover theft or loss—only accidental
+									damage. The salesperson should have explained that before you bought it.”<br><br>
+									“Well, I don’t think she did. So, the only way to get a new phone is to pay $349 for
+									it?” Katie asks. He nods.<br><br>
+									“Yeah, right,” Katie says. Her mom tells the clerk they’ll talk it over at home and
+									come back another day. As Katie walks to the car, she tells her mom, ”Next time,
+									I’m going to read the information for myself.”
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">THE ODDS</h3>
+								<p class="paragraph">
+									» 30–40 percent of all thefts nationwide involve cellphones.7<br><br>
+									» 45 percent of cellphone users 18–24 years old say they’ve had a cellphone
+									that was lost or stolen.8
+								</p>
+							</div>
+
+							<div class="col-12 mt-5 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									7 “Announcement of New Initiatives to Combat Smartphone and Data Theft,” Federal Communications Commission,
+									April 10, 2012, www.fcc.gov/document/announcement-new-initiatives-combat-smartphone-and-data-theft<br>
+									8 Privacy and Data Management on Mobile Devices, Pew Internet & American Life Project, Sept 5, 2012, pewinternet.org/
+									Reports/2012/Mobile-Privacy.aspx
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 11">
+						<div class="row">
+
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+								<p class="paragraph">
+									Before you can be a savvy insurance
+									consumer, you need to crack the code on a
+									few common terms.<br><br>
+									» An <b>insurance policy</b> is a legal contract
+									between an insurance company and
+									the <b>policyholder</b> buying the insurance.
+									It details what is covered and what is
+									excluded, as well as any conditions
+									for coverage.<br>
+									» The <b>coverage limit</b> is the maximum
+									amount the insurer will pay for losses,
+									which is described in the policy. Any
+									loss above the covered amount is
+									your responsibility.<br>
+									» The <b>conditions</b> spell out what the insurer
+									won’t pay for. Examples: A health insurer
+									might not pay for certain cosmetic
+									medical procedures, such as a nose job
+									or tattoo removal. Conditions also spell
+									out what you must do to get payment
+									for a loss. For example, you may have to
+									notify your health insurance company in
+									advance about an upcoming, scheduled
+									hospital stay.
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6">
+								<img src="../../../assets/jpaFinancialPictureModuleSix/getCovered.png" alt="getCovered" width="70%" style="display: block; margin: auto; margin-top: 80px;" />
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Activity 6.2a: Read the Fine Print</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Read an insurance policy to highlight and summarize what is covered, the
+									coverage limit, and two or three conditions for coverage.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 12">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5">
+								<div class="row" style="border: 4px solid gray;">
+
+									<div class="col-sm-12 col-md-12 col-lg-6">
+										<h3 class="floatLeft mt-3">INSURING TREASURES</h3>
+										<p class="paragraph">
+											If you own high-value items such as
+											jewelry, collections, or music equipment,
+											you can buy <b>riders</b> along with your basic
+											policy. A rider is additional coverage for
+											specific items.<br><br>
+											Don’t guess the value of your treasures.
+											Get an <b>appraisal,</b> a professional opinion
+											on the value of your property. An
+											insurance appraisal is used by the
+											insurer to determine the coverage
+											amount for high-value items, such as
+											valuables, land, or a home.
+										</p>
+									</div>
+
+									<div class="col-sm-12 col-md-12 col-lg-6">
+										<img src="../../../assets/jpaFinancialPictureModuleSix/dslr.png" alt="dslr" width="90%" height="90%" style="display: block; margin: 20px auto;"/>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">MORE LINGO</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									As Aaron approaches his car in the grocery store parking lot, he is stunned to
+									discover a smashed front fender and headlight. He looks around but doesn’t see
+									anyone in the area.<br><br>
+									Recalling his dad’s advice, he calls his insurance agent who tells him to notify the
+									police so there is an accident report on record. The agent then tells Aaron to get a
+									written estimate for the repair costs so he can file the claim online.<br><br>
+									A few days after filing the claim, Aaron’s dad receives a check for the estimate
+									amount minus the deductible. Aaron immediately calls for an appointment to
+									have the damage repaired.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+
+					<!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen-->
+					<!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen-->
+					<!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen--><!--Page Thirteen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 13">
+						<div class="row">
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+								<p class="paragraph">
+									Know the lingo when it’s time to use your
+									insurance coverage to recover losses.<br><br>
+									» A <b>claim</b> is a formal request from the
+									policyholder to have the insurance
+									company make payment for a loss.<br><br>
+									» To support a claim, the insurer might
+									require an <b>estimate</b> of the cost to repair
+									or replace damaged or stolen property.
+									In Aaron’s situation, an auto mechanic
+									prepared a detailed list of what it will cost
+									to repair his car.<br><br>
+									» An insurance <b>claims adjuster</b> investigates
+									a claim. After reviewing the claim
+									evidence, the adjuster will decide if the
+									insurance company must pay a claim,
+									and if so, how much. In some cases, an
+									adjuster might conduct interviews or
+									inspect property to confirm facts.<br><br>
+									» When an insurance company determines
+									a claim is valid, the insurance settlement
+									is paid according to the policy terms.
+
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6">
+								<img src="../../../assets/jpaFinancialPictureModuleSix/coverAloss.png" alt="coverAloss" width="70%" style="display: block; margin: auto; margin-top: 100px;" />
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">Activity 6.2b: Read the Fine Print</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Aaron is grateful that his dad and agent walked him through what to do in his
+									situation. Read an insurance policy to find out what to do to file a claim for
+									that policy.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen-->
+					<!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen-->
+					<!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen--><!--Page Fourteen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 14">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">INSULATE YOURSELF FROM LIFE’S STORMS</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+									You have many life changes ahead
+									of you. Along the way you’re going
+									to need different kinds of insurance
+									protection for yourself, your loved
+									ones, and your property.
+									</p>
+									<h3 class="floatLeft">PROTECT YOUR PROPERTY</h3>
+									<p class="paragraph">
+									<b>Auto insurance</b> is probably
+									the biggest concern for most
+									teens. It covers you in case of
+									a vehicle accident, a break-in,
+									or theft. It also covers your
+									passengers and anyone you
+									hit with your car—even if that
+									person is walking or on a bike.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph" style="margin-top: 80px;">
+								<span style="font-size: 23px; font-weight: 500;">
+								"Adventure isn’t
+								hanging on a rope off
+								the side of a mountain.
+								Adventure is an
+								attitude that we must
+								apply to the day-to-day
+								obstacles of life."</span><br>
+								<span style="font-size: 12px;">~ Mountain climber John Amatt</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									<b>Property insurance</b> replaces your personal assets when they’re stolen and
+									sometimes when they’re destroyed. Like most people, you probably can
+									afford to replace an inexpensive item on your own, but not all your valuables
+									at once.<br><br>
+									Two popular types of property insurance are homeowners’ and renters’
+									insurance.<br><br>
+									» <b>Homeowners’ insurance</b> covers your possessions inside the house, as
+									well as damage to the house itself.<br><br>
+									» <b>Renters’ insurance</b> covers only your possessions. Your landlord’s
+									insurance would cover damage to the building.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen-->
+					<!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen-->
+					<!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen--><!--Page Fifteen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 15">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 6.3: From Memory</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Imagine that your home was destroyed today and your insurance agent asked for
+									a list all of your belongings kept in your room. From memory, create a list of the
+									items in your room. Take the list home, and add to it anything you missed.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">DOES IT MATTER?</h3>
+								<p class="paragraph">
+									Insurers will cover property for either the current worth (aka <b>actual cash
+									value)</b> or the <b>replacement cost,</b> which is the amount to buy a new
+									replacement for what was lost. It’s the difference between getting what your
+									old stolen bike can be sold for at a resale shop and getting reimbursed
+									enough money to buy a new bike.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									! Good luck getting the insurance company to replace
+									items if you don’t have proof that you owned them.
+									That’s why it makes sense to keep receipts for bigticket
+									items and have photographs or videos of your belongings.
+									Better yet, store copies in a safe place, away from your home.
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">Challenge 6-B: Take an Inventory</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Put the finishing touches on your personal property inventory. For any item you
+									would want to replace, write a description (including the make, model, and serial
+									number if applicable), the year you got the item, and the cost. Create a system
+									to easily maintain your inventory and any evidence you might need to prove
+									ownership when filing an insurance claim.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen-->
+					<!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen-->
+					<!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen--><!--Page Sixteen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 16">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">EXTENDED WARRANTY VS. INSURANCE</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Extended warranties or “protection plans” are not insurance. Key differences:
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+
+									  <tr>
+									  <th class="text-center" scope="row"></th>
+									  <td class="text-center"><b>Insurance</b></td>
+									  <td class="text-center"><b>Extended Warranty</b></td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										 Kicks in when…
+									  </th>
+									  <td class="text-center">
+											 <i>Someone or something else</i> damages your item
+									  </td>
+									  <td class="text-center">
+											 Item breaks down on <i>its own</i> after the original product warranty expires
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										 Benefits paid as…
+									  </th>
+									  <td class="text-center">
+											 Repair, replacement, or cash
+									  </td>
+									  <td class="text-center">
+											 Repair or replacement only
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										 Damage covered if you cause it?
+									  </th>
+									  <td class="text-center">
+											 Maybe
+									  </td>
+									  <td class="text-center">
+											 No
+									  </td>
+									</tr>
+
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">PROTECT OTHERS</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									<b>Liability insurance</b> comes into play when you unintentionally hurt someone
+									or damage another person’s property. Auto, homeowners’, and renters’
+									insurance all include some liability coverage for incidents involving your car
+									or around your home. It covers your legal defense costs, the victim’s medical
+									and property repair bills, and any court-ordered payments, up to your policy
+									limits. After that, any costs are your responsibility and will come out of your
+									own pocket.<br><br>
+									<b>Fidelity bonds.</b> When Aaron’s interviewer mentioned “being bonded,” he
+									was talking about fidelity bonds (aka employee dishonesty insurance). Some
+									employers require that you be bonded for jobs that involve handling cash or
+									property of value. To become bonded you may have to undergo a thorough
+									criminal, civil, and financial background check.<br><br>
+									Once you’re bonded, the bonding company will reimburse your employer
+									for losses caused by you. In turn, the bonding company will take legal action
+									against you to recover their payment.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen-->
+					<!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen-->
+					<!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen--><!--Page Seventeen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 17">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">DID YOU KNOW?</h3>
+								<p class="paragraph">
+									» 33 percent of all business bankruptcies are due to employee theft.9
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5">
+								<img src="../../../assets/jpaFinancialPictureModuleSix/typesofinsurance.png" alt="typesofinsurance" width="95%" style="display: block; margin: auto;" />
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">PROTECT YOUR INCOME</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									<b>Unemployment insurance.</b> Many states require employers to pay into an
+									unemployment insurance fund. Full-time employees who are laid off can
+									then apply to receive unemployment checks for a set period of time while
+									looking for a new job. Your employer’s approval for coverage is required. But
+									it’s usually granted if you weren’t fired for wrongdoing or you didn’t quit.<br><br>
+									<b>Disability insurance.</b> Although it’s often overlooked, disability insurance
+									protects your most valuable asset—your income. It pays you a percentage of
+									your total income when a health issue prevents you from working for more
+									than six weeks.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									9 “Employee Theft Statistics,” Statistic Brain, Sept. 18, 2012, www.statisticbrain.com/employee-theft-statistics
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 18">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">DOES IT MATTER?</h3>
+								<p class="paragraph">
+									Insurers will cover property for either the current worth (aka <b>actual cash
+									value)</b> or the <b>replacement cost,</b> which is the amount to buy a new
+									replacement for what was lost. It’s the difference between getting what your
+									old stolen bike can be sold for at a resale shop and getting reimbursed
+									enough money to buy a new bike.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									Katie and her mom run an errand for Aunt Linda, who is having pregnancy
+									complications and must stay in bed for the next three months. They go pick up a
+									letter for her aunt at the doctor’s office. Katie asks what the letter is for.<br><br>
+									“It’s for the insurance company,” her mom says. “To make a short-term disability
+									claim, Linda needs to provide proof that her medical condition prevents her
+									from working.”<br><br>
+									“But she isn’t disabled,” Katie says. “She’s just pregnant.”<br><br>
+									Her mom explains that, to the insurance company, “disabled” means unable
+									to work because of a physical or mental illness. In this case, it’s because of the
+									pregnancy complications. “After Aunt Linda uses up all her vacation time and sick
+									leave, she won’t get a paycheck until she starts working again. Disability insurance
+									gives her checks for a percentage of her salary while she’s not working due to
+									the disability.”<br><br>
+									“Why don’t they pay her whole salary?” Katie asks.<br><br>
+									Her mom laughs and says, “If disability insurance paid the whole thing, no one
+									would ever go back to work!”
+								</p>
+							</div>
+
+							<div class="col-12 mt-5 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									10 “Fact Sheet,” Social Security Administration, March 18, 2011, via
+									www.disabilitycanhappen.org/chances_disability/disability_stats.asp<br>
+									11 The 2012 Council for Disability Awareness Long-Term Disability Claims Review,
+									www.disabilitycanhappen.org/research/CDA_LTD_Claims_Survey_2012.asp
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen-->
+					<!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen-->
+					<!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen-->
+
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 19">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">PROTECT YOURSELF AND FAMILY</h3>
+							</div>
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									<b>Health insurance</b> helps pay your medical bills. Coverage is important
+									because costs of treatment for even routine checkups and illnesses can run
+									several hundred dollars. Because at some point in a lifetime everyone will
+									need health care, insurance is an important consideration.<br><br>
+									<b>Workers’ compensation</b> combines disability and health insurance for
+									employees who get injured on the job. It’ll cover injury-related medical bills
+									and part of your income while you’re recuperating.<br><br>
+									! If you are injured while working, immediately report
+									the injury to your employer so you are eligible for any
+									coverage/compensation.<br><br>
+									<b>Life insurance</b> ensures that any of your dependents can maintain their same
+									standard of living by replacing your income or covering final expenses after
+									you die. You probably don’t need life insurance if you have saved to pay final
+									expenses and no one is financially dependent on you.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 6.4: A Lifetime of Insurance</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									From what you have learned about types of insurance, write down insurance types
+									that are suitable during each life stage shown below. (Hint: You can list insurance
+									types more than once.)
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3 mb-5">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+
+									  <tr>
+									  <th class="text-center" scope="row">Teen Years</th>
+									  <td class="text-center"><b>Working and Single Years</b></td>
+									  <td class="text-center"><b>Working and Family Years</b></td>
+									  <td class="text-center"><b>Retirement</b></td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="font-weight-normal">
+										<textarea class="form-control" rows="1" name="insuOne"></textarea>
+									  </th>
+									  <td>
+											<textarea class="form-control" rows="1" name="insuTwo"></textarea>
+									  </td>
+									  <td>
+											<textarea class="form-control" rows="1" name="insuThree"></textarea>
+									  </td>
+									  <td>
+											<textarea class="form-control" rows="1" name="insuFour"></textarea>
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="font-weight-normal">
+										 <textarea class="form-control" rows="1" name="insuFive"></textarea>
+									  </th>
+									  <td>
+											<textarea class="form-control" rows="1" name="insuSix"></textarea>
+									  </td>
+									  <td>
+											<textarea class="form-control" rows="1" name="insuSeven"></textarea>
+									  </td>
+									  <td>
+											<textarea class="form-control" rows="1" name="insuEight"></textarea>
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="font-weight-normal">
+										 <textarea class="form-control" rows="1" name="insuNine"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuTen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuEleven"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuTwelve"></textarea>
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="font-weight-normal">
+										 <textarea class="form-control" rows="1" name="insuThirteen"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuFourteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuFifteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuSixteen"></textarea>
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="font-weight-normal">
+										 <textarea class="form-control" rows="1" name="insuSeventeen"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuEighteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuNineteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="insuTwenty"></textarea>
+									  </td>
+									</tr>
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 20">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">SOLVE THE PRICING PUZZLE</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Insurance companies don’t just come up with a pricing number out of thin air.
+									They crunch a mind-bending databank of statistics about other customers just like
+									you to answer the all-important question:
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph" style="text-align: center;">
+									<b>How much are you likely to cost them?</b>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									The more expensive they think you’ll be, the more they’ll charge you for coverage.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<img src="../../../assets/jpaFinancialPictureModuleSix/costOfInsurance.png" alt="costOfInsurance" width="100%" style="margin: auto; display: block;" />
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									? Who do you think pays more for each type of insurance coverage listed in the chart below?
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+
+									  <tr>
+									  <th class="text-center" scope="row">Assuming all else is equal, who pays more for…</th>
+									  <td class="text-center"><b>Teens or Adults 20+?</b></td>
+									  <td class="text-center"><b>City or Country Residents?</b></td>
+									  <td class="text-center"><b>Girls or Guys?</b></td>
+									  <td class="text-center"><b>Smokers or Nonsmokers?</b></td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										 Auto
+									  </th>
+									  <td class="text-center">
+
+									  </td>
+									  <td class="text-center">
+
+									  </td>
+									  <td class="text-center">
+
+									  </td>
+									  <td class="text-center">
+											(N/A)
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="text-center">
+										 Health
+									  </th>
+									  <td class="text-center">
+
+									  </td>
+									  <td class="text-center">
+
+									  </td>
+									  <td class="text-center">
+
+									  </td>
+									  <td class="text-center">
+
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="text-center">
+										 Homeowners’ or Renters’
+									  </th>
+									  <td class="text-center">
+											 (N/A)
+									  </td>
+									  <td class="text-center">
+
+									  </td>
+									  <td class="text-center">
+											 (N/A)
+									  </td>
+									  <td class="text-center">
+
+									  </td>
+									</tr>
+
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Obviously, you can’t change your age. But you can change whether you smoke,
+									stay healthy, and have safe-driving habits. So, you do have some impact on your
+									insurance rates. And making good choices today will save your parents—and
+									eventually you—some cash.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 21">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 6.5: It’s in the Numbers</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Survey 20 of your peers to determine the percentage of individuals who have
+									experienced the same type of costly event. Pick an event that might potentially
+									involve an insurance claim. Examples: orthodontic work, sports injury, or
+									lost cellphone.<br><br>
+									Use data from an online search or survey responses to estimate an average cost
+									per event. Then calculate an estimate for your entire survey group.
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">Activity 6.5: It’s in the Numbers</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Insurance is a contract between you and the insurer. As with any contract, both
+									parties must keep up their end of the deal.<br><br>
+									Among other things, you agree to:<br><br>
+									» Give complete and accurate information when you apply. If you don’t, the
+									insurer can void your policy from the start date and refund your premium.<br>
+									» Follow the insurer’s procedures and file claims promptly to receive benefits.
+									This includes being honest about what happened. Lying can land you in jail
+									for insurance fraud, or your insurance company might drop you or charge
+									high premiums.<br>
+									» Pay your premiums on time. If you don’t, the insurer can drop you or decide not
+									to renew your policy.<br><br>
+									On the other side, the insurance company must:<br><br>
+									» Disclose upfront all the details about what your coverage does and doesn’t
+									include.<br>
+									» Keep you fully informed about your policy and any changes.<br>
+									» Process your claims fairly and promptly, explain why a claim is denied, and
+									inform you of how to file an appeal.<br>
+									» Resolve complaints in a timely manner.<br>
+									» Safeguard your privacy.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 22">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">SHARING THE COST OF FRAUD</h3>
+								<p class="paragraph">
+									Insurance fraud costs insurance companies more than $80 billion a year.
+									That’s enough to buy a new car for nearly 3 million licensed drivers or fund
+									cancer research for the next 13 years.12 Fraud costs can result in increased
+									premiums for all insurance customers.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE QUEST FOR COVERAGE</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									You’ll have to invest a little time to get quotes from at least three insurance
+									companies. But because each insurer rates risks differently, you may be able to
+									save hundreds or even thousands of dollars a year on the exact same coverage
+									from different companies. Wouldn’t you rather have that money to spend on
+									something much more fun and exciting?<br><br>
+									The National Association of Insurance Commissioners (NAIC) education website,
+									Insure U—Get Smart About Insurance <b>(www.insurance.insureuonline.org)</b>, is a
+									good place to start your search. This is where you can find unbiased consumerdirected
+									help and also get connected to your state’s insurance department.<br><br>
+									Before you shop for insurance, think about these things:<br><br>
+									» What types of coverage you need<br>
+									» How much you can afford each month in premiums<br>
+									» Whether you want to pay your premiums once a year, twice a year, or monthly<br>
+									» What deductible you can comfortably afford<br>
+									» The reputation and credibility of the insurance agent and company
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									12 Coalition Against Insurance Fraud, www.insurancefraud.org/fraud-why-worry.htm#.UL6NYodrprM
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 23">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Challenge 6-C: Cellphone Insurance? YOU Decide!</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Should you insure your cellphone?<br><br>
+									1. Find out how much it would cost to replace your phone.<br>
+									2. Check with your phone service provider to find out the cost of insurance,
+									terms of what is covered, any deductible, and conditions for coverage.<br><br>
+									What’s your verdict on cellphone insurance? Are there better alternatives?
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">SMOOTH SAILING WITH AUTO INSURANCE</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									While driving home, Aaron’s making a mental to-do list when he’s startled by a
+									rock hitting his windshield. He notices a small crack in the glass.<br><br>
+									The next morning, his dad questions him about the big crack in the windshield.
+									“Big?” Aaron asks. Looking outside, he sees that the crack has tripled in size
+									overnight.<br><br>
+									“Oh, great—how much is a new windshield going to cost me?” His dad says that
+									without insurance, it would run about $275. But all Aaron will need to pay is the
+									amount of the deductible for their comprehensive auto coverage, which is $100.
+									“Just call the insurance agent and get the claim filed,” his dad says.<br><br>
+									“OK, then do I need to get an estimate for the windshield repair costs?” Aaron asks.<br><br>
+									“No. Our agent will help set up an appointment with a glass repair company.
+									Someone will come right to the house to do the repair work. You’ll write a $100
+									check to the glass company to cover the deductible. Then our insurance company
+									will pay the difference—$175—to the glass company,” his dad explains.<br><br>
+									Aaron asks if this will affect their insurance rates. “It shouldn’t,” his dad says.
+									“Windshield cracks are pretty common. But we did have that recent claim for the
+									fender and headlight. Of course, it still would be good if you’d get your grades
+									back up so we can get that good-student discount again.”
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 24">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE AUTO POLICY BREAKOUT</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									There are six main types of auto insurance coverage. Each one represents an
+									important set of risks involved in driving a vehicle, and each gets
+									priced separately.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph" style="text-align: center; font-weight: bold;">
+									Figure 6.2: Auto Insurance Coverage
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3">
+								<img style="margin: auto; display: block;" src="../../../assets/jpaFinancialPictureModuleSix/typeOfInsuranceandWorth.png" alt="typeOfInsuranceandWorth" width="100%"  />
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Popular policy rider add-on insurance includes coverage for towing expenses after
+									a breakdown and for renting a car while yours is being repaired.
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">Activity 6.6: Auto Insurance Coverage</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Scan the <b>declarations</b> page of an auto insurance policy, a one-page summary of
+									the coverage amounts. (Use the sample provided by your teacher, or download
+									a copy from <b>www.hsfpp.org.</b>) How do the coverage amounts and premium fees
+									compare with those for your family’s policy?
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 25">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">WHAT AUTO INSURANCE DOESN’T COVER</h3>
+								<p class="paragraph">
+									» Stereos, CD players, and navigation systems installed after buying the car<br>
+									» Purses, cellphones, portable GPS units, or any other item left inside
+									the car<br>
+									» Routine maintenance, such as oil changes, or internal damage resulting
+									from lack of proper maintenance<br>
+									» Mechanical breakdowns or defects in the car
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									? What do you have stored in your vehicle that isn’t covered by your
+									auto insurance? Think of a better way to protect these items from loss
+									or damage.
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">NEED-TO-KNOW INFORMATION</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									When comparision shopping for auto insurance, to get an accurate price quote
+									you’ll need to provide the following information:<br><br>
+									» Number of years you’ve had a driver’s license<br>
+									» Car make, model, year, and body style<br>
+									» Safety equipment, such as anti-theft systems and airbags<br>
+									» Vehicle identification number (VIN)<br>
+									» Speeding tickets and other moving violations you’ve had in recent years<br>
+									» Previous auto insurance claims you have filed, if any, and whether they were for
+									occurrences that were your fault<br>
+									» Details of insurance coverage you have now and what you’re seeking, including
+									types, limits, deductibles, and riders<br>
+									» Social Security number (SSN), used by the insurer to check your credit history
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 26">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">THE ODDS</h3>
+								<p class="paragraph">
+									» Drivers who are text messaging are 23 times more likely to be involved in
+									an accident than non-texting drivers.13<br>
+									» Teens are four times more likely than adults to get into a cellphone-related
+									crash or near-crash.14
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE HIGH PRICE OF BEING A TEEN</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Be extra nice to your parents if they add you to their auto insurance policy when
+									you start to drive. Adding a teen driver boosts premiums about 50 percent, an
+									average of $621 a year.15<br><br>
+									But it would cost you nearly five times that amount (more than $2,200 a year) to
+									get your own auto insurance policy with the exact same coverage.16 Insurance
+									companies know that without potential oversight by your parents to keep you in
+									check, you’re less likely to be a responsible driver.<br><br>
+									And no, that’s not age discrimination. Statistics show that 16- to 19-year-olds
+									have four times as many accidents per mile as other drivers.17 And accidents are
+									expensive, especially if a victim sues you afterward. So, insurers have to charge
+									more for teen drivers to compensate for the much higher risk of insuring them.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									13, 14 “New Data from Virginia Tech Transportation Institute Provides Insight into Cellphone Use and Driving Distraction,”
+									Virginia Tech News, July 29, 2009<br>
+									15, 17 “Adding a Teen to My Car Insurance Policy Costs How Much?” Insurance.com, Oct. 21, 2010, www.insurance.com/
+									auto-insurance/saving-money/adding-a-teen-to-my-car-insurance-policy-costs-how-much.aspx<br>
+									16 Policy coverage includes all liability coverage levels. “Adding a Teen to My Car Insurance Policy Costs How Much?,
+									Insurance.com, Oct. 21, 2010
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 27">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									Age is just one of many factors that affect the cost of your auto insurance
+									premium. Here are a few other factors that impact the premium cost:
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+
+									<tr>
+									  <th class="text-center" scope="row" colspan="2">Ingredients of Auto Premiums</th>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Driving record
+									  </th>
+									  <td>
+											Traffic violations in the last one to three years will drive your premium up.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Where you park
+									  </th>
+									  <td>
+											 Street parking is riskier than parking in a garage.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 How much you drive
+									  </th>
+									  <td>
+											 The more miles you drive in a year, the greater the
+											 odds you’ll have an accident.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 What you drive
+									  </th>
+									  <td>
+											Repairs and thefts of newer, bigger, and moreexpensive
+											cars cost insurers more.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Credit-based insurance score
+									  </th>
+									  <td>
+											Repairs and thefts of newer, bigger, and moreexpensive
+											cars cost insurers more.
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Prior claim record
+									  </th>
+									  <td>
+										   More past claims mean higher premiums. Switching
+										   companies won’t help you dodge your record.
+										   Most insurers report claims to private, nationwide
+										   claims databases such as the Comprehensive Loss
+										   Underwriting Exchange (CLUE).
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Prior insurance coverage
+									  </th>
+									  <td>
+										   Letting your insurance expire results in higher premiums when you buy it again.
+									  </td>
+									</tr>
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Each insurance company has its own private system for gauging risk and pricing
+									premiums. For example, one company may charge more for a past speeding
+									ticket, while another may charge more for driving a certain type of car.<br><br>
+									? What are three ways a teen driver can lower auto insurance costs or
+									help keep them from going up?
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 28">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">IN CASE OF ACCIDENT …</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									A cracked windshield, a break-in, a collision—at some point, you’ll be very glad
+									you’ve paid your auto insurance premiums. Here’s a short checklist of steps to
+									follow before you leave the scene of an accident:<br><br>
+									» Safety first—call 911 if anyone is injured.<br><br>
+									» Get the contact, license plate, and insurance information for any other drivers
+									involved.<br><br>
+									» Get contact information for any passengers and witnesses.<br><br>
+									» Call the police to file a report. Later, get the police report number or a copy of
+									the report.<br><br>
+									» After sharing insurance information, avoid making statements to anyone but
+									the police and your insurance agent.<br><br>
+									» Take pictures or draw diagrams of the scene and any accident damage,
+									if possible.<br><br>
+									» Call your insurance company and report the accident.<br><br>
+									Be totally honest about what happened. Accident investigators can use
+									sophisticated forensics to determine exactly what occurred and who is liable for
+									an accident. Any lies you tell will likely be exposed and may lead to charges of
+									insurance fraud.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 6.7: Whoops! There’s Been an Accident</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Participate in a role-play to demonstrate what to do immediately after being
+									involved in or witnessing an auto accident. Your teacher will provide scenarios for
+									this activity.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 29">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">SURFING THE SEAS OF HEALTH INSURANCE</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Aaron’s older brother Jamie is offered health insurance at his new job. He’s only 23
+									and doesn’t have any health issues. He needs to decide by the end of the month
+									if he’ll enroll in the company health plan—which means having $200 deducted
+									from his paycheck every month for his premium. He can’t make up his mind and
+									misses the deadline to sign up.<br><br>
+									Six months later, Jamie is training for a marathon and doubles over after finishing
+									a long run. His chest feels as if an elephant is sitting on it. He winces at the pain
+									and struggles to catch his breath between coughs.<br><br>
+									He waves off his friend’s concerns. But when Jamie’s lips start turning blue, his
+									friend rushes him to the hospital. The ER nurse admits Jamie to the hospital for
+									treatment for a severe asthma attack. Two days and $5,400 later, the hospital
+									discharges him. Also, Jamie needs to fill three prescriptions for medicine that will
+									help prevent and manage future attacks.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">THE ODDS</h3>
+								<p class="paragraph">
+									» One in six young adults in their 20s wind up as an emergency room
+									patient at some point during their working years.18<br>
+									» One in seven adults 18 to 29 years old has at least one chronic disease,
+									such as arthritis, asthma, cancer, diabetes, heart disease, and high
+									blood pressure.19
+								</p>
+							</div>
+
+							<div class="col-12 mt-5 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									18 Health Insurance Coverage of Young Adults: Issues and Broader Considerations, The Urban Institute, June 2008,
+									www.urban.org/publications/411691.html<br>
+									19 Young, Uninsured, and in Debt, The Commonwealth Fund, June 2012,
+									www.commonwealthfund.org/publications/isue-briefs/2012/jun/young-adults-2012.aspx
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 30">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									Now Jamie’s stressed, wondering how he’s going to pay for it all. He ends up filling
+									the one prescription for the inhaler to stop the attacks. But he skips buying the
+									preventive medications. Not surprisingly, he continues to have asthma attacks
+									after long runs, although his inhaler helps stop them.<br><br>
+									Jamie tries to join the health insurance plan at work, but he missed the initial
+									deadline. He now has to wait six months until the next <b>open enrollment period</b>
+									when his employer gives him the option to sign up for insurance coverage. Of
+									course, the future coverage won’t help with his past hospital bills.<br><br>
+									A few months later, the hospital’s collection department starts calling for the
+									money that’s owed. Jamie ducks the calls, but soon after he applies for a car loan,
+									he’s turned down. The reason? The outstanding hospital debt.<br><br>
+									If Jamie had signed up for health insurance during the initial annual enrollment
+									period, he would only have had to pay a $100 deductible and $540 for the
+									hospitalization. And instead of $400 a month for his prescription medications, the
+									tab would have been $90 monthly.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 6.8: Jamie Learns a Lesson</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Calculate how much Jamie will pay for medical costs during his first year on the
+									job. Compare this to what he would have paid had he signed up for insurance.
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3 mb-5">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+
+									  <tr>
+									  <th class="text-center" scope="row">Description of Expenses</th>
+									  <td class="text-center"><b>Jamie’s Costs Without Insurance Coverage</b></td>
+									  <td class="text-center"><b>Jamie’s Costs With Insurance Coverage</b></td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Hospital fee (two-day stay)
+									  </th>
+									  <td>
+											  <textarea class="form-control" rows="1" name="lessonOne"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="lessonTwo"></textarea>
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Prescriptions (six months)
+									  </th>
+									  <td>
+											 <textarea class="form-control" rows="1" name="lessonThree"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="lessonFour"></textarea>
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Premium (12 months)
+									  </th>
+									  <td>
+											 <textarea class="form-control" rows="1" name="lessonFive"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="lessonSix"></textarea>
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										 Total
+									  </th>
+									  <td>
+											 <textarea class="form-control" rows="1" name="lessonSeven"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control" rows="1" name="lessonEight"></textarea>
+									  </td>
+									</tr>
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 31">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">HEALTH CARE FOR ALL AMERICANS</h3>
+								<p class="paragraph">
+									As of 2014, all Americans are expected to have health insurance. With few
+									exceptions, people who aren’t insured will pay a penalty. And they take
+									on risk for unexpected medical care fees. Paying expensive costs--such as
+									ambulance service or x-rays—can make a mess of anyone’s spending plan.<br><br>
+									If you can’t get insurance through an employer-based plan, shop for
+									insurance options at the health care marketplace (aka exchange). Find
+									out more about the Patient Protection and Affordable Care Act at
+									<b>www.healthcare.gov.</b>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Going without health insurance is like playing Russian roulette with your health,
+									your bank account, and your life:<br><br>
+									» Skipping checkups means you’re more likely to miss early detection of diseases
+									like depression, diabetes, or scoliosis.<br>
+									» Delaying doctor visits when you’re sick allows simple ailments to morph into
+									something serious. And serious diseases can quickly become advanced before
+									you’re diagnosed. The sicker you are, the more days of school and work you’ll
+									miss. This can add financial strain.<br>
+									» Unexpected mishaps—like Katie’s torn ligament or Jamie’s asthma—can put
+									your finances into a tailspin, piling onto your already stressful situation.<br><br>
+									! Your body and mind have to last the rest of your life.
+									Don’t gamble with your health!
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 32">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">LEARNING THE LINGO OF HEALTH INSURANCE</h3>
+							</div>
+
+								<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+										Health insurance is simple to understand once you
+										know the jargon.<br><br>
+										As you know, a <b>deductible</b> is the amount you
+										pay before insurance kicks in. You may have one
+										deductible for all your medical expenses or one
+										for different parts of your health plan—for routine
+										care, hospitalizations, and prescription drugs,
+										for example.
+									</p>
+								</div>
+
+								<div class="col-sm-12 col-md-12 col-lg-6">
+									<img src="../../../assets/jpaFinancialPictureModuleSix/healthBenefits.png" alt="healthBenefits" width="100%" onContextMenu="return false;" />
+								</div>
+
+								<div class="col-12 mt-3">
+									<p class="paragraph">
+										You have to pay the deductible amounts every
+										year; there’s no carry-over from one year to the next.
+										Typically, you will pay lower premiums for plans with higher deductible limits.<br><br>
+										Your health insurance company will split the bills with you.<br><br>
+										» <b>Co-pays</b> mean you pay a set dollar amount upfront for a health care service,
+										such as $15 for each office visit with a doctor.<br>
+										» <b>Co-insurance</b> means you pay a set percentage of the charge. For example,
+										70/30 means the insurance company pays 70 percent and you pay 30 percent.<br><br>
+										For insurance purposes, everything you pay for medical care aside from the
+										insurance premium is an <b>out-of-pocket expense.</b> Luckily for policyholders most
+										plans cap out-of-pocket expenses with an <b>out-of-pocket maximum</b> for the year.<br><br>
+										Let’s say your maximum is $3,000, and you’ve already spent $1,800 out of pocket
+										this year as shown in Figure 6.3. If you then got a medical bill for $10,000, the most
+										you’d have to pay is $1,200. The insurance company would take care of the rest.
+									</p>
+								</div>
+
+								<div class="col-12 mt-3">
+									<p class="paragraph" style="text-align: center; font-weight: bold;">
+										Figure 6.3: Example of a Policyholder’s Out-of-Pocket Responsibilities
+									</p>
+								</div>
+
+								<div class="col-10 mx-auto mt-3 mb-5">
+									<img style="display: block; margin: auto;" src="../../../assets/jpaFinancialPictureModuleSix/policyHolderExample.png" alt="policyHolderExample" width="100%"  />
+								</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 33">
+						<div class="row">
+
+								<div class="col-12 mt-5">
+									<p class="paragraph">
+										? Katie’s knee problems continue and her doctor says surgery may be
+										necessary. It will cost $15,000. Her family’s health plan has:<br><br>
+										» $100 deductible for each hospitalization
+										» 70/30 co-insurance<br>
+										» $3,000 out-of-pocket maximum<br><br>
+										What would her out-of-pocket expenses be if her family has already spent $1,950
+										for the year?
+									</p>
+								</div>
+
+								<div class="col-12 mt-5">
+									<h3 class="floatLeft">HEALTH CARE OPTIONS</h3>
+								</div>
+
+								<div class="col-12 mt-3">
+									<p class="paragraph">
+										Not sure where to begin your search for affordable health care coverage? Here are
+										five possible sources.<br><br>
+										<b>Employer-based health plans.</b> If you work for a company that offers
+										health care benefits to workers, you may be given a choice of plans. Look for
+										lower-cost coverage through managed care plans such as preferred provider
+										organizations (PPOs) or health maintenance organizations (HMOs). Another
+										way you may be able to lower annual health care costs is with a highdeductible
+										health insurance plan. Some high-deductible plans can be linked
+										to tax-advantaged health savings accounts (HSAs).
+									</p>
+								</div>
+
+								<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										! If you’re enrolled in a high-deductible health
+										insurance plan, you can sock away money in a health
+										savings account (HSA). It’s a way to have money on
+										hand when you need it for medical expenses. Apply the “pay
+										yourself first” strategy to make regular HSA fund deposits part of
+										your monthly spending plan.<br><br>
+										There’s a triple bonus: HSA deposits are tax deductible,
+										withdrawals used to pay for health care expenses are tax free, and
+										high-deductible plans typically have reduced premiums.
+									</p>
+								</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 34">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									<b>A parent’s health plan, if you’re under age 26.</b> According to the Affordable
+									Care Act (ACA), a parent may add or keep a child on a parent’s health
+									insurance policy until the child turns 26.<br><br>
+									<b>Individual health plan.</b> You can purchase an individual health plan or
+									family health plan directly from an insurance company. If you’ve been
+									unable to qualify for a private health plan because of a pre-existing medical
+									condition, be sure to check out the Pre-Existing Condition Insurance Plan
+									(PCIP) available in your state under the ACA. The ACA prohibits insurance
+									companies from refusing to sell coverage or renew policies because of an
+									individual’s pre-existing medical condition.<br><br>
+									<b>Medicaid.</b> Lower-income individuals, families and children, seniors, and
+									people with disabilities may qualify for coverage through the Medicaid
+									program offered in their state.<br><br>
+									<b>Children’s Health Insurance Program (CHIP).</b> This program provides lowcost
+									health insurance coverage to children in lower-income families with
+									earnings above the limit to qualify them for Medicaid.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+									<h3 class="floatLeft">IT’S TIME TO PROTECT WHAT YOU HAVE</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									How you get covered depends on what you’re buying. You’re on your own for
+									finding auto insurance and property insurance, such as renters’ coverage. But you
+									may be able to buy health, life, and disability insurance through your employer.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+									<h4 class="floatLeft">BENEFIT FROM EMPLOYERS</h4>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									After yet another rehab appointment one day, Katie asks her mom how much
+									health insurance costs. When her mom says that she pays about $350 a month to
+									insure their family, Katie’s jaw drops. “Isn’t that a lot?” she asks.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 35">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									“No, not really. That amount is what I pay, but my company pays a larger share of
+									the actual cost. And the actual cost would be a lot higher if I had to buy insurance
+									for all of us somewhere else.” Her mom explains that employers get lower prices
+									because they’re buying for a group of people.<br><br>
+									“Think about your soccer team. You and Tameka both have serious injuries. A few
+									girls have had minor sprains. But the rest have been healthy.” Katie nods.<br><br>
+									“Insurance companies know that groups are always like that,” her mom explains.
+									“A couple people will end up needing a lot of health care. And some will barely
+									need it. That spreads out the risk to the insurance company—which is why it can
+									charge lower premiums for groups.”
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h4 class="floatLeft">DRIVE DOWN COSTS</h4>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Although insurance is a bargain compared with the disaster alternative, it can take
+									a bite out of your wallet. Here are a few general cost-cutting strategies:<br><br>
+									» <b>Aim high.</b> The higher your deductible is, the smaller your premium will be. Just
+									make sure you realistically can afford the deductible you select.<br><br>
+									» <b>Be like Goldilocks.</b> Given how much everything costs these days, the
+									minimum level of coverage may not be enough. But you probably don’t need
+									the highest level, either. Find what’s “just right” for you.<br><br>
+									» <b>Ask for a discount.</b> Most auto insurers offer discounts if you have a clean
+									driving record for the past few years, an anti-theft device, and good grades
+									while you’re a student. Bundling two or more types of policies with one insurer
+									may earn you across-the-board discounts.<br><br>
+									» <b>Get proactive.</b> Driving responsibly—avoiding tickets and accidents—is the
+									single biggest thing you can do to reduce your auto insurance premium.
+									Giving up smoking and participating in wellness programs may lower your
+									health insurance premium. Ask your insurer what you can start doing now to
+									save money at policy renewal time.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 36">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">PLAN FOR SUCCESS</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Once you get insurance, add the premiums to your spending plan. Estimate your
+									out-of-pocket costs and work those in, too. Even if you’re healthy, you’ll still have
+									certain expenses for services, such as co-pays for any doctor visits. Make an effort
+									now to build up savings to cover your deductibles so that you’re not scrambling
+									for the money later.<br><br>
+									<b>Give your insurance a regular checkup.</b> After all, your needs and priorities will
+									shift over time. Tell your insurer if you move, switch jobs, get married, or make
+									other life changes—those changes may score you a lower premium.<br><br>
+									It pays to shop around for insurance every year or two. Changes in the industry,
+									your insurer, the laws, and your situation may make coverage elsewhere a better
+									deal for you.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h4 class="floatLeft">Activity 6.9: That’s How Much a Month?</h4>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Katie’s parents have health and disability insurance premiums automatically
+									deducted from their paychecks. But they are responsible for paying the premiums
+									for their life ($700 per year), auto ($1,250 every six months, $250 deductible), and
+									homeowners’ insurance ($230 a year, $100 deductible).<br><br>
+									How much should they include in their monthly spending plan as insurance
+									expense so they have funds set aside to cover premium payments when they
+									are due?
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									$ <input class="form-control" type="text" style="width: 100px; display: inline-block;" name="monthOne" value=""> a month
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven-->
+					<!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven-->
+					<!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 37">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">WHAT TO KEEP WHERE</h3>
+								<p class="paragraph">
+									<b>In Your Files:</b><br>
+									Current and past insurance policies<br>
+									Premium statements<br>
+									Medical bills you’ve paid<br>
+									Up-to-date inventory of your personal assets<br>
+									Documentation for any claims you’ve filed<br><br>
+									<b>With You:</b><br>
+									Auto and health insurance identification cards<br>
+									Driver’s license or other photo ID
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Adding it up</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									You have big dreams and hopes. But everything you’ve worked for can vanish in a
+									snap if you aren’t protected from the occasional bad turn of events. Insurance is a
+									convenient and affordable way to get that protection. It’s meant to return you to
+									the financial condition you were in before you had a loss.<br><br>
+									Maybe you don’t have to worry about buying your own insurance right now.
+									But as you have learned, along with Katie and Aaron, the things you do today—
+									whether you take care of your health, drive responsibly, and manage your money
+									well—affect how much your parents pay to cover you on their insurance.<br><br>
+									More importantly, your actions now will affect whether you’ll be able to get
+									insurance for yourself, and how much you’ll pay for it, when you’re on your own.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h4 class="floatLeft">Challenge 6-D: Your Risk Management Plan</h4>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Devise a plan to minimize your current and near-future insurance costs. Include
+									risk management strategies to avoid, reduce, accept, or share the potential risks of
+									financial loss due to lost, stolen, or damaged property or to medical issues.<br><br>
+									Estimate what you will need to set aside each month when you take on the
+									responsibilities for auto insurance, health insurance, and homeowners’ or
+									renters’ insurance.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 38">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/appendix.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 39">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/additonalPage.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 40">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/backCover.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					</form>
+
+					<!--End of container of pages-->
+				</div>
+
+			</div>
+		</div>
+  </div>
+  <div class="container-fluid">
+    <div class="mx-auto d-block mt-3" style="width: 300px;">
+      <button class="btn btn-primary" [disabled]="pageIndex === 1" (click)="onClickBack()">Back</button>
+      <p class="ml-3 mr-3 d-inline-block"> Page <input class="form-control d-inline" type="number" [value]="pageIndex" style="width: 60px;" min="1" max="40" (change)="onInputChange($event)"> of 40 </p>
+      <button class="btn btn-primary" (click)="onClickNext()" [disabled]="pageIndex === 40">Next</button>
+    </div>
+  </div>
+</div>

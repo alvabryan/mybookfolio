@@ -1,1 +1,2383 @@
-<p>financial-planning-module5 works!</p>
+<div class="container-fluid">
+  <div class="container-fluid">
+    <div class="mx-auto d-block mt-3" style="width: 300px;">
+      <button class="btn btn-primary" [disabled]="pageIndex === 1" (click)="onClickBack()">Back</button>
+      <p class="ml-3 mr-3 d-inline-block"> Page <input class="form-control d-inline" type="number" [value]="pageIndex" style="width: 60px;" min="1" max="40" (change)="onInputChange($event)"> of 40 </p>
+      <button class="btn btn-primary" (click)="onClickNext()" [disabled]="pageIndex === 40">Next</button>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row mt-3">
+			<div class="col-sm-12 col-12 col-md-10 col-lg-10 mx-auto">
+				<div class="w3-content mx-auto" style="max-width:800px">
+
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+
+					<form method="post">
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 1">
+						<div class="row">
+								<div class="col-12 mt-5">
+									<h6 class="firstTitle">Use the tips and strategies in this guide to do the following:</h6><br>
+									<p class="subText">» Explain how financial services are used to handle transactions.</p>
+									<p class="subText">» Select a financial service provider.</p>
+									<p class="subText">» Use financial services to better manage your spending and saving.</p>
+									<p class="subText">» Explore trends that will change your banking and shopping life.</p>
+									<p class="subText">» Protect your money from thieves and con artists.</p>
+								</div>
+
+								<div class="col-12 mt-3">
+									<p class="subTitle">MEET JASON AND BRIANNA</p>
+								</div>
+
+								<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">Jason wants a career in law
+										enforcement but he’s torn.
+										Joining the local police force after
+										graduation would keep him close
+										to his family and girlfriend. But
+										he’s psyched at the idea of joining
+										the Coast Guard, too, taking down
+										smugglers and drug traffickers all
+										over the country.
+										<br>
+										Right now, Jason has a checking
+										and savings account at a nearby
+										community bank. He likes the bank,
+										but worries that using a small, local
+										bank could be a problem if he joins
+										the military next year. He’s also not
+										the best at managing his account.</p>
+								</div>
+
+								<div class="col-sm-12 col-md-12 col-lg-6">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/pageOne.png" alt="pageOne" width="100%" onContextMenu="return false;" />
+								</div>
+
+								<div class="col-12 mb-5">
+									<p class="paragraph">Brianna’s parents give her cash when she needs it. She’s trained most of her family
+										to give her gift cards for holidays and on her birthday. And if she ever needs to buy
+										something online, Brianna asks her mom to do it with her credit card.<br><br>
+										But the freshman starts her first job next week, working at the same store as her
+										best friend, Vanessa. Brianna doesn’t have a bank account yet—and doesn’t think
+										she needs one.
+									</p>
+								</div>
+						</div>
+
+					</div>
+
+					<!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two-->
+					<!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two-->
+					<!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 2">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										With banks on every corner, prepaid cards in every checkout line, and a growing
+										number of businesses eager to turn your checks into cash, how do you decide
+										where to go with your money?<br><br>
+										Find out the options along with Jason and Brianna, as they help us explore various
+										types of financial services. Learn how to choose the best services for you, and put
+										them to work for you.
+									</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">MONEY IN MOTION</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Nothing beats the feel of a crisp, new $20 bill in your hand. But as you take on
+										more responsibilities after high school, you’ll run into situations where using cash
+										isn’t the best option—if it’s an option at all.
+									</p>
+							</div>
+
+							<div class="col-12 mx-auto mt-3 mb-5">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/bills.png" alt="bills" width="100%"/>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 3">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										Among the downsides of using cash only:<br><br>
+										» There’s no built-in proof of payment if things go wrong.<br>
+										» It’s tempting to waste cash on lots of small, silly purchases—leaving you broke
+										and wondering “Where did it all go?” when it’s time to pay the bills.<br>
+										» Once cash is lost or stolen, it’s gone for good.<br><br>
+										Credit cards aren’t always the best choice either. That’s especially true considering
+										the fact that the interest paid on borrowed money has the potential to mushroom
+										into a mountain of debt if you’re not careful. (You can learn more about credit
+										cards in Module 2: Borrowing.) Luckily, there are plenty more ways to spend and
+										receive money.<br><br>
+										Other than using cash, how do you or family members exchange
+										money to make purchases or pay bills?
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">BANK ON IT</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										The center of most people’s daily financial lives is a bank* account.<br><br>
+										If you completed activities in Module 4: Saving & Investing, you learned about a
+										few types of bank accounts. Savings accounts, money markets accounts, and
+										certificates of deposit can help you safely stash your cash for things that are truly
+										important to you. And earning interest on your savings grows your money faster
+										over time.<br><br>
+										But <b>savings accounts don’t work for everyday spending.</b> Federal regulations
+										limit account holders to no more than six withdrawals from a savings (or money
+										market) account each month. And keeping all your money in one account makes it
+										too easy to tap into and drain the funds you were saving for a car, school, or other
+										financial goals.<br><br>
+										So, you need a second bank account to handle your bills and daily expenses.<br><br>
+										<i>*In this guide, we’re using the shorter term “bank” instead of repeating “bank and credit union”
+										every time—but we mean both.</i>
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 4">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">CHECK OUT CHECKING ACCOUNTS</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Even if you never write a check, a <b>checking account</b> will keep your money safe
+										while allowing you to access it several different ways.<br><br>
+										<b>A check is a written order telling the bank who to pay and how much.</b> Signing
+										your name at the bottom means you agree to pay the amount “on demand,” or as
+										soon as the person you’ve written the check to (aka the <b>payee</b>) deposits
+										the check.<br><br>
+										While debit card use is leaving check use in the dust, checks do still have some
+										benefits, such as:
+									</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										<b>+ Convenience of Mailing.</b> Dropping a check in the mail is less hassle than
+										standing in line to pay with cash or get a money order.<br><br>
+										<b>+ Proof of Payment.</b> Your cleared check serves as proof of payment for goods,
+										services, and charitable donations.<br><br>
+										<b>+ Safety.</b> Lost or stolen checks can be replaced. You also can request a
+										stop-payment order to prevent a check of yours from being cashed in cases of
+										suspected theft or if you realize the check was written in error.<br><br>
+										<b>+ Debit Card Backup.</b> Write a check to yourself and get cash from a bank.<br><br>
+										<b>+ Direct Deposit.</b> In some cases, you’ll need to provide your employer with a
+										voided blank check from your account to enroll in automatic deposit, in which
+										your paycheck is electronically deposited into your account.<br><br>
+										<b>+ Ease of Tracking.</b> Recording transactions in a check register makes it easy to
+										track your spending.<br><br>
+										<b>+ Interest.</b> Some checking accounts pay interest on your average balance.
+									</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 5">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										There are a few cons, too:<br><br>
+										<b>− Delayed Deduction.</b> You don’t know when the payee will deposit your check.
+										The amount won’t be deducted from your account until the cashed check is
+										received at your bank and processed. Keep track of the checks you write to
+										compare with what is processed at the bank.<br><br>
+										<b>− Check Fraud.</b> A stolen check or the information on your check might be used
+										to access the money in your account. Guard your checks from getting into the
+										wrong hands.<br><br>
+										Checks are still the most convenient option in some
+										situations. So, you may want to order a box of checks to
+										have on hand when you need one. Be sure to store your
+										checks in a safe place.
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Activity 5.1: Proof of Payment</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Give two instances in your life when a check is a good option to use as proof of
+										payment rather than paying with cash.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-5 mx-auto mt-3">
+									<input class="form-control" type="text" placeholder="Instance One" name="proofOne" value="">
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-5 mx-auto mt-3 mb-5">
+									<input class="form-control" type="text" placeholder="Instance Two" name="proofTwo" value="">
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 6">
+						<div class="row">
+
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">What ’s on a check?</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										<b>1.</b> Date the check was written <br><br>
+										<b>2.</b> Payee, the person or company receiving payment<br><br>
+										<b>3.</b> The amount of payment, in numbers<br><br>
+										<b>4.</b> Total payment, in words<br><br>
+										<b>5.</b> Memo (description of payment), optional<br><br>
+										<b>6.</b> Payer’s signature<br><br>
+										<b>7.</b> Routing number used to identify the financial institution that holds the account funds<br><br>
+										<b>8.</b> Checking account number<br><br>
+										<b>9.</b> Check number (also in upper-right corner)<br><br>
+									</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/check.png" alt="check" width="100%"/>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										Always write out a check in pen so nothing can be changed. If you make a mistake,
+										initial any corrections you make, or write “VOID” across that check and fill out a
+										new one. Before you destroy the voided check, record it in your check register.
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 7">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 5.2: Check Writing 101</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Practice writing checks for the following purchases. Use today’s date, and be sure
+										your handwriting is legible so the payee and the bank accept the check. In a real
+										situation, you want to be sure that the bank can clearly read the check to deduct
+										the correct amount from your account. (Your instructor will provide checks, or you
+										can download checks from <b>www.hsfpp.org.)</b>
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										» Buy a pair of tickets for an upcoming school event with a check payable to your
+										school, $42.50<br><br>
+										» Pay rent to Mayfair Apartments, $750<br><br>
+										» Contribute to a disaster fund with a check payable to the American Red
+										Cross, $25
+									</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3 mb-5">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/writingCheck.png" alt="writingCheck" width="100%"/>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 8">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">PRESTO! YOUR CHECK IS NOT A CHECK</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Some businesses use the information on your paper check to instantly convert it
+										to an <b>electronic check</b> (aka e-check). They must post a notice that the transaction
+										will be processed via <b>electronic funds transfer (EFT)</b> so you know the check
+										amount will be immediately deducted from your account!<br><br>
+										EFT basically means that an electronic message tells a computer to move money
+										from one bank account to another. With it, banks can transfer small or massive
+										amounts of money in an instant, without cash or paper ever changing hands.<br><br>
+										Even if you don’t use paper checks, you can “write” an e-check when paying online
+										or by smartphone. And you may want to. Some businesses that charge customers
+										a transaction fee for credit card payments accept e-checks for free.<br><br>
+										To “write” an e-check, complete a short form, providing your bank’s routing
+										number and your account number. These two numbers can be found at the
+										bottom of a paper check:<br><br>
+										» <b>Bank Routing Number.</b> The unique nine-digit number telling the payee’s bank
+										which bank to get the money from. It’s found between the symbols, shown
+										as 123456789 on the sample check.<br><br>
+										» <b>Your Account Number.</b> Found directly to the left of the symbol, it tells your
+										bank which account to use for the funds. On this check the account number is
+										000-111-555.
+									</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3 mb-5">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/sampleCheck.png" alt="sampleCheck" width="100%"/>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 9">
+						<div class="row">
+
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">NOT-SO-FREE CHECKING</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Free checking accounts are usually the best deal in banking. But “free” doesn’t
+										mean totally without cost. It just means no monthly fee. In some cases, you’re
+										required to keep a minimum balance to qualify.<br><br>
+										Fee types and amounts will vary. Scan the chart for a list of the most common fees.
+									</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+									  <tr>
+									  <th class="text-center" scope="row" colspan="4">Fast Facts About Banking Fees</th>
+									</tr>
+									  <tr>
+									  <th class="text-center" scope="row">Types of Fees</th>
+									  <td class="text-center"><b>Charged When…</b></td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Monthly Service Fees
+									  </th>
+									  <td>
+											 Having an account (unless you have free checking)
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Out-of-Network ATM Fees
+									  </th>
+									  <td>
+											 Using an <b>automated teller machine (ATM)</b> not owned by your bank or in a network your bank belongs to
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Check Fees
+									  </th>
+									  <td>
+											 Writing more checks than you’re allowed in a month
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Debit Fees
+									  </th>
+									  <td>
+											 Choosing “debit” for a debit card purchase (aka <b>point-of-sale (POS)</b> fees) at checkout
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Nonsufficient Funds (NSF) Fees
+									  </th>
+									  <td>
+											 Writing a check for an amount that exceeds your balance
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Overdraft (OD) Fees
+									  </th>
+									  <td>
+											 Having an electronic transaction that exceeds your balance
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  OD Transfer Fees
+									  </th>
+									  <td>
+											 You authorize a bank to transfer money from another account to prevent an overdraft transaction
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Deposited Item Returned Fee
+									  </th>
+									  <td>
+											 Depositing a check when there isn’t enough money in the payer’s account to cover the check amount
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Stop Payment Fees
+									  </th>
+									  <td>
+											 Instructing your bank to cancel a check you wrote before it’s cashed															 													  </td>
+									</tr>
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph" style="font-size: 12px;">
+										Source: Still Risky: An Update on the Safety and Transparency of Checking Accounts, The Pew Charitable Trusts, June
+										2012, www.pewstates.org/uploadedFiles/PCS_Assets/2012/Pew_Safe_Checking_Still_Risky.pdf
+									</p>
+							</div>
+
+
+
+						</div>
+					</div>
+
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 10">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										Don’t let the fees scare you away! You can avoid many of them simply by
+										managing your account responsibly. Others, like ATM fees, can be avoided by
+										using your own bank’s ATMs or using debit card purchases to get cash back.<br><br>
+										Plus, unlike with other forms of payment, banks must clearly disclose all fees to
+										potential customers. That makes it easy to comparison shop for the bank services
+										you want most.
+									</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">OTHER PAYMENT OPTIONS</h3>
+								<p class="paragraph">
+									Occasionally, you may be asked to pay in a way that gives the payee
+									confidence that a payment will clear quickly.<br><br>
+									<b>Certified Check.</b> The bank verifies that you have the funds in your account
+									set aside specifically for the check amount and confirms that your signature
+									on the check is genuine. A payee might request this type of check to
+									guarantee that your check will clear the bank, especially when you need to
+									make a large payment for something such as a car.<br>
+									<b>Cashier’s Check.</b> The bank deducts the amount from your account and writes
+									the check on its own funds. This is another way for the payee to ensure that
+									the check is good. Another instance in which you might use this is when you
+									close a bank account. Taking the closing balance as a cashier’s check is safer
+									than carrying around a big wad of cash.<br><br>
+									<b>Wire Transfer.</b> You can immediately transfer funds from your account to
+									another person’s account in different cities or countries without even writing
+									a check.<br><br>
+									These types of payments are available from a bank teller for a fee.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE DNA OF DEBIT CARDS</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										The cashier or payment terminal usually will ask whether you want to use “debit
+										or credit.” That’s because debit card transactions can be processed either of those
+										two ways. No matter which you choose, <b>the money still comes out of your
+										bank account.</b>
+									</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 11">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										A <b>debit card</b> might look like a credit card. But it acts like more like a check, limiting
+										your spending to whatever amount of money is in your bank account at the time.<br><br>
+										You must enter a <b>personal identification number (PIN)</b> to use the card for a
+										debit transaction. The PIN provides an extra level of assurance that the authorized
+										owner is the person using the card.<br><br>
+										Many people don’t realize that the card type and transaction choices they make
+										have certain consequences. Study the chart to compare cards.
+									</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="table-responsive">
+									<table class="table table-sm table-bordered table-striped">
+										<tbody>
+											<tr>
+												<th class="text-center" scope="row">Action</th>
+												<td class="text-center"><b>Debit Card</b></td>
+												<td class="text-center"><b>Check</b></td>
+											</tr>
+											<tr>
+												<th class="text-center" scope="row">Deducted for Payments</th>
+												<td class="text-center">$46</td>
+												<td class="text-center">$25</td>
+											</tr>
+											<tr>
+												<th class="text-center" scope="row">Fees</th>
+												<td class="text-center">$60</td>
+												<td class="text-center">$30</td>
+											</tr>
+											<tr>
+												<th class="text-center" scope="row">Fees</th>
+												<td class="text-center" colspan="2">Total Fees = $90</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+							<div class="col-11 mx-auto mt-3 mb-5">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/debitCardTable.png" alt="debitCardTable" width="100%"/>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 12">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">YOU KNOW BETTER</h3>
+								<p class="paragraph">
+									Nearly 24 percent of surveyed teens incorrectly thought that using a debit
+									card meant they were borrowing money.1 The correct answer: Using a debit
+									card means you are taking money out of your checking account. This is not a
+									type of credit.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">WIPEOUT!</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										After seeing that his checking account balance on Monday morning was $35,
+										Jason uses his debit card to buy a $19 phone charger for his car. Later that day the
+										bank deducts a debit card payment for Saturday’s $18 pizza. Then later that night,
+										the $2 shortfall prompts the bank to charge his account with a $30 overdraft fee.<br><br>
+										In the afternoon, Jason uses his debit card at a fast-food place. His bank approves
+										the $9 transaction but charges him another $30 overdraft fee.<br><br>
+										Unfortunately, Jason forgot to record the $25 check he’d written to the school
+										last week. When his bank receives it on Monday, they reject it and deduct a $30
+										nonsufficient funds fee.<br><br>
+										Jason checks his account that night and flips out when he sees that his balance
+										is –$101. “That’s stupid! My account is negative and I still get charged these fees!”
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph" style="text-align: center;">
+										<b>Jason’s Debit Debacle</b>
+									</p>
+							</div>
+
+
+
+							<div class="col-12 mt-5 mb-5">
+									<p class="paragraph" style="font-size: 12px;">
+										1 “Teens & Plastic: A Quarter Of U.S. Teens Don’t Know The Difference Between Debt And Credit,” ING Direct, July 11,
+										2012, home.ingdirect.com/about-us/news-and-media/news-releases/article?id=3&yr=2012
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen-->
+					<!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen-->
+					<!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen-->
+
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 13">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										Overdraft fees are big business to banks—customers paid more than $32 million
+										in 2011 for overdraft fees alone.2 Spend a dollar more than you have in your
+										account and the bank will smack you with an <b>overdraft fee.</b><br><br>
+										And if the fee results in a negative account balance, every transaction after that
+										also will trigger another overdraft fee. These charges can quickly snowball even
+										before you know anything is wrong.<br><br>
+										Jason will discover shortly that writing a check when you don’t have enough
+										money in your account to cover it (aka <b>bounced check</b>) also will net you a
+										<b>nonsufficient funds (NSF)</b> fee of $25 to $50 from the business listed as the payee.<br><br>
+										! Keeping track of your spending is the best way to
+										avoid expensive overdraft and NSF fees.
+									</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">BANKER’S HOURS</h3>
+								<p class="paragraph">
+									<b>Business day</b> = Any day, Monday through Friday, minus federal holidays (and
+									designated holidays within your state)<br><br>
+									Not all electronic bank transactions immediately change your account
+									balance. In some cases, transactions made after “banker’s hours” will show
+									up on your account the next business day. Read your bank’s policy about
+									the cutoff time—when they stop processing transactions for that day. For
+									example, a deposit you make at 5 p.m. on Wednesday might not show up on
+									your account until Thursday.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph" style="font-size: 12px;">
+										2 “Overdraft Fees on the Rise,” Chicago Tribune, Sept. 25, 2012, articles.chicagotribune.com/2012-09-25/business/ct-biz-
+										0926-overdraft-fees-20120925_1_overdraft-fees-overdraft-practice
+									</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen-->
+					<!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen-->
+					<!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 14">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										Jason says to his dad, “My account was already negative when I went to the fastfood
+										place! Why didn’t they just turn down my debit card?”<br><br>
+										“Ironically, they call it <b>overdraft protection.</b> The bank offers you the option for
+										protection from having your card declined,” his dad explains, adding, “but you pay
+										for it big time.”<br><br>
+										“What if I don’t want them to do that anymore?” Jason asks.<br><br>
+										“Just tell them you want to opt out of overdraft protection. Of course, you might
+										be stuck at the register without a way to pay next time,” his dad reminds him.<br><br>
+										“That’s OK,” Jason says. “I’d much rather be turned down than pay another $30 fee
+										for a $9 burger and fries!”<br><br>
+										Jason’s dad explains, “You may have forgotten that you chose to opt-in for
+										overdraft protection. You gave the bank permission to cover the amount of your
+										purchase that is more than what is in your account. This services comes with a fee.”<br><br>
+										Without overdraft protection, it may be embarrassing to have your card declined
+										when you don’t have enough money in your account, but it doesn’t cost you a
+										cent. And you’re prevented from digging a deeper hole by continuing to spend
+										money.
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">DECODING DEPOSITS</h3>
+							</div>
+
+							<div class="col-12 mt-5 mb-5">
+									<p class="paragraph">
+										Of course, you can’t spend money until you deposit money. If you’re making the
+										deposit at the bank, you may need to fill out a <b>deposit slip</b> that lists the amount
+										involved. Your checkbook should have slips preprinted with your account number.
+										Blank slips are available at the bank.<br><br>
+										<b>Cash</b><br>
+										The safest way to deposit cash is in person with a bank teller. The teller will confirm
+										the amount right in front of you before giving you a receipt. Be aware that ATM
+										deposits may not be processed immediately. There’s always the chance of an error,
+										so keep your ATM receipt until you confirm the transaction in your account.
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen-->
+					<!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen-->
+					<!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 15">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										<b>Cash</b><br>
+										Depositing a check is easier than ever. You can make the deposit in person or at
+										the ATM. Some banks accept a digital picture of the check as a way to deposit it
+										online or by using your mobile phone!
+									</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 5.3: Make the Deposit</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Brianna received money for her birthday, and she wants to deposit all of the
+										money in her bank account, except $20 for spending, to stay on track saving
+										for her goals. Fill out a slip to deposit a $35 check and a $50 bill into her savings
+										account #101-234556-678.
+									</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/DepositSlip.png" alt="DepositSlip" width="100%"/>
+								</div>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+
+								<div class="form-row">
+									<div class="form-group col-md-6">
+									  <label for="quesOne">Checking OR Saving</label>
+									  <input type="text" class="form-control" id="quesOne" name="depositOne"  value="">
+									</div>
+									<div class="form-group col-md-6">
+									  <label for="quesTwo">Today's Date</label>
+									  <input type="text" class="form-control" id="quesTwo" name="depositTwo" value="">
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-6">
+									  <label for="quesThree">Customer Name</label>
+									  <input type="text" class="form-control" id="quesThree" name="depositThree" value="">
+									</div>
+									<div class="form-group col-md-6">
+									  <label for="quesFour">Customer Address, City, State, Zip</label>
+									  <input type="text" class="form-control" id="quesFour" name="depositFour" value="">
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-12">
+									  <label for="quesFive">Sign Here (If cash is received from this deposit)</label>
+									  <input type="text" class="form-control" id="quesFive" name="depositFive" value="">
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-6">
+									  <label for="quesSeven">Cash</label>
+									  <input type="text" class="form-control" id="quesSeven" name="depositSeven" value="">
+									</div>
+									<div class="form-group col-md-6">
+									  <label for="quesEight">Check</label>
+									  <input type="text" class="form-control" id="quesEight" name="depositEight" value="">
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-6">
+									  <label for="quesNine">Total From Other Side</label>
+									  <input type="text" class="form-control" id="quesNine" name="depositNine" value="">
+									</div>
+									<div class="form-group col-md-6">
+									  <label for="quesTen">SubTotal</label>
+									  <input type="text" class="form-control" id="quesTen" name="depositTen" value="">
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-6">
+									  <label for="quesEleven">Less Cash</label>
+									  <input type="text" class="form-control" id="quesEleven" name="depositEleven" value="">
+									</div>
+									<div class="form-group col-md-6">
+									  <label for="quesTwleve">Account Number</label>
+									  <input type="text" class="form-control" id="quesTwleve" name="depositTwelve" value="">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="quesThirtheen">Total $</label>
+									<input type="text" class="form-control" id="quesThirtheen" name="depositThirteen" value="">
+								 </div>
+
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										Regardless of how you deposit a check, you need to <b>endorse</b> it first by signing
+										your name on the back. This completes the transaction to transfer money from the
+										payer. This is known as <b>blank endorsement;</b> the check can be either deposited or
+										cashed with no restrictions. Complete this type of endorsement at the time you
+										will receive the cash or make the deposit, because once the check is endorsed,
+										anyone can cash it.
+									</p>
+							</div>
+
+
+						</div>
+					</div>
+
+
+					<!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen-->
+					<!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen-->
+					<!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 16">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										That’s why many people use a <b>restrictive endorsement.</b> This means writing “For
+										Deposit Only” and your bank account number with your signature. That way if you
+										lose the check, the finder can’t get at the money because the check can only be
+										deposited into the account of the payee named on the check.<br><br>
+										Usually, you can cash a check for free at your own bank. Simply endorse and hand
+										it to the teller. You also may be able to cash it for free or a small fee at the bank
+										listed on the check. Depending on the amount of the check, you may not have
+										immediate access to the money until the bank knows the check will clear.<br><br>
+										<b>Don’t Wait.</b> Banks can refuse to honor checks that are more than six months old.
+										Some checks have an even shorter time period printed on them (for example, “Not
+										valid after 90 days from date issued”). A delay in cashing can frustrate whoever
+										wrote out the check to you, because it throws off that person’s account balance.<br><br>
+										Don’t lose out on money payable to you—deposit
+										checks soon after you get them!<br><br>
+										<b>Bank Holds.</b> Banks hold deposited checks to reduce their risk of cashing a bad
+										check. If there’s a hold, the money usually won’t be available until the next
+										business day. If it’s a big check or from an out-of-state bank, your money or a
+										portion of the deposit may be held for several days. For new-account customers,
+										the delay can be as long as nine business days.
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">THE LAW And ORDER OF BANK ACCOUNTS</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										When you open a bank account, you’re accepting the responsibility to:<br><br>
+										» <b>Track your balance.</b> An overdraft habit can cost you a lot more than fees. The
+										bank can close your account or report you to banking credit bureaus. And
+										if you intentionally write a check without the money to cover it, you can be
+										charged for check fraud.<br><br>
+										» <b>Check your account regularly.</b> The bank doesn’t have to help if you wait more
+										than 60 days to report potential errors and suspicious transactions.
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen-->
+					<!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen-->
+					<!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 17">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										» <b>Safeguard your account information, debit card, checks, and PIN.</b> Any legal
+										protections become null and void if something happens after sharing your
+										card, checks, account numbers, or PIN number with someone.<br><br>
+										» <b>Ensure that checks you deposit won’t bounce.</b> Once a check enters the
+										system and is linked to your account, the amount becomes your responsibility.
+										If the check doesn’t clear, you—not the bank—must deal with the check
+										writer to collect what’s owed to you. And the bank will charge you a fee if the
+										check bounces.
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										On the other hand, a number of laws provide you with certain rights regarding
+										your account. The bank must:<br><br>
+										» <b>Provide your money “on demand.”</b> The exceptions are any holds they’re
+										allowed to impose on particular types of deposits.<br><br>
+										» <b>Give written notice of changes.</b> They must send a notice warning you about
+										upcoming changes to fee schedules or account terms.
+										» <b>Investigate and resolve errors and unauthorized transactions</b>—as long as
+										you report them within 60 days.<br><br>
+										» <b>Provide detailed monthly statements.</b> You can choose to receive statements
+										by mail or electronically.<br><br>
+										» <b>Automatically provide federally backed insurance coverage</b> of at least
+										$250,000 for deposits in checking, savings, and money market accounts at a
+										bank insured by the Federal Deposit Insurance Corporation (FDIC) or a credit
+										union insured by the National Credit Union Association (NCUA).
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">SOLVE THE REAL BALANCE MYSTERY</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										As Jason learned, <b>your online balance might not be your actual balance,</b>
+										because some transactions take several days to show up in your account.<br><br>
+										The only way to know your real balance is to record transactions as you make
+										them and keep your own running tally. These three easy tools can help you
+										do that:<br><br>
+										» The check register in your box of checks, which you fill in by hand<br>
+										» A spreadsheet program on your computer, where you enter amounts<br>
+										» A mobile checkbook app on your smartphone or tablet device<br><br>
+										Consistency is key! So experiment with a few options to see which you like best.
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 18">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 5.4: Keeping Track</h3>
+							</div>
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										Record the following transactions in Jason’s checkbook register. Is your final
+										balance $201.65?<br><br>
+										<b>Monday:</b> Opened checking account with cash deposit, $200 •
+										Automatic withdrawal to pay for personalized checks, $20<br>
+										<b>Wednesday:</b> Wrote Check #100 at Fine Foods to buy groceries, $23.11 •
+										Wrote Check #101 to buy books at Wayne’s Book World, $13.50<br>
+										<b>Thursday:</b> Used debit card to get cash from ATM to have spending money for the
+										weekend, $30<br>
+										<b>Friday:</b> Automatic withdrawal for monthly phone bill payment, $25.50
+										Saturday: Deposited paycheck, $113.76
+									</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFive/checkBook.png" alt="checkBook" width="100%"/>
+								</div>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+									 <tr>
+									  <th class="text-center" scope="row">NUMBER OR CODE</th>
+									  <td class="text-center"><b>DATE</b></td>
+									  <td class="text-center"><b>TRANSACTION DESCRIPTION</b></td>
+									  <td class="text-center"><b>PAYMENT AMOUNT</b></td>
+									  <td class="text-center"><b>FEE</b></td>
+									  <td class="text-center"><b>DEPOSIT AMOUNT</b></td>
+									  <td class="text-center"><b>BALANCE</b></td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="font-weight-normal">
+										  <textarea class="form-control" rows="1" name="trackOne"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwo"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackThree"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackFour"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackFive"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackSix"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackSeven"></textarea>
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="font-weight-normal">
+										  <textarea class="form-control"  rows="1" name="trackEight"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackNine"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackEleven"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwelve"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackThirteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackFourteen"></textarea>
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="font-weight-normal">
+										 <textarea class="form-control"  rows="1" name="trackFifteen"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackSixteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackSeventeen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackEighteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackNineteen"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwenty"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwentyOne"></textarea>
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="font-weight-normal">
+										  <textarea class="form-control"  rows="1" name="trackTwentyTwo"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwentyThree"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwentyFour"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwentyFive"></textarea>
+									  </td>
+									  <td>
+											<textarea class="form-control"  rows="1" name="trackTwentySix"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwentySeven"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackTwentyEight"></textarea>
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="font-weight-normal">
+										  <textarea class="form-control"  rows="1" name="trackTwentyNine"></textarea>
+									  </th>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackThirty"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackThirtyOne"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackThirtyTwo"></textarea>
+									  </td>
+									  <td>
+											<textarea class="form-control"  rows="1" name="trackThirtyThree"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackThirtyFour"></textarea>
+									  </td>
+									  <td>
+											 <textarea class="form-control"  rows="1" name="trackThirtyFive"></textarea>
+									  </td>
+									</tr>
+
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										You should <b>reconcile</b> your account at least once a month to ensure that you can
+										account for all of your deposits and withdrawals.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+									<p class="paragraph">
+										To do so, compare your
+										transaction log to your
+										monthly bank statement.
+										Check off all transactions
+										that show up on the
+										statement. Then use the
+										formula in the chart to
+										figure out the difference
+										(ideally none!)
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-8 col-lg-8 mt-3 mb-5" >
+								<div style="border: 4px solid gray; width: 100%; height: 100%; padding: 10px;">
+									<h4 class="floatLeft mt-5">RECONCILABLE DIFFERENCES</h4>
+									<p class="paragraph mt-3">
+										The Bank Statement Balance<br>
+										+ Outstanding* Deposits<br>
+										– Outstanding* Payments and WithDrawals<br>
+
+										Does Result = Your Recorded Register Balance?<br>
+										*Deposits, payments, or withdrawals you made
+										that are not yet processed by the bank.
+									</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen-->
+					<!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen-->
+					<!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen--><!--Page Nintheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 19">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										Here’s the scoop on how to reconcile your account:<br><br>
+										1. Go through your statement and check off each transaction in your register—
+										making sure the amounts match, too.<br><br>
+										2. In your register, subtract any bank fees and/or add any interest earned.<br><br>
+										3. On a separate sheet of paper, take the ending balance on the bank
+										statement, and add any deposits you made that the bank didn’t post yet.<br><br>
+										4. From that amount, subtract any payments and withdrawals you made that
+										weren’t listed on your statement yet.<br><br>
+										5. What’s the total? If the adjusted bank statement balance matches your
+										register balance, congratulations! You’re done.<br><br>
+										6. If it doesn’t, figure out what the difference is. Then compare the transactions
+										between your register and the statement to find where you might have
+										miscalculated in your register or inaccurately recorded a transaction.<br><br>
+										7. Once you find the error, make the adjustment in your register and you’re done!
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Activity 5.5: Does It Balance?</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										Reconcile Jason’s checking account to ensure that his records match his bank’s
+										records. Use the checking account information and statement provided by your
+										instructor (or online at <b>www.hsfpp.org</b>) to complete this activity.
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Challenge 5-A: Use a Checking Account</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										A checking account is a useful way for you to track expenses. Use a checking
+										account register or spreadsheet to record transactions for two months. Check your
+										accuracy by reconciling the account each month.
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 20">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Beyond Banks</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-3">
+									<p class="paragraph">
+										<b>Gift Cards or Reloadable Cards</b><br>
+										Prepaid cards have soared in popularity in recent years, with issuers marketing
+										them as an alternative to both credit cards and bank accounts. But are they really a
+										good choice?<br><br>
+										If you’ve used a <b>gift card</b> before, you’ve used a prepaid card. Of course, many gift
+										cards are good only at a certain store or restaurant. And once the money is spent,
+										the card is worthless.<br><br>
+										The big buzz these days is about <b>general purpose reloadable (GPR)</b> cards
+										(aka prepaid debit cards). These are good nearly anywhere that debit cards are
+										accepted, including ATMs.<br><br>
+										Unlike gift cards, GPR cards have an account number to permanently link that card
+										to you. And when the balance hits zero, you can reload the card by adding money
+										to the balance.<br><br>
+										<b>Pros</b><br>
+										+ <b>Convenience.</b> Shop online, pay bills, and avoid carrying around lots of cash.<br>
+										+ <b>No Overspending.</b> Your spending is limited to the amount loaded onto
+										the card.<br>
+										+ <b>Limited Losses.</b> No drained bank account or damaged credit if the card
+										disappears. You lose only the money that’s left on the card. Of course, if you set
+										up automatic transfers to reload the card, you’ll need to stop those transfers if
+										the card is lost or stolen.<br><br>
+										<b>Cons</b><br>
+										− <b>Good Luck Comparison Shopping.</b> The absence of laws governing prepaid
+										cards means card issuers aren’t required to disclose all fees to card users before
+										a card is purchased.<br>
+										− <b>Shaky Consumer Protections.</b> Prepaid cards do not have the same
+										protections as debit and credit cards. There is no guarantee to investigate
+										unauthorized charges or other fraud.
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 21">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+									<p class="paragraph">
+										− <b>Spotty FDIC Protection.</b> Few prepaid cards offer direct FDIC insurance.3<br>
+										− <b>Doesn’t Help Your Credit Rating.</b> A prepaid card is not used for borrowing
+										money, so your responsible use of the card won’t help you build a
+										credit rating.<br><br>
+										Unless you overdraw your checking account often,
+										you’ll probably save money by getting a free or
+										low-cost checking account that includes a debit card.4
+										But if you must use a prepaid card, do your homework to find the
+										features you need with the lowest fees.<br><br>
+										<b>Money orders</b> are checks minus the checking account. You pay the full amount
+										up front with cash or a debit card withdrawal. The clerk prints a money order
+										certificate made out to the business or person you designated as the payee.
+										Money orders are available at post offices, banks, and grocery stores.
+									</p>
+							</div>
+
+							<div class="col-12 mt-3">
+									<p class="paragraph">
+										<b>Pros</b><br>
+										<b>+ Check-like Convenience.</b> Money orders are safer to mail than cash and they’re
+										accepted by many businesses.<br>
+										<b>+ Proof of Payment.</b> When you purchase a money order, you’re provided
+										with a tracking number you can use to find out if a recipient has cashed the
+										money order.<br>
+										<b>+ No Overdrafts.</b> Because it’s already paid in full, a money order can’t bounce or
+										overdraw your account.<br>
+										<b>+ Low, One-time Fee.</b> It shouldn’t cost more than $2 per money order, and many
+										places charge less than $1.<br>
+										<b>+ Replaceable.</b> Unlike with prepaid cards, lost or stolen money orders will be
+										replaced if you show your receipt.
+									</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph" style="font-size: 12px;">
+										3 Loaded with Uncertainty: Are Prepaid Cards a Smart Alternative to Checking Accounts? The Pew Charitable Trusts,
+										September 2012<br><br>
+										4 “Ditch Checking For a Prepaid Debit Card?” Bankrate.com,
+										www.bankrate.com/finance/banking/ditch-checking-prepaid-debit-card-1.aspx#ixzz25L504Qjb
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 22">
+						<div class="row">
+
+							<div class="col-12 mt-5 mb-5">
+									<p class="paragraph">
+									   <b>Cons</b><br>
+										<b>− Limited Funding Options.</b> You can’t use a credit card to buy a money order.
+										Sellers accept cash or debit card withdrawal only.<br>
+										<b>− Tracking Your Money.</b> You are responsible for keeping track of the money
+										order information. The details of a money order are not reported in a bank
+										account statement.<br><br>
+										Money orders are handy when you can’t write a check
+										and want proof of payment. They’re also a cheaper
+										alternative to certified and cashier’s checks.<br><br>
+										<b>Getting Friendly with Portal Possibilities</b>
+										A payment portal is the payment method of choice of many online shopping sites.
+										First, you register your credit card, debit card, or bank account information at the
+										portal’s secure website. Then you can direct payment through your portal account
+										to the portal accounts of other people, organizations, and businesses. You don’t
+										have to provide your financial information each time. The pros and cons can vary
+										for the type of portal used.<br><br>
+										<b>Pros</b><br>
+										<b>+ Extra Barrier of Security.</b> You check out through the portal, so the recipient
+										never views or stores your payment information.<br>
+										<b>+ Free to You.</b> You pay nothing to use the portal for online purchases. Fees for
+										money transfers within the U.S. are free if funded with your bank account.<br>
+										<b>+ International Transfers.</b> You can send money to payment portal users in other
+										countries. The fees may be less than the cost of a wire transfer.<br>
+										<b>+ Easy.</b> For purchases, just select the payment portal from among the options
+										offered at checkout. To send money to someone else, all you need is that
+										person’s email address.<br>
+										<b>+ Consumer Protections.</b> Payment portals are not banks. But they are subject to
+										many of the same consumer protection laws as banks. Portals must investigate
+										and restore the funds for any unauthorized transactions or errors if you report
+										them within 60 days.<br><br>
+										<b>Cons</b><br>
+										<b>	− Delayed Money.</b> Transferring money to and from your bank account can take
+										three business days.<br>
+										<b>− Limited Stores.</b> Obviously, you can use a specific portal only at stores that
+										offer it as a payment option.
+									</p>
+							</div>
+
+
+
+						</div>
+					</div>
+
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 23">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">WHO’S WHO IN FINANCIAL SERVICES</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+										While talking about Brianna’s
+										upcoming first day of work, her
+										friend Vanessa is surprised to hear
+										that Brianna hasn’t opened a bank
+										account yet. “I’m just going to use
+										one of those check-cashing places
+										like my brother Robert does,”
+										Brianna says.
+										<br>
+										“What? I thought those places are a
+										rip-off. Don’t they charge big fees to
+										cash your check?” Vanessa asks.
+										</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph" style="margin-top: 50px;">
+								<span style="font-size: 23px; font-weight: 500;">"A bank robber in
+								Los Angeles told the
+								clerk not to give him
+								cash, but to deposit
+								the money in his
+								checking account."</span><br>
+								<span style="font-size: 12px;">~ Author Bill Bryson</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+									<p class="paragraph">
+										“Really? I’ll ask Robert about that,”
+										Brianna says. “I just figured it would be cheaper than a checking account. And
+										when am I ever going to write a check?”<br><br>
+										“You can get a free checking account like I did. Just make sure you don’t have to
+										keep a minimum amount in it,” Vanessa says.<br><br>
+										“It’s totally free?” Brianna asks.<br><br>
+										Vanessa explains, “Well, there’s no monthly fee. If I spend more than I have in my
+										account, they’ll charge a fee. But I use a phone app to list all my transactions and it
+										keeps track of my balance so that doesn’t happen.”<br><br>
+										“Well, that sounds pretty easy,” Brianna says.<br><br>
+										“Because I have a student account, they’ll charge me a quarter a check if I write
+										more than three checks a month. But I always use my debit card to get cash
+										anyway,” Vanessa says.<br><br>
+										“A debit card would be nice. I’ll ask my mom about it,” Brianna says.
+									</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 24">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">BANK ON BANKS</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+										<b>Banks</b> sell financial services such
+										as loans, checking accounts, credit
+										cards, certificates of deposit, and
+										safe deposit boxes for storing
+										valuables. A bank is owned by
+										its investors, and a paid board of
+										directors runs the bank.
+										<br><br>
+										At most banks, the Federal Deposit
+										Insurance Corporation (FDIC) insures
+										customers’ money. That means they
+										will reimburse the value of your
+										account in full, up to $250,000, if the bank ever fails. To find out if a bank is FDICinsured,
+										check online at <b>www.fdic.gov.</b>
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6">
+								<img  style="margin-top: 80px;" src="../../../assets/jpaFinancialPictureModuleFive/Clerk.png" alt="Clerk"  width="100%" onContextMenu="return false;" />
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Choices range from big national banks to small community banks to online-only
+									banks. Almost anyone with a driver’s license or other photo identification and
+									money to deposit can enter a bank and open an account.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">CRACK THE CODE ON CREDIT UNIONS</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Credit unions are not-for-profit organizations offering the same financial services
+									as banks—including savings and checking accounts, loans, online and mobile
+									banking, and ATMs.<br><br>
+									Credit unions are owned by their customers, who are called members. These
+									members elect a volunteer board of directors to manage the credit union.<br><br>
+									Your deposits are insured up to $250,000 by another federal agency, the National
+									Credit Union Administration (NCUA). To find out if a credit union is insured, go
+									online to <b>www.mycreditunion.gov.</b>
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 25">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 5.6: What Do They Offer?</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Visit the website of a financial service provider in your community. List the
+									minimum balance requirements for checking and savings accounts. What is the
+									current interest rate earned on savings? <input style="display: inline;" class="form-control" type="text" name="offerOne" value=""> %
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Banks offer other types of services such as safe deposit boxes for customers to
+									store valuable documents. List at least two other types of non-account services
+									that the provider makes available to customers, either for a fee or at no cost.
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto">
+								<div class="form-row">
+									<div class="col">
+									  <input type="text" class="form-control" placeholder="One" name="offerTwo" value="">
+									</div>
+									<div class="col">
+									  <input type="text" class="form-control" placeholder="Two" name="offerThree" value="">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Brianna asks her mom if she should get a bank account or use a check-cashing
+									place like Robert does. Her mom says Robert does that because he can’t stand
+									depositing a check and waiting until the next day before he can access his money.<br><br>
+									“So, now he pays fees to cash his check, fees to load the money onto a prepaid
+									debit card, and fees pretty much every time he uses it. He could do all that for free
+									with an account at my credit union,” she says.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">GET A CLUE ABOUT CHECK-CASHING STORES</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									It seems simple. You give the check-cashing store clerk your check and he gives
+									you cash on the spot. Awesome, right?<br><br>
+									Not so fast. The store gets a cut of your check. If you’re paying a $4 fee for every
+									$100 you cash, the store keeps $20 of a $500 check.<br><br>
+									Safety is another issue. Muggers know that customers leaving a check-cashing
+									store usually are carrying a lot of cash.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 26">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									But a <b>payday loan</b> can be even more costly. The clerk will be happy to advance
+									you cash—if you leave a check the store can cash when you get paid. But the fee
+									hides a high interest rate.<br><br>
+									Even worse, payday loans can trigger a cycle of debt that’s often hard to break.
+									Many borrowers end up taking out another loan or extending their loans 10 to
+									30-plus times a year—paying interest of up to 365 percent each time!5<br><br>
+									If you must cash a check and can’t wait for the bank to open, keep reading to
+									discover a better alternative than a check-cashing store.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">STOP AND SHOP FOR MONEY</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Groceries and big-box retailers offer financial services such as money orders,
+									check cashing, bill paying, overseas wire transfers, and prepaid debit cards at their
+									service counters.<br><br>
+									“Banking” where you shop can save you time and gas. And the fees are usually
+									much more reasonable than at check-cashing stores and other outlets. But they
+									still add up fast—and you could skip them altogether just by cashing checks and
+									getting a debit card for free at your own bank.<br><br>
+									While they can duplicate many functions of a bank, stores are not banks.
+									Stores don’t offer savings account options, and they aren’t subject to the
+									same regulations as financial institutions. That means there are fewer laws
+									protecting you.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">PEEK AT PAWNSHOPS</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									A pawnbroker provides on-the-spot, short-term loans for up to 50 percent of an
+									item’s estimated value. The cash is fast and easy. Pawnbrokers also will buy some
+									items outright, but for much less than their full value.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									5 “Urging OCC to Withdraw Proposed Bank Payday & Overdraft Guidance,” Consumers Union, Jan. 11, 2012,
+									defendyourdollars.org/document/urging-occ-to-withdraw-proposed-bank-payday-overdraft-guidance. The annual
+									percentage rate of 365 percent is based on the typical loan term of 10 days.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 27">
+						<div class="row">
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+									<p class="paragraph">
+										You not only turn your item over to the pawnbroker
+										to hold, you also pay interest and fees on the loan.
+										And if you don’t repay the loan in full within 30 to
+										90 days, the pawnshop takes full ownership of your
+										item and can sell it and keep the profit.
+										<br><br>
+										Given the risk of losing possession of your item—
+										and getting only a fraction of its value in return—a
+										pawnshop should be one of your last options for
+										getting cash.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6" mt-5>
+								<img  style="margin-top: 30px;" src="../../../assets/jpaFinancialPictureModuleFive/pawnShopSign.png" alt="pawnShopSign" width="100%" onContextMenu="return false;" />
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">DECIDE ON A FINANCIAL HOME</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Get a head start on building important financial relationships by choosing a bank
+									or credit union to call home. Then as you get older, you’ll have a trusted place to
+									turn to when you’re ready for a credit card or loan.<br><br>
+									You can switch banks at any time, but you might not want the paperwork hassle.
+									So, it pays to invest the time in making a good choice now.<br><br>
+									The first step:<b> Make a list of everything you want in a bank.</b><br><br>
+									Questions to think about:<br><br>
+									» Will you make deposits in person or online?<br>
+									» Where will you withdraw cash? ATMs? Stores?<br>
+									» How will you pay for things with your money? Checks? Debit card? Online
+									bill pay?<br>
+									» Is mobile banking a must-have or a nice to have?<br>
+									» What other services might you need in the next few years?<br>
+									» Will you be able to access your accounts if you are in another city or country?<br><br>
+									Once you know how you’ll use a bank, you can figure out the services you need
+									and how often you’ll need them. Then, use that insight to see which options give
+									you the biggest bang for your buck.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 28">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Challenge 5-B: Which is Best for Me?</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									To make sure a credit union is the best fit for her, Brianna should use the DECIDE
+									model to evaluate her needs, assess the financial services, and compare them to
+									those of other financial institutions.<br><br>
+									Use the DECIDE model to select a financial institution with services that are right
+									for you. Make sure to review the required criteria as you are comparing options.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">TAPPING THE POWER OF FINANCIAL SERVICES</h3>
+							</div>
+
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+									Jason is trying to figure out how
+									convenient it would be for him to
+									keep his local bank if he joins the
+									Coast Guard. He’s also made a list of
+									issues he’s having with his money to
+									see if the bank has options to help
+									him better manage his finances.
+									Jason’s list includes:
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph" style="margin-top: 50px;">
+								<span style="font-size: 23px; font-weight: 500;">
+								"I saw a bank that said
+								‘24 Hour Banking,’
+								but I don’t have that
+								much time."</span><br>
+								<span style="font-size: 12px;">~ Comedian Steven Wright</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									» Forgetting to transfer $50 of
+									each paycheck from his checking
+									account to his savings account.
+									The money usually ends up getting spent.<br>
+									» Getting charged late fees by his cellphone provider and gas credit card
+									company for paying late every month, even though he has the money in
+									his account.<br>
+									» Needing to keep better track of his transactions so he doesn’t wind up with
+									more overdraft fees.<br><br>
+									As you read through this next section, notice which services could solve
+									Jason’s problems.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 29">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">AUTOMATE YOUR MONEY MANAGEMENT</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Online banking turns your computer into a bank teller. At any time, you can log
+									in to your account, check your balance on each of your accounts, transfer money
+									between accounts, pay bills, deposit checks, and more. The only thing online
+									banking can’t do is hand you cash!<br><br>
+									<b>Direct Deposit</b><br>
+									Imagine waking up every payday with the money already in your bank account.
+									It’s not a dream! With direct deposit, your paycheck or government benefits are
+									there, ready and waiting for you. There’s no picking up a check, making trips to the
+									bank, or waiting for a check to clear.<br><br>
+									Employers like direct deposit because it saves them time and money and
+									eliminates the possibility of paycheck theft. In short, direct deposit is an employer
+									offer you shouldn’t refuse!<br><br>
+									<b>Automatic Deposits and Transfers</b><br>
+									It’s a cinch to pay yourself first (PYF) with “set it and forget it” services like
+									<b>automatic transfers</b> and automatic deposits.<br><br>
+									Basically, automatic transfers let you schedule money movements between
+									accounts at the same bank. Automatic deposits let you schedule regular transfers
+									from an outside bank to your bank and finally to your account. Either service
+									provides an opportunity for you to consistently build your savings and never miss
+									a day of interest!<br><br>
+									<b>Online Bill Pay</b><br>
+									Online bill pay lets you send money to your creditors and utilities straight from
+									your checking account or savings account. Make a one-time payment or schedule
+									payments to happen automatically each month. Some prepaid debit cards offer
+									online bill pay, too.<br><br>
+									You do have to plan ahead, as payments can take two to five business days to
+									process. But overall, online bill pay saves you time and stamps. It helps prevent
+									late-payment fees. And it keeps your financial information safer, because it’s not
+									sitting in a mailbox or out in the open on someone’s desk.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 30">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									<b>Account Alerts</b><br>
+									Enabling <b>email or SMS text message</b> alerts helps you stay on top of your account
+									and tackle problems quickly. You can set up alerts for a low balance, failed bill
+									payment, overdraft fee charges, and more.<br><br>
+									Just be aware that the bank may not send the alerts right away. To stay on top of
+									things, you’ll still need to monitor your transactions and balances regularly.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Activity 5.7: Get Jason Organized!</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Review the scenario about Jason’s messy finances. What services could he use to
+									better stay on top of his money? If he ends up moving to another state or country,
+									would these services make it convenient enough for him to keep his accounts
+									where he’s currently banking?
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">THE CUTTING EDGE OF FINANCIAL SERVICES</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Brianna downloads her credit union’s mobile app so she can deposit her first
+									paycheck before she gets home from work.<br><br>
+									After snagging five tickets to a sold-out concert, her friend Zach sends Brianna
+									and three other people an invite to a website where they register and then can
+									pay him back electronically, account to account.<br><br>
+									Jason visits his favorite coffee shop and taps his smartphone on the payment
+									terminal to pay for his order.<br><br>
+									His dad gets a new credit card in the mail with a funky gold-colored chip
+									embedded in the design.<br><br>
+									All four of them are pioneers in a new wave of financial services that you’ll be
+									seeing a lot more of in the years to come.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 31">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									? How have you or a family member used a phone or computer for banking?<br><br>
+									Everywhere you turn, the U.S. financial services industry is working to make
+									spending safer and more convenient for busy customers. Following are four trends
+									to look for.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">MAD ABOUT MOBILE BANKING</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									If the car payment is due today or your balance is close to zero, online banking
+									means you don’t have to wait until you get to a computer to take care of matters.
+									Now you can fit your online banking screen in the palm of your hand.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									With <b>mobile banking,</b> you can manage your account on any Internet-enabled
+									smartphone. With an app, mobile website, or text messages, you can:<br><br>
+									» Check your balance.<br>
+									» Photograph and deposit your check.<br>
+									» Pay bills.<br>
+									» Transfer money between accounts.<br>
+									» Find the nearest fee-free ATM.<br>
+									» Get a text message alert any time your account balance falls too low.<br><br>
+									Many banks already have some mobile capabilities and others are adding them
+									fast. In fact, one study predicts that by 2020 smartphones will be the most
+									popular way to transfer funds between accounts, open new accounts, and make
+									loan payments.6 Be sure to check for any mobile banking fees.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">THE NEW PAY-BY-PHONE</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									We’re not talking about calling a payment in by phone. We mean actually paying
+									for purchases at online and local stores and restaurants with your smartphone!
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									6 Retail Bank 2020: A Roadmap for the Future, Lafferty Group, August 2010
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 32">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									The two hottest payment program types are:<br><br>
+									<b>Virtual Wallets.</b> Enter a PIN and a number from the receipt into an app and you’ve
+									paid using your mobile phone. The mobile apps of certain online payment portals
+									and other virtual wallets store your payment information on a secure Internet
+									server, not on your phone.<br><br>
+									<b>“Tap-and-Pay.”</b> Log in to an app, then tap or wave your phone at the checkout
+									terminal to pay. A near-field-communication <b>(NFC)</b> chip inside your phone stores
+									and wirelessly transmits your payment information to finish the sale.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3">
+								<div style="border: 4px solid gray; padding: 5px;">
+									<h3 class="floatLeft mt-4">HOW NOT TO PAY</h3>
+									<p class="paragraph">
+										Don’t charge purchases to your mobile phone bill. No laws protect you if
+										someone using your phone goes on a shopping spree or there’s a problem
+										with something you’ve purchased. And your wireless provider can cut off
+										your phone service if you don’t pay for the items appearing on your bill.
+									</p>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">PAYMENTS GET PERSONAL</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									Like Brianna with Zach’s concert tickets, do you need to pay back a friend?
+									Give your roommate your share of the electric bill? Skip the cash or check and
+									send money straight to that person’s bank account electronically. It’s easy and
+									sometimes it’s even free!<br><br>
+									As long as you have the individual’s cellphone number or email address, you can
+									send someone money with a <b>person-to-person (P2P) payment service.</b> Instead
+									of transferring money between accounts that must be set up on a traditional
+									online payment portal, the new alternatives cut out the middleman, so money
+									goes straight from bank to bank.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 33">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Challenge 5-C: Selecting My Services</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									What are the specific services and gizmos that would help you manage your
+									money effectively for your current and near future situation? Why? Use the DECIDE
+									steps to choose financial services and tools that are most useful to you.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">DON’T GET CUT ON THE CUTTING EDGE</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									All these financial services breakthroughs make managing your money faster,
+									easier, and more convenient for your busy lifestyle. But they do come at a price.<br><br>
+									» The more payment tools and programs you use, the harder it will be to track
+									your spending.<br>
+									» More tools and technology also give thieves more ways to steal and exploit
+									your financial information.<br><br>
+									Ready to learn more about keeping your money and information safe?
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">FOIL THE FRAUDSTERS</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+									Jason’s girlfriend, Courtney, phones
+									him, excited that she’s found a buyer
+									for her car. Shortly after she’d posted
+									the ad online, a guy said he’d buy the
+									car and mail her a check for $8,000. The
+									guy offered her $3,000 more than her
+									asking price on the condition that she
+									use the added amount to pay a shipper
+									to transport the car to him.<br><br>
+									“He said something about only having
+									one check left, so the plan is that I
+									use my own check for the shipping,”
+									Courtney says.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<p class="paragraph" style="margin-top: 50px;">
+								<span style="font-size: 23px; font-weight: 500;">
+								"There were more
+								breached records
+								last year than U.S.
+								residents... and more
+								cases of identity
+								theft than just about
+								all other crimes
+								combined."</span><br>
+								<span style="font-size: 12px;">~ Neal O’Farrell, Executive Director of the Identity Theft Council 7</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									7 www.cultofmac.com/168143/why-hackers-target-small-businesses-who-use-macs-ipadsiphones/#
+u3t4XRYpVdS4toq8.99
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 34">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									“I did a Google search for ‘car buying scams’ and look what came up!” Jason says, as
+									he texts her a link.<br><br>
+									Courtney’s shocked to see the would-be buyer’s exact story listed as a scam. “So,
+									he was going to send me a fake check. Then I would have sent $3,000 of my own
+									money to this fake shipping company. Oh, wow! I’m so glad you found this.”<br><br>
+									A victim’s age doesn’t matter to scammers. <b>If you have a wallet and a Social
+									Security number,</b> you are at risk for being duped and defrauded.<br><br>
+									You may have learned about credit-related identity fraud in Module 2: Borrowing.
+									But there’s much more to learn about the many ways identity thieves can profit
+									from using your banking information. And as Courtney learned, identity theft isn’t
+									the only crime you need to guard against.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3">
+								<div style="border: 4px solid gray; padding: 5px;">
+									<h3 class="floatLeft mt-4">UNCOVER CHECK FRAUD</h3>
+									<p class="paragraph">
+										At least 48 percent of fraud complaints from young adults 18 to 25 years old
+										were about fake check scams.8 The most common ones are exposed at
+										<b>www.fakechecks.org.</b>
+									</p>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">THE SKIM SCAM</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									An all-too-common scheme is for crooks to “skim” data from the magnetic strip on
+									your credit or debit card so they can clone it. These are the two top scenarios:<br><br>
+									» A salesperson or waiter secretly swipes your card through his own card reader.<br>
+									» A crook has carefully installed a fake card scanner over the real one and, using
+									a hidden camera or key logging device, records your PIN entry.<br><br>
+									<b>Playing Defense.</b> Avoid letting your credit or debit card out of your sight. If a card
+									scanner on an ATM, ATM lobby door, pay-at-the-pump machine, or store payment
+									terminal looks worn, loose, or otherwise “not right,” find a different one to use. And
+									ALWAYS cover your hand as you type in your PIN.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+									8 “Prizes/Sweepstakes Bump Fake Checks as Top Scam,” National Consumers League, February 2012, www.nclnet.org/
+									personal-finance/64-fraud/624-prizessweepstakes-bump-fake-checks-as-top-scam
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 35">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">DON’T GET HOOKED BY PHISHING</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									With this common scam, you get an email or text message impersonating your
+									bank, the IRS, a charity, or social network—you name it. Experts estimate that one
+									in every 300 emails are phishing for your financial or log-in information!<br><br>
+									The goal of phishing is to trick you into clicking on a link, which triggers one of
+									two scenarios:<br><br>
+									» You’re sent to a copycat website that asks you to provide personal data, such
+									as your Social Security, bank account, and credit card numbers, and then steals
+									the information you enter.<br>
+									» Malware secretly downloads onto your machine, where it seeks and steals
+									valuable data stored there or logs the passwords you type.<br><br>
+									<b>Playing Defense.</b> Don’t click on links. Instead, type the URL you know to be
+									legitimate directly into your Web browser.<br><br>
+									<b>SOCIAL ENGINEERING</b><br>
+									Criminals are using information in social networking profiles to make
+									you think you know them—or to successfully impersonate you. When’s
+									the last time you checked your privacy settings?
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">7 MORE WAYS TO THWART THIEVES</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									You can’t control the safety of your information at companies you do business
+									with. But you can control the information you unknowingly give to crafty
+									criminals. Here are seven ways to protect yourself:<br><br>
+									1. <b>Don’t trust—verify.</b> Never give your Social Security number, date of birth,
+									payment, account, or other personal information to anyone you didn’t
+									contact first. Keep your Social Security card in a secure place.<br><br>
+									2. <b>Keep PINs totally under wraps.</b> Don’t give them to friends, write them on
+									your cards, put them in your phone, or carry them in your wallet. And always
+									shield your hand as you type in a PIN, so no one can see the number.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 36">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+									3. <b>Befriend a shredder.</b> Shred anything you no longer need that has your
+									Social Security, credit card, or bank account numbers, or any other personal
+									information on it.<br><br>
+									4. <b>Protect your PC.</b> Install reputable security software. Keep all programs up
+									to date, not just your operating system. And don’t download anything you
+									didn’t go looking for in the first place.<br><br>
+									5. <b>Be skeptical of any offers.</b> Your computer does not need a free security
+									scan. You did not win a prize from a lottery you never entered. A long-lost
+									relative in a foreign country has not left you an inheritance.<br><br>
+									6. <b>Shop securely.</b> If you don’t see a closed padlock icon in the browser bar
+									and “https” (notice the “s”) at the beginning of the URL, find another site. The
+									most-secure sites have the company’s name in a green box before the URL.<br><br>
+									7. <b>Surf safely in public.</b> Any time you’re using a Wi-Fi signal on an unsecured
+									network, don’t log in to your bank or any other accounts or shop online. Turn
+									off Bluetooth when you don’t need it. And always delete your browsing
+									history, log out, and close the browser when you leave a public computer.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									<b>POWER UP PASSWORDS</b><br>
+									Create stronger passwords by using at least eight
+									letters and random capitalization. Replacing certain
+									letters with look-alike numbers and symbols makes a password
+									even harder to crack. For example, “graduate” becomes gr@dU@t3.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									The single most reliable way to stop a thief who’s helping himself to your money is
+									to regularly monitor all your financial accounts and monthly statements.<br><br>
+									Immediately report any:<br><br>
+									» Charges you don’t recognize<br>
+									» Amounts that are higher than expected<br>
+									» Anything else suspicious<br><br>
+									Amounts don’t matter—some thieves will test the water with small purchases first.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 37">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+
+									Also, <b>call the bank ASAP</b> if you lose your checks or debit card. The sooner you
+									report a problem, the less you’ll be liable for and the sooner you’ll put the fraud
+									behind you.<br><br>
+									More details about detecting and defending against fraud are available in
+									Module 2: Borrowing.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Activity 5.8: Deal With Deception</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+
+									What action would you take if you suspected that someone might be trying to
+									deceive you? Get the deceptive scenarios from your instructor or online at
+									<b>www.hsfpp.org.</b>
+
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Adding it up</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+
+									Like Jason and Brianna, you’ve learned that you have many options for managing
+									your money. And new ones are being added all the time. You need to be a smart
+									consumer to choose the right ones for you and make the most of them—all while
+									minimizing potential risks to your identity and money.
+
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Challenge 5-D: Scam Action Plan</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+
+									Create a “Scam Action Plan” for your family that outlines preventive measures you
+									and your family can take to avoid scams, fraud, and theft. Your plan should include
+									actions to protect personal and financial information when banking in person as
+									well as when using Internet and phones.
+
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+
+
+
+
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 38">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/appendix.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 39">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/additonalPage.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 40">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/backCover.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+          </div>
+          </form>
+
+					<!--End of container of pages-->
+				</div>
+			</div>
+		</div>
+  </div>
+  <div class="container-fluid">
+    <div class="mx-auto d-block mt-3" style="width: 300px;">
+      <button class="btn btn-primary" [disabled]="pageIndex === 1" (click)="onClickBack()">Back</button>
+      <p class="ml-3 mr-3 d-inline-block"> Page <input class="form-control d-inline" type="number" [value]="pageIndex" style="width: 60px;" min="1" max="40" (change)="onInputChange($event)"> of 40 </p>
+      <button class="btn btn-primary" (click)="onClickNext()" [disabled]="pageIndex === 40">Next</button>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,2770 @@
-<p>financial-planning-module4 works!</p>
+<div class="container-fluid">
+  <div class="container-fluid">
+    <div class="mx-auto d-block mt-3" style="width: 300px;">
+      <button class="btn btn-primary" [disabled]="pageIndex === 1" (click)="onClickBack()">Back</button>
+      <p class="ml-3 mr-3 d-inline-block"> Page <input class="form-control d-inline" type="number" [value]="pageIndex" style="width: 60px;" min="1" max="40" (change)="onInputChange($event)"> of 40 </p>
+      <button class="btn btn-primary" (click)="onClickNext()" [disabled]="pageIndex === 40">Next</button>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row mt-3">
+			<div class="col-sm-12 col-12 col-md-10 col-lg-10 mx-auto">
+				<div class="w3-content mx-auto" style="max-width:800px">
+
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
+
+					<form method="post">
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 1">
+						<div class="row">
+								<div class="col-12">
+									<h6 class="firstTitle">Use the tips and strategies in this guide to do the following:</h6><br>
+									<p class="subText">» Summarize how saving and investing can be used to build wealth.</p>
+									<p class="subText">» Explain how investing works.</p>
+									<p class="subText">» Evaluate the risks and rewards of investment options.</p>
+									<p class="subText">» Outline strategies to achieve investing goals.</p>
+									<p class="subText">» Explore ways to fit saving and investing into your financial planning.</p>
+								</div>
+						</div>
+
+						<div class="row">
+								<div class="col-12">
+									<p class="subTitle">MEET JUSTIN AND WHITNEY</p>
+								</div>
+						</div>
+
+						<div class="row mt-5">
+								<div class="col-sm-12 col-md-12 col-lg-6">
+									<p class="paragraph">Justin is an eighth grader who’s
+										already worried about paying for
+										college. His older sister, Shelby,
+										won a big basketball scholarship to
+										a state university but lost it after a
+										career-ending knee injury last year.
+										<br>
+										Their dad isn’t working right now
+										because of a job layoff, so Shelby
+										couldn’t afford to go back this fall.
+										Justin sees how unhappy she is
+										taking a detour to earn her fouryear
+										degree, and he decides to start
+										saving his own money for college.</p>
+								</div>
+								<div class="col-sm-12 col-md-12 col-lg-6">
+									<img src="../../../assets/jpaFinancialPictureModuleFour/firstPicture.png" alt="firstPicture" width="100%" onContextMenu="return false;" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 mb-5">
+									<p class="paragraph">Whitney is a senior who spends
+										most of the money she earns on
+										clothes, shoes, and going out with
+										her friends. For the past two years, she was supposed to be saving at least
+										10 percent of her paychecks. One day during an argument over Whitney’s
+										spending, her mom asks to see her savings account balance.<br><br>
+										Both are shocked to see that there’s only a couple hundred dollars in the account.
+										Whitney admits that she skipped saving and withdrew money a couple of times.
+										Her mom shakes her head and walks off in disappointment.
+									</p>
+								</div>
+							</div>
+
+					</div>
+
+					<!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two-->
+					<!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two-->
+					<!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two--><!--Page Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 2">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph" style="font-size: 22px; font-weight: 700;">
+									"Poor people see a dollar as a dollar to trade for
+									something they want right now. Rich people see
+									every dollar as a ‘seed’ that can be planted to earn
+									a hundred more dollars … then replanted to earn a
+									thousand more dollars."<br><br>
+									<span style="font-size: 13px; font-weight: 400;">~ T. Harv Eker, author of Secrets of the Millionaire Mind</span>
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6">
+									<p class="paragraph">Do you want to be rich? Who doesn’t!
+										But remember: Being wealthy isn’t
+										about how much you earn—it’s about
+										how much you keep. You can find
+										plenty of stories about superstar
+										athletes and big-name singers
+										who were earning millions but
+										went broke shortly after their
+										careers ended.
+										<br>
+										You can have the freedom of
+										being financially set for life
+										one day. Anyone can. You do NOT
+										have to be born rich, get straight A’s, have talent
+										worthy of a superstar, or make a huge salary. You just need to
+										start thinking about and treating money differently. And the sooner you
+										start, the sooner you may get there.</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/safeWmoney.png" alt="safeWmoney" width="100%" onContextMenu="return false;" />
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								The wealthy think of money as a 24–7 “employee”—expecting it to make more
+								money for them while they work, play, and go about their daily lives. They do that
+								through saving and investing.<br><br>
+								Justin and Whitney will help you get started with saving and investing. In fact,
+								you’ll learn that you already have some of the tools and knowledge to get
+								started now.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+					<!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three--><!--Page Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 3">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h5 class="floatLeft mt-3">Activity 4.1: What is Wealthy?</h5>
+							</div>
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								In 25 words or less, define what it means to you to be wealthy.
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto">
+								<div class="form-group">
+									<textarea class="form-control" rows="3" name="wealthyOne"></textarea>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h4 class="floatLeft">UNRAVELING THE 'MYSTERY' OF SAVING AND INVESTING</h4>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph" style="font-size: 22px;">
+									"The shortest period of time lies between the minute
+									you put some money away for a rainy day and the
+									unexpected arrival of rain."<br><br>
+									<span style="font-size: 13px; font-weight: 400;">~ Jane Bryant Quinn, author of Smart and Simple Financial Strategies for Busy People</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								When you receive money, the first thing you should do is to set aside a specific
+								amount for financial goals that you can’t afford on short notice—like prom, buying
+								a car, or going to college. This “pay yourself first” (PYF) strategy is a way for you to
+								plan ahead to regularly save portions of money over time. Eventually, your PYF
+								fund will grow so you have enough money to later pay for a big-ticket item. (You
+								can learn more about planning for a PYF fund in Module 1: Money Management.)<br><br>
+								Use some of your PYF money to build an emergency fund so you’ll have a financial
+								cushion to fall back on when unexpected things happen. A cushion is especially
+								important because no one is immune from a sudden loss of income due to a job
+								layoff or unplanned expenses such as car repair or replacing a lost cellphone.<br><br>
+								An emergency fund also is important if you choose to work in an industry or
+								profession where the amount you earn each month may vary a lot—like seasonal
+								work, farming, selling on commission, or running your own business. Not having
+								cash on hand when there are shortfalls can add unwanted stress to your life.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+					<!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four--><!--Page Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 4">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<p class="paragraph"><b>Interest</b> is an amount paid to use someone’s money, usually a percentage
+									of the amount deposited (aka <b>principal</b>). The bank or credit union will not
+									actually keep all of your money in the vault. Some of it will be loaned to other
+									people or businesses. Because the financial institution receives interest from
+									the borrower, it is able to pay out interest to you for using your deposited
+									money.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Everyone needs to have some money set aside. But if you stash that money in your
+									room, you (or someone else) may be tempted to “borrow” from it. For that reason,
+									keeping your PYF funds “out of sight, out of mind” is a wise route. If you save or
+									invest it, your money can do a lot more for you than take up space in your
+									dresser drawer.<br><br>
+									Many people often use the words “saving” and “investing” interchangeably, but
+									technically they’re not the same thing.<br><br>
+									<b>Saving</b> is setting aside money you don’t spend now so it can be used later.<br><br>
+									<b>Investing</b> is buying something with the expectation that it will make money
+									for you.<br><br>
+									The right choice—saving or investing—depends on your situation. Let’s take a
+									closer look at some of the most popular options.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5 mb-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">THE BIG SCORE</h3>
+								<p class="paragraph">Savvy people have a strategy in place for windfalls such as work bonuses,
+									inheritances, tax refunds, or other unexpected chunks of money. They use
+									them to bump up the amount they’re saving and investing. Funneling a
+									windfall in that direction means you get the added boost, with no effect on
+									your day-to-day living expenses.
+								</p>
+							</div>
+
+
+
+						</div>
+					</div>
+
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+					<!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five--><!--Page Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 5">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 4.2: My Windfalls</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									Have you received any unexpected increases in cash during the past year?<br>
+									Check any of the examples below that were windfalls for you:
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck1" value="1"  name="windFallsOne">
+								  <label class="custom-control-label" for="customCheck1">Gift money</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck2"  value="1" name="windFallsTwo">
+								  <label class="custom-control-label" for="customCheck2">Found money</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck3"  value="1" name="windFallsThree">
+								  <label class="custom-control-label" for="customCheck3">Increase in allowance</label>
+								</div>
+
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck4"  value="1" name="windFallsFour">
+								  <label class="custom-control-label" for="customCheck4">Increase in pay</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck5"  value="1" name="windFallsFive">
+								  <label class="custom-control-label" for="customCheck5">Tip money</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck6"  value="1" name="windFallsSix">
+								  <label class="custom-control-label" for="customCheck6">Bonus</label>
+								</div>
+
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck7" value="1" name="windFallsSeven">
+								  <label class="custom-control-label" for="customCheck7">Scholarship or grant</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck8"  value="1" name="windFallsEight">
+								  <label class="custom-control-label" for="customCheck8">Inheritance</label>
+								</div>
+
+								<div class="form-group row" style="margin-left: 26px;">
+									<div class="col-sm-10">
+									<input type="text" class="form-control" id="colFormLabel" placeholder="Other" name="windFallsNine" value="">
+									</div>
+								  </div>
+
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									The next time you have a windfall, decide how much you’ll sock away before
+									indulging yourself. You also may need to set aside enough money to pay income
+									taxes on your windfall.
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">SAVE FOR FUN (AND A RAINY DAY)</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+									The first stop for your PYF money probably will be some type of savings option.
+									When you put money into a savings account at a financial institution, you’re
+									basically lending that bank or credit union your money. Your money is used to
+									make loans to other customers and businesses. Also, credit unions and banks
+									are required to keep some money on hand so that customers can take out their
+									money whenever they want to.<br><br>
+									Savings options at banks or credit unions offer these features:
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+									<b>» Safety.</b> No need to worry about impulsive spending or theft. Plus your
+									money is insured, so it will be returned if anything happens to the bank or
+									credit union.<br><br>
+									<b>» Ease of Access.</b> If you put in $100, you can take out $100.<br><br>
+									<b>» Interest.</b> The bank or credit union gives you a percentage of the amount that
+									you save. The more money in your account, the more interest you receive.<br><br>
+									<b>» Easy Tracking.</b> You can check your balance online anytime.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+					<!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six--><!--Page Six-->
+
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 6">
+						<div class="row">
+
+							<div class="col-11 mx-auto mt-5 mb-5">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+									  <tr>
+									  <th class="text-center" scope="row" colspan="4">Popular Savings Options</th>
+									</tr>
+									  <tr>
+									  <th class="text-center" scope="row">Type</th>
+									  <td class="text-center"><b>Where</b></td>
+									  <td class="text-center"><b>Pros</b></td>
+									  <td class="text-center"><b>Cons</b></td>
+									</tr>
+									<tr>
+									  <th scope="row">Savings Account</th>
+									  <td>
+										Any bank or credit union
+									  </td>
+									  <td>
+										» Low minimum
+										balance requirement<br>
+										» Able to remove or
+										add money to the
+										account<br>
+										» Interest is applied to
+										the account, usually
+										each month or
+										quarter<br>
+										» Insured
+									  </td>
+									  <td>
+										» Low interest rates,
+										which may change
+										over time
+									  </td>
+									</tr>
+									<tr>
+									  <th scope="row">Money Market Deposit Account (MMDA)</th>
+									  <td>
+										Any bank or credit union
+									  </td>
+									  <td>
+										» Higher interest rates
+										than with regular
+										savings accounts<br>
+										» Able to remove or
+										add money to the
+										account<br>
+										» Interest is applied to
+										the account, usually
+										each month<br>
+										» Insured
+									  </td>
+									  <td>
+										» May limit how
+										many times money
+										can be removed
+										each month<br>
+										» Required first
+										deposits are higher
+										than for regular
+										savings accounts<br>
+										» May require a
+										minimum balance
+										to avoid fees
+									  </td>
+									</tr>
+									 <tr>
+									  <th scope="row">Certificate of Deposit (CD)</th>
+									  <td>
+										Any bank or credit union
+									  </td>
+									  <td>
+										» Higher interest rates
+										than for regular
+										savings accounts and
+										MMDAs<br>
+										» Interest rate stays
+										the same for specific
+										length of time<br>
+										» Interest might be
+										applied more often
+										than with savings
+										accounts or MMDAs<br>
+										» Insured
+									  </td>
+									  <td>
+										» Low interest rates<br>
+										» Money isn’t<br>
+										available until a
+										specific date<br>
+										» Penalties for
+										cashing in CD
+										early
+									  </td>
+									</tr>
+									<tr>
+									  <th scope="row">U.S. Savings Bond</th>
+									  <td>
+										Bonds are sold online by the U.S. Treasury at <b>www.treasurydirect.gov</b>
+									  </td>
+									  <td>
+										» Buy in amounts of as
+										little as $25<br>
+										» Fixed interest rate for
+										up to 30 years<br>
+									  </td>
+									  <td>
+									   » Interest adds up
+									   but isn’t paid until
+									   you cash in the
+									   bond<br>
+									   » Low interest rate<br>
+									   » Penalty if cashed
+									   in within the first
+									   five years
+									  </td>
+									</tr>
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+					<!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven--><!--Page Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 7">
+						<div class="row">
+
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE 8TH WONDER OF THE WORLD</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6">
+									<p class="paragraph">Whitney’s surprised to hear that her
+										45-year-old uncle is leaving his job
+										to backpack around the world for a
+										year. He never really seemed like he
+										was rich, so she asks her mom how
+										he can afford to do it.
+										<br>
+										Her mom says that he has a lot more
+										money than people think. It’s not
+										because he earns a lot—he really
+										doesn’t. It’s because he started
+										saving and investing everything he
+										could when he was a teen. Instead
+										of spending money on big houses,
+										fancy cars, or expensive clothes, he continued to save it for things that are more
+										important to him—like this trip he’s been dreaming about for years.</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 ">
+								<p class="paragraph" style="margin-top: 100px;">
+								<span style="font-size: 23px; font-weight: 500;">"Compound interest
+								is the eighth wonder
+								of the world. He who
+								understands it, earns
+								it ... [and] he who
+								doesn’t ... pays it."</span><br>
+								<span style="font-size: 12px;">~ Physicist and theorist Albert Einstein</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Whitney questions how he could have put that much money away when he was
+								her age. It must have been mostly later, once he was climbing the career ladder.
+								Her mom says no, for years it was just $25 here and $10 there. But all the while,
+								his investments and earnings were compounding over time—trickling a little
+								more money into his account at first and then building to a waterfall the longer he
+								left it untouched.
+								</p>
+							</div>
+
+							<div class="col-sm-12  col-md-6 col-lg-6 mx-auto mt-3 mb-5">
+								<div class="mx-auto">
+									<img src="../../../assets/jpaFinancialPictureModuleFour/freedom.png" alt="freedom" width="100%"/>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+					<!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight--><!--Page Eight-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 8">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								Investment gurus may have lots of expertise, but you have one HUGE advantage
+								they can only wish for: more time. That’s because when it comes to building
+								wealth, <b>time is much more powerful than the amount you invest and even the
+								return you earn.</b>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								! The more often your money is earning interest, the faster and bigger your account will grow—thanks to the mighty
+								power of compounding.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Simply leave your savings in your account. As interest is added
+								to the account balance, you earn interest on the original balance
+								plus the previously earned interest. The more frequently interest is
+								compounded, the more the balance increases.
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6">
+									<p class="paragraph">Justin has been saving up his
+										birthday money and some cash
+										he’s earned from odd jobs in his
+										neighborhood. He now has $500 in
+										his savings account with an annual
+										interest rate of 0.55 percent.
+										<br>
+										He crunches some numbers to see
+										how much his account will grow
+										in a year. Using the simple interest
+										formula, Justin calculates that he will
+										have $502.75 ($500 + $2.75 interest)
+										at the end of a year.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/IPRT.png" alt="IPRT" width="100%" />
+							</div>
+
+							<div class="col-10 mx-auto mt-5 mb-5" style="border: 4px solid gray;">
+								<p class="paragraph">When interest is compounded, the amount paid in a year is actually more
+									than when the simple interest formula is used to calculate the interest. That’s
+									why financial institutions show the return as the annual percentage yield
+									(APY), the actual return on an investment when compound interest is taken
+									into account.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+					<!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine--><!--Page Nine-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 9">
+						<div class="row">
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+									<p class="paragraph">Justin’s dad suggests putting
+										the $500 into a CD that
+										earns more interest, more
+										frequently. Their credit union
+										currently offers 2.5 percent
+										APY on a 12-month CD and
+										interest is compounded daily.
+										<br>
+										Justin uses the compound
+										interest formula to see the
+										difference it makes to have
+										his money earn interest at a
+										higher rate every day rather
+										than just once a year. He
+										discovers that he will have
+										almost $513 after one year if
+										he goes with the CD option.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6 mt-5 text-center">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/Compund%20Interest%20Formula.png"  alt="Compund%20Interest%20Formula" width="100%" />
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Activity 4.3:More Money</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Justin can increase his savings by compounding interest more often. What are at
+								least two other ways he can grow his savings?
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<div class="form-row">
+									<div class="col">
+									  <input type="text" class="form-control" placeholder="First" name="moneyOne" value="">
+									</div>
+									<div class="col">
+									  <input type="text" class="form-control" placeholder="Second" name="moneyTwo" value="">
+									</div>
+								 </div>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								! Before you decide where to stash your cash, <b>always shop
+								around for the best interest rates.</b> Every little bit of
+								added interest can make a big difference over time.
+								Comparison shop to compare rates at local and national
+								banks and credit unions.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+					<!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten--><!--Page Ten-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 10">
+						<div class="row">
+
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Challenge 4-A: It Pays to Shop Around</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Go online to compare options for saving your money. Find out the following
+								about savings accounts, money market accounts, and CDs at one or two banks or
+								credit unions:<br><br>
+								» any minimum balance requirements<br>
+								» current APY<br>
+								» compounding<br>
+								» interest frequency<br><br>
+								Use the DECIDE steps to assess the saving option(s) that might be best for
+								your current situation. (You can learn more about the DECIDE Steps in Module 1:
+								Money Management. The steps are also listed in the Appendix.)
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">BEWARE SAVINGS ENEMY NO.1</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								<b>Everyone should have savings for short-term and unexpected needs.</b> For
+								long-term goals, however, you need to amp up your earnings because of the
+								inflation bandit.
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5 mb-5">
+									<p class="paragraph">The <b>inflation</b> bandit silently
+										steals your spending power by
+										driving up prices of food, gas,
+										clothes—everything—over time.
+										As it costs more to provide goods
+										and services, those costs are
+										often passed on to consumers. If
+										you use the inflation calculator
+										provided on the U.S. Bureau of
+										Labor Statistics website <b>(www.bls.gov/bls/inflation.htm),</b> you will see that the
+										same items you bought for $20 in 2005 would cost you $23.95 to buy in 2013.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6 mt-5 text-center mb-5">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/inflationAhead.png" alt="inflationAhead" width="100%" />
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+					<!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven--><!--Page Eleven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 11">
+						<div class="row">
+
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								The increase in the cost for the same items is expressed as a percentage
+								(aka inflation rate). The historical long-term annual average for inflation is about
+								3 percent. Even at that growth rate, inflation would <b>slash the value of your dollar
+								nearly in half every 20 years.</b> If you stashed $1,000 in your drawer today, in 20
+								years it would buy only $554 worth of stuff (at today’s prices)!
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								When the rate of inflation is greater than the interest rate on your savings, your
+								money may be growing, but it’s losing spending power. That means you cannot
+								buy as much with the same dollar later. That’s not good over a long period of time.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								? Is the historical annual average for inflation more or less than the
+								savings APYs you found for Challenge 4-A?
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5 mb-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">WHEN A DOLLAR IS NOT A DOLLARY</h3>
+								<p class="paragraph">
+									Would you rather get $100 today or a month from now? Today, of course! For
+									two reasons:<br><br>
+									» You’ll save money buying an item now, in case inflation drives up the price
+									over the next month.<br>
+									» Waiting a month to save or invest deprives you of a month’s worth of
+									returns—which has the potential to help your money grow faster than the
+									rate of inflation over time.<br><br>
+									Both reasons reflect the <b>time value of money (TVM),</b> which basically means
+									that a dollar today is worth more than a dollar tomorrow. The shrinking dollar
+									is why investing is a possible way to help you reach your long-term goals.
+									It makes sense to start sooner rather than later to save and invest, so your
+									money can potentially earn more than the rate of inflation.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+					<!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve--><!--Page Twelve-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 12">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE POWER OF NOW</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+									<p class="paragraph">Whitney’s intrigued by the fact
+										that her uncle got rich—thanks
+										primarily to compounding interest.
+										She finds a compound interest
+										calculator online and starts playing
+										around with it.
+										<br><br>
+										She decides to see what would
+										happen if she invested $2,000 a
+										year starting now, at age 18, then
+										stopped after 10 years. Using the
+										calculator’s suggested annual
+										return of 7 percent, she tells it to
+										calculate what the total would be
+										when she is age 65.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6 mt-5 text-center">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/lookingOut.png" alt="lookingOut" width="100%" />
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								She’s shocked at the results, which she shares with her mom. Her mom chuckles
+								and says, “I know. That’s why I keep trying to get you to save more money now.”
+								Her mom tells Whitney to see what the total would be if Whitney invests the same
+								amount—$2,000 a year—but doesn’t start until she’s 31 years old. How much
+								money will she have 35 years later?
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Again, Whitney is blown away. Although she contributed 30 percent less money in
+								the first scenario, she ended up having a much higher total amount, thanks to the
+								magic of compounding.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Activity 4.4: Getting a Late Start</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								As you can see in the chart, after a late start you have to invest more to catch up to
+								the amount in an account started earlier. In Whitney’s scenario, what is the cost of
+								starting later to invest at age 31 rather than earlier at age 18?
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen-->
+					<!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen-->
+					<!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen--><!--Page Thirtheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 13">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								<b>The Advantage of Starting Early:</b> The Impact of Time on the Value of Money
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/table.png" style="margin: auto; display: block;"alt="table" width="90%"/>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph" style="text-align: center; font-size: 13px;">
+									Investments are assumed to be made annually and at the beginning of the investment period.
+									Balance amounts are rounded to the nearest dollar and are not adjusted for inflation.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph" style="text-align: center;">
+								<b>Difference due to starting early: $</b>
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3 mb-5">
+								<input class="form-control" type="text" placeholder="Answer the question Above" name="differenceOne" value="">
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen-->
+					<!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen-->
+					<!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen--><!--Page Fourtheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 14">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								! You may not have much money to invest right now. But get
+								it started working for you now and time will more than
+								make up for that amount. The sooner you start adding to
+								an account, the less money you’ll need to put into it over
+								time to have it grow into a hefty amount.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								? How wealthy are you? If you make $1 million a year and spend it all,
+								you may feel rich. But you’re not getting any wealthier—your money is
+								gone. Wealth is what you accumulate—not what you make.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Here’s an easy way to measure it: If you stopped working tomorrow, how long
+								could you keep on living your normal life, relying only on what you already have?
+								That’s how wealthy you are.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="text-center">JUMP-START YOUR FINANCIAL QUEST WITH INVESTING</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph" style="font-size: 20px; text-align: center;">
+								"You must know the difference between an asset and
+								a liability, and buy assets. If you want to be rich, this
+								is all you need to know."<br><br>
+								<span style="font-size: 13px;">
+								~ Robert Kiyosaki, author of Rich Dad, Poor Dad: What the Rich Teach Their Kids
+								about Money—That the Poor and Middle Class Do Not!
+								</span>
+
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								Justin and his 18-year-old brother, Derrick, stop by a movie rental store that’s
+								going out of business. They’re surprised by how many great movies are priced
+								at next to nothing. Justin gets the idea to buy the clearance-sale movies and sell
+								them at a higher price online.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen-->
+					<!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen-->
+					<!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen--><!--Page Fiftheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 15">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								Derrick asks how he’ll pay for them. Justin says he’ll use the “just for emergencies”
+								credit card their dad gave him before a class trip last week. Derrick points out that
+								legally Justin’s not old enough to sell through online auction sites, so he offers to
+								help him out with the selling part for a “piece of the action.” They quickly agree
+								that Justin will give Derrick 15 percent of net profits.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Justin uses the credit card to buy $200 worth of movies and they head home.
+								Their mom is furious that Justin charged $200 without even asking. But their dad
+								is impressed with Justin’s plan. He says that just as with a real business, Justin must
+								write out an IOU promising to repay the $200 to his dad in six months plus
+								3 percent interest. He also says that Justin has to put his agreement with Derrick in
+								writing, giving him 15 percent ownership in the new company.<br><br>
+								Basically, Justin’s dad and brother just invested in his new business.
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-5 mb-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">ASSETS VS. LIABILITIES</h3>
+								<p class="paragraph">
+									An <b>asset</b> is an item of value that can be converted into cash. An asset can
+									put money in your pocket. A <b>liability</b> is something owed to another person.
+									Liabilities take money out of your pocket.<br><br>
+									A car is an asset. You can sell it for money later. A car loan is a liability—each
+									loan payment is money out of your pocket until the loan is repaid.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								When you invest, you buy an asset that you believe will increase in value or earn
+								more money for you, such as a rental property, a business, or stock in a company.
+								Investments are riskier than savings because there’s no guarantee that you will
+								earn more than you paid for the assets.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								You can lose money with investments if you end up selling the asset at a price
+								that’s less than what you paid. On the flip side, however, there is the potential to
+								be rewarded with a hefty increase in asset value. The degree to which an asset
+								gains (or loses) value over a given period of time is called the <b>rate of return.</b>
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen-->
+					<!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen-->
+					<!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen--><!--Page Sixtheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 16">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5 mb-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">THE INVESTING SEESAW</h3>
+								<p class="paragraph">
+									The higher the rate of return you earn, the less time and money you may
+									need to invest to reach your goals—and vice versa.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								For the most part, investments fall into two distinct buckets:<br><br>
+								» Income investments provide regular earnings, such as monthly interest,
+								quarterly dividends, or, in the case of real estate, rent payments. They may
+								increase or decrease in value, but overall they tend to provide a steady income.
+								Steady, mostly predictable earnings are the main goal of income investments.<br>
+								» Growth investments are about delayed gratification. The goal is to buy an
+								asset that you believe has the potential to increase in value over time. You
+								don’t receive a dime of any growth in value that may have occurred until
+								you sell the investment. When compared with income investments, growth
+								investments have greater potential to produce bigger gains—and losses.<br><br>
+								As you’ll see, though, some investments feature both growth and income.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">BE THE LENDER</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								With a <b>bond,</b> you lend money to a government or company. In return, the
+								borrower promises to repay you in full on a specific date, called the maturity date.
+								The borrower also pays you interest for using your money.
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/typesOfBonds.png" style="display: block; margin: auto;" alt="typesOfBonds" 																		width="100%"  />
+							</div>
+
+						</div>
+					</div>
+
+
+					<!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen-->
+					<!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen-->
+					<!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen--><!--Page Seventheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 17">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								Let’s say you buy a $10,000 corporate bond with a 5 percent annual interest rate
+								and a maturity date 10 years away. Twice a year for 10 years, you’ll receive interest
+								payments of $250. And on the maturity date, you’ll get your $10,000 back.
+								In the scenario about Justin’s DVD resale company, Justin’s dad basically bought a
+								corporate bond. It pays 3 percent interest and will mature in six months.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Here’s what you should know about bonds:<br><br>
+								» Bonds typically are sold for $1,000 each, which is called the face value.<br>
+								» The interest rate you receive is fixed (doesn’t change) and depends on the
+								overall rate that’s current when you buy the bond.<br>
+								» You can sell a bond to someone else before its maturity date.<br>
+								» Bondholders are much less likely than stockholders to lose money.<br>
+								» Even if a company goes bankrupt, investors holding its bonds are considered
+								creditors, who by law must be repaid first through the bankruptcy settlement.
+								The company’s stockholders may get only a fraction of their investment back,
+								if anything.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								<b>How to Buy Bonds:</b> You can buy bonds from investment brokers. You’ll probably
+								have to pay the broker a fee for each transaction. The least costly way to buy U.S.
+								Treasury bonds is directly from the government at <b>www.treasurydirect.gov.</b>
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-10 mx-auto mt-5 mb-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">PICKING A BROKER OR ADVISOR</h3>
+								<p class="paragraph">
+									You buy stocks and bonds through a registered <b>broker.</b> When you want
+									help in making investing decisions, you can seek advice from an <b>investment
+									advisor.</b> The difference is that the broker helps you carry out investment
+									transactions. An advisor provides advice to guide your investing strategies.
+									Do your homework before selecting a broker or advisor by asking
+									these questions:<br><br>
+									» Do the broker’s or advisor’s credentials check out?<br>
+									» How much will the services cost?<br>
+									» Do you trust that the broker or advisor will act in your best interests?
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+					<!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen--><!--Page Eighteen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 18">
+						<div class="row">
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">A SHOE-IN AT INVESTING</h3>
+								<p class="paragraph">
+									When 6-year-old Damon Williams asked his mom for the newest style of Nike
+									Air Jordan shoes, his newly single mother put down her foot. She said that if
+									he wanted another pair, he had to save up his money to buy them.<br><br>
+									She also said if he was going to keep buying Nike shoes, he was going to
+									own a piece of the Nike company. So, he also had to buy a share of the
+									company’s stock.<br><br>
+									By age 18, Damon had a stock portfolio worth $55,000. He did it by investing
+									a little at a time in stable, growing companies. He holds his stocks at least
+									seven years. And when stock prices fall, he purchases more shares at the
+									lower prices.<br><br>
+									“Anybody can do this. It’s not just for the rich people,” he says. “I want to pay
+									my own way through college, buy real estate, and see my children graduate
+									from college also.”
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">STOCK UP OVER TIME</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								Like Damon Williams, you may be able to make money by investing in your
+								favorite companies instead of just spending all your money buying their products!<br><br>
+								Buying stock gives you a front-row seat to the potential growth—and a piece of
+								the possible profit—of some of the world’s greatest companies. When you buy
+								stock, you are providing money to a company to use to run the business.<br><br>
+								In Justin’s scenario, he essentially issued Derrick 15 shares of stock (assuming 100
+								shares total). He’ll pay Derrick 15 percent of the company’s net profit—however
+								much or little that may be.
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen-->
+					<!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen-->
+					<!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen--><!--Page Ninetheen-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 19">
+						<div class="row">
+
+							<div class="col-12 mt-5 ">
+								<p class="paragraph">
+								Here’s the scoop on stocks:<br><br>
+								» Owning stock makes you a <b>shareholder</b> (aka stockholder). The more shares
+								you own, the more of the company you own.<br>
+								» Stock prices constantly fluctuate. Ideally, you want to sell stock at higher prices
+								than you paid, so you can make a profit.<br>
+								» There’s no guarantee that you’ll make money with a stock. You could break
+								even or lose money. Historically, the long-term growth of businesses and
+								their stocks has outpaced virtually every other non-stock market investment.
+								But keep in mind that how a particular stock performed in the past doesn’t
+								ensure that it will perform that way in the future.<br>
+								» When a publicly owned (by stockholders) company makes a profit, the
+								management might decide to give part of the profits to the shareholders.
+								Shareholders receive a <b>dividend,</b> an amount paid in cash or shares of stock,
+								based on the amount of stock shares owned.<br>
+								» Being a shareholder comes with responsibility. You get one vote per share in
+								elections of the board members who oversee the company’s management.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph" style="text-align: center;">
+									<b>Some of the factors that may affect a stock’s price:</b>
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3 ">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/Stocks.png" style="display: block; margin: auto;" alt="Stocks" width="100%" />
+							</div>
+
+							<div class="col-12 mt-4 ">
+								<p class="paragraph">
+								<b>How to Buy Stock:</b> You can buy shares of stock through a registered broker.
+								Or, you can use an online discount stock brokerage firm, which has no minimum
+								purchase. Online brokerages usually charge a flat fee per trade, but there may be
+								other fees and costs as well.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+					<!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty--><!--Page Twenty-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 20">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 4.5: Own a Piece of the Business</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								The companies listed below offer stock you can purchase. Check the names of the
+								companies you would like to own as a shareholder:
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck9"  value="1" name="ownOne">
+								  <label class="custom-control-label" for="customCheck9">Amazon</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck10"  value="1" name="ownTwo">
+								  <label class="custom-control-label" for="customCheck10">American Eagle</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck11"  value="1" name="ownThree">
+								  <label class="custom-control-label" for="customCheck11">Apple</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck111"  value="1" name="ownFour">
+								  <label class="custom-control-label" for="customCheck111">Coach</label>
+								</div>
+
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck12"  value="1" name="ownFive">
+								  <label class="custom-control-label" for="customCheck12">Google</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck13"  value="1" name="ownSix">
+								  <label class="custom-control-label" for="customCheck13">Electronic Arts</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14"  value="1" name="ownSeven">
+								  <label class="custom-control-label" for="customCheck14">GameStop</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck144"  value="1" name="ownEight">
+								  <label class="custom-control-label" for="customCheck144">Harley-Davidson</label>
+								</div>
+
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck15"  value="1" name="ownNine">
+								  <label class="custom-control-label" for="customCheck15">Hershey</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck16"  value="1" name="ownTen">
+								  <label class="custom-control-label" for="customCheck16">Nike</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck17"  value="1" name="ownEleven">
+								  <label class="custom-control-label" for="customCheck17">Pixar</label>
+								</div>
+
+								<div class="custom-control custom-checkbox ml-5">
+								  <input type="checkbox" class="custom-control-input" id="customCheck177"  value="1" name="ownTwelve">
+								  <label class="custom-control-label" for="customCheck177">Target</label>
+								</div>
+
+							</div>
+
+							<div class="col-10 mx-auto mt-5" style="border: 4px solid gray;">
+								<p class="paragraph">
+									A <b>security</b> is any type of investment bought and sold through financial
+									markets. Examples include stocks, bonds, and minerals.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE FOGGY CRYSTAL BALL</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5 ">
+								<p class="paragraph">
+								Stocks are listed for sale on <b>stock exchanges,</b> systems established to trade
+								shares of stock. The New York Stock Exchange <b>(NYSE)</b> and National Association
+								of Securities Dealers Automated Quotation System <b>(NASDAQ)</b> are the two major
+								players in the U.S. For every trade on the exchanges, there is a buyer and a seller
+								for the transaction.<br><br>
+								Most North American securities are traded through whichever one of these
+								exchanges they are listed on. The main difference between the NYSE and the
+								NASDAQ is in how trades are made.<br><br>
+								NYSE trades are made in a physical auction-style market in New York. When you
+								place an order through a broker to buy a particular stock, your offer to purchase
+								<b>(bid)</b> is matched to a seller’s offer to sell <b>(ask)</b>. Both the bid quote and ask quote
+								list the quantity of stock at a certain price. For example, you can make a bid to
+								purchase 100 shares of stock at a price of $15 per share. If a seller is willing to
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+					<!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One--><!--Page Twenty One-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 21">
+						<div class="row">
+
+							<div class="col-12 mt-5 ">
+								<p class="paragraph">
+								accept your offer, a trade is made. You now own stock. You can later offer to sell
+								that stock at a different ask quote, say 100 shares at $18 per share. If someone is
+								willing to buy at your ask quote, you can complete the transaction for a gain.<br><br>
+								The NASDAQ is not a physical place. Rather, all trading is done through a
+								telecommunications network of investment companies. Your bid or ask order will
+								be handled through an investment company dealer who keeps an inventory of
+								securities on hand to sell. When your bid matches the ask quote, you will make the
+								trade through the dealer. In reverse, when you want to sell stock, the trade will be
+								completed when the dealer buys at your ask quote.<br><br>
+								A stock price reflects what the overall market thinks the company is worth at the
+								moment. When the company looks highly promising to investors, the value of the
+								stock might climb. That’s because more people want to own the stock, and the
+								increased demand pushes up the price. When the company struggles, its stock
+								prices tend to fall as more and more stockholders want to sell their shares.
+								</p>
+							</div>
+
+							<div class="col-12 mt-4">
+								<h3 class="floatLeft">Activity 4.6: Watch the Price</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Select two or three companies that are interesting to you because you use their
+								products. Look online or in a newspaper to find out the highest and lowest selling
+								prices over the past 52 weeks for each company.
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-3 mb-5">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+									  <tr>
+									  <th class="text-center" scope="row">Company</th>
+									  <td class="text-center"><b>Highest Price</b></td>
+									  <td class="text-center"><b>Lowest Price</b></td>
+									</tr>
+									<tr>
+									  <th scope="row" class="font-weight-normal">
+										  <textarea class="form-control" rows="3" name="watchOne"></textarea>
+									  </th>
+									  <td>
+										<textarea class="form-control" rows="3" name="watchTwo"></textarea>
+									  </td>
+									  <td>
+									   <textarea class="form-control" rows="3" name="watchThree"></textarea>
+									  </td>
+
+									</tr>
+
+									<tr>
+									  <th scope="row" class="font-weight-normal">
+										  <textarea class="form-control" rows="3" name="watchFour"></textarea>
+									  </th>
+									  <td>
+										<textarea class="form-control" rows="3" name="watchFive"></textarea>
+									  </td>
+									  <td>
+										<textarea class="form-control" rows="3" name="watchSix"></textarea>
+									  </td>
+
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="font-weight-normal">
+										  <textarea class="form-control" rows="3" name="watchSeven"></textarea>
+									  </th>
+									  <td>
+										<textarea class="form-control" rows="3" name="watchEight"></textarea>
+									  </td>
+									  <td>
+										<textarea class="form-control" rows="3" name="watchNine"></textarea>
+									  </td>
+									</tr>
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+					<!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two--><!--Page Twenty Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 22">
+						<div class="row">
+
+							<div class="col-12 mt-5 ">
+								<p class="paragraph">
+								! If anyone promotes a “foolproof system” for
+								predicting stock prices, be very skeptical. No one yet
+								has found the perfect crystal ball to predict prices—
+								and it’s unlikely that anyone ever will.<br><br>
+								A study of the stock market’s 120 biggest up and biggest down
+								days over the course of 200 years found that only 25 percent of
+								the market swings happened for a logical reason.1 The other 75
+								percent were completely unexplainable!
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">MORE OWNERSHIP PATHS TO POTENTIAL WEALTH</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Owning stock isn’t the only way to invest. Here are some other popular options:<br><br>
+								<i class="fa fa-caret-right" aria-hidden="true"></i> <b>Mutual Funds.</b> Each mutual fund invests in a variety of stocks and/or 														bonds
+								to meet a specific investment objective—income or growth, among others.
+								Individual investors then buy shares of the fund.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Advantages of this approach include the following:<br><br>
+								» A professional fund manager does all the work of researching investment
+								opportunities and conducts the actual buying and selling.<br>
+								» A one-stop investment in many companies is less risky than owning shares in
+								just a few.<br>
+								» Buying shares of a fund is more convenient than investing on your own in all
+								the companies included in a fund’s holdings.<br>
+								» Earnings are automatically reinvested for you, which increases the number of
+								fund shares you own.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>How to Buy Mutual Fund Shares:</b> Go to a broker, the website of your favorite
+								mutual fund company, or an online brokerage. Minimum investments can be as
+								low as $500. Always find out about commissions and expenses, which can
+								vary widely.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3  mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+								1Stocks for the Long-Run: The Definitive Guide to Financial Market Returns and Long Term Investment Strategies,
+								Jeremy Siegel, 2007
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+					<!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three--><!--Page Twenty Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 23">
+						<div class="row">
+
+							<div class="col-12 mt-5 ">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/forSale.png" style="display: block; margin: auto;" alt="forSale" width="100%" />
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<i class="fa fa-caret-right" aria-hidden="true"></i>
+								<b>Real Estate.</b> Real estate investing focuses on buying land and buildings such as
+								rental properties, office buildings, farmland, and more. It’s possible to earn both
+								income and growth rewards with real estate investments. For example, with rental
+								property you collect monthly rent payments (income). Later you might sell the
+								property for more than you paid for it (growth).
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								The major downsides are that real estate isn’t cheap, it may take a long time to
+								attract a willing buyer when you’re ready to sell, and there’s no guarantee that the
+								property value will increase over time. Also, while you’re making mortgage/loan
+								payments, you’re responsible for annual property taxes, insurance, maintenance,
+								and repairs.<br><br>
+								Unlike with stock values, you have some control over a property’s value. You can
+								choose a unit in a good location and one that’s in good condition. You also can
+								make improvements that may increase the property’s value.<br><br>
+								<b>How to Buy Real Estate:</b> Real estate typically is sold through an authorized agent.
+								Besides the purchase price, you pay a variety of fees and closing costs.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+					<!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four--><!--Page Twenty Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 24">
+						<div class="row">
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+									<p class="paragraph">
+										<i class="fa fa-caret-right" aria-hidden="true"></i>
+										<b>Collectibles.</b> Collectibles are rare
+										or highly desired items that you
+										believe will increase in value over
+										time. Paintings, coins, comic books,
+										and baseball trading cards are a few
+										examples. The rarer the collectible is—
+										and the better its condition—the more
+										it’s worth to prospective buyers.<br><br>
+										You don’t make a dime on your
+										investment until you sell the collectible,
+										though. Your buyers are limited to other
+										collectors, and prices depend on their whims. In some cases, collectibles require
+										special storage and insurance, which add to your costs.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-5">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/magnifer.png" alt="magnifer" width="100%" style="display: block; margin: auto;"/>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>How to Buy Collectibles:</b> You can find collectibles nearly anywhere, including
+								your own attic. Before you buy from others, research how to spot fakes and
+								reproductions so you don’t get ripped off.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3  mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<i class="fa fa-caret-right" aria-hidden="true"></i>
+								<b>Start Your Own Business.</b> While stocks may make it possible for you to profit
+								from the success of other people’s companies, starting your own business means
+								all the profits go to you. As a person who takes the risk of starting and running a
+								company (aka <b>entrepreneur</b>), you have to pay all the expenses and put in all the
+								hard work. Launching a business is not without risk—the failure rate for startup
+								businesses is high.<br><br>
+								On the other hand, the potential rewards are unlimited. Build it and grow it
+								right, and later you may be able to sell your business at a profit—or pass it on to
+								your kids.<br><br>
+								<b>How to Start a Business:</b> You need an idea, a plan, and some development money
+								to get started. The Small Business Administration <b>(www.sba.gov)</b> and SCORE
+								<b>(www.score.org)</b> offer helpful, free information for aspiring entrepreneurs.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+					<!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five--><!--Page Twenty Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 25">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">RISKY BUSINESS</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-6">
+								<p class="paragraph">
+								Six months have flown by. It’s
+								time for Justin to repay the bond
+								his dad bought in his business.
+								He also needs to pay Derrick
+								the 15 percent net profit. But
+								sales have slowed and he hasn’t
+								been good about managing
+								his money. So, he doesn’t have
+								enough to pay them both.
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6">
+								<p class="paragraph" >
+								<span style="font-size: 23px; font-weight: 500;">"You can measure
+								opportunity with the
+								same yardstick that
+								measures the risk
+								involved. They go
+								together."</span><br>
+								<span style="font-size: 12px;">~ Personal development pioneer
+								Earl Nightingale</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								He asks his mom what to do
+								and she calls a family meeting. His dad explains that Justin doesn’t have a choice.
+								In the real world, bondholders must be paid before the stockholders. Derrick
+								starts to protest but his dad reminds him that he took the extra risk of being a
+								stockholder, with the expected tradeoff of getting a higher return. If Justin really
+								can’t pay, Derrick will just have to deal with it.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Derrick asks for the notebook in which Justin was logging all the sales and
+								expenses. He sees that Justin stopped updating it two months ago. So, he asks
+								for a printout of the transactions in their payment account. Justin gets angry
+								and refuses. His dad explains that as a stockholder, Derrick is entitled to see the
+								company’s financial records.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Justin prints it out and waits for Derrick to go ballistic about the bunch of video
+								games Justin bought for himself last week using company money. Derrick
+								criticizes him for spending the company’s money instead of making good on his
+								responsibilities. Justin argues that Derrick shouldn’t get mad at him, because
+								Derrick failed to keep an eye on his investment.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								Justin agrees that from now on he’ll show Derrick the notebook and payment
+								account statements every month. In the meantime, Justin needs to pay his father
+								the $200 plus 3 percent interest as promised. Then, he’ll write his dad a new IOU
+								for $200 to buy more movies. But because his investment seems riskier than
+								before, Justin’s dad now wants 5 percent interest on the new bond, which will be
+								due in another six months.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+					<!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six--><!--Page Twenty Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 26">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">THE INVESTING STRESS TEST</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>Risk</b> is the uncertainty of achieving a desired result. It’s part of everyday life.
+								Just as there are no guarantees that someone you ask out will say yes or you’ll
+								make the team, there are no guarantees that your investments will make money.
+								The greater the risk, the greater your potential loss—and the greater your
+								potential reward.<br><br>
+								All investments involve some degree of risk. To make informed investment
+								decisions, you’ll need to identify those risks and gauge your willingness to
+								accept them.<br><br>
+								No one enjoys losing money on an investment, but some people stress about it
+								more than others. How comfortable you are with the ups and downs of investing
+								is called your <b>risk tolerance.</b> Knowing your risk tolerance is crucial to choosing the
+								right investments for you.
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-5 mb-5">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+									  <tr>
+									  <th class="text-center" scope="row" colspan="4">Match Your Risk Tolerance</th>
+									</tr>
+									  <tr>
+									  <th class="text-center" scope="row">Tolerance level</th>
+									  <td class="text-center"><b>Low</b></td>
+									  <td class="text-center"><b>Medium</b></td>
+									  <td class="text-center"><b>High</b></td>
+									</tr>
+									<tr>
+									  <th scope="row">
+										  Investor’s Behavior
+									  </th>
+									  <td>
+										Loses sleep
+										whenever
+										investments
+										decline in
+										value
+									  </td>
+									  <td>
+										Doesn’t fret over small
+										declines but stresses
+										about bigger ones
+									  </td>
+									  <td>
+										Not bothered by
+										ups and downs; just
+										wants to maximize
+										returns over the
+										long term
+									  </td>
+									</tr>
+									<tr>
+									  <th scope="row">
+										  Possible Investments to Consider
+									  </th>
+									  <td>
+										Savings Account MMDA CDs
+									  </td>
+									  <td>
+										Stocks of large,
+										established,
+										financially healthy
+										companies; mutual
+										funds that balance
+										stock and bond
+										holdings
+									  </td>
+									  <td>
+									   Sophisticated,
+									   higher-risk
+									   investments and
+									   startup companies
+									  </td>
+									</tr>
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+
+
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+					<!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven--><!--Page Twenty Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 27">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">Activity 4.7: My Risk Tolerance</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								How would you rate your risk tolerance? Rutgers University has developed a
+								quiz to help you determine your comfort level with risk:
+								<b>(njaes.rutgers.edu/money/riskquiz).</b>
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6 mt-3 ">
+								<p class="paragraph" style="text-align: center;">
+									My investment risk tolerance:
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6 mt-3 ">
+								<input class="form-control" type="text" name="riskOne" placeholder="Risk" style="margin: 10px auto; width: 80%;" value="">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Here’s the curveball: <b>Your risk tolerance changes</b> as your investment goals,
+								financial situation, and life experiences change. Generally, the longer the length of
+								time until you need your money, the more risk you can afford to take.<br><br>
+								For instance, your risk tolerance is probably highest for investments you’ve chosen
+								to help you meet faraway financial goals, like retirement. That’s because you have
+								many years for your investments to potentially recover from any drops in value.
+								For closer goals, like college, you may prefer less-risky, steadier investments.<br><br>
+								Bottom line: There’s no “right” risk tolerance to have. You should never take on so
+								much risk that you lose sleep over your investments. Only you can decide how
+								much risk you’re comfortable with.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">VARY YOUR ASSETS</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								How many times have you heard that you should apply to more than one college
+								or for more than one job? The idea is that applying to a variety of places improves
+								the likelihood of a positive outcome. The same thinking is behind the familiar
+								saying, “Don’t put all your eggs in one basket.” If the basket breaks, you could lose
+								all of your eggs.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								In a way, when you fill out multiple college or job applications, you’re practicing
+								<b>diversification.</b> In investing, that practice is an important risk-reducing strategy.
+								Having a variety of diverse investments is less risky than having too few
+								investments or too many similar ones.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+					<!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight--><!--Page Twenty Eight-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 28">
+						<div class="row">
+
+							<div class="col-12 mt-5 ">
+								<p class="paragraph">
+								<b>Having a mix of different types of investments
+								helps to boost your odds of having at least one
+								type that’s performing well.</b>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Here is how you can diversify your investment portfolio:<br><br>
+								<b>Invest in a combination of asset categories:</b><br><br>
+								» Invest in more than one asset. Imagine what would happen if your only
+								investment was stock in a company that failed.<br>
+								» Invest in a variety of investment assets such as interest-bearing savings, stocks,
+								mutual funds, bonds, and real estate.<br><br>
+								<b>Mix investments within an asset category:</b>
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+									<p class="paragraph">
+										» Avoid investing in only one
+										industry. Investing in different
+										industries can balance your
+										risk in times when one industry
+										struggles and another performs
+										well. You would have been
+										disappointed to own stock
+										only in Internet companies (aka
+										dot-coms) during the 1990s
+										as the prices of tech-industry
+										stocks plummeted.es, collectibles require
+										special storage and insurance, which add to your costs.
+									</p>
+							</div>
+
+							<div class="col-sm-12 col-md-12 col-lg-6 mt-3">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/blender.png" alt="blender" width="100%" style="display: block; margin: auto;"/>
+							</div>
+
+							<div class="col-12 mt-0 mb-5" style="margin-top: -20px;">
+								<p class="paragraph">
+								» Vary your investments to include stocks of different-sized companies.
+								<b>Broad-market mutual funds</b> are a way to own stock in a wide range of
+								companies of different sizes and industries.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+					<!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine--><!--Page Twenty Nine-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 29">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">CHOOSE SMART</h3>
+							</div>
+
+							<div class="col-11 mx-auto mt-5 mb-5">
+								<div class="table-responsive">
+								<table class="table table-bordered table-striped">
+								  <tbody>
+									  <tr>
+									  <th class="text-center" scope="row" colspan="2">Tips From Celebrities Who Invest</th>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Singer/songwriter Justin Bieber
+									  </th>
+									  <td>
+										“I’m not going to invest in something I don’t like. I have to believe in the product.”
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row">
+										  Rapper and record producer Jay-Z
+									  </th>
+									  <td>
+										“You know, music is like stocks, too. There’s
+										the hot thing of the moment. There’s this hot,
+										electro sound … or the hot whatever’s new
+										and exciting. People tend to make emotional
+										decisions based on that. They don’t stick with
+										what they know ... .”
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row">
+										  Entertainer, media mogul, and philanthropist Oprah Winfrey
+									  </th>
+									  <td>
+										“I don’t invest in anything I don’t understand—it
+										makes more sense [for me] to buy TV stations
+										than oil wells.”
+									  </td>
+									</tr>
+
+
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								Inspired by her uncle’s story, Whitney texts him and asks if he knows any hot
+								stocks she can invest in. She says she needs to double or triple her small savings
+								account in the next year before college.<br><br>
+								He says he’d be happy to talk to her about investing, but her goal isn’t realistic.
+								He explains that it takes time for investments to grow. That’s why he holds on to
+								stocks for at least five years. To make the kinds of returns she wants in a year, she’d
+								have to take some crazy risks and get wildly lucky to make it happen. She’s more
+								likely to lose a bunch of money instead.<br><br>
+								He says that if Whitney wants to start investing, he’ll teach her what he knows. He
+								suggests that she start by investing 10 percent of each of her paychecks in stocks
+								of some stable but growing companies. But the rest of her money should probably
+								go into a CD that pays an interest rate that’s both higher than what her savings
+								account pays and compounded more often. Whitney agrees to look for a CD, and
+								they set up a time to talk after her next payday.
+								</p>
+							</div>
+
+
+
+						</div>
+					</div>
+
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+					<!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty--><!--Page Thirty-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 30">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">8 MUST-ASK QUESTIONS BEFORE YOU INVEST</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Before you choose an investment, you need to ask yourself:
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>1. What’s my financial objective?</b> What do I plan to do with the money? When
+								will I need it? The answers will start narrowing down your options.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>2. What’s my risk tolerance?</b> How upset will I be when my investments hit a
+								rough patch?
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>3. Am I ready to hold the investment for a while?</b> Investing is a long-term
+								relationship. Successful investors stick with their choices for five, 10, 20, or
+								more years. These buy-and-hold investors outperform short-term investors
+								by a wide margin—with 62 percent higher returns.2
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>4. Do I understand what I’m buying?</b> If you don’t understand the company’s
+								products or services and how it makes money, don’t invest in it.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>5. What’s the outlook?</b> Are there trends that could boost or dampen demand
+								for a company’s products and services over the next decade? Does the
+								company itself have any issues that could affect future sales and profitability?
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 mb-5 ">
+								<p class="paragraph" style="font-size: 12px;">
+								2 “Trading is Hazardous to Your Wealth: The Common Stock Investment Performance of Individual Investors,” Journal of
+								Finance, February 2000
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+					<!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One--><!--Page Thirty One-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 31">
+						<div class="row">
+
+							<div class="col-12 mt-5 ">
+								<p class="paragraph">
+								<b>6. Is this a good (or too good) price?</b> How does the current price compare
+								with its past prices and with similar investments? And if it seems to be
+								a bargain, why is it so low? Something that seems too good to be true
+								probably is.														</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>7. What are the costs?</b> Check out fees, commissions, loads, and expenses. The
+								more costs you pay to acquire the asset, the less money you make. Everyone
+								who sells investments gets paid somehow, usually in several different ways.
+								Know what they are.
+								</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								<b>8. Why am I buying it?</b> If you can’t answer that question, you shouldn’t buy it.																									</p>
+							</div>
+
+							<div class="col-11 mt-3 mb-5 mx-auto">
+								<hr class="mx-auto" style="border-bottom: 1px dashed black;">
+							</div>
+
+							<div class="col-10 mx-auto mt-5 mb-5" style="border: 4px solid gray;">
+								<h3 class="floatLeft mt-3">UNDER AGE? NO PROBLEM!</h3>
+								<p class="paragraph">
+									If you’re not yet an adult according to the law in your state, you can’t legally
+									hold stocks, bonds (except U.S. Savings bonds), and other investments.
+									Instead, a parent or guardian can set up a <b>custodial account</b> for you at a
+									brokerage or mutual fund company. The assets in the account belong to you,
+									but you won’t have legal control of them until you’re no longer a minor.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+					<!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two--><!--Page Thirty Two-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 32">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">STAY CLEAR OF TROUBLE</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-6">
+								<p class="paragraph">
+								Do your homework before
+								investing so you feel comfortable
+								with your decisions. Keep in mind
+								these guidelines:<br><br>
+								» <b>Avoid trusting others blindly.</b><br>
+								It’s YOUR money that’s at stake.
+								Think for yourself and research the
+								expertise of anyone offering advice
+								before you follow it.
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6">
+								<p class="paragraph" style="margin-top: 70px;">
+								<span style="font-size: 23px; font-weight: 500;">"When emotions run
+								high, logic usually flies
+								out the window, and
+								performance usually
+								follows."</span><br>
+								<span style="font-size: 12px;">~ John Bogle, founder of
+								Vanguard Funds</span>
+								</p>
+							</div>
+
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								» <b>Avoid falling for fairy tales.</b><br>
+								It can’t be said often enough: If something sounds too good to be true,
+								it probably is. Red flags should go up if anyone promises a big return on
+								an investment.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								» <b>Avoid relying only on past performance.</b> Choosing investments solely on
+								past performance is like driving using only the rearview mirror. The economy
+								changes; management changes. Past performance is an achievement, not a
+								predictor of what will happen in the future.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								» <b>Avoid borrowing to invest.</b> If your investment goes bust, you’ve lost your
+								money and may not be able to repay the lender. Be aware that lenders
+								can demand early repayment when investments decline in value by a
+								specific amount.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5 ">
+								<p class="paragraph">
+								» <b>Avoid holding only one investment.</b> Diversify your portfolio. Many pros have
+								a rule of not investing more than 5 percent of their total portfolio in a single
+								company or industry.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+					<!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three--><!--Page Thirty Three-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 33">
+						<div class="row">
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								» <b>Avoid flipping stocks.</b> Trying to “beat the market” by frequently buying and
+								selling your stocks is a losing proposition. Researchers found that a whopping
+								82 percent of daily traders lose money thanks to bad stock picks and the costs
+								of all those trades.3
+								</p>
+							</div>
+
+							<div class="col-10 mx-auto mt-3 ">
+								<img src="../../../assets/jpaFinancialPictureModuleFour/tradePieChart.png" alt="tradePieChart" style="display: block; margin: auto;" width="90%" />
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								» <b>Avoid getting emotional about your investments.</b> Come up with a strategy
+								to select investments that meet your financial goals. Having a plan and
+								sticking to your plan can help you avoid making impulsive decisions to buy or
+								sell an asset.
+								</p>
+							</div>
+
+							<div class="col-12 mt-5 mb-5">
+								<p class="paragraph" style="font-size: 12px;">
+								3 Do Individual Day Traders Make Money? Evidence from Taiwan, May 2004, faculty.haas.berkeley.edu/odean/papers/day
+								percent20traders/day percent20trade percent20040330.pdf
+								</p>
+							</div>
+
+
+						</div>
+					</div>
+
+
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+					<!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four--><!--Page Thirty Four-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 34">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">TOOLS OF SUCCESSFUL INVESTORS</h3>
+							</div>
+
+							<div class="col-sm-12 col-md-6">
+								<p class="paragraph mt-2">
+								Before you make your first
+								investment, you’ll want to know
+								about two ways to get off to a good
+								start for the long term.
+								</p>
+								<h3 class="floatLeft">WIN LIKE THE TORTOISE</h3>
+								<p class="paragraph mt-2">
+								<b>Dollar cost averaging</b> is a fancy
+								phrase for investing a set amount
+								of money each month or at other
+								regular intervals. It’s a particularly
+								handy strategy when you’re starting
+								out, because it doesn’t matter if the
+								amount is big or small. What matters
+								most is that it’s consistent.
+								</p>
+							</div>
+
+							<div class="col-sm-12 col-md-6">
+								<p class="paragraph" style="margin-top: 70px;">
+								<span style="font-size: 23px; font-weight: 500;">
+								"Your ultimate success
+								or failure will depend
+								on your ability to
+								ignore the worries
+								of the world long
+								enough to allow
+								your investments to
+								succeed."</span><br>
+								<span style="font-size: 12px;">~ Peter Lynch, former mutual fund
+								manager at Fidelity Investments</span>
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Benefits of dollar cost averaging include:<br><br>
+								» <b>Being able to start tapping the mighty power of compounding to grow
+								your money right away.</b> You skip the frustration of waiting to save up a sizable
+								lump sum to invest.<br>
+								» <b>Eliminating worries about whether you’re investing at the “right” or
+								“wrong” time.</b> Simply put, your investment buys more shares when prices are
+								lower and fewer shares when they’re higher.<br>
+								» <b>Lowering the cost per share.</b> For the investment period, the average price you
+								pay per share will always be below the overall average cost per share.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3 mb-5 ">
+								<p class="paragraph">
+								! Set up a regular investing routine. You can arrange for
+								regular automatic withdrawals from your paycheck or
+								checking account to a brokerage firm so you don’t even
+								have to remember to do it!
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+					<!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five--><!--Page Thirty Five-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 35">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">TOOLS OF SUCCESSFUL INVESTORS</h3>
+							</div>
+
+							<div class="col-12 mt-3 ">
+								<p class="paragraph">
+								Whitney decides to invest $50 in Rockstar Mutual Fund every month. Here’s a
+								break-out of the transactions for a year:
+								</p>
+							</div>
+
+							<div class="col-11 mx-auto mt-5 mb-5">
+								<div class="table-responsive">
+								<table class="table table-sm table-striped">
+								  <tbody>
+									  <tr>
+									  <th class="text-center" scope="row">Date of Investment</th>
+									  <td class="text-center"><b>Amount of Investment</b></td>
+									  <td class="text-center"><b>Cost Per Share</b></td>
+									  <td class="text-center"><b>Number of Shares Bought</b></td>
+									</tr>
+									<tr>
+									  <th scope="row" class="text-center">
+										  Jan. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$15.23
+									  </td>
+									  <td class="text-center">
+										3.28
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										  Feb. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$16.70
+									  </td>
+									  <td class="text-center">
+										2.99
+									  </td>
+									</tr>
+
+									 <tr>
+									  <th scope="row" class="text-center">
+										  Mar. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+											 $16.04
+									  </td>
+									  <td class="text-center">
+										3.12
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										  April 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$14.63
+									  </td>
+									  <td class="text-center">
+									   3.42
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										  May 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$13.11
+									  </td>
+									  <td class="text-center">
+									   3.81
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										  June 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$12.84
+									  </td>
+									  <td class="text-center">
+									   3.89
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										  July 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$10.79
+									  </td>
+									  <td class="text-center">
+									   4.63
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										  Aug. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$11.24
+									  </td>
+									  <td class="text-center">
+									   4.45
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										  Sept. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$11.97
+									  </td>
+									  <td class="text-center">
+									   4.18
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										 Oct. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$14.52
+									  </td>
+									  <td class="text-center">
+									   3.44
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										 Nov. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+										$16.87
+									  </td>
+									  <td class="text-center">
+									  2.96
+									  </td>
+									</tr>
+
+									<tr>
+									  <th scope="row" class="text-center">
+										 Dec. 5
+									  </th>
+									  <td class="text-center">
+										  $50
+									  </td>
+									  <td class="text-center">
+									   $16.45
+									  </td>
+									  <td class="text-center">
+									 3.04
+									  </td>
+									</tr>
+
+								  </tbody>
+								</table>
+								</div>
+							</div>
+
+							<div class="col-10 mx-auto mt-3 ">
+
+								$
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolOne" value="">
+								By year’s end, what is the total amount Whitney paid for the
+								fund shares?
+							</div>
+
+							<div class="col-10 mx-auto mt-3">
+
+								$
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolTwo" value="">
+								How many shares does Whitney own at the end of the year?
+							</div>
+
+							<div class="col-10 mx-auto mt-3 ">
+
+								$
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolThree" value="">
+								What is the value of Whitney’s fund on December 5?
+
+							</div>
+
+							<div class="col-10 mx-auto mt-3">
+
+								$
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolFour" value="">
+								What is the average price Whitney paid per share?
+							</div>
+
+							<div class="col-10 mx-auto mt-3 ">
+
+								$
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolFive" value="">
+								Using the costs shown, what is the overall average cost per share for
+								the 12-month period?
+							</div>
+
+							<div class="col-12 mt-5">
+								<h3 class="floatLeft">RETIRE THOSE TAXES</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								Retirement probably seems eons away for you right now. But when you finally
+								retire, you could need enough income to support you for three decades—maybe
+								longer. How will you afford it? Retirement plans are designed to help you invest for
+								your distant future. They offer tax advantages and other attractive incentives.																											</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+					<!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six--><!--Page Thirty Six-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 36">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								Here are two plan types to get to know:<br><br>
+								<b>401(k) Plans.</b> A 401(k) plan is known as an employer-sponsored plan, but you
+								own your account. You decide the amount to contribute and how it’s invested.
+								In some cases, your employer will match what you contribute, which is an added
+								benefit to help you build your account.<br><br>
+								<b>Individual Retirement Accounts (IRAs).</b> Outside of work, you can invest for
+								long-term goals, while getting the benefits of tax-free growth and compounding,
+								within IRA accounts. There are several types of IRAs, each offering some type of
+								tax advantage. If you need money well before retirement, a Roth IRA allows you
+								to withdraw money for higher education without the 10 percent early-withdrawal
+								penalty. You must have held the account for five years, though, and you’ll have to
+								pay taxes on any earnings.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">ADDING IT UP</h3>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								Overall, you’ve learned how to use saving and investing to help you reach your
+								goals—even if you’re just building your wealth a little at a time. You’ve learned
+								about the important role that time, money, and returns can play in your efforts to
+								achieve your financial goals and dreams.<br><br>
+								Both Justin and Whitney are ready to sit down and create a roadmap to a richer
+								future. Now it’s time for you to start putting what you learned into action. First,
+								you need to set some SMART saving and investing goals to help your dreams
+								become a reality.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Challenge 4-B: Set My SMART Investing Goals</h3>
+							</div>
+
+							<div class="col-12 mt-3 mb-5">
+								<p class="paragraph">
+								Use the SMART goal guidelines to set your own saving and investment goals.
+								If you completed Challenge 1-A in Module 1: Money Management, review your
+								SMART financial goals for this challenge. (Look for the SMART Goal Guide in the
+								Appendix or online at www.hsfpp.org.)<br><br>
+								If you have more than one goal, rank them from most to least important so you
+								know where to focus if you can’t tackle them all right now.
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven-->
+					<!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven-->
+					<!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven--><!--Page Thirty Seven-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 37">
+						<div class="row">
+
+							<div class="col-12 mt-5">
+								<p class="paragraph">
+								Each time you save or invest, you choose to apply your money toward longer-term
+								goals rather than buy things you want right now. Remember these seven practices
+								as you set up an investing plan:
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<p class="paragraph">
+								1. <b>Develop a strategy</b> to match your financial goals.<br><br>
+								2. <b>Start now</b> to benefit from the time value of money.<br><br>
+								3. <b>Invest for the long term.</b> Take advantage of compounded earnings.<br><br>
+								4. <b>Invest regularly.</b> Use the dollar cost averaging strategy.<br><br>
+								5. <b>Diversify</b> by owning different types of assets.<br><br>
+								6. <b>Do your homework.</b> Select options that match your goals and risk tolerance.<br><br>
+								7.<b>Monitor your investments</b> and make adjustments as your life situation changes.
+								</p>
+							</div>
+
+							<div class="col-12 mt-3">
+								<h3 class="floatLeft">Challenge 4-C: DECIDE My Investment Plan</h3>
+							</div>
+
+							<div class="col-12 mt-3" style="margin-bottom: 350px;">
+								<p class="paragraph">
+								Now, use the DECIDE steps to choose the right investment route for you. (You
+								will find the steps listed in the Appendix or go online at <b>www.hsfpp.org</b> to get
+								the DECIDE guide.)
+								</p>
+							</div>
+
+						</div>
+					</div>
+
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+					<!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES--><!--LAST THREE PAGES-->
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 38">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/appendix.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 39">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/additonalPage.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 40">
+						<img src="../../../assets/jpaFinancialPictureModuleOne/backCover.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
+					</div>
+
+					</form>
+
+					<!--End of container of pages-->
+				</div>
+			</div>
+		</div>
+  </div>
+  <div class="container-fluid">
+    <div class="mx-auto d-block mt-3" style="width: 300px;">
+      <button class="btn btn-primary" [disabled]="pageIndex === 1" (click)="onClickBack()">Back</button>
+      <p class="ml-3 mr-3 d-inline-block"> Page <input class="form-control d-inline" type="number" [value]="pageIndex" style="width: 60px;" min="1" max="40" (change)="onInputChange($event)"> of 40 </p>
+      <button class="btn btn-primary" (click)="onClickNext()" [disabled]="pageIndex === 40">Next</button>
+    </div>
+  </div>
+</div>
