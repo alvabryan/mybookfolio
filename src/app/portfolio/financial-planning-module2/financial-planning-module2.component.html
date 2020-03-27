@@ -15,7 +15,7 @@
 					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
 					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
 
-					<form method="post">
+					<form [formGroup]="fpModule2Form" (ngSubmit)="onSubmit()">
 
 					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 1">
 
@@ -249,7 +249,7 @@ Albert Einstein</span>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control"  name="ynOne" value="" placeholder="YES or NO" >
+									<input type="text" class="form-control"  name="ynOne" value="" placeholder="YES or NO" formControlName="ynOne">
 								</div>
 							</div>
 
@@ -260,7 +260,7 @@ now?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control"  name="ynTwo" value="" placeholder="YES or NO">
+									<input type="text" class="form-control"  name="ynTwo" value="" placeholder="YES or NO" formControlName="ynTwo">
 								</div>
 							</div>
 
@@ -271,7 +271,7 @@ and return them in good condition?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control"  name="ynThree" value="" placeholder="YES or NO">
+									<input type="text" class="form-control"  name="ynThree" value="" placeholder="YES or NO" formControlName="ynThree">
 								</div>
 							</div>
 
@@ -281,7 +281,7 @@ and return them in good condition?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control"  name="ynFour" value="" placeholder="YES or NO">
+									<input type="text" class="form-control"  name="ynFour" value="" placeholder="YES or NO" formControlName="ynFour">
 								</div>
 							</div>
 
@@ -292,7 +292,7 @@ other spending-plan funds?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control" name="ynFive" value="" placeholder="YES or NO">
+									<input type="text" class="form-control" name="ynFive" value="" placeholder="YES or NO" formControlName="ynFive">
 								</div>
 							</div>
 
@@ -303,7 +303,7 @@ getting permission first?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control" name="ynSix" value="" placeholder="YES or NO">
+									<input type="text" class="form-control" name="ynSix" value="" placeholder="YES or NO" formControlName="ynSix">
 								</div>
 							</div>
 
@@ -314,7 +314,7 @@ moment?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control" name="ynSeven" value="" placeholder="YES or NO">
+									<input type="text" class="form-control" name="ynSeven" value="" placeholder="YES or NO" formControlName="ynSeven">
 								</div>
 							</div>
 
@@ -324,7 +324,7 @@ moment?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control" name="ynEight" value="" placeholder="YES or NO">
+									<input type="text" class="form-control" name="ynEight" value="" placeholder="YES or NO" formControlName="ynEight">
 								</div>
 							</div>
 
@@ -463,7 +463,7 @@ moment?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control" name="rOne" placeholder="Answer One" value="">
+									<input type="text" class="form-control" name="rOne" placeholder="Answer One" value="" formControlName="rOne">
 								</div>
 							</div>
 
@@ -473,7 +473,7 @@ moment?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control" name="rTwo" placeholder="Answer Two" value="">
+									<input type="text" class="form-control" name="rTwo" placeholder="Answer Two" value="" formControlName="rTwo">
 								</div>
 							</div>
 
@@ -484,7 +484,7 @@ moment?</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<input type="text" class="form-control" name="rThree" placeholder="Answer Three" value="">
+									<input type="text" class="form-control" name="rThree" placeholder="Answer Three" value="" formControlName="rThree">
 								</div>
 							</div>
 						</div>
@@ -693,11 +693,11 @@ moment?</p>
 									  </td>
 
 									  <td>
-										  <input type="text" class="inputSize" name="tOne" value="">
+										  <input type="text" class="inputSize" name="tOne" value="" formControlName="tOne">
 									  </td>
 
 									  <td>
-										  <input type="text" class="inputSize" name="tTwo" value="">
+										  <input type="text" class="inputSize" name="tTwo" value="" formControlName="tTwo">
 									  </td>
 									</tr>
 
@@ -720,11 +720,11 @@ moment?</p>
 									  </td>
 
 									  <td>
-										 <input type="text" class="inputSize" name="tThree" value="">
+										 <input type="text" class="inputSize" name="tThree" value="" formControlName="tThree">
 									  </td>
 
 									  <td>
-										 <input type="text" class="inputSize" name="tFour" value="">
+										 <input type="text" class="inputSize" name="tFour" value="" formControlName="tFour">
 									  </td>
 									</tr>
 
@@ -1643,9 +1643,9 @@ moment?</p>
 
 									<tr>
 									  <th class="font-weight-normal" scope="row">4</th>
-									  <td><input type="text" class="inputSeventheen" name="iOne" value=""></td>
-									  <td><input type="text" class="inputSeventheen" name="iTwo" value=""></td>
-									  <td><input type="text" class="inputSeventheen" name="iThree" value=""></td>
+									  <td><input type="text" class="inputSeventheen" name="iOne" value="" formControlName="iOne"></td>
+									  <td><input type="text" class="inputSeventheen" name="iTwo" value="" formControlName="iTwo"></td>
+									  <td><input type="text" class="inputSeventheen" name="iThree" value="" formControlName="iThree"></td>
 									</tr>
 
 
@@ -1783,12 +1783,12 @@ moment?</p>
 									  <td>$24,750</td>
 									  <td>
 										  <div class="form-group">
-											<textarea class="form-control" name="tableOneQ" id="exampleFormControlTextarea1" rows="3"></textarea>
+											<textarea class="form-control" name="tableOneQ" id="exampleFormControlTextarea1" rows="3" formControlName="tableOneQ"></textarea>
 										  </div>
 									  </td>
 									  <td>
 										  <div class="form-group">
-											<textarea class="form-control" name="tableTwoQ" id="exampleFormControlTextarea1" rows="3"></textarea>
+											<textarea class="form-control" name="tableTwoQ" id="exampleFormControlTextarea1" rows="3" formControlName="tableTwoQ"></textarea>
 										  </div>
 									  </td>
 									</tr>
@@ -1798,12 +1798,12 @@ moment?</p>
 									  <td>$35,800</td>
 									  <td>
 										  <div class="form-group">
-											<textarea class="form-control" name="tableThreeQ" rows="3"></textarea>
+											<textarea class="form-control" name="tableThreeQ" rows="3" formControlName="tableThreeQ"></textarea>
 										  </div>
 									  </td>
 									  <td>
 										  <div class="form-group">
-											<textarea class="form-control" name="tableFourQ" rows="3"></textarea>
+											<textarea class="form-control" name="tableFourQ" rows="3" formControlName="tableFourQ"></textarea>
 										  </div>
 									  </td>
 									</tr>
@@ -1812,17 +1812,17 @@ moment?</p>
 									  <th class="font-weight-normal" scope="row">Me</th>
 									  <td>
 										  <div class="form-group">
-											<textarea class="form-control" name="tableFiveQ" rows="3"></textarea>
+											<textarea class="form-control" name="tableFiveQ" rows="3" formControlName="tableFiveQ"></textarea>
 										  </div>
 									  </td>
 									  <td>
 										  <div class="form-group">
-											<textarea class="form-control" name="tableSixQ" rows="3"></textarea>
+											<textarea class="form-control" name="tableSixQ" rows="3" formControlName="tableSixQ"></textarea>
 										  </div>
 									  </td>
 									  <td>
 										  <div class="form-group">
-											<textarea class="form-control" name="tableSevenQ" rows="3"></textarea>
+											<textarea class="form-control" name="tableSevenQ" rows="3" formControlName="tableSevenQ"></textarea>
 										  </div>
 									  </td>
 									</tr>
@@ -2659,19 +2659,19 @@ important turns up.</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-								 <input type="text" class="form-control inputSize" name="twoBone" value="">
+								 <input type="text" class="form-control inputSize" name="twoBone" value="" formControlName="twoBone">
 								   </div>
 							</div>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-								 <input type="text" class="form-control inputSize" name="twoBtwo" value="">
+								 <input type="text" class="form-control inputSize" name="twoBtwo" value="" formControlName="twoBtwo">
 								   </div>
 							</div>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-								 <input type="text" class="form-control inputSize" name="twoBthree" value="">
+								 <input type="text" class="form-control inputSize" name="twoBthree" value="" formControlName="twoBthree">
 								   </div>
 							</div>
 						</div>
@@ -3331,13 +3331,13 @@ important turns up.</p>
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-								 <input type="text" class="form-control inputSize" name="twoCone" value="">
+								 <input type="text" class="form-control inputSize" name="twoCone" value="" formControlName="twoCone">
 								   </div>
 							</div>
 
 							<div class="col-11 mx-auto mb-5">
 								<div class="form-group">
-								 <input type="text" class="form-control inputSize" name="twoCtwo" value="">
+								 <input type="text" class="form-control inputSize" name="twoCtwo" value="" formControlName="twoCtwo">
 								   </div>
 							</div>
 
@@ -3358,7 +3358,9 @@ important turns up.</p>
 
 					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 40">
 						<img src="../../../assets/jpaFinancialPictureModuleOne/backCover.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
-					</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
 
 				</form>
 

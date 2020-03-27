@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../store/index';
+import * as PortfolioActions from '../store/portfolio.actions';
 
 @Component({
   selector: 'app-financial-planning-module2',
@@ -7,11 +12,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinancialPlanningModule2Component implements OnInit {
 
+  fpModule2Form: FormGroup;
+
   pageIndex = 1;
 
-  constructor() { }
+  constructor(private store: Store<fromRoot.State> ) { }
 
   ngOnInit() {
+    this.fpModule2Form = new FormGroup({
+      ynOne: new FormControl(''),
+      ynTwo: new FormControl(''),
+      ynThree: new FormControl(''),
+      ynFour: new FormControl(''),
+      ynFive: new FormControl(''),
+      ynSix: new FormControl(''),
+      ynSeven: new FormControl(''),
+      ynEight: new FormControl(''),
+      rOne: new FormControl(''),
+      rTwo: new FormControl(''),
+      rThree: new FormControl(''),
+      tOne: new FormControl(''),
+      tTwo: new FormControl(''),
+      tThree: new FormControl(''),
+      tFour: new FormControl(''),
+      iOne: new FormControl(''),
+      iTwo: new FormControl(''),
+      iThree: new FormControl(''),
+      tableOneQ: new FormControl(''),
+      tableTwoQ: new FormControl(''),
+      tableThreeQ: new FormControl(''),
+      tableFourQ: new FormControl(''),
+      tableFiveQ: new FormControl(''),
+      tableSixQ: new FormControl(''),
+      tableSevenQ: new FormControl(''),
+      twoBone: new FormControl(''),
+      twoBtwo: new FormControl(''),
+      twoBthree: new FormControl(''),
+      twoCone: new FormControl(''),
+      twoCtwo: new FormControl('')
+    });
   }
 
   onClickBack() {
@@ -38,6 +77,12 @@ export class FinancialPlanningModule2Component implements OnInit {
       this.pageIndex = 1;
     }
 
+  }
+
+  onSubmit() {
+    this.store.dispatch(PortfolioActions.FinancialPlanningModuleTwoUpdate({
+      moduleTwo: this.fpModule2Form.value
+    }));
   }
 
 }

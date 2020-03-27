@@ -27,7 +27,7 @@
 					<!--PAGE ONE-->
 					<!--PAGE ONE-->
 
-					<form method="post">
+					<form [formGroup] = "fpModule3Form" (ngSubmit)="onSubmit()">
 
 						<div class="mySlides" style="width:100%" *ngIf="pageIndex === 1">
 
@@ -171,7 +171,7 @@
 								<div class="col-11 mx-auto">
 									<div class="form-group">
 										<input type="text" class="form-control" name="actOne" placeholder="Answer One"
-											value="">
+											value="" formControlName="actOne">
 									</div>
 								</div>
 
@@ -183,7 +183,7 @@
 								<div class="col-11 mx-auto">
 									<div class="form-group">
 										<input type="text" class="form-control" name="actTwo" placeholder="Answer Two"
-											value="">
+											value="" formControlName="actTwo">
 									</div>
 								</div>
 
@@ -196,7 +196,7 @@
 								<div class="col-11 mx-auto mb-5">
 									<div class="form-group">
 										<input type="text" class="form-control" name="actThree"
-											placeholder="Answer Three" value="">
+											placeholder="Answer Three" value="" formControlName="actThree">
 									</div>
 								</div>
 
@@ -349,7 +349,7 @@
 								<div class="col-11 mt-2 mx-auto">
 									<div class="form-group">
 										<textarea class="form-control" name="intOne" id="exampleFormControlTextarea1"
-											rows="9"></textarea>
+											rows="9" formControlName="intOne"></textarea>
 									</div>
 								</div>
 
@@ -446,12 +446,12 @@
 										<div class="form-group col-md-6">
 											<label for="inputEmail4">Plan A:</label>
 											<input type="text" class="form-control" name="checkOne" placeholder="Plan A"
-												value="">
+												value="" formControlName="checkOne">
 										</div>
 										<div class="form-group col-md-6">
 											<label for="inputPassword4">Plan B:</label>
 											<input type="text" class="form-control" name="checkTwo" placeholder="Plan B"
-												value="">
+												value="" formControlName="checkTwo">
 										</div>
 									</div>
 
@@ -752,13 +752,13 @@
 													<th class="font-weight-normal" scope="row">
 														<div class="form-group">
 															<textarea class="form-control" name="myOne"
-																rows="3"></textarea>
+																rows="3" formControlName="myOne"></textarea>
 														</div>
 													</th>
 													<th class="font-weight-normal" scope="row">
 														<div class="form-group">
 															<textarea class="form-control" name="myTwo"
-																rows="3"></textarea>
+																rows="3" formControlName="myTwo"></textarea>
 														</div>
 													</th>
 												</tr>
@@ -767,13 +767,13 @@
 													<th class="font-weight-normal" scope="row">
 														<div class="form-group">
 															<textarea class="form-control" name="myThree"
-																rows="3"></textarea>
+																rows="3" formControlName="myThree"></textarea>
 														</div>
 													</th>
 													<th class="font-weight-normal" scope="row">
 														<div class="form-group">
 															<textarea class="form-control" name="myFour"
-																rows="3"></textarea>
+																rows="3" formControlName="myFour"></textarea>
 														</div>
 													</th>
 												</tr>
@@ -782,13 +782,13 @@
 													<th class="font-weight-normal" scope="row">
 														<div class="form-group">
 															<textarea class="form-control" name="myFive"
-																rows="3"></textarea>
+																rows="3" formControlName="myFive"></textarea>
 														</div>
 													</th>
 													<th class="font-weight-normal" scope="row">
 														<div class="form-group">
 															<textarea class="form-control" name="mySix"
-																rows="3"></textarea>
+																rows="3" formControlName="mySix"></textarea>
 														</div>
 													</th>
 												</tr>
@@ -1197,20 +1197,20 @@
 												<tr>
 													<th scope="row">College Name</th>
 													<td><textarea class="form-control" name="whatOne"
-															rows="3"></textarea></td>
+															rows="3" formControlName="whatOne"></textarea></td>
 													<td><textarea class="form-control" name="whatTwo"
-															rows="3"></textarea></td>
+															rows="3" formControlName="whatTwo"></textarea></td>
 													<td><textarea class="form-control" name="whatThree"
-															rows="3"></textarea></td>
+															rows="3" formControlName="whatThree"></textarea></td>
 												</tr>
 												<tr>
 													<th scope="row">Annual Costs</th>
 													<td><textarea class="form-control" name="whatFour"
-															rows="3"></textarea></td>
+															rows="3" formControlName="whatFour"></textarea></td>
 													<td><textarea class="form-control" name="whatFive"
-															rows="3"></textarea></td>
+															rows="3" formControlName="whatFive"></textarea></td>
 													<td><textarea class="form-control" name="whatSix"
-															rows="3"></textarea></td>
+															rows="3" formControlName="whatSix"></textarea></td>
 												</tr>
 
 											</tbody>
@@ -2193,7 +2193,7 @@
 													<td> Regular Pay </td>
 													<td>
 														<textarea class="form-control" name="getOne"
-															rows="1"></textarea>
+															rows="1" formControlName="getOne"></textarea>
 													</td>
 												</tr>
 												<tr>
@@ -2203,7 +2203,7 @@
 													</td>
 													<td>
 														<textarea class="form-control" name="getTwo"
-															rows="1"></textarea>
+															rows="1" formControlName="getTwo"></textarea>
 													</td>
 												</tr>
 												<tr>
@@ -2213,7 +2213,7 @@
 													</td>
 													<td>
 														<textarea class="form-control" name="getThree"
-															rows="1"></textarea>
+															rows="1" formControlName="getThree"></textarea>
 													</td>
 												</tr>
 												<tr>
@@ -2232,7 +2232,7 @@
 													</td>
 													<td>
 														<textarea class="form-control" name="getFour"
-															rows="1"></textarea>
+															rows="1" formControlName="getFour"></textarea>
 													</td>
 												</tr>
 												<tr>
@@ -2242,7 +2242,7 @@
 													</td>
 													<td>
 														<textarea class="form-control" name="getFive"
-															rows="1"></textarea>
+															rows="1" formControlName="getFive"></textarea>
 													</td>
 												</tr>
 
@@ -2687,13 +2687,13 @@
 													<th scope="row" class="font-weight-normal">
 														<div class="form-group">
 															<input type="text" class="form-control moneyInput"
-																name="theOne" value="">
+																name="theOne" value="" formControlName="theOne">
 														</div>
 													</th>
 													<td>
 														<div class="form-group">
 															<input type="text" class="form-control moneyInput"
-																name="theTwo" value="">
+																name="theTwo" value="" formControlName="theTwo">
 														</div>
 													</td>
 												</tr>
@@ -2701,13 +2701,13 @@
 													<th scope="row" class="font-weight-normal">
 														<div class="form-group">
 															<input type="text" class="form-control moneyInput"
-																name="theThree" value="">
+																name="theThree" value="" formControlName="theThree">
 														</div>
 													</th>
 													<td>
 														<div class="form-group">
 															<input type="text" class="form-control moneyInput"
-																name="theFour" value="">
+																name="theFour" value="" formControlName="theFour">
 														</div>
 													</td>
 												</tr>
@@ -2715,13 +2715,13 @@
 													<th scope="row" class="font-weight-normal">
 														<div class="form-group">
 															<input type="text" class="form-control moneyInput"
-																name="theFive" value="">
+																name="theFive" value="" formControlName="theFive">
 														</div>
 													</th>
 													<td>
 														<div class="form-group">
 															<input type="text" class="form-control moneyInput"
-																name="theSix" value="">
+																name="theSix" value="" formControlName="theSix">
 														</div>
 													</td>
 												</tr>
@@ -2951,41 +2951,41 @@
 												</tr>
 												<tr>
 													<th class="font-weight-normal" scope="row"><textarea
-															class="form-control" name="workOne" rows="3"></textarea>
+															class="form-control" name="workOne" rows="3" formControlName="workOne"></textarea>
 													</th>
 													<td>
 														<textarea class="form-control" name="workTwo"
-															rows="3"></textarea>
+															rows="3" formControlName="workTwo"></textarea>
 													</td>
 
 												</tr>
 												<tr>
 													<th class="font-weight-normal" scope="row"><textarea
-															class="form-control" name="workThree" rows="3"></textarea>
+															class="form-control" name="workThree" rows="3" formControlName="workThree"></textarea>
 													</th>
 													<td>
 														<textarea class="form-control" name="workFour"
-															rows="3"></textarea>
+															rows="3" formControlName="workFour" formControlName="workFour"></textarea>
 													</td>
 
 												</tr>
 												<tr>
 													<th class="font-weight-normal" scope="row"><textarea
-															class="form-control" name="workFive" rows="3"></textarea>
+															class="form-control" name="workFive" rows="3" formControlName="workFive"></textarea>
 													</th>
 													<td>
 														<textarea class="form-control" name="workSix"
-															rows="3"></textarea>
+															rows="3" formControlName="workSix"></textarea>
 													</td>
 
 												</tr>
 												<tr>
 													<th class="font-weight-normal" scope="row"><textarea
-															class="form-control" name="workSeven" rows="3"></textarea>
+															class="form-control" name="workSeven" rows="3" formControlName="workSeven"></textarea>
 													</th>
 													<td>
 														<textarea class="form-control" name="workEight"
-															rows="3"></textarea>
+															rows="3" formControlName="workEight"></textarea>
 													</td>
 
 												</tr>
@@ -3180,11 +3180,11 @@
 								<div class="col-11 mx-auto mt-3">
 									<div class="form-group">
 										<input class="form-control mt-2" type="text" name="adOne"
-											placeholder="Recommendation One" value="">
+											placeholder="Recommendation One" value="" formControlName="adOne">
 										<input class="form-control mt-2" type="text" name="adTwo"
-											placeholder="Recommendation Two" value="">
+											placeholder="Recommendation Two" value="" formControlName="adTwo">
 										<input class="form-control mt-2" type="text" name="adThree"
-											placeholder="Recommendation Three" value="">
+											placeholder="Recommendation Three" value="" formControlName="adThree">
 									</div>
 								</div>
 
@@ -3726,7 +3726,9 @@
 						<div class="mySlides" style="width:100%" *ngIf="pageIndex === 40">
 							<img src="../../../assets/jpaFinancialPictureModuleOne/backCover.png" alt="MYBOOKFOLIO" width="100%"
 								height="100%" />
-						</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
 					</form>
 
 					<!--End of container of pages-->

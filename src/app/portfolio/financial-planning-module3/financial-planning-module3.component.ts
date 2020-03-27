@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+
+import { Store } from '@ngrx/store';
+import * as fromPortfolio from '../store/index';
+import * as PortfolioActions from '../store/portfolio.actions';
 
 @Component({
   selector: 'app-financial-planning-module3',
@@ -7,11 +12,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinancialPlanningModule3Component implements OnInit {
 
+  fpModule3Form: FormGroup;
+
   pageIndex = 1;
 
-  constructor() { }
+  constructor(private store: Store<fromPortfolio.State>) { }
 
   ngOnInit() {
+    this.fpModule3Form = new FormGroup({
+      actOne: new FormControl(''),
+      actTwo: new FormControl(''),
+      actThree: new FormControl(''),
+      intOne: new FormControl(''),
+      checkOne: new FormControl(''),
+      checkTwo: new FormControl(''),
+      myOne: new FormControl(''),
+      myTwo: new FormControl(''),
+      myThree: new FormControl(''),
+      myFour: new FormControl(''),
+      myFive: new FormControl(''),
+      mySix: new FormControl(''),
+      whatOne: new FormControl(''),
+      whatTwo: new FormControl(''),
+      whatThree: new FormControl(''),
+      whatFour: new FormControl(''),
+      whatFive: new FormControl(''),
+      whatSix: new FormControl(''),
+      getOne: new FormControl(''),
+      getTwo: new FormControl(''),
+      getThree: new FormControl(''),
+      getFour: new FormControl(''),
+      getFive: new FormControl(''),
+      theOne: new FormControl(''),
+      theTwo: new FormControl(''),
+      theThree: new FormControl(''),
+      theFour: new FormControl(''),
+      theFive: new FormControl(''),
+      theSix: new FormControl(''),
+      workOne: new FormControl(''),
+      workTwo: new FormControl(''),
+      workThree: new FormControl(''),
+      workFour: new FormControl(''),
+      workFive: new FormControl(''),
+      workSix: new FormControl(''),
+      workSeven: new FormControl(''),
+      workEight: new FormControl(''),
+      adOne: new FormControl(''),
+      adTwo: new FormControl(''),
+      adThree: new FormControl('')
+    });
   }
 
   onClickBack() {
@@ -38,6 +87,12 @@ export class FinancialPlanningModule3Component implements OnInit {
       this.pageIndex = 1;
     }
 
+  }
+
+  onSubmit() {
+    this.store.dispatch(PortfolioActions.FinancialPlanningModuleThreeUpdate({
+      moduleThree: this.fpModule3Form.value
+    }));
   }
 
 }
