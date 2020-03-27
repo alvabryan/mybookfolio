@@ -223,7 +223,7 @@ export class PortfolioEffects {
         const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
 
         // file data
-        const uploadDate = Date.now();
+        const uploadDate = firestore.Timestamp.now();
         const fileName = data[0].file.target.files[0].name;
         const imageName = `${Date.now()}_${fileName}`;
         const path = `${pageName}/${imageName}`;
@@ -264,7 +264,7 @@ export class PortfolioEffects {
                     [`${cadetLetLevel}`]: { content: firestore.FieldValue.arrayUnion({
                       attachDescription: data[0].description,
                       attachName: data[0].fileName,
-                      dataSubmitted: uploadDate,
+                      dateSubmitted: uploadDate,
                       downloadUrl: url,
                       fileName: imageName,
                       fileType: fileTypeExtension
@@ -416,9 +416,9 @@ export class PortfolioEffects {
           from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
             [cadetLetLevel]: {
               fourYearGoals: {
-                content: goalsData,
-                dateSubmitted: firestore.FieldValue.serverTimestamp()
-              }
+                content: goalsData
+              },
+              dateSubmitted: firestore.FieldValue.serverTimestamp()
             }
           }, {merge: true})),
           from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
@@ -463,9 +463,9 @@ export class PortfolioEffects {
           from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
             [cadetLetLevel]: {
               postSecondaryGoals: {
-                content: goalsData,
-                dateSubmitted: firestore.FieldValue.serverTimestamp()
-              }
+                content: goalsData
+              },
+              dateSubmitted: firestore.FieldValue.serverTimestamp()
             }
           }, {merge: true})),
           from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
@@ -663,6 +663,65 @@ export class PortfolioEffects {
     })
   ), {dispatch: false});
 
+  // financial planning module 1 update
+
+  financialPlanningModuleOne = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.FinancialPlanningModuleOneUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data) => {
+      console.log(data[0]);
+    })
+  ), {dispatch: false});
+
+  // financial planning module 2 update
+
+  financialPlanningModuleTwo = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.FinancialPlanningModuleTwoUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data) => {
+      console.log(data[0]);
+    })
+  ), {dispatch: false});
+
+  // financial planning module 3 update
+
+  financialPlanningModuleThree = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.FinancialPlanningModuleThreeUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data) => {
+      console.log(data[0]);
+    })
+  ), {dispatch: false});
+
+  // financial planning module 4 update
+
+  financialPlanningModuleFour = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.FinancialPlanningModuleFourUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data) => {
+      console.log(data[0]);
+    })
+  ), {dispatch: false});
+
+  // financial planning module 5 update
+
+  financialPlanningModuleFive = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.FinancialPlanningModuleFiveUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data) => {
+      console.log(data[0]);
+    })
+  ), {dispatch: false});
+
+  // financial planning module 6 update
+
+  financialPlanningModuleSix = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.FinancialPlanningModuleSixUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data) => {
+      console.log(data[0]);
+    })
+  ), {dispatch: false});
 
 
 

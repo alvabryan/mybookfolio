@@ -9,6 +9,8 @@ import * as PortfolioActions from './store/portfolio.actions';
 import { NgForm, FormGroup, FormControl } from '@angular/forms';
 // import { ProgressService } from '../cadet-portfolio/cadet-portfolio-view/progress.service';
 
+import { firestore } from 'firebase/app';
+
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -30,7 +32,7 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<fromPortfolio.State>,
     private router: Router,
-    ) { }
+    ) {}
 
     // private cadetProgressService: ProgressService
 
@@ -78,19 +80,16 @@ export class PortfolioComponent implements OnInit, OnDestroy {
 
             this.cadetData = cadetData;
 
-            // if (data.cadetData.cadetProgress) {
-            //   const progressData = data.cadetData.cadetProgress;
-            //   const lookUpLetLevel = cadetData.letLevel;
-            //   const cadetProgress: any = progressData[cadetData.uid];
-            //   this.cadetProgressData = this.getProgress(lookUpLetLevel, cadetProgress.progress);
-            // }
-
             if (data.viewData) {
               this.cadetViewData = data.viewData;
               if (data.viewData[letLevel]) {
-                  this.lastUpdated = data.viewData[letLevel].dateSubmitted;
+                  if (this.pageName.pageName === 'Course Work') {
+                    const dataLength = (data.viewData[letLevel].content).length - 1;
+                    data.viewData[letLevel].content[dataLength] ? this.lastUpdated = data.viewData[letLevel].content[dataLength].dateSubmitted : this.lastUpdated = null;
+                  } else {
+                    this.lastUpdated = data.viewData[letLevel].dateSubmitted;
+                  }
               } else {
-                // this.lastUpdated = data.portfolio.viewData[letLevel].content[((data.portfolio.viewData[letLevel].content).length - 1)].dateSubmitted;
                 this.lastUpdated = null;
               }
             } else {

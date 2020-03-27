@@ -27,7 +27,7 @@
           <!--PAGE ONE-->
           <!--PAGE ONE-->
 
-          <form method="post">
+          <form [formGroup]="fpModule1Form" (ngSubmit)="onSubmit()">
 
             <div class="mySlides" style="width:100%" *ngIf="pageIndex === 1">
               <div class="outerBox">
@@ -195,17 +195,17 @@
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group mt-1 inputStyle">
-                              <textarea class="form-control" rows="4" name="habitOne"></textarea>
+                              <textarea class="form-control" rows="4" name="habitOne" formControlName="habitOne"></textarea>
                             </div>
                           </th>
                           <td>
                             <div class="form-group mt-1 inputStyleMiddle">
-                              <textarea class="form-control" rows="4" name="habitOneSymbol"></textarea>
+                              <textarea class="form-control" rows="4" name="habitOneSymbol" formControlName="habitOneSymbol"></textarea>
                             </div>
                           </td>
                           <td>
                             <div class="form-group mt-1 inputStyle">
-                              <textarea class="form-control" rows="4" name="habitOneDesc"></textarea>
+                              <textarea class="form-control" rows="4" name="habitOneDesc" formControlName="habitOneDesc"></textarea>
                             </div>
                           </td>
 
@@ -213,17 +213,17 @@
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group mt-1 inputStyle">
-                              <textarea class="form-control" rows="4" type="text" name="habitTwo"></textarea>
+                              <textarea class="form-control" rows="4" type="text" name="habitTwo" formControlName="habitTwo"></textarea>
                             </div>
                           </th>
                           <td>
                             <div class="form-group mt-1 inputStyleMiddle">
-                              <textarea class="form-control" rows="4" name="habitTwoSymbol"></textarea>
+                              <textarea class="form-control" rows="4" name="habitTwoSymbol" formControlName="habitTwoSymbol"></textarea>
                             </div>
                           </td>
                           <td>
                             <div class="form-group mt-1 inputStyle">
-                              <textarea class="form-control" rows="4" name="habitTwoDesc"></textarea>
+                              <textarea class="form-control" rows="4" name="habitTwoDesc" formControlName="habitTwoDesc"></textarea>
                             </div>
                           </td>
 
@@ -231,17 +231,17 @@
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group mt-1 inputStyle">
-                              <textarea class="form-control" rows="4" name="habitThree"></textarea>
+                              <textarea class="form-control" rows="4" name="habitThree" formControlName="habitThree"></textarea>
                             </div>
                           </th>
                           <td>
                             <div class="form-group mt-1 inputStyleMiddle">
-                              <textarea class="form-control" rows="4" name="habitThreeSymbol"></textarea>
+                              <textarea class="form-control" rows="4" name="habitThreeSymbol" formControlName="habitThreeSymbol"></textarea>
                             </div>
                           </td>
                           <td>
                             <div class="form-group mt-1 inputStyle">
-                              <textarea class="form-control" rows="4" name="habitThreeDesc"></textarea>
+                              <textarea class="form-control" rows="4" name="habitThreeDesc" formControlName="habitThreeDesc"></textarea>
                             </div>
                           </td>
                         </tr>
@@ -406,11 +406,11 @@
                 </div>
                 <div class="col-12">
                   <p class="paragraph paraInput">$</p>
-                  <input class="inlineInput marginLeftInput form-control" type="number" min="0" name="monthTotal" placeholder="Month Total" value="">
+                  <input class="inlineInput marginLeftInput form-control" type="number" min="0" name="monthTotal" placeholder="Month Total" value="" formControlName="monthTotal">
                 </div>
                 <div class="col-12">
                   <p class="paragraph paraInput">In a school year? $</p>
-                  <input class="inlineInput marginLeftInput form-control" type="number" min="0" name="yearTotal" placeholder="Yearly Total" value="">
+                  <input class="inlineInput marginLeftInput form-control" type="number" min="0" name="yearTotal" placeholder="Yearly Total" value="" formControlName="yearTotal">
                 </div>
                 <div class="col-12">
                   <p class="paragraph">
@@ -548,36 +548,36 @@
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group">
-                              <input type="text" class="form-control moneyInput" name="spentOne" value="">
+                              <input type="text" class="form-control moneyInput" name="spentOne" value="" formControlName="spentOne">
                             </div>
                           </th>
                           <td>
                             <div class="form-group">
-                              <input type="text" class="form-control moneyInput" name="spentTwo" value="">
+                              <input type="text" class="form-control moneyInput" name="spentTwo" value="" formControlName="spentTwo">
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group">
-                              <input type="text" class="form-control moneyInput" name="spentThree" value="">
+                              <input type="text" class="form-control moneyInput" name="spentThree" value="" formControlName="spentThree">
                             </div>
                           </th>
                           <td>
                             <div class="form-group">
-                              <input type="text" class="form-control moneyInput" name="spentFour" value="">
+                              <input type="text" class="form-control moneyInput" name="spentFour" value="" formControlName="spentFour">
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group">
-                              <input type="text" class="form-control moneyInput" name="spentFive" value="">
+                              <input type="text" class="form-control moneyInput" name="spentFive" value="" formControlName="spentFive">
                             </div>
                           </th>
                           <td>
                             <div class="form-group">
-                              <input type="text" class="form-control moneyInput" name="spentSix" value="">
+                              <input type="text" class="form-control moneyInput" name="spentSix" value="" formControlName="spentSix">
                             </div>
                           </td>
                         </tr>
@@ -696,7 +696,7 @@
                 </div>
                 <div class="col-10 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="boughtQuestion" value="">
+                    <input type="text" class="form-control" name="boughtQuestion" value="" formControlName="boughtQuestion">
                   </div>
                 </div>
               </div>
@@ -781,19 +781,19 @@
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="reasonWaitOne" value="">
+                    <input type="text" class="form-control inputSize" name="reasonWaitOne" value="" formControlName="reasonWaitOne">
                   </div>
                 </div>
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="reasonWaitTwo" value="">
+                    <input type="text" class="form-control inputSize" name="reasonWaitTwo" value="" formControlName="reasonWaitTwo">
                   </div>
                 </div>
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="reasonWaitThree" value="">
+                    <input type="text" class="form-control inputSize" name="reasonWaitThree" value="" formControlName="reasonWaitThree">
                   </div>
                 </div>
               </div>
@@ -901,7 +901,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container">
-                                  <input type="radio" name="needwantOne" value="need">
+                                  <input type="radio" name="needWantOne" value="need" formControlName="needWantOne">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -911,7 +911,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container">
-                                  <input type="radio" name="needwantOne" value="want">
+                                  <input type="radio" name="needWantOne" value="want" formControlName="needWantOne">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -927,7 +927,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container">
-                                  <input type="radio" name="needwantTwo" value="need">
+                                  <input type="radio" name="needWantTwo" value="need" formControlName="needWantTwo">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -937,7 +937,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container">
-                                  <input type="radio" name="needwantTwo" value="want">
+                                  <input type="radio" name="needWantTwo" value="want" formControlName="needWantTwo">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -947,13 +947,13 @@
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
-                            <input type="text" class="form-control itemInput" name="itemThree" value="">
+                            <input type="text" class="form-control itemInput" name="itemThree" value="" formControlName="itemThree">
                           </th>
                           <td>
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needwantThree" value="need">
+                                  <input type="radio" name="needWantThree" value="need" formControlName="needWantThree">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -963,7 +963,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needwantThree" value="want">
+                                  <input type="radio" name="needWantThree" value="want" formControlName="needWantThree">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -973,13 +973,13 @@
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
-                            <input type="text" class="form-control itemInput" name="itemFour" value="">
+                            <input type="text" class="form-control itemInput" name="itemFour" value="" formControlName="itemFour">
                           </th>
                           <td>
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needwantFour" value="need">
+                                  <input type="radio" name="needWantFour" value="need" formControlName="needWantFour">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -989,7 +989,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needwantFour" value="want">
+                                  <input type="radio" name="needWantFour" value="want" formControlName="needWantFour">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -999,13 +999,13 @@
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
-                            <input type="text" class="form-control itemInput" name="itemFive" value="">
+                            <input type="text" class="form-control itemInput" name="itemFive" value="" formControlName="itemFive">
                           </th>
                           <td>
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needwantFive" value="need">
+                                  <input type="radio" name="needWantFive" value="need" formControlName="needWantFive">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -1015,7 +1015,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needwantFive" value="want">
+                                  <input type="radio" name="needWantFive" value="want" formControlName="needWantFive">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -1025,13 +1025,13 @@
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
-                            <input type="text" class="form-control itemInput" name="itemSix" value="">
+                            <input type="text" class="form-control itemInput" name="itemSix" value="" formControlName="itemSix">
                           </th>
                           <td>
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needWantSix" value="need">
+                                  <input type="radio" name="needWantSix" value="need" formControlName="needWantSix">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -1041,7 +1041,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needWantSix" value="want">
+                                  <input type="radio" name="needWantSix" value="want" formControlName="needWantSix">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -1051,13 +1051,13 @@
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
-                            <input type="text" class="form-control itemInput" name="itemSeven" value="">
+                            <input type="text" class="form-control itemInput" name="itemSeven" value="" formControlName="itemSeven">
                           </th>
                           <td>
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needWantSeven" value="need">
+                                  <input type="radio" name="needWantSeven" value="need" formControlName="needWantSeven">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -1067,7 +1067,7 @@
                             <div class="form-check">
                               <label class="form-check-label">
                                 <label class="container marginTopContain">
-                                  <input type="radio" name="needWantSeven" value="want">
+                                  <input type="radio" name="needWantSeven" value="want" formControlName="needWantSeven">
                                   <span class="checkmark"></span>
                                 </label>
                               </label>
@@ -1219,48 +1219,48 @@
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group">
-                              <input type="text" rows="3" class="form-control Myvalues" name="valueOne" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="valueOne" value="" formControlName="valueOne">
                             </div>
                           </th>
                           <td>
                             <div class="form-group" class="font-weight-normal">
-                              <input type="text" rows="3" class="form-control Myvalues" name="whyOne" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="whyOne" value="" formControlName="whyOne">
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group">
-                              <input type="text" rows="3" class="form-control Myvalues" name="valueTwo" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="valueTwo" value="" formControlName="valueTwo">
                             </div>
                           </th>
                           <td>
                             <div class="form-group">
-                              <input type="text" rows="3" class="form-control Myvalues" name="whyTwo" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="whyTwo" value="" formControlName="whyTwo">
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group">
-                              <input type="text" rows="3" class="form-control Myvalues" name="valueThree" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="valueThree" value="" formControlName="valueThree">
                             </div>
                           </th>
                           <td>
                             <div class="form-group">
-                              <input type="text" rows="3" class="form-control Myvalues" name="whyThree" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="whyThree" value="" formControlName="whyThree">
                             </div>
                           </td>
                         </tr>
                         <tr>
                           <th scope="row" class="font-weight-normal">
                             <div class="form-group">
-                              <input type="text" rows="3" class="form-control Myvalues" name="valueFour" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="valueFour" value="" formControlName="valueFour">
                             </div>
                           </th>
                           <td>
                             <div class="form-group">
-                              <input type="text" rows="3" class="form-control Myvalues" name="whyFour" value="">
+                              <input type="text" rows="3" class="form-control Myvalues" name="whyFour" value="" formControlName="whyFour">
                             </div>
                           </td>
                         </tr>
@@ -1629,7 +1629,7 @@
                             <b> Selena </b>
                           </th>
                           <td>
-                            <input type="text" class="form-control smartInput" name="smartOne" value="">
+                            <input type="text" class="form-control smartInput" name="smartOne" value="" formControlName="smartOne">
                           </td>
 
 
@@ -1640,7 +1640,7 @@
                             Save $200 for a trip to the outlet mall
                           </th>
                           <td>
-                            <input type="text" class="form-control smartInput" name="smartTwo" value="">
+                            <input type="text" class="form-control smartInput" name="smartTwo" value="" formControlName="smartTwo">
                           </td>
 
                         </tr>
@@ -1650,7 +1650,7 @@
                             Buy a new MP3 player
                           </th>
                           <td>
-                            <input type="text" class="form-control smartInput" name="smartThree" value="">
+                            <input type="text" class="form-control smartInput" name="smartThree" value="" formControlName="smartThree">
                           </td>
 
                         </tr>
@@ -1660,7 +1660,7 @@
                             <b> Micheal </b>
                           </th>
                           <td>
-                            <input type="text" class="form-control smartInput" name="smartFour" value="">
+                            <input type="text" class="form-control smartInput" name="smartFour" value="" formControlName="smartFour">
                           </td>
 
                         </tr>
@@ -1670,7 +1670,7 @@
                             Save money for college next year
                           </th>
                           <td>
-                            <input type="text" class="form-control smartInput" name="smartFive" value="">
+                            <input type="text" class="form-control smartInput" name="smartFive" value="" formControlName="smartFive">
                           </td>
 
                         </tr>
@@ -1680,7 +1680,7 @@
                             Buy a new computer in January
                           </th>
                           <td>
-                            <input type="text" class="form-control smartInput" name="smartSix" value="">
+                            <input type="text" class="form-control smartInput" name="smartSix" value="" formControlName="smartSix">
                           </td>
 
                         </tr>
@@ -1957,19 +1957,19 @@
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="goalOne" value="">
+                    <input type="text" class="form-control inputSize" name="goalOne" value="" formControlName="goalOne">
                   </div>
                 </div>
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="goalTwo" value="">
+                    <input type="text" class="form-control inputSize" name="goalTwo" value="" formControlName="goalTwo">
                   </div>
                 </div>
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="goalThree" value="">
+                    <input type="text" class="form-control inputSize" name="goalThree" value="" formControlName="goalThree">
                   </div>
                 </div>
               </div>
@@ -2461,25 +2461,25 @@
               <div class="row">
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="incomeOne" value="">
+                    <input type="text" class="form-control inputSize" name="incomeOne" value="" formControlName="incomeOne">
                   </div>
                 </div>
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="incomeTwo" value="">
+                    <input type="text" class="form-control inputSize" name="incomeTwo" value="" formControlName="incomeTwo">
                   </div>
                 </div>
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="incomeThree" value="">
+                    <input type="text" class="form-control inputSize" name="incomeThree" value="" formControlName="incomeThree">
                   </div>
                 </div>
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <input type="text" class="form-control inputSize" name="incomeFour" value="">
+                    <input type="text" class="form-control inputSize" name="incomeFour" value="" formControlName="incomeFour">
                   </div>
                 </div>
               </div>
@@ -3210,10 +3210,10 @@
                             Difference
                           </th>
                           <td>
-                            $ <input type="text" class="priceCalc" name="diffOne" value="">
+                            $ <input type="text" class="priceCalc" name="diffOne" value="" formControlName="differOne">
                           </td>
                           <td>
-                            $ <input type="text" class="priceCalc" name="diffTwo" value="">
+                            $ <input type="text" class="priceCalc" name="diffTwo" value="" formControlName="differTwo">
                           </td>
                         </tr>
 
@@ -3964,7 +3964,7 @@
               <div class="row mb-4">
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <textarea class="form-control" rows="3" name="myIncome"></textarea>
+                    <textarea class="form-control" rows="3" name="myIncome" formControlName="myIncome"></textarea>
                   </div>
                 </div>
               </div>
@@ -4330,7 +4330,7 @@
               <div class="row mt-2">
                 <div class="col-12">
                   <p class="paragraph">
-                    I think I do a <input class="inputUnderline" name="questionOne" value=""> job of managing my money.
+                    I think I do a <input class="inputUnderline" name="questionOne" value="" formControlName="questionOne"> job of managing my money.
                   </p>
                 </div>
               </div>
@@ -4344,7 +4344,7 @@
 
                 <div class="col-11 mx-auto">
                   <div class="form-group">
-                    <textarea class="form-control" rows="3" name="questionTwo"></textarea>
+                    <textarea class="form-control" rows="3" name="questionTwo" formControlName="questionTwo"></textarea>
                   </div>
                 </div>
               </div>
@@ -4439,6 +4439,9 @@
               <img src="../../../assets/jpaFinancialPictureModuleOne/backCover.png" alt="appendix" width="100%" height="100%" />
 
             </div>
+
+
+            <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
 
           </form>
 
