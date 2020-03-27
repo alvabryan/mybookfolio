@@ -27,6 +27,7 @@ export class FinancialPlanningModule5Component implements OnInit {
       depositTwo: new FormControl(''),
       depositThree: new FormControl(''),
       depositFour: new FormControl(''),
+      depositFive: new FormControl(''),
       depositSeven: new FormControl(''),
       depositEight: new FormControl(''),
       depositNine: new FormControl(''),
