@@ -15,7 +15,7 @@
 					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
 					<!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE--><!--PAGE ONE-->
 
-					<form method="post">
+					<form [formGroup]="fpModule4Form" (ngSubmit)="onSubmit()">
 
 					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 1">
 						<div class="row">
@@ -148,7 +148,7 @@
 
 							<div class="col-11 mx-auto">
 								<div class="form-group">
-									<textarea class="form-control" rows="3" name="wealthyOne"></textarea>
+									<textarea class="form-control" rows="3" name="wealthyOne" formControlName="wealthyOne"></textarea>
 								</div>
 							</div>
 
@@ -258,17 +258,17 @@
 							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck1" value="1"  name="windFallsOne">
+								  <input type="checkbox" class="custom-control-input" id="customCheck1" value="1"  name="windFallsOne" formControlName="windFallsOne">
 								  <label class="custom-control-label" for="customCheck1">Gift money</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck2"  value="1" name="windFallsTwo">
+								  <input type="checkbox" class="custom-control-input" id="customCheck2"  value="1" name="windFallsTwo" formControlName="windFallsTwo">
 								  <label class="custom-control-label" for="customCheck2">Found money</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck3"  value="1" name="windFallsThree">
+								  <input type="checkbox" class="custom-control-input" id="customCheck3"  value="1" name="windFallsThree" formControlName="windFallsThree">
 								  <label class="custom-control-label" for="customCheck3">Increase in allowance</label>
 								</div>
 
@@ -277,17 +277,17 @@
 							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck4"  value="1" name="windFallsFour">
+								  <input type="checkbox" class="custom-control-input" id="customCheck4"  value="1" name="windFallsFour" formControlName="windFallsFour">
 								  <label class="custom-control-label" for="customCheck4">Increase in pay</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck5"  value="1" name="windFallsFive">
+								  <input type="checkbox" class="custom-control-input" id="customCheck5"  value="1" name="windFallsFive" formControlName="windFallsFive">
 								  <label class="custom-control-label" for="customCheck5">Tip money</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck6"  value="1" name="windFallsSix">
+								  <input type="checkbox" class="custom-control-input" id="customCheck6"  value="1" name="windFallsSix" formControlName="windFallsSix">
 								  <label class="custom-control-label" for="customCheck6">Bonus</label>
 								</div>
 
@@ -296,18 +296,18 @@
 							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck7" value="1" name="windFallsSeven">
+								  <input type="checkbox" class="custom-control-input" id="customCheck7" value="1" name="windFallsSeven" formControlName="windFallsSeven">
 								  <label class="custom-control-label" for="customCheck7">Scholarship or grant</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck8"  value="1" name="windFallsEight">
+								  <input type="checkbox" class="custom-control-input" id="customCheck8"  value="1" name="windFallsEight" formControlName="windFallsEight">
 								  <label class="custom-control-label" for="customCheck8">Inheritance</label>
 								</div>
 
 								<div class="form-group row" style="margin-left: 26px;">
 									<div class="col-sm-10">
-									<input type="text" class="form-control" id="colFormLabel" placeholder="Other" name="windFallsNine" value="">
+									<input type="text" class="form-control" id="colFormLabel" placeholder="Other" name="windFallsNine" value="" formControlName="windFallsNine">
 									</div>
 								  </div>
 
@@ -662,10 +662,10 @@
 							<div class="col-11 mx-auto mt-3">
 								<div class="form-row">
 									<div class="col">
-									  <input type="text" class="form-control" placeholder="First" name="moneyOne" value="">
+									  <input type="text" class="form-control" placeholder="First" name="moneyOne" value="" formControlName="moneyOne">
 									</div>
 									<div class="col">
-									  <input type="text" class="form-control" placeholder="Second" name="moneyTwo" value="">
+									  <input type="text" class="form-control" placeholder="Second" name="moneyTwo" value="" formControlName="moneyTwo">
 									</div>
 								 </div>
 							</div>
@@ -896,7 +896,7 @@
 							</div>
 
 							<div class="col-10 mx-auto mt-3 mb-5">
-								<input class="form-control" type="text" placeholder="Answer the question Above" name="differenceOne" value="">
+								<input class="form-control" type="text" placeholder="Answer the question Above" name="differenceOne" value="" formControlName="differenceOne">
 							</div>
 
 						</div>
@@ -1264,22 +1264,22 @@
 							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck9"  value="1" name="ownOne">
+								  <input type="checkbox" class="custom-control-input" id="customCheck9"  value="1" name="ownOne" formControlName="ownOne">
 								  <label class="custom-control-label" for="customCheck9">Amazon</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck10"  value="1" name="ownTwo">
+								  <input type="checkbox" class="custom-control-input" id="customCheck10"  value="1" name="ownTwo" formControlName="ownTwo">
 								  <label class="custom-control-label" for="customCheck10">American Eagle</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck11"  value="1" name="ownThree">
+								  <input type="checkbox" class="custom-control-input" id="customCheck11"  value="1" name="ownThree" formControlName="ownThree">
 								  <label class="custom-control-label" for="customCheck11">Apple</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck111"  value="1" name="ownFour">
+								  <input type="checkbox" class="custom-control-input" id="customCheck111"  value="1" name="ownFour" formControlName="ownFour">
 								  <label class="custom-control-label" for="customCheck111">Coach</label>
 								</div>
 
@@ -1288,22 +1288,22 @@
 							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck12"  value="1" name="ownFive">
+								  <input type="checkbox" class="custom-control-input" id="customCheck12"  value="1" name="ownFive" formControlName="ownFive">
 								  <label class="custom-control-label" for="customCheck12">Google</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck13"  value="1" name="ownSix">
+								  <input type="checkbox" class="custom-control-input" id="customCheck13"  value="1" name="ownSix" formControlName="ownSix">
 								  <label class="custom-control-label" for="customCheck13">Electronic Arts</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck14"  value="1" name="ownSeven">
+								  <input type="checkbox" class="custom-control-input" id="customCheck14"  value="1" name="ownSeven" formControlName="ownSeven">
 								  <label class="custom-control-label" for="customCheck14">GameStop</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck144"  value="1" name="ownEight">
+								  <input type="checkbox" class="custom-control-input" id="customCheck144"  value="1" name="ownEight" formControlName="ownEight">
 								  <label class="custom-control-label" for="customCheck144">Harley-Davidson</label>
 								</div>
 
@@ -1312,22 +1312,22 @@
 							<div class="col-sm-12 col-md-12 col-lg-4 mt-3 mx-auto">
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck15"  value="1" name="ownNine">
+								  <input type="checkbox" class="custom-control-input" id="customCheck15"  value="1" name="ownNine" formControlName="ownNine">
 								  <label class="custom-control-label" for="customCheck15">Hershey</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck16"  value="1" name="ownTen">
+								  <input type="checkbox" class="custom-control-input" id="customCheck16"  value="1" name="ownTen" formControlName="ownTen">
 								  <label class="custom-control-label" for="customCheck16">Nike</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck17"  value="1" name="ownEleven">
+								  <input type="checkbox" class="custom-control-input" id="customCheck17"  value="1" name="ownEleven" formControlName="ownEleven">
 								  <label class="custom-control-label" for="customCheck17">Pixar</label>
 								</div>
 
 								<div class="custom-control custom-checkbox ml-5">
-								  <input type="checkbox" class="custom-control-input" id="customCheck177"  value="1" name="ownTwelve">
+								  <input type="checkbox" class="custom-control-input" id="customCheck177"  value="1" name="ownTwelve" formControlName="ownTwelve">
 								  <label class="custom-control-label" for="customCheck177">Target</label>
 								</div>
 
@@ -1416,39 +1416,39 @@
 									</tr>
 									<tr>
 									  <th scope="row" class="font-weight-normal">
-										  <textarea class="form-control" rows="3" name="watchOne"></textarea>
+										  <textarea class="form-control" rows="3" name="watchOne" formControlName="watchOne"></textarea>
 									  </th>
 									  <td>
-										<textarea class="form-control" rows="3" name="watchTwo"></textarea>
+										<textarea class="form-control" rows="3" name="watchTwo" formControlName="watchTwo"></textarea>
 									  </td>
 									  <td>
-									   <textarea class="form-control" rows="3" name="watchThree"></textarea>
+									   <textarea class="form-control" rows="3" name="watchThree" formControlName="watchThree"></textarea>
 									  </td>
 
 									</tr>
 
 									<tr>
 									  <th scope="row" class="font-weight-normal">
-										  <textarea class="form-control" rows="3" name="watchFour"></textarea>
+										  <textarea class="form-control" rows="3" name="watchFour" formControlName="watchFour"></textarea>
 									  </th>
 									  <td>
-										<textarea class="form-control" rows="3" name="watchFive"></textarea>
+										<textarea class="form-control" rows="3" name="watchFive" formControlName="watchFive"></textarea>
 									  </td>
 									  <td>
-										<textarea class="form-control" rows="3" name="watchSix"></textarea>
+										<textarea class="form-control" rows="3" name="watchSix" formControlName="watchSix"></textarea>
 									  </td>
 
 									</tr>
 
 									 <tr>
 									  <th scope="row" class="font-weight-normal">
-										  <textarea class="form-control" rows="3" name="watchSeven"></textarea>
+										  <textarea class="form-control" rows="3" name="watchSeven" formControlName="watchSeven"></textarea>
 									  </th>
 									  <td>
-										<textarea class="form-control" rows="3" name="watchEight"></textarea>
+										<textarea class="form-control" rows="3" name="watchEight" formControlName="watchEight"></textarea>
 									  </td>
 									  <td>
-										<textarea class="form-control" rows="3" name="watchNine"></textarea>
+										<textarea class="form-control" rows="3" name="watchNine" formControlName="watchNine"></textarea>
 									  </td>
 									</tr>
 
@@ -1852,7 +1852,7 @@
 							</div>
 
 							<div class="col-sm-12 col-md-6 mt-3 ">
-								<input class="form-control" type="text" name="riskOne" placeholder="Risk" style="margin: 10px auto; width: 80%;" value="">
+								<input class="form-control" type="text" name="riskOne" placeholder="Risk" style="margin: 10px auto; width: 80%;" value="" formControlName="riskOne">
 							</div>
 
 							<div class="col-12 mt-3 ">
@@ -2586,7 +2586,7 @@
 							<div class="col-10 mx-auto mt-3 ">
 
 								$
-								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolOne" value="">
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolOne" value="" formControlName="toolOne">
 								By year’s end, what is the total amount Whitney paid for the
 								fund shares?
 							</div>
@@ -2594,14 +2594,14 @@
 							<div class="col-10 mx-auto mt-3">
 
 								$
-								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolTwo" value="">
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolTwo" value="" formControlName="toolTwo">
 								How many shares does Whitney own at the end of the year?
 							</div>
 
 							<div class="col-10 mx-auto mt-3 ">
 
 								$
-								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolThree" value="">
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolThree" value="" formControlName="toolThree">
 								What is the value of Whitney’s fund on December 5?
 
 							</div>
@@ -2609,14 +2609,14 @@
 							<div class="col-10 mx-auto mt-3">
 
 								$
-								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolFour" value="">
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolFour" value="" formControlName="toolFour">
 								What is the average price Whitney paid per share?
 							</div>
 
 							<div class="col-10 mx-auto mt-3 ">
 
 								$
-								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolFive" value="">
+								<input class="form-control" type="text" style="width: 100px; display: inline-block;" name="toolFive" value="" formControlName="toolFive">
 								Using the costs shown, what is the overall average cost per share for
 								the 12-month period?
 							</div>
@@ -2751,7 +2751,9 @@
 
 					<div class="mySlides" style="width:100%" *ngIf="pageIndex === 40">
 						<img src="../../../assets/jpaFinancialPictureModuleOne/backCover.png" alt="MYBOOKFOLIO" width="100%" height="100%" />
-					</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
 
 					</form>
 
