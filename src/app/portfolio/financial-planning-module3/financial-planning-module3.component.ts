@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 import * as fromPortfolio from '../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-financial-planning-module3',
   templateUrl: './financial-planning-module3.component.html',
   styleUrls: ['./financial-planning-module3.component.css']
 })
-export class FinancialPlanningModule3Component implements OnInit {
+export class FinancialPlanningModule3Component implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   fpModule3Form: FormGroup;
 
@@ -61,6 +64,17 @@ export class FinancialPlanningModule3Component implements OnInit {
       adTwo: new FormControl(''),
       adThree: new FormControl('')
     });
+
+    this.store.select('portfolio').subscribe((data: any) => {
+      if (data.viewData) {
+        const letLevel = 'let' + data.cadetSearchData.letLevel;
+        if (data.viewData[letLevel]) {
+            this.setFinancialPlanningData(data.viewData[letLevel].content);
+        } else {
+          this.fpModule3Form.reset();
+        }
+      }
+    });
   }
 
   onClickBack() {
@@ -90,9 +104,58 @@ export class FinancialPlanningModule3Component implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(PortfolioActions.FinancialPlanningModuleThreeUpdate({
-      moduleThree: this.fpModule3Form.value
+    this.store.dispatch(PortfolioActions.FinancialPlanningModuleUpdate({
+      moduleData: this.fpModule3Form.value
     }));
+  }
+
+  setFinancialPlanningData(data: any) {
+    this.fpModule3Form.setValue({
+      actOne:	data.actOne,
+      actTwo:	data.actTwo,
+      actThree:	data.actThree,
+      intOne:	data.intOne,
+      checkOne:	data.checkOne,
+      checkTwo:	data.checkTwo,
+      myOne:	data.myOne,
+      myTwo:	data.myTwo,
+      myThree:	data.myThree,
+      myFour:	data.myFour,
+      myFive:	data.myFive,
+      mySix:	data.mySix,
+      whatOne:	data.whatOne,
+      whatTwo:	data.whatTwo,
+      whatThree:	data.whatThree,
+      whatFour:	data.whatFour,
+      whatFive:	data.whatFive,
+      whatSix:	data.whatSix,
+      getOne:	data.getOne,
+      getTwo:	data.getTwo,
+      getThree:	data.getThree,
+      getFour:	data.getFour,
+      getFive:	data.getFive,
+      theOne:	data.theOne,
+      theTwo:	data.theTwo,
+      theThree:	data.theThree,
+      theFour:	data.theFour,
+      theFive:	data.theFive,
+      theSix:	data.theSix,
+      workOne:	data.workOne,
+      workTwo:	data.workTwo,
+      workThree: data.workThree,
+      workFour:	data.workFour,
+      workFive:	data.workFive,
+      workSix:	data.workSix,
+      workSeven:	data.workSeven,
+      workEight:	data.workEight,
+      adOne:	data.adOne,
+      adTwo:	data.adTwo,
+      adThree:	data.adThree
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

@@ -67,6 +67,24 @@ const pageNameSetter = (pageName) => {
     case 'Human Graph Activity':
       dbPath = 'humanGraphActivity';
       break;
+    case 'Financial Planning Module 1':
+      dbPath = 'financialPlanningModule1';
+      break;
+    case 'Financial Planning Module 2':
+      dbPath = 'financialPlanningModule2';
+      break;
+    case 'Financial Planning Module 3':
+      dbPath = 'financialPlanningModule3';
+      break;
+    case 'Financial Planning Module 4':
+      dbPath = 'financialPlanningModule4';
+      break;
+    case 'Financial Planning Module 5':
+      dbPath = 'financialPlanningModule5';
+      break;
+    case 'Financial Planning Module 6':
+      dbPath = 'financialPlanningModule6';
+      break;
     default:
       dbPath = null;
   }
@@ -137,6 +155,54 @@ const humanGraphProgressCalculator = (humanGraphData) => {
   const questionSix: number = humanGraph ? humanGraph.questionSix ? 16.6666666 : null : null;
 
   return Math.floor(+questionOne + +questionTwo + +questionThree + +questionFour + +questionFive + +questionSix) + 1;
+};
+
+
+const financialPlanningModuleOneProgress = (checkData: any) => {
+  let progress = 0;
+
+  if (
+    checkData.habitOne !== '' &&
+    checkData.habitOneSymbol !== '' &&
+    checkData.habitOneDesc !== '' &&
+    checkData.habitTwo !== '' &&
+    checkData.habitTwoSymbol !== '' &&
+    checkData.habitTwoDesc !== '' &&
+    checkData.habitThree !== '' &&
+    checkData.habitThreeSymbol !== '' &&
+    checkData.habitThreeDesc !== ''
+    ) {
+    progress += 25;
+  }
+
+  if (
+    checkData.smartOne !== '' &&
+    checkData.smartTwo !== '' &&
+    checkData.smartThree !== '' &&
+    checkData.smartFour !== '' &&
+    checkData.smartFive !== '' &&
+    checkData.smartSix !== ''
+  ) {
+    progress += 25;
+  }
+
+  if (
+    checkData.differOne !== '' &&
+    checkData.differTwo !== ''
+  ) {
+    progress += 25;
+  }
+
+  if (
+    checkData.questionOne !== '' &&
+    checkData.questionTwo !== '' &&
+    checkData.questionThree !== '' &&
+    checkData.questionFour !== ''
+  ) {
+    progress += 25;
+  }
+
+  return progress;
 };
 
 @Injectable()
@@ -666,60 +732,46 @@ export class PortfolioEffects {
   // financial planning module 1 update
 
   financialPlanningModuleOne = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.FinancialPlanningModuleOneUpdate),
+    ofType(PortfolioActions.FinancialPlanningModuleUpdate),
     withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-    tap((data) => {
-      console.log(data[0]);
-    })
-  ), {dispatch: false});
+    tap((data: any) => {
+      console.log(data);
+      // goals data
+      const moduleOne = data[0].moduleData;
 
-  // financial planning module 2 update
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
 
-  financialPlanningModuleTwo = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.FinancialPlanningModuleTwoUpdate),
-    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-    tap((data) => {
-      console.log(data[0]);
-    })
-  ), {dispatch: false});
+      // database path
+      const dbPath = pageNameSetter(data[1].pageName);
 
-  // financial planning module 3 update
+      // current cadet
+      const cadetUid = data[1].cadetSearchData.uid;
 
-  financialPlanningModuleThree = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.FinancialPlanningModuleThreeUpdate),
-    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-    tap((data) => {
-      console.log(data[0]);
-    })
-  ), {dispatch: false});
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
 
-  // financial planning module 4 update
+      // human graph progress
+      const progress = data[1].pageName === 'Financial Planning Module 1' ? financialPlanningModuleOneProgress(moduleOne) : 0;
 
-  financialPlanningModuleFour = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.FinancialPlanningModuleFourUpdate),
-    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-    tap((data) => {
-      console.log(data[0]);
-    })
-  ), {dispatch: false});
+      forkJoin(
+        from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
+          [cadetLetLevel]: {
+            content: moduleOne,
+            dateSubmitted: firestore.FieldValue.serverTimestamp()
+          }
+        }, {merge: true})),
+        from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+          [cadetUid]: {
+            progress: {
+              [dbPath]: {
+                [cadetLetLevel]: progress
+              }
+            }
+          }
+        }, {merge: true}))
+      );
 
-  // financial planning module 5 update
-
-  financialPlanningModuleFive = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.FinancialPlanningModuleFiveUpdate),
-    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-    tap((data) => {
-      console.log(data[0]);
-    })
-  ), {dispatch: false});
-
-  // financial planning module 6 update
-
-  financialPlanningModuleSix = createEffect(() => this.actions$.pipe(
-    ofType(PortfolioActions.FinancialPlanningModuleSixUpdate),
-    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-    tap((data) => {
-      console.log(data[0]);
     })
   ), {dispatch: false});
 

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 import * as PortfolioActions from '../store/portfolio.actions';
 import * as fromPortfolio from '../store/index';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,7 +12,9 @@ import * as fromPortfolio from '../store/index';
   templateUrl: './financial-planning-module1.component.html',
   styleUrls: ['./financial-planning-module1.component.css']
 })
-export class FinancialPlanningModule1Component implements OnInit {
+export class FinancialPlanningModule1Component implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   fpModule1Form: FormGroup;
 
@@ -83,6 +86,20 @@ export class FinancialPlanningModule1Component implements OnInit {
       questionThree: new FormControl(''),
       questionFour: new FormControl('')
     });
+
+    this.subscription.add(
+      this.store.select('portfolio').subscribe((data: any) => {
+        if (data.viewData) {
+          const letLevel = 'let' + data.cadetSearchData.letLevel;
+          if (data.viewData[letLevel]) {
+              this.setFinancialPlanningData(data.viewData[letLevel].content);
+          } else {
+            this.fpModule1Form.reset();
+          }
+        }
+      })
+    );
+
   }
 
   onClickBack() {
@@ -112,9 +129,80 @@ export class FinancialPlanningModule1Component implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(PortfolioActions.FinancialPlanningModuleOneUpdate({
-      moduleOne: this.fpModule1Form.value
+    this.store.dispatch(PortfolioActions.FinancialPlanningModuleUpdate({
+      moduleData: this.fpModule1Form.value
     }));
+  }
+
+
+  setFinancialPlanningData(data: any) {
+    this.fpModule1Form.setValue({
+      habitOne:	data.habitOne,
+      habitOneSymbol:	data.habitOneSymbol,
+      habitOneDesc:	data.habitOneDesc,
+      habitTwo:	data.habitTwo,
+      habitTwoSymbol:	data.habitTwoSymbol,
+      habitTwoDesc:	data.habitTwoDesc,
+      habitThree:	data.habitThree,
+      habitThreeSymbol:	data.habitThreeSymbol,
+      habitThreeDesc:	data.habitThreeDesc,
+      monthTotal:	data.monthTotal,
+      yearTotal:	data.yearTotal,
+      spentOne:	data.spentOne,
+      spentTwo:	data.spentTwo,
+      spentThree:	data.spentThree,
+      spentFour:	data.spentFour,
+      spentFive:	data.spentFive,
+      spentSix:	data.spentSix,
+      boughtQuestion:	data.boughtQuestion,
+      reasonWaitOne:	data.reasonWaitOne,
+      reasonWaitTwo:	data.reasonWaitTwo,
+      reasonWaitThree:	data.reasonWaitThree,
+      needWantOne:	data.needWantOne,
+      needWantTwo:	data.needWantTwo,
+      itemThree:	data.itemThree,
+      needWantThree:	data.needWantThree,
+      itemFour:	data.itemFour,
+      needWantFour:	data.needWantFour,
+      itemFive:	data.itemFive,
+      needWantFive:	data.needWantFive,
+      itemSix:	data.itemSix,
+      needWantSix:	data.needWantSix,
+      itemSeven:	data.itemSeven,
+      needWantSeven:	data.needWantSeven,
+      valueOne:	data.valueOne,
+      whyOne:	data.whyOne,
+      valueTwo:	data.valueTwo,
+      whyTwo:	data.whyTwo,
+      valueThree:	data.valueThree,
+      whyThree:	data.whyThree,
+      valueFour:	data.valueFour,
+      whyFour:	data.whyFour,
+      smartOne:	data.smartOne,
+      smartTwo:	data.smartTwo,
+      smartThree:	data.smartThree,
+      smartFour:	data.smartFour,
+      smartFive:	data.smartFive,
+      smartSix:	data.smartSix,
+      goalOne:	data.goalOne,
+      goalTwo:	data.goalTwo,
+      goalThree:	data.goalThree,
+      incomeOne:	data.incomeOne,
+      incomeTwo:	data.incomeTwo,
+      incomeThree:	data.incomeThree,
+      incomeFour:	data.incomeFour,
+      differOne:	data.differOne,
+      differTwo:	data.differTwo,
+      myIncome:	data.myIncome,
+      questionOne:	data.questionOne,
+      questionTwo:	data.questionTwo,
+      questionThree:	data.questionThree,
+      questionFour:	data.questionFour
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

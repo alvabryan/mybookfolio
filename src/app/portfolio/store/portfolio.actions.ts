@@ -40,17 +40,7 @@ export const personalAdUpdate = createAction('[Portfolio update] personal ad', p
 
 export const humanGraphUpdate = createAction('[Portfolio update] human graph', props<{humanGraphData: any}>());
 
-export const FinancialPlanningModuleOneUpdate = createAction('[Portfolio update] module 1', props<{moduleOne: any}>());
-
-export const FinancialPlanningModuleTwoUpdate = createAction('[Portfolio update] module 2', props<{moduleTwo: any}>());
-
-export const FinancialPlanningModuleThreeUpdate = createAction('[Portfolio update] module 3', props<{moduleThree: any}>());
-
-export const FinancialPlanningModuleFourUpdate = createAction('[Portfolio update] module 4', props<{moduleFour: any}>());
-
-export const FinancialPlanningModuleFiveUpdate = createAction('[Portfolio update] module 5', props<{moduleFive: any}>());
-
-export const FinancialPlanningModuleSixUpdate = createAction('[Portfolio update] module 6', props<{moduleSix: any}>());
+export const FinancialPlanningModuleUpdate = createAction('[Portfolio update] module 1', props<{moduleData: any}>());
 
 export const onReload = createAction('[Instructor Portfolio] on reload set data');
 

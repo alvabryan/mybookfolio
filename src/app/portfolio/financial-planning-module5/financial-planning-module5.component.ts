@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { Store } from '@ngrx/store';
 import * as fromPortfolio from '../store/index';
 import * as PortfolioActions from '../store/portfolio.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-financial-planning-module5',
   templateUrl: './financial-planning-module5.component.html',
   styleUrls: ['./financial-planning-module5.component.css']
 })
-export class FinancialPlanningModule5Component implements OnInit {
+export class FinancialPlanningModule5Component implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   fpModule5Form: FormGroup;
 
@@ -74,6 +77,17 @@ export class FinancialPlanningModule5Component implements OnInit {
       offerTwo: new FormControl(''),
       offerThree: new FormControl('')
     });
+
+    this.store.select('portfolio').subscribe((data: any) => {
+      if (data.viewData) {
+        const letLevel = 'let' + data.cadetSearchData.letLevel;
+        if (data.viewData[letLevel]) {
+            this.setFinancialPlanningData(data.viewData[letLevel].content);
+        } else {
+          this.fpModule5Form.reset();
+        }
+      }
+    });
   }
 
 
@@ -104,9 +118,70 @@ export class FinancialPlanningModule5Component implements OnInit {
   }
 
   onSubmit() {
-    this.store.dispatch(PortfolioActions.FinancialPlanningModuleThreeUpdate({
-      moduleThree: this.fpModule5Form.value
+    this.store.dispatch(PortfolioActions.FinancialPlanningModuleUpdate({
+      moduleData: this.fpModule5Form.value
     }));
+  }
+
+  setFinancialPlanningData(data: any) {
+    this.fpModule5Form.setValue({
+      proofOne:	data.proofOne,
+      proofTwo:	data.proofTwo,
+      depositOne:	data.depositOne,
+      depositTwo:	data.depositTwo,
+      depositThree:	data.depositThree,
+      depositFour:	data.depositFour,
+      depositFive:	data.depositFive,
+      depositSeven:	data.depositSeven,
+      depositEight:	data.depositEight,
+      depositNine:	data.depositNine,
+      depositTen:	data.depositTen,
+      depositEleven:	data.depositEleven,
+      depositTwelve:	data.depositTwelve,
+      depositThirteen:	data.depositThirteen,
+      trackOne:	data.trackOne,
+      trackTwo:	data.trackTwo,
+      trackThree:	data.trackThree,
+      trackFour:	data.trackFour,
+      trackFive:	data.trackFive,
+      trackSix:	data.trackSix,
+      trackSeven:	data.trackSeven,
+      trackEight:	data.trackEight,
+      trackNine:	data.trackNine,
+      trackTen:	data.trackTen,
+      trackEleven:	data.trackEleven,
+      trackTwelve:	data.trackTwelve,
+      trackThirteen:	data.trackThirteen,
+      trackFourteen:	data.trackFourteen,
+      trackFifteen:	data.trackFifteen,
+      trackSixteen:	data.trackSixteen,
+      trackSeventeen:	data.trackSeventeen,
+      trackEighteen:	data.trackEighteen,
+      trackNineteen:	data.trackNineteen,
+      trackTwenty:	data.trackTwenty,
+      trackTwentyOne:	data.trackTwentyOne,
+      trackTwentyTwo:	data.trackTwentyTwo,
+      trackTwentyThree:	data.trackTwentyThree,
+      trackTwentyFour:	data.trackTwentyFour,
+      trackTwentyFive:	data.trackTwentyFive,
+      trackTwentySix:	data.trackTwentySix,
+      trackTwentySeven:	data.trackTwentySeven,
+      trackTwentyEight:	data.trackTwentyEight,
+      trackTwentyNine:	data.trackTwentyNine,
+      trackThirty:	data.trackThirty,
+      trackThirtyOne:	data.trackThirtyOne,
+      trackThirtyTwo:	data.trackThirtyTwo,
+      trackThirtyThree:	data.trackThirtyThree,
+      trackThirtyFour:	data.trackThirtyFour,
+      trackThirtyFive:	data.trackThirtyFive,
+      offerOne:	data.offerOne,
+      offerTwo:	data.offerTwo,
+      offerThree:	data.offerThree
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
