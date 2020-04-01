@@ -18,6 +18,7 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
   subscription: Subscription = new Subscription();
 
   winningColorsForm: FormGroup;
+  winningColorsTotal: any;
 
   constructor(private store: Store<fromPortfolio.State>, private router: Router) { }
 
@@ -25,32 +26,32 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
 
     this.winningColorsForm = new FormGroup({
       secA: new FormGroup({
-        one: new FormControl('0'),
-        two: new FormControl('0'),
-        three: new FormControl('0'),
-        four: new FormControl('0'),
-        five: new FormControl('0')
+        one: new FormControl('1'),
+        two: new FormControl('1'),
+        three: new FormControl('1'),
+        four: new FormControl('1'),
+        five: new FormControl('1')
       }),
       secB: new FormGroup({
-        one: new FormControl('0'),
-        two: new FormControl('0'),
-        three: new FormControl('0'),
-        four: new FormControl('0'),
-        five: new FormControl('0')
+        one: new FormControl('1'),
+        two: new FormControl('1'),
+        three: new FormControl('1'),
+        four: new FormControl('1'),
+        five: new FormControl('1')
       }),
       secC: new FormGroup({
-        one: new FormControl('0'),
-        two: new FormControl('0'),
-        three: new FormControl('0'),
-        four: new FormControl('0'),
-        five: new FormControl('0')
+        one: new FormControl('1'),
+        two: new FormControl('1'),
+        three: new FormControl('1'),
+        four: new FormControl('1'),
+        five: new FormControl('1')
       }),
       secD: new FormGroup({
-        one: new FormControl('0'),
-        two: new FormControl('0'),
-        three: new FormControl('0'),
-        four: new FormControl('0'),
-        five: new FormControl('0')
+        one: new FormControl('1'),
+        two: new FormControl('1'),
+        three: new FormControl('1'),
+        four: new FormControl('1'),
+        five: new FormControl('1')
       })
     });
 
@@ -61,6 +62,7 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
           const cadetData: any = data.viewData[letLevel] ? data.viewData[letLevel].content : null;
           if (cadetData) {
             this.setCadetData(cadetData);
+            this.winningColorsTotal = this.calculateTotal(cadetData);
           }
         } else {
           this.winningColorsForm.reset();
@@ -105,6 +107,55 @@ export class WinningColorsComponent implements OnInit, OnDestroy {
     } else {
       this.winningColorsForm.reset();
     }
+  }
+
+  calculateTotal(data: any) {
+    let secATotal = 0;
+    let secBTotal = 0;
+    let secCTotal = 0;
+    let secDTotal = 0;
+
+    if (data.secA.one) {
+      secATotal = +data.secA.one + +data.secA.two + +data.secA.three + +data.secA.four + +data.secA.five;
+    }
+
+    if (data.secB.one) {
+      secBTotal = +data.secB.one + +data.secB.two + +data.secB.three + +data.secB.four + +data.secB.five;
+    }
+
+    if (data.secC.one) {
+      secCTotal = +data.secC.one + +data.secC.two + +data.secC.three + +data.secC.four + +data.secC.five;
+    }
+
+    if (data.secD.one) {
+      secDTotal = +data.secD.one + +data.secD.two + +data.secD.three + +data.secD.four + +data.secD.five;
+    }
+
+    const minSection = Math.min(secATotal, secBTotal, secCTotal, secDTotal);
+    const minSectionName = [];
+    if (secATotal === minSection) {
+      minSectionName.push('secA');
+    }
+
+    if (secBTotal === minSection) {
+      minSectionName.push('secB');
+    }
+
+    if (secCTotal === minSection) {
+      minSectionName.push('secC');
+    }
+
+    if (secDTotal === minSection) {
+      minSectionName.push('secD');
+    }
+
+    return {
+      secATotal,
+      secBTotal,
+      secCTotal,
+      secDTotal,
+      minSectionName
+    };
   }
 
   onSubmit() {
