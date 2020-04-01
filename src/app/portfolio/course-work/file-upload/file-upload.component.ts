@@ -40,6 +40,10 @@ export class FileUploadComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.loading = 'uploading';
     const formData = this.fileUploadForm.value;
+
+
+    console.log(this.fileData);
+
     this.store.dispatch(PortfolioActions.uploadFile({
       fileName: formData.fileName,
       file: this.fileData,

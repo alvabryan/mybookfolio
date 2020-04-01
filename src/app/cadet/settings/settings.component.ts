@@ -16,6 +16,7 @@ export class SettingsComponent implements OnInit {
 
   uploadingImage: NewType = false;
   cadetData: any;
+  cadetProfileImage: any;
 
   profileImage: FormGroup;
   personalInfo: FormGroup;
@@ -48,6 +49,11 @@ export class SettingsComponent implements OnInit {
       newPassword: new FormControl('', Validators.required)
     });
 
+    this.store.select('auth').subscribe((data: any) => {
+      if (data.user) {
+        this.cadetProfileImage = data.user.photoUrl;
+      }
+    });
 
     this.store.select('cadet').subscribe((data: any) => {
       this.cadetData = data.cadetData;

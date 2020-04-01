@@ -31,6 +31,22 @@ export class CadetEffects {
     })
   ));
 
+
+  getCadetProgress = createEffect(() => this.actions$.pipe(
+    ofType(CadetActions.getCadetProgress),
+    withLatestFrom(this.store.select('auth')),
+    switchMap((data: any) => {
+      const userUid = data[1].user.uid;
+      const battalionCode = data[1].user.battalionCode;
+
+      return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetsProgress').doc(`${battalionCode}`).valueChanges()).pipe(map((returnedData: any) => {
+        const cadetProgressData = returnedData[userUid];
+        return CadetActions.setCadetProgress({cadetProgress: cadetProgressData});
+      }));
+
+    })
+  ));
+
   constructor(
     private http: HttpClient,
     private actions$: Actions,

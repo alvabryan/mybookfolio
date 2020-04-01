@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 // portfolio actions
 import * as PortfolioActions from './portfolio.actions';
-import { tap, switchMap, withLatestFrom, map } from 'rxjs/operators';
-import { EMPTY, of, from, forkJoin } from 'rxjs';
+import { tap, switchMap, withLatestFrom, map, catchError } from 'rxjs/operators';
+import { EMPTY, of, from, forkJoin, empty } from 'rxjs';
 
 // ngrx
 import { Store } from '@ngrx/store';
@@ -290,17 +290,17 @@ export class PortfolioEffects {
 
         // file data
         const uploadDate = firestore.Timestamp.now();
-        const fileName = data[0].file.target.files[0].name;
+        const fileType = data[0].file.target.files[0].type.split('/');
+        const fileName = Math.random() * 200 + '.' + fileType[1].toLowerCase();
         const imageName = `${Date.now()}_${fileName}`;
-        const path = `${pageName}/${imageName}`;
+        const path = `${dbPath}/${imageName}`;
 
         // calculate the progress plus the new file
         const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'upload');
 
         // file type
-        const fileTypeSplit = (uploadFileType) => {
-          const splitFileName = fileName.split('.');
-          const fileExtension = splitFileName[1].toLowerCase();
+        const fileTypeSplit = (splitFileName) => {
+          const fileExtension = splitFileName.toLowerCase();
           if (fileExtension === 'docx' || fileExtension === 'doc' || fileExtension === 'pdf') {
             return 'doc';
           } else if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'svg') {
@@ -308,7 +308,7 @@ export class PortfolioEffects {
           }
         };
 
-        const fileTypeExtension = fileTypeSplit(fileName);
+        const fileTypeExtension = fileTypeSplit(fileType[1]);
 
         // reference to storage
         const ref = this.storage.ref(path);
@@ -317,8 +317,8 @@ export class PortfolioEffects {
         const image = this.storage.upload(path, data[0].file.target.files[0]);
 
         return forkJoin(
-          from(image.snapshotChanges()),
-          from(image)
+          from(image.snapshotChanges()).pipe(catchError(() => EMPTY)),
+          from(image).pipe(catchError(() => EMPTY))
         ).pipe(switchMap(() => {
 
             // get download URL and upload progress data

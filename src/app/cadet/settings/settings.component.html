@@ -7,7 +7,7 @@
         <div class="row mt-5" *ngIf="!uploadingImage else uploadingInProgress">
           <div class="col d-flex justify-content-center">
             <img
-              [src]="cadetData ? cadetData.profileImage ? cadetData.profileImage : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png' : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png'"
+              [src]=" cadetProfileImage ? cadetProfileImage : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png'"
               height="150px" width="150px" style="border-radius: 100px;" />
             <div id="imgUpload">
               <form *ngIf="!uploadingImage" [formGroup]="profileImage" id="file_form" enctype="multipart/form-data">

@@ -14,6 +14,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { ErrorPageComponent } from '../shared/error-page/error-page.component';
 import { CadetPortfolioComponent } from './cadet-portfolio/cadet-portfolio.component';
+import { CadetDataSheetComponent } from './cadet-data-sheet/cadet-data-sheet.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
     {path: 'request', component: RequestComponent},
     {path: 'analytics', component: AnalyticsComponent},
     {path: 'cadet-challenge', component: CadetChallengeComponent},
+    {path: 'cadet-data-sheet', component: CadetDataSheetComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'documentation', component: DocumentationComponent},
     {path: 'portfolio', component: CadetPortfolioComponent},

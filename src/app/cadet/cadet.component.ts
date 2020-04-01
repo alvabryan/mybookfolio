@@ -26,6 +26,7 @@ export class CadetComponent implements OnInit, OnDestroy  {
     this.store.select('auth').subscribe(data => {
       if (data.user) {
         this.store.dispatch(CadetActions.getCadetData());
+        this.store.dispatch(CadetActions.getCadetProgress());
       }
     });
   }

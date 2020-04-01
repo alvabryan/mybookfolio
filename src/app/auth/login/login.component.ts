@@ -38,12 +38,12 @@ export class LoginComponent implements OnInit {
 
     this.store.dispatch(AuthActions.loginStart(userData));
 
-    this.store.pipe(select('auth')).subscribe(data => {
+    this.store.pipe(select('auth')).subscribe((data: any) => {
       this.isLoading = data.loading;
-      if(data.authError){
-        // this.flashMessages.show(data.authError.error, {cssClass: 'alert-danger', timeout: 3000})
+      if (data.authError) {
+        this.flashMessages.show(data.authError.error, {cssClass: 'alert-danger', timeout: 3000});
       }
-    })
+    });
 
   }
 

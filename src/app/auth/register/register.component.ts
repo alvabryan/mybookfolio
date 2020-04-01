@@ -20,9 +20,9 @@ export class RegisterComponent implements OnInit {
   }
 
   back(){
-    if(this.signupType){
+    if (this.signupType) {
       this.signupType = null;
-    }else{
+    } else {
       this.route.navigate(['/']);
     }
   }
