@@ -58,7 +58,7 @@ export class PortfolioProgressService {
     let progress = 0;
 
     fieldsToGrade.forEach((fieldName) => {
-      if (data[fieldName]) {
+      if (data[fieldName] !== '') {
         progress += 1;
       }
     });
