@@ -14,6 +14,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 
 import { firestore } from 'firebase/app';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { PortfolioProgressService } from './portfolio-progress.service';
 
 const pageNameSetter = (pageName) => {
   let dbPath = null;
@@ -731,11 +732,10 @@ export class PortfolioEffects {
 
   // financial planning module 1 update
 
-  financialPlanningModuleOne = createEffect(() => this.actions$.pipe(
+  financialPlanningModule = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.FinancialPlanningModuleUpdate),
     withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
     tap((data: any) => {
-      console.log(data);
       // goals data
       const moduleOne = data[0].moduleData;
 
@@ -752,7 +752,7 @@ export class PortfolioEffects {
       const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
 
       // human graph progress
-      const progress = data[1].pageName === 'Financial Planning Module 1' ? financialPlanningModuleOneProgress(moduleOne) : 0;
+      const progress = this.getProgress.getFinancialPlanningProgress(moduleOne, data[1].pageName);
 
       forkJoin(
         from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
@@ -777,5 +777,5 @@ export class PortfolioEffects {
 
 
 
-    constructor(private actions$: Actions, private store: Store<fromPortfolio.State>, private db: AngularFirestore, private storage: AngularFireStorage) {}
+    constructor(private actions$: Actions, private store: Store<fromPortfolio.State>, private db: AngularFirestore, private storage: AngularFireStorage, private getProgress: PortfolioProgressService) {}
 }
