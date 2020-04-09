@@ -78,16 +78,18 @@ export class FinancialPlanningModule5Component implements OnInit, OnDestroy {
       offerThree: new FormControl('')
     });
 
-    this.store.select('portfolio').subscribe((data: any) => {
-      if (data.viewData) {
-        const letLevel = 'let' + data.cadetSearchData.letLevel;
-        if (data.viewData[letLevel]) {
-            this.setFinancialPlanningData(data.viewData[letLevel].content);
-        } else {
-          this.fpModule5Form.reset();
+    this.subscription.add(
+      this.store.select('portfolio').subscribe((data: any) => {
+        if (data.viewData) {
+          const letLevel = 'let' + data.cadetSearchData.letLevel;
+          if (data.viewData[letLevel]) {
+              this.setFinancialPlanningData(data.viewData[letLevel].content);
+          } else {
+            this.fpModule5Form.reset();
+          }
         }
-      }
-    });
+      })
+    );
   }
 
 

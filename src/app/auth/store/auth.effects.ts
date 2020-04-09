@@ -6,7 +6,7 @@ import { switchMap, exhaustMap, mergeMap, catchError, tap, map, delay, take, wit
 
 // auth action
 import * as AuthActions from './auth.actions';
-import { of, EMPTY, from, forkJoin } from 'rxjs';
+import { of, EMPTY, from, forkJoin, combineLatest } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -329,8 +329,38 @@ export class AuthEffects {
     // update cadet personal data
     updateCadetInfo = createEffect(() => this.actions$.pipe(
       ofType(AuthActions.updateCadetInfo),
+      withLatestFrom(this.store.select('auth')),
       tap((data: any) => {
-        console.log(data);
+        const newData = data[0].newPersonalData;
+        const battalionCode = data[1].user.battalionCode;
+        const cadetUid = data[1].user.uid;
+
+        combineLatest(
+          from(this.db.collection('users').doc(cadetUid).set({
+            data: {
+              firstName: newData.firstName,
+              lastName: newData.lastName,
+              letLevel: newData.letLevel,
+              period: newData.period
+            }
+          }, {merge: true})),
+          from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(battalionCode).set({
+            [cadetUid]: {
+              firstName: newData.firstName,
+              lastName: newData.lastName,
+              letLevel: newData.letLevel,
+              period: newData.period
+            }
+          }, {merge: true})),
+          from(this.db.doc(`battalions/${battalionCode}`).collection('cadetsProgress').doc(battalionCode).set({
+            [cadetUid]: {
+              firstName: newData.firstName,
+              lastName: newData.lastName,
+              letLevel: newData.letLevel,
+              period: newData.period
+            }
+          }, {merge: true}))
+          ).pipe(tap((response) => console.log(response)));
       })
     ), {dispatch: false});
 

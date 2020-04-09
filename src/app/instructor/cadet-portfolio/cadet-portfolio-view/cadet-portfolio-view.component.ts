@@ -32,14 +32,19 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
       personalAd: 0,
       humanGraphActivity: 0,
       resume: 0,
-      financialPlanning: 0,
       courseWork: 0,
       essay: 0,
       lessonEvidence: 0,
       writtenSummary: 0,
       achievements: 0,
       cadetChallenge: 0,
-      serviceLearning: 0
+      serviceLearning: 0,
+      financialPlanningModule1: 0,
+      financialPlanningModule2: 0,
+      financialPlanningModule3: 0,
+      financialPlanningModule4: 0,
+      financialPlanningModule5: 0,
+      financialPlanningModule6: 0
   };
 
   constructor(
@@ -51,17 +56,18 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
-        const searchedCadet = data.cadetSearchData.cadetSearchData.uid;
-        const searchedCadetLevetLevel = data.cadetSearchData.cadetSearchData.letLevel;
-        console.log(searchedCadet);
-        const progressData = data.cadetData.cadetProgress;
-        this.searchCadet = progressData[searchedCadet];
+        if (data.cadetSearchData.cadetSearchData) {
+          const searchedCadet = data.cadetSearchData.cadetSearchData.uid;
+          const searchedCadetLevetLevel = data.cadetSearchData.cadetSearchData.letLevel;
 
-        if (this.searchCadet) {
-          this.filterLetLevel = searchedCadetLevetLevel;
-          this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
+          const progressData = data.cadetData.cadetProgress;
+          this.searchCadet = progressData[searchedCadet];
+
+          if (this.searchCadet) {
+            this.filterLetLevel = searchedCadetLevetLevel;
+            this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
+          }
         }
-
       })
     );
 
@@ -85,7 +91,6 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   getCadetProgress(filterLet, searchCadetProgress) {
     const cadetProgress = this.progressService.getProgress(filterLet, searchCadetProgress);
     this.progress = cadetProgress;
-    console.log(cadetProgress);
   }
 
   setLetLevel(letLevel: number) {

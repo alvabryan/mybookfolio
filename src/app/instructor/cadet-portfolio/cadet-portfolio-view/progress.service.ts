@@ -17,14 +17,19 @@ export class ProgressService {
       'personalAd',
       'humanGraphActivity',
       'resume',
-      'financialPlanning',
       'courseWork',
       'essay',
       'lessonEvidence',
       'writtenSummary',
       'achievements',
       'cadetChallenge',
-      'serviceLearning'
+      'serviceLearning',
+      'financialPlanningModule1',
+      'financialPlanningModule2',
+      'financialPlanningModule3',
+      'financialPlanningModule4',
+      'financialPlanningModule5',
+      'financialPlanningModule6'
     ];
 
     const letLevel = `let${letLevelNum}`;
@@ -37,29 +42,35 @@ export class ProgressService {
       personalAd: 0,
       humanGraphActivity: 0,
       resume: 0,
-      financialPlanning: 0,
       courseWork: 0,
       essay: 0,
       lessonEvidence: 0,
       writtenSummary: 0,
       achievements: 0,
       cadetChallenge: 0,
-      serviceLearning: 0
+      serviceLearning: 0,
+      financialPlanningModule1: 0,
+      financialPlanningModule2: 0,
+      financialPlanningModule3: 0,
+      financialPlanningModule4: 0,
+      financialPlanningModule5: 0,
+      financialPlanningModule6: 0
     };
 
     checkProgressFor.forEach((taskName) => {
       if (data[taskName]) {
         const searchData = data[taskName][letLevel];
-        switch (taskName) {
-          case 'successProfiler':
-            progress[taskName] = searchData !== 0 || undefined ? 100 : 0;
-            break;
-          case 'resume':
-            progress[taskName] = searchData > 100 ? 100 : searchData;
-            break;
-          default:
-            progress[taskName] = searchData === 0 || undefined ? 0 : searchData;
-        }
+        progress[taskName] = searchData ? searchData : 0;
+        // switch (taskName) {
+        //   case 'successProfiler':
+        //     progress[taskName] = searchData !== 0 || searchData !== '' ? 100 : 0;
+        //     break;
+        //   case 'resume':
+        //     progress[taskName] = searchData > 100 ? 100 : searchData;
+        //     break;
+        //   default:
+        //     progress[taskName] = searchData === 0 || searchData !== '' ? 0 : searchData;
+        // }
       } else {
         progress[taskName] = 0;
       }
@@ -68,10 +79,5 @@ export class ProgressService {
 
 
     return progress;
-  }
-
-
-  financialPlanningProgress(data, letLevel) {
-    return 50;
   }
 }

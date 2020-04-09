@@ -7,6 +7,7 @@ import { EMPTY, of } from 'rxjs';
 
 // ngrx actions
 import * as InstructorActions from './instructor.actions';
+import * as InstructorSearchCadetActions from '../cadets/store-searchcadet/searchCadet.actions';
 import { Store, select } from '@ngrx/store';
 
 import * as fromRoot from '../../store/index';
@@ -14,16 +15,6 @@ import * as fromRoot from '../../store/index';
 
 @Injectable()
 export class InstructorEffects {
-
-    getRosterData = createEffect(() => this.actions$.pipe(
-        ofType(InstructorActions.getCadetData),
-        withLatestFrom(this.store.select('auth')),
-        map(data => data[1].user ),
-        switchMap((data: any) => {
-            return this.db.collection('battalions').doc(`${data.battalionCode}`).collection('cadetsRoster').valueChanges().pipe(map(dataa => InstructorActions.setCadetData({ roster: dataa[0] })));
-        })
-    ));
-
 
     getCadetProgress = createEffect(() => this.actions$.pipe(
         ofType(InstructorActions.getCadetProgress),
@@ -34,6 +25,26 @@ export class InstructorEffects {
                 return InstructorActions.setCadetProgress({progress: dataa});
               }));
         })
+    ));
+
+    onReload = createEffect(() => this.actions$.pipe(
+      ofType(InstructorActions.onReload),
+      switchMap(() => {
+        const userData = JSON.parse(localStorage.getItem('searchCadetData'));
+
+        if (userData) {
+          return of(InstructorSearchCadetActions.setSearchCadet({
+            cadetData: {
+              uid: userData.uid,
+              firstName: userData.firstName,
+              lastName: userData.lastName,
+              letLevel: userData.letLevel
+            }
+          }));
+      } else {
+          return EMPTY;
+      }
+      })
     ));
 
     constructor(private actions$: Actions , private db: AngularFirestore, private store: Store<fromRoot.State>) {}

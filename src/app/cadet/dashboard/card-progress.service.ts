@@ -24,8 +24,6 @@ export class CardProgressService {
       'lessonEvidence',
       'writtenSummary',
       'cadetChallenge',
-      'serviceLearning',
-      'achievements',
       'learningStyle',
       'yearlyGoals',
       'personalAd',

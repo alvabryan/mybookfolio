@@ -29,7 +29,6 @@ export class InstructorComponent implements OnInit, OnDestroy {
       this.store.select(fromRoot.authUserSelector).subscribe(data => {
         if (data) {
           this.user = data;
-          this.store.dispatch(InstructorActions.getCadetData());
           this.store.dispatch(InstructorActions.getCadetProgress());
           this.store.dispatch(PortfolioActions.searchCadetLoad());
           this.store.dispatch(PortfolioActions.onReload());
@@ -39,11 +38,13 @@ export class InstructorComponent implements OnInit, OnDestroy {
 
     this.cadetSubscription.add(
       this.store.select(fromRoot.instructorSelector).subscribe((data: any) => {
-        if (data.cadetData.cadetRoster && data.cadetData.cadetProgress) {
+        if (data.cadetData.cadetProgress) {
           this.userLoaded = true;
         }
       })
     );
+
+    this.store.dispatch(InstructorActions.onReload());
 
   }
 

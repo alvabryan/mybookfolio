@@ -1,31 +1,7 @@
 <div class="container-fluid mt-5">
   <div class="container-fluid">
-    <form [formGroup]="cadetInformationForm" (ngSubmit)="onSubmit()" class="form-sample">
-      <p class="card-description font-weight-bold">
-        JUMS CADET DATA SHEET
-      </p>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Last Name</label>
-            <div class="col-sm-9">
-              <input type="text" formControlName="lastName" name="lastName" class="form-control"
-                required />
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">First Name</label>
-            <div class="col-sm-9">
-              <input type="text" formControlName="firstName" name="firstName" class="form-control"
-                required />
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <h3 class="text-center">Cadet Data Sheet</h3>
+    <form [formGroup]="cadetInformationForm" (ngSubmit)="onSubmit()" class="mt-5 form-sample">
       <div class="row">
 
         <div class="col-md-6">
@@ -42,7 +18,7 @@
           <div class="form-group row">
             <label class="col-sm-3 col-form-label">Gender</label>
             <div class="col-sm-9">
-              <select class="form-control" formControlName="gender" name="gender" required>
+              <select class="form-control" formControlName="gender" name="gender">
                 <option disabled="disabled" value="">Gender</option>
 
                 <option>Male</option>
@@ -50,7 +26,14 @@
               </select>
             </div>
           </div>
-        </div>
+
+              <!-- <div *ngIf="gender.touched"class="alert alert-danger">
+
+                <div *ngIf="gender.errors.required">
+                  Gender is required.
+                </div>
+              </div> -->
+          </div>
 
       </div>
 
@@ -84,45 +67,26 @@
             <div class="col-sm-9">
               <select class="form-control" formControlName="birthYear" name="birthYear" required>
                 <option disabled="disabled" value="">Birth Year</option>
-                <option value="2018">2018</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
-                <option value="2014">2014</option>
-                <option value="2013">2013</option>
-                <option value="2012">2012</option>
-                <option value="2011">2011</option>
-                <option value="2010">2010</option>
-                <option value="2009">2009</option>
-                <option value="2008">2008</option>
-                <option value="2007">2007</option>
-                <option value="2006">2006</option>
-                <option value="2005">2005</option>
-                <option value="2004">2004</option>
-                <option value="2003">2003</option>
-                <option value="2002">2002</option>
-                <option value="2001">2001</option>
-                <option value="2000">2000</option>
-                <option value="1999">1999</option>
-                <option value="1998">1998</option>
-                <option value="1997">1997</option>
-                <option value="1996">1996</option>
-                <option value="1995">1995</option>
-                <option value="1994">1994</option>
-                <option value="1993">1993</option>
-                <option value="1992">1992</option>
-                <option value="1991">1991</option>
-                <option value="1990">1990</option>
-                <option value="1989">1989</option>
-                <option value="1988">1988</option>
-                <option value="1987">1987</option>
-                <option value="1986">1986</option>
-                <option value="1985">1985</option>
-                <option value="1984">1984</option>
-                <option value="1983">1983</option>
-                <option value="1982">1982</option>
-                <option value="1981">1981</option>
-                <option value="1980">1980</option>
+                <option [value]="currentYear - 1">{{ currentYear - 1 }}</option>
+                <option [value]="currentYear - 2">{{ currentYear - 2 }}</option>
+                <option [value]="currentYear - 3">{{ currentYear - 3 }}</option>
+                <option [value]="currentYear - 4">{{ currentYear - 4 }}</option>
+                <option [value]="currentYear - 5">{{ currentYear - 5 }}</option>
+                <option [value]="currentYear - 6">{{ currentYear - 6 }}</option>
+                <option [value]="currentYear - 7">{{ currentYear - 7 }}</option>
+                <option [value]="currentYear - 8">{{ currentYear - 8 }}</option>
+                <option [value]="currentYear - 9">{{ currentYear - 9 }}</option>
+                <option [value]="currentYear - 10">{{ currentYear - 10 }}</option>
+                <option [value]="currentYear - 11">{{ currentYear - 11 }}</option>
+                <option [value]="currentYear - 12">{{ currentYear - 12 }}</option>
+                <option [value]="currentYear - 13">{{ currentYear - 13 }}</option>
+                <option [value]="currentYear - 14">{{ currentYear - 14 }}</option>
+                <option [value]="currentYear - 15">{{ currentYear - 15 }}</option>
+                <option [value]="currentYear - 16">{{ currentYear - 16 }}</option>
+                <option [value]="currentYear - 17">{{ currentYear - 17 }}</option>
+                <option [value]="currentYear - 18">{{ currentYear - 18 }}</option>
+                <option [value]="currentYear - 19">{{ currentYear - 19 }}</option>
+                <option [value]="currentYear - 20">{{ currentYear - 20 }}</option>
               </select>
             </div>
           </div>
@@ -130,25 +94,76 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" formGroupName="enrollmentDate">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Current Let Level</label>
+            <label class="col-sm-3 col-form-label">Enrollment Date</label>
             <div class="col-sm-9">
-              <select class="form-control" formControlName="let" name="let" required>
-                <option disabled="disabled" value="">Current Let Level</option>
-                <option Value="1">Let 1</option>
-                <option Value="2">Let 2</option>
-                <option Value="3">Let 3</option>
-                <option Value="4">Let 4</option>
-                <option Value="1A">Let 1A</option>
-                <option Value="1B">Let 1B</option>
-                <option Value="2A">Let 2A</option>
-                <option Value="2B">Let 2B</option>
-                <option Value="3A">Let 3A</option>
-                <option Value="3B">Let 3B</option>
-                <option Value="4A">Let 4A</option>
-                <option Value="4B">Let 4B</option>
-              </select>
+
+              <div class="row">
+                <div class="col">
+                  <select class="form-control" formControlName="day" name="day">
+                    <option disabled="disabled" value="">Day</option>
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <select class="form-control" formControlName="month" name="month" required>
+                    <option disabled="disabled" value="">Month</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">February</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">September</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <select class="form-control" formControlName="year" name="year" required>
+                    <option disabled="disabled" value="">Year</option>
+                    <option [value]="currentYear">{{ currentYear }}</option>
+                    <option [value]="currentYear - 1">{{ currentYear - 1 }}</option>
+                    <option [value]="currentYear - 2">{{ currentYear - 2 }}</option>
+                    <option [value]="currentYear - 3">{{ currentYear - 3 }}</option>
+                  </select>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -233,149 +248,16 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Class Period</label>
-            <div class="col-sm-9">
-              <select class="form-control" formControlName="period" name="period" required>
-
-                <option disabled="disabled" value="">Class Period</option>
-
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>1A</option>
-                <option>1B</option>
-                <option>2A</option>
-                <option>2B</option>
-                <option>3A</option>
-                <option>3B</option>
-                <option>4A</option>
-                <option>4B</option>
-                <option>5A</option>
-                <option>5B</option>
-                <option>6A</option>
-                <option>6B</option>
-                <option>7A</option>
-                <option>7B</option>
-                <option>8A</option>
-                <option>8B</option>
-                <option>9A</option>
-                <option>9B</option>
-                <option>10A</option>
-                <option>10B</option>
-                <option>11A</option>
-                <option>11B</option>
-                <option>12A</option>
-                <option>12B</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6" formGroupName="enrollmentDate">
-          <div class="form-group row">
-            <label class="col-sm-3 col-form-label">Enrollment Date</label>
-            <div class="col-sm-9">
-
-              <div class="row">
-                <div class="col">
-                  <select class="form-control" formControlName="day" name="day">
-                    <option disabled="disabled" value="">Day</option>
-                    <option>01</option>
-                    <option>02</option>
-                    <option>03</option>
-                    <option>04</option>
-                    <option>05</option>
-                    <option>06</option>
-                    <option>07</option>
-                    <option>08</option>
-                    <option>09</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
-                    <option>17</option>
-                    <option>18</option>
-                    <option>19</option>
-                    <option>20</option>
-                    <option>21</option>
-                    <option>22</option>
-                    <option>23</option>
-                    <option>24</option>
-                    <option>25</option>
-                    <option>26</option>
-                    <option>27</option>
-                    <option>28</option>
-                    <option>29</option>
-                    <option>30</option>
-                    <option>31</option>
-                  </select>
-                </div>
-                <div class="col">
-                  <select class="form-control" formControlName="month" name="month" required>
-                    <option disabled="disabled" value="">Month</option>
-                    <option value="Jan">January</option>
-                    <option value="Feb">February</option>
-                    <option value="Mar">March</option>
-                    <option value="Apr">April</option>
-                    <option value="May">May</option>
-                    <option value="Jun">June</option>
-                    <option value="Jul">July</option>
-                    <option value="Aug">August</option>
-                    <option value="Sep">September</option>
-                    <option value="Oct">October</option>
-                    <option value="Nov">November</option>
-                    <option value="Dec">December</option>
-                  </select>
-                </div>
-                <div class="col">
-                  <select class="form-control" formControlName="year" name="year" required>
-                    <option disabled="disabled">Year</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                    <option value="2017">2017</option>
-                    <option value="2016">2016</option>
-                  </select>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group row">
             <label class="col-sm-3 col-form-label">Expected Graduation Year</label>
             <div class="col-sm-9">
               <select class="form-control" formControlName="graduationYear" name="graduationYear"
                 required>
                 <option disabled="disabled" value="">Expected Graduation Year</option>
-
-                <option>2019</option>
-                <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
-                <option>2023</option>
-                <option>2024</option>
-                <option>2025</option>
-                <option>2026</option>
-                <option>2027</option>
-                <option>2028</option>
-                <option>2029</option>
-                <option>2030</option>
+                <option [value]="currentYear + 1">{{ currentYear + 1 }}</option>
+                <option [value]="currentYear + 2">{{ currentYear + 2 }}</option>
+                <option [value]="currentYear + 3">{{ currentYear + 3 }}</option>
+                <option [value]="currentYear + 4">{{ currentYear + 4 }}</option>
+                <option [value]="currentYear + 5">{{ currentYear + 5 }}</option>
               </select>
             </div>
           </div>
@@ -422,7 +304,7 @@
 
       <div class="row">
         <div class="col">
-          <button type="submit" name="DataSubmit" class="btn btn-primary float-right btn-sm">Submit</button>
+          <button type="submit" name="DataSubmit" class="btn btn-primary btn-block mt-5">Submit</button>
         </div>
       </div>
     </form>

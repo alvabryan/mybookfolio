@@ -88,6 +88,24 @@ export class PortfolioViewService {
       case 'Service Learning':
           return this.checkDataForProgress(index, 'serviceLearning', data, letLevel);
           break;
+      case 'Financial Planning Module 1':
+        return this.checkDataForProgress(index, 'financialPlanningModule1', data, letLevel);
+        break;
+      case 'Financial Planning Module 2':
+        return this.checkDataForProgress(index, 'financialPlanningModule2', data, letLevel);
+        break;
+      case 'Financial Planning Module 3':
+        return this.checkDataForProgress(index, 'financialPlanningModule3', data, letLevel);
+        break;
+      case 'Financial Planning Module 4':
+        return this.checkDataForProgress(index, 'financialPlanningModule4', data, letLevel);
+        break;
+      case 'Financial Planning Module 5':
+        return this.checkDataForProgress(index, 'financialPlanningModule5', data, letLevel);
+        break;
+      case 'Financial Planning Module 6':
+        return this.checkDataForProgress(index, 'financialPlanningModule6', data, letLevel);
+        break;
       default:
           return 0;
     }

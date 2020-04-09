@@ -47,6 +47,36 @@ export class CadetEffects {
     })
   ));
 
+  setCadetDataSheet = createEffect(() => this.actions$.pipe(
+    ofType(CadetActions.setCadetDataSheet),
+    withLatestFrom(this.store.select('auth')),
+    tap((data: any) => {
+      const userUid = data[1].user.uid;
+      const battalionCode = data[1].user.battalionCode;
+
+      const cadetData = data[0].data;
+      console.log(cadetData);
+      return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(`${battalionCode}`).set({
+        [userUid]: {
+          ...cadetData
+        }
+      }, {merge: true}));
+    })
+  ), {dispatch: false});
+
+  getCadetDataSheet = createEffect(() => this.actions$.pipe(
+    ofType(CadetActions.getCadetDataSheet),
+    withLatestFrom(this.store.select('auth')),
+    switchMap((data: any) => {
+      const battalionCode = data[1].user.battalionCode;
+      const userUid = data[1].user.uid;
+
+      return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(battalionCode).valueChanges()).pipe(map((newData: any) => {
+        return newData[userUid];
+      }), map((newData: any) => CadetActions.loadCadetDataSheet({data: newData})));
+    })
+  ));
+
   constructor(
     private http: HttpClient,
     private actions$: Actions,
