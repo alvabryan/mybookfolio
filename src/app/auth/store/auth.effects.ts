@@ -90,20 +90,8 @@ export class AuthEffects {
         ofType(AuthActions.loginStart),
         switchMap((action) => {
             return from(this.afAuth.auth.signInWithEmailAndPassword(action.email, action.password)).pipe(switchMap((data: any) => {
-              return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(tap((userDataType1: any) => {
-                const userFullName = userDataType1.data.firstName + ' ' + userDataType1.data.lastName;
-                if (data.displayName !== userFullName) {
-                  data.displayName = userFullName;
-                  this.afAuth.auth.currentUser.updateProfile({
-                    displayName: userFullName
-                  });
-                }
-              }), map((userDataType: any) => {
-                const userFullName = userDataType.data.firstName + ' ' + userDataType.data.lastName;
-                if (data.displayName !== userFullName) {
-                  data.displayName = userFullName;
-                }
-                return handleAuthentication(userDataType.userType, data.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel );
+              return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(map((userDataType: any) => {
+                return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel );
               }));
             }), catchError(err => {console.log(err); return handleError(err.code, err.message); }));
         })
