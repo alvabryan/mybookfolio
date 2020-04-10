@@ -23,13 +23,15 @@ export class CadetComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     this.store.dispatch(PortfolioActions.onReload());
-    this.store.select('auth').subscribe(data => {
-      if (data.user) {
-        this.store.dispatch(CadetActions.getCadetData());
-        this.store.dispatch(CadetActions.getCadetProgress());
-        this.store.dispatch(CadetActions.getCadetDataSheet());
-      }
-    });
+    this.cadetSubscription.add(
+      this.store.select('auth').subscribe(data => {
+        if (data.user) {
+          this.store.dispatch(CadetActions.getCadetData());
+          this.store.dispatch(CadetActions.getCadetProgress());
+          this.store.dispatch(CadetActions.getCadetDataSheet());
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {

@@ -47,8 +47,10 @@ export class CadetsComponent implements OnInit, OnDestroy {
         this.store.select('auth'),
         this.store.select('instructor')
       ).subscribe((data: any) => {
-        const cadetProgress = Object.values(data[1].cadetData.cadetProgress);
-        this.setUserData(data[0].user.letAssigned, cadetProgress);
+        if (data) {
+          const cadetProgress = Object.values(data[1].cadetData.cadetProgress);
+          this.setUserData(data[0].user.letAssigned, cadetProgress);
+        }
       })
     );
   }

@@ -85,40 +85,42 @@ export class CardsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription.add(
       this.store.select('cadet').subscribe((data: any) => {
-        if (data.cadetData && data.cadetProgress) {
-          const progressFromDb = data.cadetProgress;
-          const letLevel = data.cadetData.letLevel;
-          const progress: any = this.cardProgress.determineCadetProgress(progressFromDb, letLevel);
+        if (data) {
+          if (data.cadetData && data.cadetProgress) {
+            const progressFromDb = data.cadetProgress;
+            const letLevel = data.cadetData.letLevel;
+            const progress: any = this.cardProgress.determineCadetProgress(progressFromDb, letLevel);
 
-          // first four
-          this.portfolioContet[0].cards[0].progress = progress.yearlyGoals;
-          this.portfolioContet[0].cards[1].progress = progress.winningColors;
-          this.portfolioContet[0].cards[2].progress = progress.successProfiler;
-          this.portfolioContet[0].cards[3].progress = progress.learningStyle;
+            // first four
+            this.portfolioContet[0].cards[0].progress = progress.yearlyGoals;
+            this.portfolioContet[0].cards[1].progress = progress.winningColors;
+            this.portfolioContet[0].cards[2].progress = progress.successProfiler;
+            this.portfolioContet[0].cards[3].progress = progress.learningStyle;
 
-          // second four
-          this.portfolioContet[1].cards[0].progress = progress.personalAd;
-          this.portfolioContet[1].cards[1].progress = progress.humanGraphActivity;
-          this.portfolioContet[1].cards[2].progress = progress.resume;
-          this.portfolioContet[1].cards[3].progress = progress.achievements;
+            // second four
+            this.portfolioContet[1].cards[0].progress = progress.personalAd;
+            this.portfolioContet[1].cards[1].progress = progress.humanGraphActivity;
+            this.portfolioContet[1].cards[2].progress = progress.resume;
+            this.portfolioContet[1].cards[3].progress = progress.achievements;
 
-          // third four
-          this.portfolioContet[2].cards[0].progress = progress.courseWork;
-          this.portfolioContet[2].cards[1].progress = progress.essay;
-          this.portfolioContet[2].cards[2].progress = progress.lessonEvidence;
-          this.portfolioContet[2].cards[3].progress = progress.writtenSummary;
+            // third four
+            this.portfolioContet[2].cards[0].progress = progress.courseWork;
+            this.portfolioContet[2].cards[1].progress = progress.essay;
+            this.portfolioContet[2].cards[2].progress = progress.lessonEvidence;
+            this.portfolioContet[2].cards[3].progress = progress.writtenSummary;
 
-          // fourth four
-          this.portfolioContet[3].cards[0].progress = progress.cadetChallenge;
-          this.portfolioContet[3].cards[1].progress = progress.serviceLearning;
-          this.portfolioContet[3].cards[2].progress = progress.financialPlanningModule1;
-          this.portfolioContet[3].cards[3].progress = progress.financialPlanningModule2;
+            // fourth four
+            this.portfolioContet[3].cards[0].progress = progress.cadetChallenge;
+            this.portfolioContet[3].cards[1].progress = progress.serviceLearning;
+            this.portfolioContet[3].cards[2].progress = progress.financialPlanningModule1;
+            this.portfolioContet[3].cards[3].progress = progress.financialPlanningModule2;
 
-          // fourth four
-          this.portfolioContet[4].cards[0].progress = progress.financialPlanningModule3;
-          this.portfolioContet[4].cards[1].progress = progress.financialPlanningModule4;
-          this.portfolioContet[4].cards[2].progress = progress.financialPlanningModule5;
-          this.portfolioContet[4].cards[3].progress = progress.financialPlanningModule6;
+            // fourth four
+            this.portfolioContet[4].cards[0].progress = progress.financialPlanningModule3;
+            this.portfolioContet[4].cards[1].progress = progress.financialPlanningModule4;
+            this.portfolioContet[4].cards[2].progress = progress.financialPlanningModule5;
+            this.portfolioContet[4].cards[3].progress = progress.financialPlanningModule6;
+          }
         }
       })
     );

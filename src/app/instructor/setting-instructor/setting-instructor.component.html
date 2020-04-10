@@ -1,1 +1,115 @@
-<app-settings></app-settings>
+<div class="container-fluid" style="padding:30px">
+  <div class="row">
+    <div class="col-12 m-b-5">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row mt-5" *ngIf="!uploadingImage else uploadingInProgress">
+            <div class="col d-flex justify-content-center">
+              <img [src]="instructorData.photoUrl ? instructorData.photoUrl : 'https://cdn.pixabay.com/photo/2016/11/14/17/39/person-1824144_960_720.png'" height="150px"
+                width="150px" style="border-radius: 100px;" />
+              <div id="imgUpload">
+                <form *ngIf="!uploadingImage" [formGroup]="profileImage" id="file_form" enctype="multipart/form-data">
+                  <input formControlName="file" type="file" name="file" id="file" #file (change)="uploadProfileImage($event)">
+                  <input id="submitButton" type="submit" name="submitProfileImage">
+                  <p id="clickFile" (click)="file.click()">Change Image</p>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #uploadingInProgress>
+            <div class="col-12 d-flex justify-content-center">
+              <div class="mx-auto spinner-grow text-muted"></div>
+              </div>
+              <div class="col-12 d-flex justify-content-center">
+                  <h5 class="mx-auto mt-2">Uploading Your Image...</h5>
+              </div>
+          </ng-template>
+
+          <form [formGroup]="settingForm" (ngSubmit)="updateSettings()" class="mt-5">
+            <p class="card-description font-weight-bold">
+              Personal info
+            </p>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">First Name</label>
+                    <div class="col-sm-9">
+                      <input formControlName="firstName" type="text" class="form-control" name="firstName" value="" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Last Name</label>
+                    <div class="col-sm-9">
+                      <input formControlName="lastName" type="text" class="form-control" name="lastName" value="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col">
+                  <input type="submit" class="btn btn-primary float-right" name="update" value="Update">
+                </div>
+              </div>
+            </div>
+          </form>
+
+
+          <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
+            <!--Password-->
+            <p class="card-description font-weight-bold">
+              Password
+            </p>
+            <div class="container-fluid" *ngIf="!updatingPasswordStatus else passwordLoading">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label ">Current Password</label>
+                    <div class="col-sm-9">
+                      <input formControlName="oldPassword"  type="password" class="form-control" name="oldPassword" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">New Password</label>
+                    <div class="col-sm-9">
+                      <input formControlName="newPassword" type="password" class="form-control" name="newPassword" required />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <input type="submit" class="btn btn-primary float-right" name="pw_update" value="Update">
+                </div>
+              </div>
+            </div>
+            <ng-template #passwordLoading>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12 d-flex justify-content-center">
+                    <div class="mx-auto spinner-grow text-muted"></div>
+                  </div>
+                  <div class="col-12 d-flex justify-content-center">
+                    <h4 class="mx-auto mt-2">Updating Password...</h4>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

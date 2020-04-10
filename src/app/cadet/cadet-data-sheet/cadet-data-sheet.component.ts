@@ -44,31 +44,32 @@ export class CadetDataSheetComponent implements OnInit, OnDestroy {
       studentId: new FormControl('')
     });
 
-    this.store.select('cadet').subscribe((data: any) => {
-      if (data.cadetDataSheet) {
-        const cadetDataSheet = data.cadetDataSheet;
-        this.cadetInformationForm.setValue({
-          middleInitial: cadetDataSheet.middleInitial,
-          gender: cadetDataSheet.gender,
-          birthMonth: cadetDataSheet.birthMonth,
-          birthYear: cadetDataSheet.birthYear,
-          grade: cadetDataSheet.grade,
-          race: cadetDataSheet.race,
-          studentType: cadetDataSheet.studentType,
-          differSchool: cadetDataSheet.differSchool,
-          differSchoolName: cadetDataSheet.differSchoolName,
-          enrollmentDate: {
-            day: cadetDataSheet.enrollmentDate.day,
-            month: cadetDataSheet.enrollmentDate.month,
-            year: cadetDataSheet.enrollmentDate.year
-          },
-          graduationYear: cadetDataSheet.graduationYear,
-          graduationMonth: cadetDataSheet.graduationMonth,
-          studentId: cadetDataSheet.studentId
-        });
-      }
-    });
-
+    this.subscription.add(
+      this.store.select('cadet').subscribe((data: any) => {
+        if (data.cadetDataSheet) {
+          const cadetDataSheet = data.cadetDataSheet;
+          this.cadetInformationForm.setValue({
+            middleInitial: cadetDataSheet.middleInitial,
+            gender: cadetDataSheet.gender,
+            birthMonth: cadetDataSheet.birthMonth,
+            birthYear: cadetDataSheet.birthYear,
+            grade: cadetDataSheet.grade,
+            race: cadetDataSheet.race,
+            studentType: cadetDataSheet.studentType,
+            differSchool: cadetDataSheet.differSchool,
+            differSchoolName: cadetDataSheet.differSchoolName,
+            enrollmentDate: {
+              day: cadetDataSheet.enrollmentDate.day,
+              month: cadetDataSheet.enrollmentDate.month,
+              year: cadetDataSheet.enrollmentDate.year
+            },
+            graduationYear: cadetDataSheet.graduationYear,
+            graduationMonth: cadetDataSheet.graduationMonth,
+            studentId: cadetDataSheet.studentId
+          });
+        }
+      })
+    );
 
   }
 

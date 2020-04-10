@@ -1,6 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as AuthActions from './auth.actions';
 import { User } from '../user.model';
+import { userInfo } from 'os';
 
 export interface State {
   user: User;
@@ -50,6 +51,17 @@ const authReducer = createReducer(
       user.displayName = data.firstName + ' ' + data.lastName;
       user.firstName = data.firstName;
       user.lastName = data.lastName;
+      return {
+        ...state,
+        // tslint:disable-next-line: object-literal-shorthand
+        user: user
+      };
+    }),
+    on(AuthActions.updateCadetInfo, (state, data: any) => {
+      const user = state.user;
+      user.displayName = data.newPersonalData.firstName + ' ' + data.newPersonalData.lastName;
+      user.firstName = data.newPersonalData.firstName;
+      user.lastName = data.newPersonalData.lastName;
       return {
         ...state,
         // tslint:disable-next-line: object-literal-shorthand

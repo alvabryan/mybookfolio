@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
 import { User } from '../user.model';
 
-import { switchMap, exhaustMap, mergeMap, catchError, tap, map, delay, take, withLatestFrom } from 'rxjs/operators';
+import { switchMap, exhaustMap, mergeMap, catchError, tap, map, delay, take, withLatestFrom, finalize } from 'rxjs/operators';
 
 // auth action
 import * as AuthActions from './auth.actions';
@@ -343,7 +343,7 @@ export class AuthEffects {
               letLevel: newData.letLevel,
               period: newData.period
             }
-          }, {merge: true})),
+          }, {merge: true})).pipe(catchError(error => of(error))),
           from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(battalionCode).set({
             [cadetUid]: {
               firstName: newData.firstName,
@@ -351,7 +351,7 @@ export class AuthEffects {
               letLevel: newData.letLevel,
               period: newData.period
             }
-          }, {merge: true})),
+          }, {merge: true})).pipe(catchError(error => of(error))),
           from(this.db.doc(`battalions/${battalionCode}`).collection('cadetsProgress').doc(battalionCode).set({
             [cadetUid]: {
               firstName: newData.firstName,
@@ -359,8 +359,20 @@ export class AuthEffects {
               letLevel: newData.letLevel,
               period: newData.period
             }
-          }, {merge: true}))
-          ).pipe(tap((response) => console.log(response)));
+          }, {merge: true})).pipe(catchError(error => of(error))),
+          from(this.afAuth.auth.currentUser.updateProfile({
+            displayName: newData.firstName + ' ' + newData.lastName
+          }))
+          );
+
+        const dataFromLocalStorageInfo = JSON.parse(localStorage.getItem('userData'));
+        dataFromLocalStorageInfo.displayName = newData.firstName + ' ' + newData.lastName;
+        dataFromLocalStorageInfo.firstName = newData.firstName;
+        dataFromLocalStorageInfo.lastName = newData.lastName;
+        localStorage.setItem('userData', JSON.stringify(dataFromLocalStorageInfo));
+
+
+
       })
     ), {dispatch: false});
 

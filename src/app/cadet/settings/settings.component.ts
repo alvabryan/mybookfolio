@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import * as fromCadet from '../store/index';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as AuthActions from '../../auth/store/auth.actions';
+import { Subscription } from 'rxjs';
 
 type NewType = boolean;
 
@@ -12,7 +13,9 @@ type NewType = boolean;
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription();
 
   uploadingImage: NewType = false;
   cadetData: any;
@@ -49,12 +52,15 @@ export class SettingsComponent implements OnInit {
       newPassword: new FormControl('', Validators.required)
     });
 
-    this.store.select('auth').subscribe((data: any) => {
-      if (data.user) {
-        this.cadetProfileImage = data.user.photoUrl;
-      }
-    });
+    this.subscription.add(
+      this.store.select('auth').subscribe((data: any) => {
+        if (data.user) {
+          this.cadetProfileImage = data.user.photoUrl;
+        }
+      })
+    );
 
+    this.subscription.add(
     this.store.select('cadet').subscribe((data: any) => {
       this.cadetData = data.cadetData;
 
@@ -71,7 +77,7 @@ export class SettingsComponent implements OnInit {
         });
       }
 
-    });
+    }));
 
   }
 
@@ -129,6 +135,10 @@ export class SettingsComponent implements OnInit {
         }
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
