@@ -46,28 +46,6 @@ const authReducer = createReducer(
         uploadingProfileImage: false
       };
     }),
-    on(AuthActions.updateUserInfo, (state, data: any) => {
-      const user = state.user;
-      user.displayName = data.firstName + ' ' + data.lastName;
-      user.firstName = data.firstName;
-      user.lastName = data.lastName;
-      return {
-        ...state,
-        // tslint:disable-next-line: object-literal-shorthand
-        user: user
-      };
-    }),
-    on(AuthActions.updateCadetInfo, (state, data: any) => {
-      const user = state.user;
-      user.displayName = data.newPersonalData.firstName + ' ' + data.newPersonalData.lastName;
-      user.firstName = data.newPersonalData.firstName;
-      user.lastName = data.newPersonalData.lastName;
-      return {
-        ...state,
-        // tslint:disable-next-line: object-literal-shorthand
-        user: user
-      };
-    }),
     on(AuthActions.passwordUpdateStatus, (state, data: any) => ({...state, passwordUpdateStatus: data.status })),
     on(AuthActions.updateLetAssign, (state, data: any) => {
       const newUser = state.user;

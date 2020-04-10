@@ -89,10 +89,22 @@ export class AuthEffects {
     authLogin = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.loginStart),
         switchMap((action) => {
-            return from(this.afAuth.auth.signInWithEmailAndPassword(action.email, action.password)).pipe(mergeMap((data: any) => {
-                return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(map((userDataType: any) => {
-                  return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel );
-                }));
+            return from(this.afAuth.auth.signInWithEmailAndPassword(action.email, action.password)).pipe(switchMap((data: any) => {
+              return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(tap((userDataType1: any) => {
+                const userFullName = userDataType1.data.firstName + ' ' + userDataType1.data.lastName;
+                if (data.displayName !== userFullName) {
+                  data.displayName = userFullName;
+                  this.afAuth.auth.currentUser.updateProfile({
+                    displayName: userFullName
+                  });
+                }
+              }), map((userDataType: any) => {
+                const userFullName = userDataType.data.firstName + ' ' + userDataType.data.lastName;
+                if (data.displayName !== userFullName) {
+                  data.displayName = userFullName;
+                }
+                return handleAuthentication(userDataType.userType, data.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel );
+              }));
             }), catchError(err => {console.log(err); return handleError(err.code, err.message); }));
         })
     )) ;
@@ -127,9 +139,17 @@ export class AuthEffects {
         ofType(AuthActions.authenticationSuccess),
         tap((data) => {
            if (data.userType === 'cadet') {
+             if (this.router.url === '/cadet/settings') {
+              this.router.navigate(['/cadet/settings']);
+             } else {
               this.router.navigate(['/cadet']);
+             }
            } else if (data.userType === 'instructor') {
+            if (this.router.url === '/instructor/settings') {
+              this.router.navigate(['/instructor/settings']);
+             } else {
               this.router.navigate(['/instructor']);
+             }
            }
         })
     ), {dispatch: false});
@@ -288,13 +308,16 @@ export class AuthEffects {
         ofType(AuthActions.updateUserInfo),
         withLatestFrom(this.store.select('auth')),
         tap((data) => {
-            this.afAuth.auth.currentUser.updateProfile({
-                displayName: data[0].firstName + ' ' + data[0].lastName
-            });
+            console.log(data);
 
-            this.db.collection('users').doc(`${data[1].user.uid}`).update({
+            this.afAuth.auth.currentUser.updateProfile({
+              displayName: data[0].firstName + ' ' + data[0].lastName
+            }).then((data2: any) => {
+              console.log(data2);
+              this.db.collection('users').doc(`${data[1].user.uid}`).update({
                 'data.firstName': data[0].firstName,
                 'data.lastName': data[0].lastName
+              });
             });
 
             const dataFromLocalStorageInfo = JSON.parse(localStorage.getItem('userData'));
@@ -303,8 +326,23 @@ export class AuthEffects {
             dataFromLocalStorageInfo.lastName = data[0].lastName;
             localStorage.setItem('userData', JSON.stringify(dataFromLocalStorageInfo));
 
+        }),
+        switchMap((data: any) => {
+          return of(AuthActions.authenticationSuccess({
+            userType: data[1].user.userType,
+                displayName: data[0].firstName + ' ' + data[0].lastName,
+                firstName: data[0].firstName,
+                lastName: data[0].lastName,
+                email: data[1].user.email,
+                phoneNumber: data[1].user.phoneNumber,
+                photoUrl: data[1].user.photoUrl,
+                providerId: data[1].user.providerId,
+                battalionCode: data[1].user.battalionCode,
+                uid: data[1].user.uid,
+                letAssigned: data[1].user.letAssigned
+          }));
         })
-    ), {dispatch: false});
+    ));
 
     // update user password
     updateUserPassword = createEffect(() => this.actions$.pipe(
@@ -373,8 +411,25 @@ export class AuthEffects {
 
 
 
+      }),
+      switchMap((data: any) => {
+        const newData = data[0].newPersonalData;
+        const user = data[1].user;
+        return of(AuthActions.authenticationSuccess({
+          userType: user.userType,
+              displayName: newData.firstName + ' ' + newData.lastName,
+              firstName: newData.firstName,
+              lastName: newData.lastName,
+              email: user.email,
+              phoneNumber: user.phoneNumber,
+              photoUrl: user.photoUrl,
+              providerId: user.providerId,
+              battalionCode: user.battalionCode,
+              uid: user.uid,
+              letAssigned: [newData.letLevel]
+        }));
       })
-    ), {dispatch: false});
+    ));
 
     // update cadet battalion code
     updateBattalionCode = createEffect(() => this.actions$.pipe(
