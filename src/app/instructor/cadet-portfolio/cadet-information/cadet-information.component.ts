@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap, map, mergeMap } from 'rxjs/operators';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-
+import { Subscription, EMPTY } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as fromInstructor from '../../store/index';
+import * as InstructorActions from '../../store/instructor.actions';
 @Component({
   selector: 'app-cadet-information',
   templateUrl: './cadet-information.component.html',
@@ -16,9 +18,9 @@ export class CadetInformationComponent implements OnInit, OnDestroy {
 
   cadetInformation: any;
   cadetInformationForm: FormGroup;
-  cadetUid: any;
+  currentYear = (new Date()).getFullYear();
 
-  constructor(private db: AngularFirestore, private router: ActivatedRoute, private route: Router) { }
+  constructor(private db: AngularFirestore, private router: ActivatedRoute, private route: Router, private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
     this.cadetInformationForm = new FormGroup({
@@ -45,38 +47,46 @@ export class CadetInformationComponent implements OnInit, OnDestroy {
       studentId: new FormControl('')
     });
 
-    // , switchMap((params: Params) => {
-    //   this.cadetUid = params.uid;
-    //   return this.db.collection('users').doc(this.cadetUid).collection('cadetInformation').doc(this.cadetUid).valueChanges();
-    // })
-
 
     this.subscription.add(
-      this.router.queryParams.pipe(tap((data) => console.log(data))).subscribe( (data: any) => {
-        this.cadetInformation = data;
-        // this.cadetInformationForm.patchValue({
-        //   lastName: data.lastName,
-        //   firstName: data.firstName,
-        //   middleInitial: data.initial,
-        //   gender: data.gender,
-        //   birthMonth: data.birthMonth,
-        //   birthYear: data.birthYear,
-        //   let: data.letLevel,
-        //   grade: data.grade,
-        //   race: data.race,
-        //   studentType: data.studentType,
-        //   differSchool: data.differSchool,
-        //   differSchoolName: data.differSchoolName,
-        //   period: data.period,
-        //   enrollmentDate: {
-        //     day: '01',
-        //     month: 'Jun',
-        //     year: '2019'
-        //   },
-        //   graduationYear: data.graduationYear,
-        //   graduationMonth: data.graduationMonth,
-        //   studentId: data.studentId
-        // });
+      this.store.select('instructor').subscribe((data: any) => {
+        if (data) {
+          if (data.cadetData.cadetDataSheet && data.currentCadet.cadetSearchData) {
+            const currentCadetUid = data.currentCadet.cadetSearchData.uid;
+            const cadetInfo = data.cadetData.cadetDataSheet[currentCadetUid];
+            this.cadetInformation = cadetInfo;
+            if (cadetInfo) {
+              this.cadetInformationForm.setValue({
+                lastName: cadetInfo.lastName ? cadetInfo.lastName : '',
+                firstName: cadetInfo.firstName ? cadetInfo.firstName : '',
+                middleInitial: cadetInfo.middleInitial ? cadetInfo.middleInitial : '',
+                gender: cadetInfo.gender ? cadetInfo.gender : '',
+                birthMonth: cadetInfo.birthMonth ? cadetInfo.birthMonth : '',
+                birthYear: cadetInfo.birthYear ? cadetInfo.birthYear : '',
+                let: cadetInfo.letLevel ? cadetInfo.letLevel : '',
+                grade: cadetInfo.grade ? cadetInfo.grade : '',
+                race: cadetInfo.race ? cadetInfo.race : '',
+                studentType: cadetInfo.studentType ? cadetInfo.studentType : '',
+                differSchool: cadetInfo.differSchool ? cadetInfo.differSchool : '',
+                differSchoolName: cadetInfo.differSchoolName ? cadetInfo.differSchoolName : '',
+                period: cadetInfo.period ? cadetInfo.period : '',
+                enrollmentDate: {
+                  day: cadetInfo.enrollmentDate.day ? cadetInfo.enrollmentDate.day : '',
+                  month: cadetInfo.enrollmentDate.month ? cadetInfo.enrollmentDate.month : '',
+                  year: cadetInfo.enrollmentDate.year ? cadetInfo.enrollmentDate.year : ''
+                },
+                graduationYear: cadetInfo.graduationYear ? cadetInfo.graduationYear : '',
+                graduationMonth: cadetInfo.graduationMonth ? cadetInfo.graduationMonth : '',
+                studentId: cadetInfo.studentId ? cadetInfo.studentId : ''
+              });
+            } else {
+              this.cadetInformation = {
+                firstName: 'Data currently unavailable',
+                lastName: '',
+              };
+            }
+          }
+        }
       })
     );
 
@@ -84,12 +94,13 @@ export class CadetInformationComponent implements OnInit, OnDestroy {
   }
 
   toCadetPortfolio() {
-    this.route.navigate(['/instructor/cadet-portfolio'], {queryParams: {uid: this.cadetUid}});
+    this.route.navigate(['/instructor/cadet-portfolio']);
   }
 
 
   onSubmit() {
-    console.log(this.cadetInformationForm.value);
+    const formData = this.cadetInformationForm.value;
+    this.store.dispatch(InstructorActions.updateDataSheet({data: formData}));
   }
 
   ngOnDestroy() {

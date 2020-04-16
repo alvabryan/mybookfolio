@@ -7,9 +7,9 @@ import * as searchCadetReducer from '../cadets/store-searchcadet/searchCadet.red
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface InstructorState {
-    cadetRoster: InstructorReducer.State;
+    cadetData: InstructorReducer.State;
     battalionUsers: battalionUsersReducer.State;
-    cadetSearchData: searchCadetReducer.State;
+    currentCadet: searchCadetReducer.State;
 }
 
 export interface State extends fromRoot.State {
@@ -19,7 +19,7 @@ export interface State extends fromRoot.State {
 export const reducers = {
     cadetData: InstructorReducer.reducer,
     battalionUsers: battalionUsersReducer.reducer,
-    cadetSearchData: searchCadetReducer.reducer
+    currentCadet: searchCadetReducer.reducer
 };
 
 // instructor reducer selector

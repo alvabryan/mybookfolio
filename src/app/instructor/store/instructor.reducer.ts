@@ -3,10 +3,12 @@ import * as InstructorActions from './instructor.actions';
 
 export interface State {
   cadetProgress: string;
+  cadetDataSheet: {[key: string]: any};
 }
 
 export const initialState = {
-  cadetProgress: null
+  cadetProgress: null,
+  cadetDataSheet: null
 };
 
 const instructorReducer = createReducer(
@@ -27,7 +29,8 @@ const instructorReducer = createReducer(
       ...state,
       cadetProgress: cadetProgressData
     };
-  })
+  }),
+  on(InstructorActions.loadCadetDataSheet, (state, cadetData: any) => ({...state, cadetDataSheet: cadetData.data}))
 );
 
 

@@ -47,7 +47,7 @@ export class CadetsComponent implements OnInit, OnDestroy {
         this.store.select('auth'),
         this.store.select('instructor')
       ).subscribe((data: any) => {
-        if (data) {
+        if (data[0].user && data[1].cadetData) {
           const cadetProgress = Object.values(data[1].cadetData.cadetProgress);
           this.setUserData(data[0].user.letAssigned, cadetProgress);
         }
@@ -111,7 +111,7 @@ export class CadetsComponent implements OnInit, OnDestroy {
       letLevel: letLevel
     }));
 
-    this.store.dispatch(SearchCadetActions.setSearchCadet({cadetData: {
+    this.store.dispatch(SearchCadetActions.setSearchCadet({
       // tslint:disable-next-line: object-literal-shorthand
       uid: uid,
       firstName: firstname,
@@ -119,7 +119,7 @@ export class CadetsComponent implements OnInit, OnDestroy {
       lastName: lastName,
       // tslint:disable-next-line: object-literal-shorthand
       letLevel: letLevel
-    }}));
+    }));
 
     this.router.navigate(['/instructor/cadet-portfolio']);
   }

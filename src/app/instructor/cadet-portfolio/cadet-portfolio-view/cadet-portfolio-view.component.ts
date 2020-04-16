@@ -7,6 +7,7 @@ import { ProgressService } from './progress.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/index';
 import * as PortfolioActions from '../../../portfolio/store/portfolio.actions';
+import * as InstructorActions from '../../store/instructor.actions';
 
 @Component({
   selector: 'app-cadet-portfolio-view',
@@ -56,10 +57,10 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('instructor').subscribe((data: any) => {
-        if (data.cadetSearchData.cadetSearchData) {
-          const searchedCadet = data.cadetSearchData.cadetSearchData.uid;
-          const searchedCadetLevetLevel = data.cadetSearchData.cadetSearchData.letLevel;
-
+        if (data.currentCadet.cadetSearchData) {
+          const searchedCadet = data.currentCadet.cadetSearchData.uid;
+          const searchedCadetLevetLevel = data.currentCadet.cadetSearchData.letLevel;
+          this.searchUid = data.currentCadet.cadetSearchData.uid;
           const progressData = data.cadetData.cadetProgress;
           this.searchCadet = progressData[searchedCadet];
 
@@ -84,8 +85,8 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
   }
 
   toCadetInformation() {
-    this.router.navigate(['/instructor/cadet-portfolio/cadet-information'],
-    {queryParams: {uid: this.searchUid, firstName: this.searchCadet.firstName, lastName: this.searchCadet.lastName, letLevel: this.filterLetLevel}});
+    this.store.dispatch(InstructorActions.getCadetDataSheet());
+    this.router.navigate(['/instructor/cadet-portfolio/cadet-information']);
   }
 
   getCadetProgress(filterLet, searchCadetProgress) {

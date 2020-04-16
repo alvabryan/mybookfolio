@@ -34,6 +34,7 @@ import { SettingInstructorComponent } from './setting-instructor/setting-instruc
 import { PortfolioModule } from '../portfolio/portfolio.module';
 import { InstructorPortfolioComponent } from './instructor-portfolio/instructor-portfolio.component';
 import { AuthInstructor } from './auth-instructor.guard';
+import * as SearchCadetEffects from './cadets/store-searchcadet/searchCadet.effects';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,7 @@ import { AuthInstructor } from './auth-instructor.guard';
     AngularFirestoreModule,
     AngularFireStorageModule,
     StoreModule.forFeature('instructor', InstructorIndex.reducers),
-    EffectsModule.forFeature([InstructorEffects.InstructorEffects, BattalionUsersEffect.BattalionUsersEFfect]),
+    EffectsModule.forFeature([InstructorEffects.InstructorEffects, BattalionUsersEffect.BattalionUsersEFfect, SearchCadetEffects.SearchCadetEffects]),
     NgxDocViewerModule,
     PortfolioModule
   ],
