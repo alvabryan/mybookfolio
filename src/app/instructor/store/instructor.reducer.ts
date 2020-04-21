@@ -30,7 +30,22 @@ const instructorReducer = createReducer(
       cadetProgress: cadetProgressData
     };
   }),
-  on(InstructorActions.loadCadetDataSheet, (state, cadetData: any) => ({...state, cadetDataSheet: cadetData.data}))
+  on(InstructorActions.loadCadetDataSheet, (state, cadetData: any) => {
+    const newCadetDataSheet = {};
+    const cadetDataSheetValues = Object.values(cadetData.data);
+    const cadetDataSheetKeys = Object.keys(cadetData.data);
+
+    cadetDataSheetValues.forEach((data: any, index) => {
+      const newObjectData = data;
+      newObjectData.uid = cadetDataSheetKeys[index];
+      newCadetDataSheet[cadetDataSheetKeys[index]] = newObjectData;
+    });
+
+    return {
+      ...state,
+      cadetDataSheet: newCadetDataSheet
+    };
+  })
 );
 
 

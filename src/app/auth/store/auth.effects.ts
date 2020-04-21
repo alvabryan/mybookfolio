@@ -207,18 +207,14 @@ export class AuthEffects {
                         }
                       })
                 ),
-                from(this.db.doc(`battalions/${data.battalionCode}/cadetsRoster/${data.battalionCode}`).set({
+                from(this.db.doc(`battalions/${data.battalionCode}/cadetDataSheet/${data.battalionCode}`).set({
                     [data.user.uid] : {
                       firstName: data.firstName,
                       lastName: data.lastName,
                       letLevel: data.letLevel,
                       period: data.classPeriod,
-                      uid: data.user.uid
                     }
                   }, { merge: true})
-                ),
-                from(
-                    this.db.doc(`battalions/${data.battalionCode}/cadets/${data.user.uid}`).set(appUserData)
                 ),
                 from(
                     this.db.doc(`battalions/${data.battalionCode}/cadetsProgress/${data.battalionCode}`).set({ [data.user.uid] : { ...appUserData } }, {merge: true})

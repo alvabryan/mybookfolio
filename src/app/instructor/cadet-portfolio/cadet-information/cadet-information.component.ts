@@ -70,7 +70,11 @@ export class CadetInformationComponent implements OnInit, OnDestroy {
                 differSchool: cadetInfo.differSchool ? cadetInfo.differSchool : '',
                 differSchoolName: cadetInfo.differSchoolName ? cadetInfo.differSchoolName : '',
                 period: cadetInfo.period ? cadetInfo.period : '',
-                enrollmentDate: {
+                enrollmentDate: !cadetInfo.enrollmentDate ? {
+                  day: '',
+                  month: '',
+                  year: ''
+                } : {
                   day: cadetInfo.enrollmentDate.day ? cadetInfo.enrollmentDate.day : '',
                   month: cadetInfo.enrollmentDate.month ? cadetInfo.enrollmentDate.month : '',
                   year: cadetInfo.enrollmentDate.year ? cadetInfo.enrollmentDate.year : ''
