@@ -1,0 +1,11 @@
+.to-block-2 {
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 575px) {
+  .to-block-1, .to-block-2 {
+    width: 100%;
+    display: block;
+    margin: 5px 0px 0px 0px;
+  }
+}
