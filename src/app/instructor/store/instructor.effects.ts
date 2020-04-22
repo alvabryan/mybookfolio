@@ -43,16 +43,16 @@ export class InstructorEffects {
     ofType(InstructorActions.updateDataSheet),
     withLatestFrom(this.store.select('auth'), this.store.select('instructor')),
     tap((data: any) => {
-      console.log(data);
       const battalionCode = data[1].user.battalionCode;
       const cadetData = data[0].data;
+      console.log(cadetData);
       const uid = data[2].currentCadet.cadetSearchData.uid;
       forkJoin(
         from(this.db.collection('users').doc(uid).set({
           data: {
             firstName: cadetData.firstName,
             lastName: cadetData.lastName,
-            letLevel: +cadetData.let,
+            letLevel: +cadetData.letLevel,
             period: +cadetData.period
           }
         }, {merge: true})),
@@ -60,17 +60,12 @@ export class InstructorEffects {
           [uid]: {
             firstName: cadetData.firstName,
             lastName: cadetData.lastName,
-            letLevel: +cadetData.let,
+            letLevel: +cadetData.letLevel,
             period: +cadetData.period
           }
         }, {merge: true})),
         from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(battalionCode).set({
-          [uid]: {
-            firstName: cadetData.firstName,
-            lastName: cadetData.lastName,
-            letLevel: +cadetData.let,
-            period: +cadetData.period
-          }
+          [uid]: cadetData
         }, {merge: true}))
       );
     })
