@@ -32,8 +32,8 @@ const authReducer = createReducer(
     on(AuthActions.loginStart, state => ({...state, authError: null, loading: true})),
     on(AuthActions.cadetRegister, state => ({...state, authError: null, loading: true})),
     // tslint:disable-next-line: object-literal-shorthand
-    on(AuthActions.authenticateFail, (state, authError: any) => ({...state, user: null, authError: authError, loading: false})),
-    on(AuthActions.clearError, state => ({...state, authError: null})),
+    on(AuthActions.authenticateFail, (state, authError: any) => ({...state, user: null, authError: authError.error, loading: false})),
+    // on(AuthActions.clearError, state => ({...state, authError: null})),
     on(AuthActions.imageUpload, state => ({...state, uploadingProfileImage: true})),
     on(AuthActions.changeProfileImage, (state, data: any) => {
       const user = state.user;

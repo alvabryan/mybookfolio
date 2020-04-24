@@ -55,7 +55,6 @@ export class CadetEffects {
       const battalionCode = data[1].user.battalionCode;
 
       const cadetData = data[0].data;
-      console.log(cadetData);
       return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(`${battalionCode}`).set({
         [userUid]: {
           ...cadetData

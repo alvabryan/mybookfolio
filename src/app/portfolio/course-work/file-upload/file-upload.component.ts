@@ -19,6 +19,7 @@ export class FileUploadComponent implements OnInit, OnDestroy {
   fileUploadForm: FormGroup;
   fileData: any;
   loading = 'not submitted';
+  error: {code: string, name: string};
 
   constructor(private store: Store<fromPortfolio.PortfolioState>) { }
 
@@ -40,19 +41,17 @@ export class FileUploadComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.loading = 'uploading';
     const formData = this.fileUploadForm.value;
-
-
     console.log(this.fileData);
-
-    this.store.dispatch(PortfolioActions.uploadFile({
-      fileName: formData.fileName,
-      file: this.fileData,
-      description: formData.description
-    }));
+    // this.store.dispatch(PortfolioActions.uploadFile({
+    //   fileName: formData.fileName,
+    //   file: this.fileData,
+    //   description: formData.description
+    // }));
 
     this.subscription.add(
       this.store.select('portfolio').subscribe((data: any) => {
         this.loading = data.uploading;
+        this.error = data.error;
       })
     );
 

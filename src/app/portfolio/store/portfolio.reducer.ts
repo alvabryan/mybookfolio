@@ -11,13 +11,15 @@ export interface State {
   viewData: { [key: string]: any };
   pageName: string;
   uploading: string;
+  error: any;
 }
 
 export const initialState: State = {
   cadetSearchData: null,
   viewData: null,
   pageName: null,
-  uploading: 'not submitted'
+  uploading: 'not submitted',
+  error: null
 };
 
 const portfolioReducer = createReducer(
@@ -57,7 +59,8 @@ const portfolioReducer = createReducer(
   }),
   on(PortfolioActions.uploadFile, (state) => ({...state, uploading: 'uploading'})),
   on(PortfolioActions.uploadingFile, (state) => ({...state, uploading: 'uploaded'})),
-  on(PortfolioActions.resetUploadFileStatus, (state) => ({...state, uploading: 'not submitted'}))
+  on(PortfolioActions.resetUploadFileStatus, (state) => ({...state, uploading: 'not submitted', error: null})),
+  on(PortfolioActions.fileUploadError, (state, data) => ({...state, uploading: 'error', error: data.error }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

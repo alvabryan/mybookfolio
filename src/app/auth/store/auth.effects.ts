@@ -147,8 +147,8 @@ export class AuthEffects {
         this.actions$.pipe(
             ofType(AuthActions.cadetSignupStart),
             switchMap((data: any) => {
-                return this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1), map((callBackData: any) => {
-                    console.log(callBackData);
+                return this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1), tap((datar) => console.log(datar)), map((callBackData: any) => {
+                    console.log(callBackData.codes.includes(data.battalionCode));
                     if (callBackData.codes.includes(data.battalionCode)) {
                         return AuthActions.cadetRegister({...data});
                     } else {

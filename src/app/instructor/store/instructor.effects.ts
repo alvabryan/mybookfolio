@@ -45,7 +45,6 @@ export class InstructorEffects {
     tap((data: any) => {
       const battalionCode = data[1].user.battalionCode;
       const cadetData = data[0].data;
-      console.log(cadetData);
       const uid = data[2].currentCadet.cadetSearchData.uid;
       forkJoin(
         from(this.db.collection('users').doc(uid).set({

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { FlashMessagesService } from 'angular2-flash-messages';
@@ -7,19 +7,28 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from '../../../store/index';
 import * as AuthActions from '../../store/auth.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cadet-registration',
   templateUrl: './cadet-registration.component.html',
   styleUrls: ['./cadet-registration.component.css']
 })
-export class CadetRegistrationComponent implements OnInit {
+export class CadetRegistrationComponent implements OnInit, OnDestroy {
 
   isLoading = false;
-
+  subscription: Subscription = new Subscription();
   constructor(private store: Store<fromRoot.State>, private flashMessage: FlashMessagesService) { }
 
   ngOnInit() {
+    this.subscription.add(
+      this.store.pipe(select('auth')).subscribe((data: any) => {
+        this.isLoading = data.loading;
+        if (data.authError) {
+          this.flashMessage.show(data.authError, {cssClass: 'alert-danger', timeout: 3000});
+        }
+      })
+    );
   }
 
   onSignup(form: NgForm) {
@@ -31,14 +40,14 @@ export class CadetRegistrationComponent implements OnInit {
 
     // user defined here
     const user = {
-      battalionCode: form.value.battalionCode, 
+      battalionCode: form.value.battalionCode,
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       email: form.value.email,
       letLevel: form.value.letLevel,
       classPeriod: form.value.classPeriod,
       password: form.value.password
-    }
+    };
 
     // password validation
     const password = form.value.password;
@@ -49,13 +58,10 @@ export class CadetRegistrationComponent implements OnInit {
     } else {
       this.store.dispatch(AuthActions.cadetSignupStart(user));
     }
+  }
 
-    this.store.pipe(select('auth')).subscribe(data => {
-      this.isLoading = data.loading;
-      if(data.authError){
-        // this.flashMessage.show(data.authError.error, {cssClass: 'alert-danger', timeout: 3000});
-      }
-    })
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

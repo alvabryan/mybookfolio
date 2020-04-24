@@ -63,10 +63,6 @@ export class SettingInstructorComponent implements OnInit, OnDestroy {
     );
   }
 
-  showAf() {
-    console.log(this.afAuth.auth.currentUser);
-  }
-
   uploadProfileImage(imageData: any) {
     this.uploadingImage = true;
 

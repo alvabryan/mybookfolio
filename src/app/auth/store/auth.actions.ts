@@ -18,7 +18,7 @@ export const authenticationSuccess = createAction('[Auth] Authenticate Success',
     letAssigned: any
 }>());
 
-export const authenticateFail = createAction('[Auth] Authenticate Fail', props<{error: string}>());
+export const authenticateFail = createAction('[Auth] Authenticate Fail', props<{error: any}>());
 
 export const refreshWindow = createAction('[Auth] Refresh Window');
 

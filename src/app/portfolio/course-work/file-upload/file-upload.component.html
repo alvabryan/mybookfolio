@@ -6,7 +6,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">File Upload</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" (click)="changeLoadingStatus()">&times;</button>
       </div>
 
       <!-- modal body -->
@@ -48,7 +48,12 @@
         </div>
 
         <!-- spinner -->
-        <app-spinner *ngIf="loading === 'uploading'"></app-spinner>
+        <div *ngIf="loading === 'uploading'">
+          <div class="p-2 w-100">
+            <h4 class="d-block text-center" stlye="width: 300px">Uploading...</h4>
+          </div>
+          <app-spinner></app-spinner>
+        </div>
 
         <!-- upload completed container-->
         <div *ngIf="loading === 'uploaded'">
@@ -58,6 +63,21 @@
           </div>
           <div class="p-2 w-100">
             <img class="d-block mx-auto" stlye="color: green" src="../../../../assets/icons/check.svg" height="100" width="100">
+          </div>
+          <div class="p-2 w-100">
+            <button class="btn btn-success mx-auto d-block" data-dismiss="modal" (click)="changeLoadingStatus()">Close</button>
+          </div>
+        </div>
+
+        <div *ngIf="loading === 'error'">
+          <div class="p-2 w-100">
+            <h4 class="d-block text-center" stlye="width: 300px">Oops something went wrong!</h4>
+          </div>
+          <div class="p-2 w-100">
+            <img class="d-block mx-auto" stlye="color: green" src="../../../../assets/icons/close.svg" height="100" width="100">
+          </div>
+          <div class="p-2 w-100">
+            <h5 class="text-center">Only the following formats are allowed: PDF, DOC, DOCX, PNG, JPG, JPG, and SVG.</h5>
           </div>
           <div class="p-2 w-100">
             <button class="btn btn-success mx-auto d-block" data-dismiss="modal" (click)="changeLoadingStatus()">Close</button>

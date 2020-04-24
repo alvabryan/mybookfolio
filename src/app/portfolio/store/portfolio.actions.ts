@@ -42,6 +42,8 @@ export const humanGraphUpdate = createAction('[Portfolio update] human graph', p
 
 export const FinancialPlanningModuleUpdate = createAction('[Portfolio update] module 1', props<{moduleData: any}>());
 
+export const fileUploadError = createAction('[Portfolio error] set error', props<{error: any}>());
+
 export const onReload = createAction('[Instructor Portfolio] on reload set data');
 
 

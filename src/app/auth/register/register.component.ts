@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     this.signupType = type;
   }
 
-  back(){
+  back() {
     if (this.signupType) {
       this.signupType = null;
     } else {

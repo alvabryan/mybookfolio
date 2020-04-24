@@ -3,8 +3,8 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 // portfolio actions
 import * as PortfolioActions from './portfolio.actions';
-import { tap, switchMap, withLatestFrom, map, catchError } from 'rxjs/operators';
-import { EMPTY, of, from, forkJoin, empty } from 'rxjs';
+import { tap, switchMap, withLatestFrom, map, catchError, combineAll, mergeMap } from 'rxjs/operators';
+import { EMPTY, of, from, forkJoin, empty, throwError } from 'rxjs';
 
 // ngrx
 import { Store } from '@ngrx/store';
@@ -172,7 +172,7 @@ const financialPlanningModuleOneProgress = (checkData: any) => {
     checkData.habitThree !== '' &&
     checkData.habitThreeSymbol !== '' &&
     checkData.habitThreeDesc !== ''
-    ) {
+  ) {
     progress += 25;
   }
 
@@ -209,349 +209,346 @@ const financialPlanningModuleOneProgress = (checkData: any) => {
 @Injectable()
 export class PortfolioEffects {
 
-    saveDataLocal = createEffect(() => this.actions$.pipe(
-        ofType(PortfolioActions.searchCadet),
-        tap((data) => {
-            localStorage.setItem('searchCadetData', JSON.stringify(data));
-        })),
-    {dispatch: false});
+  saveDataLocal = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.searchCadet),
+    tap((data) => {
+      localStorage.setItem('searchCadetData', JSON.stringify(data));
+    })),
+    { dispatch: false });
 
-    loadSearchData = createEffect(() => this.actions$.pipe(
-        ofType(PortfolioActions.searchCadetLoad),
-        () => {
-            const searchData = JSON.parse(localStorage.getItem('searchCadetData'));
-            if (searchData) {
-                return of(PortfolioActions.searchCadet(searchData));
-            } else {
-                return EMPTY;
-            }
+  loadSearchData = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.searchCadetLoad),
+    () => {
+      const searchData = JSON.parse(localStorage.getItem('searchCadetData'));
+      if (searchData) {
+        return of(PortfolioActions.searchCadet(searchData));
+      } else {
+        return EMPTY;
+      }
+    }
+  ));
+
+  setPageName = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.setPortfolioPageType),
+    tap((data) => {
+      if (data.pageName) {
+        localStorage.removeItem('taskName');
+        const taskNameData = JSON.stringify(data.pageName);
+        localStorage.setItem('taskName', taskNameData);
+      }
+    })
+  ), { dispatch: false });
+
+  onReload = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.onReload),
+    map(() => {
+      const localPageName = JSON.parse(localStorage.getItem('taskName'));
+      return PortfolioActions.setPortfolioPageType({ pageName: localPageName });
+    })
+  ));
+
+  getCadetPortfolioData = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.setPortfolioPageType),
+    withLatestFrom(this.store.select('portfolio')),
+    map((data: any) => {
+      return {
+        pageName: data[0].pageName,
+        uid: data[1].cadetSearchData ? data[1].cadetSearchData.uid : null
+      };
+    }),
+    switchMap((data: any) => {
+
+      const dbPath = pageNameSetter(data.pageName);
+      if (dbPath) {
+        return from(this.db.collection(`portfolio/${data.uid}/${dbPath}`).doc(`${data.uid}`).valueChanges()).pipe(map((returnData) => {
+          return PortfolioActions.searchCadetData(returnData);
+        }));
+      }
+
+      return EMPTY;
+    })
+  ));
+
+  uploadFile = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.uploadFile),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    switchMap((data: any) => {
+
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
+
+      // upload page name
+      const pageName = data[1].pageName;
+
+      // database path
+      const dbPath = pageNameSetter(pageName);
+
+      // current cadet data
+      const cadetUid = data[1].cadetSearchData.uid;
+
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
+
+      // file data
+      const uploadDate = firestore.Timestamp.now();
+      const fileType = data[0].file.target.files[0].type.split('/');
+      const fileName = Math.random() * 200 + '.' + fileType[1].toLowerCase();
+      const imageName = `${Date.now()}_${fileName}`;
+      const path = `${dbPath}/${imageName}`;
+
+      // calculate the progress plus the new file
+      const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'upload');
+
+      // file type
+      const fileTypeSplit = (splitFileName) => {
+        const fileExtension = splitFileName.toLowerCase();
+        console.log(fileExtension);
+        if (fileExtension === 'docx' || fileExtension === 'doc' || fileExtension === 'pdf' || fileExtension === 'vnd.openxmlformats-officedocument.wordprocessingml.document') {
+          return 'doc';
+        } else if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'svg') {
+          return 'image';
         }
-    ));
+      };
 
-    setPageName = createEffect(() => this.actions$.pipe(
-      ofType(PortfolioActions.setPortfolioPageType),
-      tap((data) => {
-        if (data.pageName) {
-          localStorage.removeItem('taskName');
-          const taskNameData = JSON.stringify(data.pageName);
-          localStorage.setItem('taskName', taskNameData);
-        }
-      })
-    ), {dispatch: false});
+      const fileTypeExtension = fileTypeSplit(fileType[1]);
 
-    onReload = createEffect(() => this.actions$.pipe(
-      ofType(PortfolioActions.onReload),
-      map(() => {
-        const localPageName = JSON.parse(localStorage.getItem('taskName'));
-        return PortfolioActions.setPortfolioPageType({pageName: localPageName});
-      })
-    ));
+      // reference to storage
+      const ref = this.storage.ref(path);
+      const image = this.storage.upload(path, data[0].file.target.files[0]);
 
-    getCadetPortfolioData = createEffect(() => this.actions$.pipe(
-        ofType(PortfolioActions.setPortfolioPageType),
-        withLatestFrom(this.store.select('portfolio')),
-        map((data: any) => {
-            return {
-                pageName: data[0].pageName,
-                uid: data[1].cadetSearchData ? data[1].cadetSearchData.uid : null
-            };
-        }),
-        switchMap((data: any) => {
+      return from(image).pipe(switchMap(() => {
+        // get download URL and upload progress data
+        return from(ref.getDownloadURL()).pipe(mergeMap((url: any) => {
 
-          const dbPath = pageNameSetter(data.pageName);
-          if (dbPath) {
-            return from(this.db.collection(`portfolio/${data.uid}/${dbPath}`).doc(`${data.uid}`).valueChanges()).pipe(map((returnData) => {
-                return PortfolioActions.searchCadetData(returnData);
-            }));
-          }
-
-          return EMPTY;
-        })
-    ));
-
-    uploadFile = createEffect(() => this.actions$.pipe(
-      ofType(PortfolioActions.uploadFile),
-      withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-      switchMap((data: any) => {
-
-        // battalion code
-        const battalionCode = data[2].user.battalionCode;
-
-        // upload page name
-        const pageName = data[1].pageName;
-
-        // database path
-        const dbPath = pageNameSetter(pageName);
-
-        // current cadet data
-        const cadetUid = data[1].cadetSearchData.uid;
-
-        // current cadet let level
-        const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
-
-        // file data
-        const uploadDate = firestore.Timestamp.now();
-        const fileType = data[0].file.target.files[0].type.split('/');
-        const fileName = Math.random() * 200 + '.' + fileType[1].toLowerCase();
-        const imageName = `${Date.now()}_${fileName}`;
-        const path = `${dbPath}/${imageName}`;
-
-        // calculate the progress plus the new file
-        const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'upload');
-
-        // file type
-        const fileTypeSplit = (splitFileName) => {
-          const fileExtension = splitFileName.toLowerCase();
-          if (fileExtension === 'docx' || fileExtension === 'doc' || fileExtension === 'pdf') {
-            return 'doc';
-          } else if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'svg') {
-            return 'image';
-          }
-        };
-
-        const fileTypeExtension = fileTypeSplit(fileType[1]);
-
-        // reference to storage
-        const ref = this.storage.ref(path);
-
-        // upload image
-        const image = this.storage.upload(path, data[0].file.target.files[0]);
-
-        return forkJoin(
-          from(image.snapshotChanges()).pipe(catchError(() => EMPTY)),
-          from(image).pipe(catchError(() => EMPTY))
-        ).pipe(switchMap(() => {
-
-            // get download URL and upload progress data
-            return from(ref.getDownloadURL()).pipe(tap((url: any) => {
-
-              forkJoin(
-                from(
-                  this.db.collection(`portfolio/${cadetUid}/${dbPath}`).doc(`${cadetUid}`).set({
-                    [`${cadetLetLevel}`]: { content: firestore.FieldValue.arrayUnion({
-                      attachDescription: data[0].description,
-                      attachName: data[0].fileName,
-                      dateSubmitted: uploadDate,
-                      downloadUrl: url,
-                      fileName: imageName,
-                      fileType: fileTypeExtension
-                    })}
-                  }, {merge: true})
-                ),
-                from(
-                  this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
-                    [`${cadetUid}`]: {
-                      progress: {
-                        [`${dbPath}`]: {
-                          [`${cadetLetLevel}`]: courseWorkProgress
-                        }
-                      }
+          try {
+            return forkJoin(
+              this.db.collection(`portfolio/${cadetUid}/${dbPath}`).doc(`${cadetUid}`).set({
+                [`${cadetLetLevel}`]: {
+                  content: firestore.FieldValue.arrayUnion({
+                    attachDescription: data[0].description,
+                    attachName: data[0].fileName,
+                    dateSubmitted: uploadDate,
+                    downloadUrl: url,
+                    fileName: imageName,
+                    fileType: fileTypeExtension
+                  })
+                }
+              }, { merge: true }),
+              this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+                [`${cadetUid}`]: {
+                  progress: {
+                    [`${dbPath}`]: {
+                      [`${cadetLetLevel}`]: courseWorkProgress
                     }
-                  }, {merge: true})
-                )
-              );
-
-
-            }), map(() => {
+                  }
+                }
+              }, { merge: true })
+            ).pipe(map(() => {
               return PortfolioActions.uploadingFile();
             }));
-
-          }));
-      })
-    ));
-
-    deleteFile = createEffect(() => this.actions$.pipe(
-      ofType(PortfolioActions.deleteFile),
-      withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-      tap((data: any) => {
-        // battalion code
-        const battalionCode = data[2].user.battalionCode;
-
-        // current cadet
-        const cadetUid = data[1].cadetSearchData.uid;
-
-        // current cadet let level
-        const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
-
-        // upload page name
-        const pageName = data[0].pageName;
-
-        // file data
-        const filesData = data[0].filesData;
-        const deleteFileIndex = data[0].fileIndex;
-        const imageUrlToDelete = filesData[deleteFileIndex].downloadUrl;
-
-        // coursework database path
-        const dbPath = pageNameSetter(pageName);
-
-        // calculate the progress plus the new file
-        const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'delete');
-
-        const newFilesData = filesData.filter((obj, index) => {
-          if (index !== deleteFileIndex) {
-            return obj;
+          } catch (err) {
+            this.storage.storage.refFromURL(`${url}`).delete();
+            return of(PortfolioActions.fileUploadError({ error: err }));
           }
-        });
 
-        if (dbPath) {
-          this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({[cadetLetLevel]: {content: newFilesData}}, {merge: true});
-          this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
-            [cadetUid]: {
-              progress: {
-                [dbPath]: {
-                  [cadetLetLevel]: courseWorkProgress
-                }
-              }
-            }
-          }, {merge: true});
-          this.storage.storage.refFromURL(`${imageUrlToDelete}`).delete();
+        }));
+
+      }));
+    })
+  ));
+
+  deleteFile = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.deleteFile),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data: any) => {
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
+
+      // current cadet
+      const cadetUid = data[1].cadetSearchData.uid;
+
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
+
+      // upload page name
+      const pageName = data[0].pageName;
+
+      // file data
+      const filesData = data[0].filesData;
+      const deleteFileIndex = data[0].fileIndex;
+      const imageUrlToDelete = filesData[deleteFileIndex].downloadUrl;
+
+      // coursework database path
+      const dbPath = pageNameSetter(pageName);
+
+      // calculate the progress plus the new file
+      const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'delete');
+
+      const newFilesData = filesData.filter((obj, index) => {
+        if (index !== deleteFileIndex) {
+          return obj;
         }
-      })
-    ), {dispatch: false});
+      });
 
-    fileEditorUpdate = createEffect(() => this.actions$.pipe(
-      ofType(PortfolioActions.fileUploadEditorUpdate),
-      withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-      tap((data: any) => {
-        // battalion code
-        const battalionCode = data[2].user.battalionCode;
-
-        // editor text
-        const editorValue = data[0].editorText.editor;
-
-        // database path
-        const dbPath = pageNameSetter(data[1].pageName);
-
-        // current cadet
-        const cadetUid = data[1].cadetSearchData.uid;
-
-        // current cadet let level
-        const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
-
-        // calculate the progress minus the new file
-        const courseWorkProgress = fileEditorProgressCalculator(editorValue, data[1].viewData[cadetLetLevel]);
-
-        forkJoin(
-          from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
-            [cadetLetLevel]: {
-              writtenContent: {
-                content: editorValue,
-                dateSubmitted: firestore.FieldValue.serverTimestamp()
+      if (dbPath) {
+        this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({ [cadetLetLevel]: { content: newFilesData } }, { merge: true });
+        this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+          [cadetUid]: {
+            progress: {
+              [dbPath]: {
+                [cadetLetLevel]: courseWorkProgress
               }
             }
-          }, {merge: true})),
-          from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
-            [cadetUid]: {
-              progress: {
-                [dbPath]: {
-                  [cadetLetLevel]: courseWorkProgress
-                }
-              }
-            }
-          }, {merge: true}))
-        );
+          }
+        }, { merge: true });
+        this.storage.storage.refFromURL(`${imageUrlToDelete}`).delete();
+      }
+    })
+  ), { dispatch: false });
 
-      })
-    ), {dispatch: false});
+  fileEditorUpdate = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fileUploadEditorUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data: any) => {
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
 
+      // editor text
+      const editorValue = data[0].editorText.editor;
 
-    // four year goals update
-    yearlyGoalsUpdate = createEffect(() => this.actions$.pipe(
-      ofType(PortfolioActions.fourYearGoalsUpdate),
-      withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-      tap((data: any) => {
+      // database path
+      const dbPath = pageNameSetter(data[1].pageName);
 
-        // goals data
-        const goalsData = data[0].yearlyGoals.editor;
+      // current cadet
+      const cadetUid = data[1].cadetSearchData.uid;
 
-        // battalion code
-        const battalionCode = data[2].user.battalionCode;
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
 
-        // database path
-        const dbPath = pageNameSetter(data[1].pageName);
+      // calculate the progress minus the new file
+      const courseWorkProgress = fileEditorProgressCalculator(editorValue, data[1].viewData[cadetLetLevel]);
 
-        // current cadet
-        const cadetUid = data[1].cadetSearchData.uid;
-
-        // current cadet let level
-        const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
-
-        // calculate yearlyGoals progress
-        const goalsProgress = goalsProgressCalculator(goalsData, data[1].viewData[cadetLetLevel], 'fourYearGoals');
-
-        forkJoin(
-          from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
-            [cadetLetLevel]: {
-              fourYearGoals: {
-                content: goalsData
-              },
+      forkJoin(
+        from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
+          [cadetLetLevel]: {
+            writtenContent: {
+              content: editorValue,
               dateSubmitted: firestore.FieldValue.serverTimestamp()
             }
-          }, {merge: true})),
-          from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
-            [cadetUid]: {
-              progress: {
-                [dbPath]: {
-                  [cadetLetLevel]: goalsProgress
-                }
+          }
+        }, { merge: true })),
+        from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+          [cadetUid]: {
+            progress: {
+              [dbPath]: {
+                [cadetLetLevel]: courseWorkProgress
               }
             }
-          }, {merge: true}))
-        );
+          }
+        }, { merge: true }))
+      );
 
-      })
-    ), {dispatch: false});
+    })
+  ), { dispatch: false });
 
-    // post secondary goals update
-    postGoalsUpdate = createEffect(() => this.actions$.pipe(
-      ofType(PortfolioActions.postSecondaryGoalsUpdate),
-      withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
-      tap((data: any) => {
 
-        // goals data
-        const goalsData = data[0].postSecondaryGoals.postGoals;
+  // four year goals update
+  yearlyGoalsUpdate = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.fourYearGoalsUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data: any) => {
 
-        // battalion code
-        const battalionCode = data[2].user.battalionCode;
+      // goals data
+      const goalsData = data[0].yearlyGoals.editor;
 
-        // database path
-        const dbPath = pageNameSetter(data[1].pageName);
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
 
-        // current cadet
-        const cadetUid = data[1].cadetSearchData.uid;
+      // database path
+      const dbPath = pageNameSetter(data[1].pageName);
 
-        // current cadet let level
-        const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
+      // current cadet
+      const cadetUid = data[1].cadetSearchData.uid;
 
-        // calculate yearlyGoals progress
-        const goalsProgress = goalsProgressCalculator(goalsData, data[1].viewData[cadetLetLevel], 'postSecondaryGoals');
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
 
-        forkJoin(
-          from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
-            [cadetLetLevel]: {
-              postSecondaryGoals: {
-                content: goalsData
-              },
-              dateSubmitted: firestore.FieldValue.serverTimestamp()
-            }
-          }, {merge: true})),
-          from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
-            [cadetUid]: {
-              progress: {
-                [dbPath]: {
-                  [cadetLetLevel]: goalsProgress
-                }
+      // calculate yearlyGoals progress
+      const goalsProgress = goalsProgressCalculator(goalsData, data[1].viewData[cadetLetLevel], 'fourYearGoals');
+
+      forkJoin(
+        from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
+          [cadetLetLevel]: {
+            fourYearGoals: {
+              content: goalsData
+            },
+            dateSubmitted: firestore.FieldValue.serverTimestamp()
+          }
+        }, { merge: true })),
+        from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+          [cadetUid]: {
+            progress: {
+              [dbPath]: {
+                [cadetLetLevel]: goalsProgress
               }
             }
-          }, {merge: true}))
-        );
+          }
+        }, { merge: true }))
+      );
 
-      })
-    ), {dispatch: false});
+    })
+  ), { dispatch: false });
+
+  // post secondary goals update
+  postGoalsUpdate = createEffect(() => this.actions$.pipe(
+    ofType(PortfolioActions.postSecondaryGoalsUpdate),
+    withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
+    tap((data: any) => {
+
+      // goals data
+      const goalsData = data[0].postSecondaryGoals.postGoals;
+
+      // battalion code
+      const battalionCode = data[2].user.battalionCode;
+
+      // database path
+      const dbPath = pageNameSetter(data[1].pageName);
+
+      // current cadet
+      const cadetUid = data[1].cadetSearchData.uid;
+
+      // current cadet let level
+      const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
+
+      // calculate yearlyGoals progress
+      const goalsProgress = goalsProgressCalculator(goalsData, data[1].viewData[cadetLetLevel], 'postSecondaryGoals');
+
+      forkJoin(
+        from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
+          [cadetLetLevel]: {
+            postSecondaryGoals: {
+              content: goalsData
+            },
+            dateSubmitted: firestore.FieldValue.serverTimestamp()
+          }
+        }, { merge: true })),
+        from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
+          [cadetUid]: {
+            progress: {
+              [dbPath]: {
+                [cadetLetLevel]: goalsProgress
+              }
+            }
+          }
+        }, { merge: true }))
+      );
+
+    })
+  ), { dispatch: false });
 
 
-    // winning colors update
-    winningColors = createEffect(() => this.actions$.pipe(
+  // winning colors update
+  winningColors = createEffect(() => this.actions$.pipe(
     ofType(PortfolioActions.winningColorsUpdate),
     withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
     tap((data: any) => {
@@ -580,7 +577,7 @@ export class PortfolioEffects {
             content: winningData,
             dateSubmitted: firestore.FieldValue.serverTimestamp()
           }
-        }, {merge: true})),
+        }, { merge: true })),
         from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
           [cadetUid]: {
             progress: {
@@ -589,11 +586,11 @@ export class PortfolioEffects {
               }
             }
           }
-        }, {merge: true}))
+        }, { merge: true }))
       );
 
     })
-  ), {dispatch: false});
+  ), { dispatch: false });
 
   // learning style update
   learningStyle = createEffect(() => this.actions$.pipe(
@@ -624,7 +621,7 @@ export class PortfolioEffects {
             content: learningStyleData,
             dateSubmitted: firestore.FieldValue.serverTimestamp()
           }
-        }, {merge: true})),
+        }, { merge: true })),
         from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
           [cadetUid]: {
             progress: {
@@ -633,11 +630,11 @@ export class PortfolioEffects {
               }
             }
           }
-        }, {merge: true}))
+        }, { merge: true }))
       );
 
     })
-  ), {dispatch: false});
+  ), { dispatch: false });
 
   // personal Ad update
   personalAd = createEffect(() => this.actions$.pipe(
@@ -669,7 +666,7 @@ export class PortfolioEffects {
             content: personalAd,
             dateSubmitted: firestore.FieldValue.serverTimestamp()
           }
-        }, {merge: true})),
+        }, { merge: true })),
         from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
           [cadetUid]: {
             progress: {
@@ -678,11 +675,11 @@ export class PortfolioEffects {
               }
             }
           }
-        }, {merge: true}))
+        }, { merge: true }))
       );
 
     })
-  ), {dispatch: false});
+  ), { dispatch: false });
 
 
   // human graph update
@@ -715,7 +712,7 @@ export class PortfolioEffects {
             content: humanGraph,
             dateSubmitted: firestore.FieldValue.serverTimestamp()
           }
-        }, {merge: true})),
+        }, { merge: true })),
         from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
           [cadetUid]: {
             progress: {
@@ -724,11 +721,11 @@ export class PortfolioEffects {
               }
             }
           }
-        }, {merge: true}))
+        }, { merge: true }))
       );
 
     })
-  ), {dispatch: false});
+  ), { dispatch: false });
 
   // financial planning module 1 update
 
@@ -760,7 +757,7 @@ export class PortfolioEffects {
             content: moduleOne,
             dateSubmitted: firestore.FieldValue.serverTimestamp()
           }
-        }, {merge: true})),
+        }, { merge: true })),
         from(this.db.doc(`battalions/${battalionCode}/cadetsProgress/${battalionCode}`).set({
           [cadetUid]: {
             progress: {
@@ -769,13 +766,13 @@ export class PortfolioEffects {
               }
             }
           }
-        }, {merge: true}))
+        }, { merge: true }))
       );
 
     })
-  ), {dispatch: false});
+  ), { dispatch: false });
 
 
 
-    constructor(private actions$: Actions, private store: Store<fromPortfolio.State>, private db: AngularFirestore, private storage: AngularFireStorage, private getProgress: PortfolioProgressService) {}
+  constructor(private actions$: Actions, private store: Store<fromPortfolio.State>, private db: AngularFirestore, private storage: AngularFireStorage, private getProgress: PortfolioProgressService) { }
 }
