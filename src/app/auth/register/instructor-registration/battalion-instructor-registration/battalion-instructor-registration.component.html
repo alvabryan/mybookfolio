@@ -1,0 +1,53 @@
+<form class="form-signin" #instructorForm="ngForm" (ngSubmit)="onInstructorSignup(instructorForm)">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="assets/img/myBookfolio.png" alt="" width="72" height="72" />
+        <h1 class="h3 mb-3 font-weight-normal">Instructor Registration</h1>
+    </div>
+    <div class="form-label-group">
+      <input type="text" ngModel #battalionCode="ngModel" name="battalionCode" id="battalionCode" class="form-control" placeholder="Battalion Code" required="">
+      <label for="battalionCode">Battalion Code</label>
+      <a class="mb-3 text-right" href="#">What is my Battalion Code?</a>
+    </div>
+    <div class="form-label-group">
+        <input type="text" ngModel #firstName="ngModel" name="firstName" id="firstName" class="form-control" placeholder="First Name" required="">
+        <label for="firstName">First Name</label>
+    </div>
+    <div class="form-label-group">
+        <input type="text" ngModel #lastName="ngModel" name="lastName" id="lastName" class="form-control" placeholder="Last Name" required="">
+        <label for="lastName">Last Name</label>
+    </div>
+    <div class="form-label-group">
+        <select ngModel #instructorType="ngModel" name="instructorType" id="instructorType" class="form-control" required="">
+          <option value="">Instructor Type</option>
+          <option value="SAI">Senior Army Insturctor</option>
+          <option value="AI">Army Instructor</option>
+        </select>
+    </div>
+    <div class="form-label-group">
+        <input type="email" ngModel #email="ngModel" name="email" id="email" class="form-control" placeholder="Email" required="" email>
+        <label for="email">Email</label>
+    </div>
+    <div class="form-label-group">
+        <input type="tel" ngModel #phoneNumber="ngModel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required="">
+        <label for="phoneNumber">Phone Number</label>
+    </div>
+    <div class="form-label-group">
+        <input type="password" ngModel #password="ngModel" name="password" id="password" class="form-control" placeholder="Password" required="" minlength="6">
+        <label for="password">Password</label>
+    </div>
+    <div class="form-label-group">
+        <input type="password" ngModel #confirmPassword="ngModel" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Password" required="" minlength="6">
+        <label for="confirmPassword">Confirm Password</label>
+    </div>
+
+    <flash-messages></flash-messages>
+
+    <!-- loading spinner  -->
+    <app-spinner *ngIf="isLoading"></app-spinner>
+
+    <!-- sign up button -->
+    <button class="btn btn-lg btn-primary btn-block" [disabled]="!instructorForm.valid" *ngIf="!isLoading">
+        Sign Up
+    </button>
+</form>
+

@@ -27,6 +27,8 @@ import * as fromAuth from './store/auth.reducer';
 import * as fromAuthEffects from './store/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { BattalionRegistrationComponent } from './register/instructor-registration/battalion-registration/battalion-registration.component';
+import { BattalionInstructorRegistrationComponent } from './register/instructor-registration/battalion-instructor-registration/battalion-instructor-registration.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     RegisterComponent,
     ResetPasswordComponent,
     InstructorRegistrationComponent,
-    CadetRegistrationComponent
+    CadetRegistrationComponent,
+    BattalionRegistrationComponent,
+    BattalionInstructorRegistrationComponent
   ],
   imports: [
     CommonModule,

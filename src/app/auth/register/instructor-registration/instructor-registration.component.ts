@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+// from root
+import * as fromRoot from '../../../store/index';
+import * as authActions from '../../store/auth.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-instructor-registration',
@@ -8,43 +14,19 @@ import { NgForm } from '@angular/forms';
 })
 export class InstructorRegistrationComponent implements OnInit {
 
-  isLoading = false;
+  instructorSignupType: string;
 
-  constructor() { }
+  subscription: Subscription = new Subscription();
+
+  constructor(private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
+
   }
 
-  onInstructorSignup(form: NgForm) {
-    if (!form.valid) {
-      return;
-    }
-
-    this.isLoading = true;
-
-    // data from form
-    const instructorData = form.value;
-
-    // password validation
-    const password = form.value.password;
-    const confirmPassword = form.value.confirmPassword;
-
-    // checks whether passwords match
-    if ( password !== confirmPassword ) {
-      // this.auth.authErrorHandling({
-      //   code: 'auth/unvalid-password',
-      //   message: 'Confirm password does not match password.'
-      // });
-      this.isLoading = false;
-    } else {
-      // this.auth.createUser({
-      //   type: 'instructor',
-      //   data: {
-      //     battalionCode: 'ZZZZZ',
-      //     ...instructorData
-      //   }
-      // });
-    }
+  // sets UI pages
+  setSignupType(data: string) {
+    this.instructorSignupType = data;
   }
 
 }

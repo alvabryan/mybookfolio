@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/index';
 
+import { firestore } from 'firebase/app';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -142,13 +143,146 @@ export class AuthEffects {
         })
     ), {dispatch: false});
 
+    // battalion register
+    battalionRegisterStart = createEffect(() =>
+        this.actions$.pipe(
+            ofType(AuthActions.battalionRegisterStart),
+            switchMap((data: any) => {
+                return this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1), map((callBackData: any) => {
+                    const isTaken = callBackData.codes.includes(data.battalionCode);
+                    if (data.registrationType === 'battalion') {
+                      if (!isTaken) {
+                        return AuthActions.battalionRegister({...data});
+                      } else {
+                        return AuthActions.authenticateFail({error: 'System Error - Battalion Code already taken'});
+                      }
+                    } else {
+                      if (isTaken) {
+                        return AuthActions.battalionRegister({...data});
+                      } else {
+                        return AuthActions.authenticateFail({error: 'Battalion Code not found'});
+                      }
+                    }
+                }));
+            })
+        )
+    );
+
+    instructorSignup = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.battalionRegister),
+      switchMap((data: any) => {
+        return from(this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password)).pipe(
+            tap((userCredential) => {
+                userCredential.user.updateProfile({
+                    displayName: data.firstName + ' ' + data.lastName,
+                    photoURL: null
+                });
+            }),
+            map((userCredential) => {
+                if (data.registrationType === 'battalion') {
+                  return AuthActions.battalionRegisterSuccess({...data, ...userCredential});
+                } else {
+                  return AuthActions.battalionInstructorRegisterSuccess({...data, ...userCredential});
+                }
+            }),
+            catchError((err) => {
+                return handleError(err.code, err.message);
+            })
+        );
+      })
+    ));
+
+    battalionRegisterSuccess = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.battalionRegisterSuccess),
+      switchMap((data: any) => {
+        return forkJoin(
+          from(this.db.collection('battalionCodeTracker').doc('battalionCode').set({
+            codes: firestore.FieldValue.arrayUnion(data.battalionCode)
+          }, {merge: true})),
+          from(
+            this.db.doc(`users/${data.user.uid}`).set({
+                userType: 'instructor',
+                data: {
+                  battalionCode: data.battalionCode,
+                  firstName: data.firstName,
+                  lastName: data.lastName,
+                  letLevel: [1, 2, 3, 4],
+                  phoneNumber: data.phoneNumber
+                }
+              })
+          ),
+          from(
+            this.db.doc(`battalions/${data.battalionCode}`).set({
+              battalionCode: data.battalionCode,
+              city: data.city,
+              instructors: {
+                [data.user.uid]: {
+                  firstName: data.firstName,
+                  lastName: data.lastName,
+                  letLevel: [1, 2, 3, 4],
+                  position: data.instructorType,
+                  phoneNumber: data.phoneNumber
+                }
+              },
+              schoolName: data.schoolName,
+              state: data.state,
+              zipCode: data.zipCode
+            })
+          ),
+          from(
+            this.db.doc(`battalions/${data.battalionCode}`).collection('cadetDataSheet').doc(data.battalionCode).set({})
+          ),
+          from(
+            this.db.doc(`battalions/${data.battalionCode}`).collection('cadetsProgress').doc(data.battalionCode).set({})
+          )
+        ).pipe(map(() => {
+          return AuthActions.loginStart({email: data.email, password: data.password});
+        }));
+      })
+    ));
+
+    battalionInstructorRegisterSuccess = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.battalionInstructorRegisterSuccess),
+      switchMap((data: any) => {
+       return forkJoin(
+        from(
+          this.db.doc(`users/${data.user.uid}`).set({
+              userType: 'instructor',
+              data: {
+                battalionCode: data.battalionCode,
+                firstName: data.firstName,
+                lastName: data.lastName,
+                letLevel: [1, 2, 3, 4],
+                position: data.instructorType,
+                phoneNumber: data.phoneNumber,
+                aproved: false
+              }
+            })
+        ),
+        from(
+          this.db.doc(`battalions/${data.battalionCode}`).set({
+            instructors: {
+              [data.user.uid]: {
+                firstName: data.firstName,
+                lastName: data.lastName,
+                letLevel: [1, 2, 3, 4],
+                position: data.instructorType,
+                phoneNumber: data.phoneNumber
+              }
+            }
+          }, {merge: true})
+        )).pipe(map(() => {
+          return AuthActions.loginStart({email: data.email, password: data.password});
+        }));
+      })
+    ));
+
     // cadet signup
     cadetSignupStart = createEffect(() =>
         this.actions$.pipe(
             ofType(AuthActions.cadetSignupStart),
             switchMap((data: any) => {
-                return this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1), tap((datar) => console.log(datar)), map((callBackData: any) => {
-                    console.log(callBackData.codes.includes(data.battalionCode));
+                return this.db.doc(`battalionCodeTracker/battalionCode`).valueChanges().pipe(take(1), map((callBackData: any) => {
                     if (callBackData.codes.includes(data.battalionCode)) {
                         return AuthActions.cadetRegister({...data});
                     } else {

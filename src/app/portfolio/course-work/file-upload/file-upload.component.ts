@@ -41,12 +41,11 @@ export class FileUploadComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.loading = 'uploading';
     const formData = this.fileUploadForm.value;
-    console.log(this.fileData);
-    // this.store.dispatch(PortfolioActions.uploadFile({
-    //   fileName: formData.fileName,
-    //   file: this.fileData,
-    //   description: formData.description
-    // }));
+    this.store.dispatch(PortfolioActions.uploadFile({
+      fileName: formData.fileName,
+      file: this.fileData,
+      description: formData.description
+    }));
 
     this.subscription.add(
       this.store.select('portfolio').subscribe((data: any) => {

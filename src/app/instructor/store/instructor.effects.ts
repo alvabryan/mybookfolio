@@ -22,8 +22,13 @@ export class InstructorEffects {
       map(data => data[1].user ),
       switchMap((data: any) => {
           return this.db.doc(`battalions/${data.battalionCode}/cadetsProgress/${data.battalionCode}`).valueChanges().pipe(map((dataa: any) => {
+            const returnDataLength = Object.keys(dataa).length;
+            if (returnDataLength > 0) {
               return InstructorActions.setCadetProgress({progress: dataa});
-            }));
+            } else {
+              return InstructorActions.setCadetProgress({progress: {}});
+            }
+          }));
       })
   ));
 
@@ -34,7 +39,12 @@ export class InstructorEffects {
       const battalionCode = data[1].user.battalionCode;
       return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet')
       .doc(battalionCode).valueChanges()).pipe(map((returnedData) => {
-        return InstructorActions.loadCadetDataSheet({data: returnedData});
+        const returnDataLength = Object.keys(returnedData).length;
+        if (returnDataLength > 0) {
+          return InstructorActions.loadCadetDataSheet({data: returnedData});
+        } else {
+          return InstructorActions.loadCadetDataSheet({data: {}});
+        }
       }));
     })
   ));

@@ -22,6 +22,15 @@ export const authenticateFail = createAction('[Auth] Authenticate Fail', props<{
 
 export const refreshWindow = createAction('[Auth] Refresh Window');
 
+// battalion registration
+export const battalionRegisterStart = createAction('[Auth] Battalion Registrato', props<{registrationType: string, [key: string]: any}>());
+
+export const battalionRegister = createAction('[Auth] Battalion register start', props<{[key: string]: any}>());
+
+export const battalionRegisterSuccess = createAction('[Auth] battalion success', props<{[key: string]: any}>());
+
+export const battalionInstructorRegisterSuccess = createAction('[Auth] battalion success', props<{[key: string]: any}>());
+
 // cadet sign up
 export const cadetSignupStart = createAction('[Auth] Check Battalion Code', props<{[key: string]: any}>());
 
@@ -57,7 +66,6 @@ export const updateBattalionCode = createAction('[User Cadet] update battalion c
 // password update
 export const passwordUpdate = createAction('[User Settings] update password', props<{oldPassword: string, newPassword: string}>());
 export const passwordUpdateStatus = createAction('[User Settings] update status', props<{status: string}>());
-
 
 // update let assign
 export const updateLetAssign = createAction('[User update] let assign', props<{letAssigned: Array<any>}>());

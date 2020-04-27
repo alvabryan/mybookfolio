@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
-//ngrx
+// ngrx
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from '../../../store/index';
 import * as AuthActions from '../../store/auth.actions';

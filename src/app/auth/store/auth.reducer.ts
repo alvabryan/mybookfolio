@@ -8,6 +8,10 @@ export interface State {
   loading: boolean;
   uploadingProfileImage: boolean;
   passwordUpdateStatus: string;
+  registration: {
+    authError: null,
+    battalionCodeStatus: null
+  };
 }
 
 export const initialState: State = {
@@ -15,7 +19,11 @@ export const initialState: State = {
     authError: null,
     loading: false,
     uploadingProfileImage: false,
-    passwordUpdateStatus: null
+    passwordUpdateStatus: null,
+    registration: {
+      authError: null,
+      battalionCodeStatus: null
+    }
 };
 
 const authReducer = createReducer(
