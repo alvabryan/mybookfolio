@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
 import * as battalionUsersAction from './battalion-users.actions';
-import { EMPTY, of } from 'rxjs';
+import { EMPTY, of, forkJoin, from } from 'rxjs';
 import { map, tap, withLatestFrom, switchMap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -20,7 +20,7 @@ export class BattalionUsersEFfect {
     map(data => data[1].user),
     switchMap((data: any) => {
       return this.db.doc(`battalions/${data.battalionCode}`).valueChanges().pipe(map((dataa: any) => {
-        return battalionUsersAction.setBattalionUsers({linkedInstructors: dataa.instructors, cadetStaff: dataa.cadetStaff});
+        return battalionUsersAction.setBattalionUsers({linkedInstructors: dataa.instructors, cadetStaff: dataa.cadetStaff, battalionCode: dataa.battalionCode});
       }));
     })
   ));
@@ -41,6 +41,26 @@ export class BattalionUsersEFfect {
       return fromAuth.updateLetAssign({letAssigned: data[0].letAssigned});
     })
   ));
+
+  updateInstructorApproveStatus = createEffect(() => this.actions$.pipe(
+    ofType(battalionUsersAction.updateInstructorStatus),
+    tap((data: any) => {
+      forkJoin(
+        from(this.db.collection('users').doc(data.uid).set({
+          data: {
+            approved: true
+          }
+        }, {merge: true})),
+        from(this.db.collection('battalions').doc(data.battalionCode).set({
+          instructors: {
+            [data.uid]: {
+              approved: true
+            }
+          }
+        }, {merge: true}))
+      );
+    })
+  ), {dispatch: false});
 
   constructor(private actions$: Actions, private store: Store<fromRoot.State>, private db: AngularFirestore) {}
 }

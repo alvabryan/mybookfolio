@@ -17,6 +17,7 @@ export class BattalionUsersComponent implements OnInit {
 
   linkedInstructors: Array<any>;
   cadetStaff: Array<any>;
+  battalionCode: string;
 
   ngOnInit() {
     this.store.dispatch(battalionUsersActions.getBattalionUsers());
@@ -33,6 +34,7 @@ export class BattalionUsersComponent implements OnInit {
           });
 
           this.linkedInstructors = linkedInstructorsArray;
+          this.battalionCode = data.battalionUsers.battalionCode;
         }
         // if (data.batttalionUsers.cadetStaff) {
         //   const values = Object.values(data.battalionUsers.cadetStaff);
@@ -51,6 +53,10 @@ export class BattalionUsersComponent implements OnInit {
     if ( v4.checked ) { newLetLevelAssign.push(4); }
 
     this.store.dispatch(battalionUsersActions.updateInstructorLetAssign({instructorUid: uid, letAssigned: newLetLevelAssign}));
+  }
+
+  approveInstructor(instructorUid: string) {
+    this.store.dispatch(battalionUsersActions.updateInstructorStatus({battalionCode: this.battalionCode, uid: instructorUid}));
   }
 
 }

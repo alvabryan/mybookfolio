@@ -43,6 +43,7 @@
                   <th scope="col">Last Name</th>
                   <th scope="col">First Name</th>
                   <th scope="col">Position</th>
+                  <th scope="col">Approved</th>
                   <th scope="col">Remove</th>
                 </tr>
               </thead>
@@ -52,7 +53,9 @@
                   <td>{{ data.lastName }}</td>
                   <td>{{ data.firstName }}</td>
                   <td>{{ data.position }}</td>
-                  <td><button class="btn btn-danger btn-sm">Remove</button></td>
+                  <td *ngIf="!data.approved"><button class="btn btn-warning btn-sm" (click)="approveInstructor(data.uid)">Approve</button></td>
+                  <td *ngIf="data.approved"><button class="btn btn-success btn-sm"><i class='fas fa-check'></i></button></td>
+                  <td><button class="btn btn-danger btn-sm" disabled>Remove</button></td>
                 </tr>
               </tbody>
             </table>

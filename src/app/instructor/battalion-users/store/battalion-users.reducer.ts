@@ -13,7 +13,7 @@ export const initialState = {
 
 const battalionUsersReducer = createReducer(
   initialState,
-  on(battalionUserAction.setBattalionUsers, (state, data: any) => ({...state, linkedInstructors: data.linkedInstructors, cadetStaff: data.cadetStaff}))
+  on(battalionUserAction.setBattalionUsers, (state, data: any) => ({...state, linkedInstructors: data.linkedInstructors, cadetStaff: data.cadetStaff, battalionCode: data.battalionCode}))
 );
 
 export function reducer(state: State | undefined, action: Action) {

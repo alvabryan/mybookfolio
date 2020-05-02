@@ -15,7 +15,8 @@ export const authenticationSuccess = createAction('[Auth] Authenticate Success',
     providerId: string,
     battalionCode: string,
     uid: string,
-    letAssigned: any
+    letAssigned: any,
+    approved: boolean
 }>());
 
 export const authenticateFail = createAction('[Auth] Authenticate Fail', props<{error: any}>());

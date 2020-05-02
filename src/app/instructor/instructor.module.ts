@@ -35,6 +35,7 @@ import { PortfolioModule } from '../portfolio/portfolio.module';
 import { InstructorPortfolioComponent } from './instructor-portfolio/instructor-portfolio.component';
 import { AuthInstructor } from './auth-instructor.guard';
 import * as SearchCadetEffects from './cadets/store-searchcadet/searchCadet.effects';
+import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import * as SearchCadetEffects from './cadets/store-searchcadet/searchCadet.effe
     CadetPortfolioViewComponent,
     CadetInformationComponent,
     SettingInstructorComponent,
-    InstructorPortfolioComponent
+    InstructorPortfolioComponent,
+    AuthAprovelComponent
   ],
   imports: [
     CommonModule,

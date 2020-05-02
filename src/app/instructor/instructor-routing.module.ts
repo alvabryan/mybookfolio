@@ -14,6 +14,7 @@ import { CadetPortfolioComponent } from './cadet-portfolio/cadet-portfolio.compo
 import { CadetPortfolioViewComponent } from './cadet-portfolio/cadet-portfolio-view/cadet-portfolio-view.component';
 import { CadetInformationComponent } from './cadet-portfolio/cadet-information/cadet-information.component';
 import { SettingInstructorComponent } from './setting-instructor/setting-instructor.component';
+import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
 
 const routes: Routes = [
   {path: '', canActivate: [AuthInstructor] , component: InstructorComponent, children: [
@@ -29,8 +30,9 @@ const routes: Routes = [
       {path: '', component: CadetPortfolioViewComponent},
       {path: 'cadet-information', component: CadetInformationComponent}
     ]},
-    {path: 'portfolio', component: InstructorPortfolioComponent}
-  ]}
+    {path: 'portfolio', component: InstructorPortfolioComponent},
+  ]},
+  {path: 'approvel', component: AuthAprovelComponent}
 ];
 
 @NgModule({

@@ -26,7 +26,7 @@ interface InstructorLetAssign {
     let4: boolean;
 }
 
-const handleAuthentication = (userType: string, displayName: string, firstName: string, lastName: string, email: string, phoneNumber: string, photoUrl: string, providerId: string, battalionCode: string, uid: string, letAssign: InstructorLetAssign) => {
+const handleAuthentication = (userType: string, displayName: string, firstName: string, lastName: string, email: string, phoneNumber: string, photoUrl: string, providerId: string, battalionCode: string, uid: string, letAssign: InstructorLetAssign, approvedStatus: boolean) => {
     const user = new User(userType, displayName, firstName, lastName, email, phoneNumber, photoUrl, providerId, battalionCode, uid, letAssign);
     localStorage.setItem('userData', JSON.stringify(user));
 
@@ -43,7 +43,8 @@ const handleAuthentication = (userType: string, displayName: string, firstName: 
         // tslint:disable-next-line: object-literal-shorthand
         battalionCode: battalionCode,
         uid: user.uid,
-        letAssigned: letAssign
+        letAssigned: letAssign,
+        approved: approvedStatus
     });
 };
 
@@ -92,7 +93,8 @@ export class AuthEffects {
         switchMap((action) => {
             return from(this.afAuth.auth.signInWithEmailAndPassword(action.email, action.password)).pipe(switchMap((data: any) => {
               return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(map((userDataType: any) => {
-                return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel );
+                const userStatus = userDataType.userType === 'instructor' ? userDataType.data.approved : true;
+                return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel, userStatus);
               }));
             }), catchError(err => {console.log(err); return handleError(err.code, err.message); }));
         })
@@ -115,7 +117,8 @@ export class AuthEffects {
                 providerId: userData.providerId,
                 battalionCode: userData.battalionCode,
                 uid: userData.uid,
-                letAssigned: userData.letAssigned
+                letAssigned: userData.letAssigned,
+                approved: userData.approved
             }));
         } else {
             return EMPTY;
@@ -127,6 +130,7 @@ export class AuthEffects {
     authRedirect = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.authenticationSuccess),
         tap((data) => {
+           console.log(data);
            if (data.userType === 'cadet') {
              if (this.router.url === '/cadet/settings') {
               this.router.navigate(['/cadet/settings']);
@@ -137,7 +141,11 @@ export class AuthEffects {
             if (this.router.url === '/instructor/settings') {
               this.router.navigate(['/instructor/settings']);
              } else {
-              this.router.navigate(['/instructor']);
+               if (data.approved === true) {
+                this.router.navigate(['/instructor']);
+               } else {
+                this.router.navigate(['/instructor/approvel']);
+               }
              }
            }
         })
@@ -221,7 +229,8 @@ export class AuthEffects {
                   lastName: data.lastName,
                   letLevel: [1, 2, 3, 4],
                   position: data.instructorType,
-                  phoneNumber: data.phoneNumber
+                  phoneNumber: data.phoneNumber,
+                  approved: true
                 }
               },
               schoolName: data.schoolName,
@@ -255,7 +264,7 @@ export class AuthEffects {
                 letLevel: [1, 2, 3, 4],
                 position: data.instructorType,
                 phoneNumber: data.phoneNumber,
-                aproved: false
+                approved: false
               }
             })
         ),
@@ -457,7 +466,8 @@ export class AuthEffects {
                 providerId: data[1].user.providerId,
                 battalionCode: data[1].user.battalionCode,
                 uid: data[1].user.uid,
-                letAssigned: data[1].user.letAssigned
+                letAssigned: data[1].user.letAssigned,
+                approved: true
           }));
         })
     ));
@@ -544,7 +554,8 @@ export class AuthEffects {
               providerId: user.providerId,
               battalionCode: user.battalionCode,
               uid: user.uid,
-              letAssigned: [newData.letLevel]
+              letAssigned: [newData.letLevel],
+              approved: true
         }));
       })
     ));
