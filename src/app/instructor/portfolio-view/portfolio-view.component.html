@@ -66,7 +66,7 @@
                         <th>View</th>
                     </tr>
                 </tfoot>
-                <tbody>
+                <tbody *ngIf="filterRoster.length > 0">
                     <tr *ngFor="let data of filterRoster; let i = index">
                         <td>{{ i + 1 }}</td>
                         <td>{{ data.lastName }}</td>
@@ -85,6 +85,11 @@
                             <button [routerLink]="['/instructor/portfolio']" (click)="setCadetSearchData(i)" class="btn btn-primary">View</button>
                         </td>
                     </tr>
+                </tbody>
+                <tbody *ngIf="filterRoster.length === 0">
+                  <td colspan="7">
+                    <p class="text-center"><b>You currently don't have any cadets</b></p>
+                  </td>
                 </tbody>
             </table>
         </div>

@@ -52,7 +52,7 @@
           <th scope="col">Student Id</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="filteredData.length > 0">
         <tr *ngFor="let cadet of filteredData; let i = index">
           <td><input type="checkbox" (change)="checked(i)" [checked]="cadet.selected == 1 ? true : false"></td>
           <td>{{ i + 1 }}</td>
@@ -74,6 +74,11 @@
           <td>{{ cadet.graduationYear ? cadet.graduationYear : '' }}</td>
           <td>{{ cadet.studentId ? cadet.studentId : ''}}</td>
         </tr>
+      </tbody>
+      <tbody *ngIf="filteredData.length === 0">
+        <td colspan="18">
+          <p class="text-center"><b>You currently don't have any cadets</b></p>
+        </td>
       </tbody>
     </table>
   </div>

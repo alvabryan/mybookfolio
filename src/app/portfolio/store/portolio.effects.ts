@@ -297,7 +297,8 @@ export class PortfolioEffects {
       const path = `${dbPath}/${imageName}`;
 
       // calculate the progress plus the new file
-      const courseWorkProgress = fileProgressCalculator(data[1].viewData[cadetLetLevel], 'upload');
+      const cadetPortfolioData = data[1].viewData[cadetLetLevel] ? data[1].viewData[cadetLetLevel] : {content: []};
+      const courseWorkProgress = fileProgressCalculator(cadetPortfolioData, 'upload');
 
       // file type
       const fileTypeSplit = (splitFileName) => {
