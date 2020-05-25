@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToggleSideBarService } from '../toggle-side-bar.service';
 import { Subscription } from 'rxjs';
 
-//ngrx
+// ngrx
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../store/index';
 import * as AuthActions from '../../..//auth/store/auth.actions';
@@ -20,7 +20,7 @@ export class NavigationComponent implements OnInit {
 
   subscription: Subscription = new Subscription();
 
-  constructor(private store: Store<fromRoot.State>,private toggleSideBar: ToggleSideBarService) { }
+  constructor(private store: Store<fromRoot.State>, private toggleSideBar: ToggleSideBarService) { }
 
   ngOnInit() {
     this.subscription.add(

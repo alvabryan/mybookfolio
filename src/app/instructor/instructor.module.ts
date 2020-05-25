@@ -28,7 +28,7 @@ import { StoreModule } from '@ngrx/store';
 import * as InstructorIndex from './store/index';
 import { EffectsModule } from '@ngrx/effects';
 import * as InstructorEffects from './store/instructor.effects';
-import * as PortfolioEffects from '../portfolio/store/portolio.effects';
+import * as RemainderEffects from './reminders/store/remainders.effects';
 import * as BattalionUsersEffect from './battalion-users/store/battalion-users.effects';
 import { SettingInstructorComponent } from './setting-instructor/setting-instructor.component';
 import { PortfolioModule } from '../portfolio/portfolio.module';
@@ -36,6 +36,8 @@ import { InstructorPortfolioComponent } from './instructor-portfolio/instructor-
 import { AuthInstructor } from './auth-instructor.guard';
 import * as SearchCadetEffects from './cadets/store-searchcadet/searchCadet.effects';
 import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
+import { RemindersComponent } from './reminders/reminders.component';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
     CadetInformationComponent,
     SettingInstructorComponent,
     InstructorPortfolioComponent,
-    AuthAprovelComponent
+    AuthAprovelComponent,
+    RemindersComponent
   ],
   imports: [
     CommonModule,
@@ -64,11 +67,12 @@ import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
     SharedModule,
     QuillModule,
     ReactiveFormsModule,
+    FlashMessagesModule,
     FormsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     StoreModule.forFeature('instructor', InstructorIndex.reducers),
-    EffectsModule.forFeature([InstructorEffects.InstructorEffects, BattalionUsersEffect.BattalionUsersEFfect, SearchCadetEffects.SearchCadetEffects]),
+    EffectsModule.forFeature([InstructorEffects.InstructorEffects, BattalionUsersEffect.BattalionUsersEFfect, SearchCadetEffects.SearchCadetEffects,  RemainderEffects.RemindersEffect]),
     NgxDocViewerModule,
     PortfolioModule
   ],

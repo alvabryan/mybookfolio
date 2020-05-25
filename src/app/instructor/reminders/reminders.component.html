@@ -1,0 +1,146 @@
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Remainder Filter</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <!-- <p>Select the let levels and periods you want to send your remainder to:</p> -->
+            </div>
+          </div>
+
+          <!-- Let Level -->
+          <div class="row">
+            <div class="col">
+              <h3>Let Level</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3"><input type="checkbox" (change)="toggleLet(1)" checked> <P class="model-numbers">1</P></div>
+            <div class="col-3"><input type="checkbox" (change)="toggleLet(2)" checked> <P class="model-numbers">2</P></div>
+            <div class="col-3"><input type="checkbox" (change)="toggleLet(3)" checked> <P class="model-numbers">3</P></div>
+            <div class="col-3"><input type="checkbox" (change)="toggleLet(4)" checked> <P class="model-numbers">4</P></div>
+          </div>
+
+          <br>
+
+          <!-- Period -->
+          <div class="row">
+            <div class="col">
+              <h3>Period</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(1)" checked> <p class="model-numbers">1</p></div>
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(2)" checked> <p class="model-numbers">2</p></div>
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(3)" checked> <p class="model-numbers">3</p></div>
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(4)" checked> <p class="model-numbers">4</p></div>
+          </div>
+          <div class="row">
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(5)" checked> <p class="model-numbers">5</p></div>
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(6)" checked> <p class="model-numbers">6</p></div>
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(7)" checked> <p class="model-numbers">7</p></div>
+            <div class="col-3"><input type="checkbox" (change)="togglePeriod(8)" checked> <p class="model-numbers">8</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="sendRemainder()">Send</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Webpage content -->
+<div class="container-fluid h-100">
+  <div class="row">
+    <div class="col">
+      <h3 class="ml-3">Reminders</h3>
+    </div>
+  </div>
+  <div class="row justify-content-center h-100">
+
+    <div class="col chat">
+      <div class="card">
+        <div class="card-body msg_card_body">
+          <!-- box starts here-->
+          <div class="container-fluid msg_sent">
+            <div class="row">
+              <div class="col-11">
+                <h3 class="msg_sent_color">All raiders must attent tomorrow's meeting! Top</h3>
+              </div>
+              <div class="col-1">
+                <i class="fas fa-cog float-right"></i>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col mt-2 mb-2">
+                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
+                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
+                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
+                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
+                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <p class="msg_sent_color">Let: All</p>
+              </div>
+              <div class="col-4">
+                <p class="msg_sent_color">Period: All</p>
+              </div>
+              <div class="col-4">
+                <p class="float-right msg_sent_color">06/18/2020 11:00 AM</p>
+              </div>
+            </div>
+          </div>
+          <!-- box ends here -->
+        </div>
+        <div class="card-footer">
+          <div class="container-fluid" *ngIf="imageArray.length > 0">
+            <div class="add-image" *ngIf="imageArray.length < 5" (click)="file.click()">
+              <p>+</p>
+            </div>
+            <div class="add-image-preview" *ngFor="let imageUrl of imageArray; let i = index">
+              <div class="add-image-delete" (click)="removeImage(i)">X</div>
+              <img class="img-responsive" [src]="imageUrl.render.result" height="auto" width="auto">
+            </div>
+          </div>
+          <flash-messages></flash-messages>
+          <div class="container-fluid mt-2 mb-2" *ngIf="showUrl">
+            <div class="row">
+              <div class="col">
+                <input type="text" name="url" class="form-control" style="width: 100%;" placeholder="Place URL here..." [(ngModel)]="url">
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="input-group-append">
+                <input type="file" name="file" id="file" #file (change)="uploadImage($event)" multiple style="display: none;">
+                <span class="input-group-text attach_btn"><i class="far fa-images" (click)="file.click()"></i><i class="fas fa-link" (click)="toggleShowUrl()"></i></span>
+            </div>
+            <textarea name="" class="form-control type_msg" placeholder="Type your message here and use the buttons on the left to add a url or pictures..."
+            [(ngModel)]="message"></textarea>
+            <div class="input-group-append">
+              <span data-toggle="modal" data-target="#myModal" class="input-group-text send_btn"><i class="fas fa-paper-plane"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

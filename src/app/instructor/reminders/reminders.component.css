@@ -1,0 +1,137 @@
+.model-numbers {
+  display: inline-block;
+  padding: 0px 15px;
+}
+
+.card{
+  height: 100%;
+  width: 100%;
+  background-color: white !important;
+  border: 0px !important;
+  overflow: hidden;
+}
+
+.msg_sent {
+  border: 1px solid rgb(92.5%, 92.5%, 92.5%);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.msg_sent_color {
+  color: rgb(56, 56, 56);
+}
+
+.msg_sent_image_link {
+  margin: 0px 10px 0px 0px;
+}
+
+.msg_card_body{
+  overflow-y: scroll;
+  height: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.input-group {
+  border-radius: 35px;
+  overflow: hidden;
+}
+
+.card-footer{
+  border-radius: 0px !important;
+  border-top: 0 !important;
+  background-color: rgb(93.7%, 93.7%, 93.7%);
+}
+
+
+.add-image-preview, .add-image {
+  vertical-align:top;
+}
+
+.add-image {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  margin: 10px;
+  display: inline-block;
+}
+
+.add-image p {
+  width: 37px;
+  font-size: 60px;
+  color: rgb(93, 93, 93);
+  margin: 0px auto;
+}
+
+.add-image-preview {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+}
+
+.add-image-preview img {
+  width: 100px;
+  height: 100px;
+}
+
+.add-image-delete {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: rgb(100%, 39.8%, 39.8%);
+  color: white;
+  padding: 2.5px 8px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+
+.type_msg{
+  background-color: white !important;
+  border:0 !important;
+  color: black !important;
+  height: 60px !important;
+  overflow-y: auto;
+}
+
+.type_msg:focus{
+  box-shadow:none !important;
+  outline:0px !important;
+}
+
+.attach_btn{
+  border-radius: 15px 0 0 15px !important;
+  background-color: white !important;
+  border:0 !important;
+  color: rgb(161, 161, 161) !important;
+  cursor: pointer;
+}
+
+.attach_btn i {
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.send_btn {
+  background-color: white !important;
+  border: 0 !important;
+}
+
+.send_btn i {
+  font-size: 25px;
+  margin-right: 10px;
+  color: rgb(0%, 39.5%, 100%);
+}
+
+.url-p {
+  font-size: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .msg_sent_color {
+    float: left !important;
+  }
+}
+

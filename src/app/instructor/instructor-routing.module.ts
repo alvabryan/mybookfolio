@@ -15,6 +15,7 @@ import { CadetPortfolioViewComponent } from './cadet-portfolio/cadet-portfolio-v
 import { CadetInformationComponent } from './cadet-portfolio/cadet-information/cadet-information.component';
 import { SettingInstructorComponent } from './setting-instructor/setting-instructor.component';
 import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
+import { RemindersComponent } from './reminders/reminders.component';
 
 const routes: Routes = [
   {path: '', canActivate: [AuthInstructor] , component: InstructorComponent, children: [
@@ -31,6 +32,7 @@ const routes: Routes = [
       {path: 'cadet-information', component: CadetInformationComponent}
     ]},
     {path: 'portfolio', component: InstructorPortfolioComponent},
+    {path: 'reminders', component: RemindersComponent}
   ]},
   {path: 'approvel', component: AuthAprovelComponent}
 ];
