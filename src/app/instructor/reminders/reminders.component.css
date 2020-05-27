@@ -28,9 +28,9 @@
 
 .msg_card_body{
   overflow-y: scroll;
-  height: auto;
-  display: flex;
-  flex-direction: column-reverse;
+  max-height: 75vh;
+  /* display: flex; */
+  /* flex-direction: column-reverse; */
 }
 
 .input-group {

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Store } from '@ngrx/store';
 import * as fromInstructor from '../store/index';
 import * as remaindersAction from './store/remainders.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reminders',
   templateUrl: './reminders.component.html',
   styleUrls: ['./reminders.component.css']
 })
-export class RemindersComponent implements OnInit {
+export class RemindersComponent implements OnInit, OnDestroy {
+
+  // subscription
+  subscription: Subscription = new Subscription();
 
   imageArray: Array<any> = [];
   sendLetLevel: Array<any> = [1, 2 , 3 , 4];
@@ -19,16 +23,30 @@ export class RemindersComponent implements OnInit {
 
   showUrl = false;
 
+  // reminders
+  reminders: Array<any>;
+
+
   constructor(private FlassMessage: FlashMessagesService, private store: Store<fromInstructor.State>) { }
 
   ngOnInit() {
+    this.store.dispatch(remaindersAction.getReminders());
+    this.subscription.add(this.store.select('instructor').subscribe((data: any) => {
+      if (data.reminders) {
+        if (data.reminders.reminderData) {
+          this.reminders = data.reminders.reminderData;
+        }
+      }
+
+    }));
+
   }
 
   uploadImage(data) {
     if (data.target.files) {
       const filesArray = Object.values(data.target.files);
-      if (this.imageArray.length >= 5) {
-        this.FlassMessage.show('You cannot upload more than 5 images at a time!', {cssClass: 'alert-danger', timeout: 2000});
+      if (this.imageArray.length > 1) {
+        this.FlassMessage.show('You cannot upload more than 1 image at a time!', {cssClass: 'alert-danger', timeout: 2000});
       } else {
         filesArray.forEach((image: any) => {
           if (image.type === 'image/jpeg' || image.type === 'image/jpg' || image.type === 'image/png') {
@@ -85,6 +103,21 @@ export class RemindersComponent implements OnInit {
       let: this.sendLetLevel,
       period: this.sendPeriod
     }));
+
+    this.imageArray = [];
+    this.sendLetLevel = [1, 2 , 3 , 4];
+    this.sendPeriod = [1, 2, 3 , 4, 5, 6, 7, 8];
+    this.url = '';
+    this.message = '';
+    this.showUrl = false;
+  }
+
+  deleteReminder(id: string) {
+    this.store.dispatch(remaindersAction.deleteReminder({reminderUid: id}));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

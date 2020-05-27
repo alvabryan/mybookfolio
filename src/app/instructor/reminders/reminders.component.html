@@ -56,7 +56,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="sendRemainder()">Send</button>
+        <button type="button" class="btn btn-primary" (click)="sendRemainder()" data-dismiss="modal">Send</button>
       </div>
 
     </div>
@@ -78,33 +78,30 @@
       <div class="card">
         <div class="card-body msg_card_body">
           <!-- box starts here-->
-          <div class="container-fluid msg_sent">
+          <div class="container-fluid msg_sent" *ngFor="let x of reminders">
             <div class="row">
               <div class="col-11">
-                <h3 class="msg_sent_color">All raiders must attent tomorrow's meeting! Top</h3>
+                <h3 class="msg_sent_color" *ngIf="x.message">{{ x.message }}</h3>
+                <h6 *ngIf="x.urlLink"><a [href]="x.urlLink" target="_blank">{{ x.urlLink }}</a></h6>
               </div>
               <div class="col-1">
-                <i class="fas fa-cog float-right"></i>
+                <i class="fas fa-cog float-right" (click)="deleteReminder(x.id)"></i>
               </div>
             </div>
             <div class="row">
               <div class="col mt-2 mb-2">
-                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
-                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
-                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
-                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
-                <a target="_blank" href="#" class="msg_sent_image_link"><img src="https://pmcvariety.files.wordpress.com/2018/04/avengers-infinity-war-9.jpg?w=681&h=383&crop=1" height="100px" width="120px"></a>
+                <a target="_blank" [href]="x.imageUrl" class="msg_sent_image_link" *ngIf="x.imageUrl"><img [src]="x.imageUrl" height="250px" width="300px"></a>
               </div>
             </div>
             <div class="row">
               <div class="col-4">
-                <p class="msg_sent_color">Let: All</p>
+                <p class="msg_sent_color">Let: {{ x.showLet }}</p>
               </div>
               <div class="col-4">
-                <p class="msg_sent_color">Period: All</p>
+                <p class="msg_sent_color">Period: {{ x.showPeriods }}</p>
               </div>
               <div class="col-4">
-                <p class="float-right msg_sent_color">06/18/2020 11:00 AM</p>
+                <p class="float-right msg_sent_color">{{ x.dateSent.toDate() | date:'yyyy/MM/dd h:mm:ss a' }}</p>
               </div>
             </div>
           </div>
@@ -112,9 +109,6 @@
         </div>
         <div class="card-footer">
           <div class="container-fluid" *ngIf="imageArray.length > 0">
-            <div class="add-image" *ngIf="imageArray.length < 5" (click)="file.click()">
-              <p>+</p>
-            </div>
             <div class="add-image-preview" *ngFor="let imageUrl of imageArray; let i = index">
               <div class="add-image-delete" (click)="removeImage(i)">X</div>
               <img class="img-responsive" [src]="imageUrl.render.result" height="auto" width="auto">
@@ -131,7 +125,7 @@
           <div class="input-group">
             <div class="input-group-append">
                 <input type="file" name="file" id="file" #file (change)="uploadImage($event)" multiple style="display: none;">
-                <span class="input-group-text attach_btn"><i class="far fa-images" (click)="file.click()"></i><i class="fas fa-link" (click)="toggleShowUrl()"></i></span>
+                <span class="input-group-text attach_btn"><i class="far fa-images" (click)="file.click()" *ngIf="imageArray.length === 0"></i><i class="fas fa-link" (click)="toggleShowUrl()" [ngStyle]="{color: showUrl ? 'rgb(0%, 39.5%, 100%)' : 'rgb(161, 161, 161)'}"></i></span>
             </div>
             <textarea name="" class="form-control type_msg" placeholder="Type your message here and use the buttons on the left to add a url or pictures..."
             [(ngModel)]="message"></textarea>
