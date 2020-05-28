@@ -96,7 +96,11 @@ export class RemindersEffect {
       // battalion code
       const battalionCode = data[1].user.battalionCode;
 
-      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders').valueChanges({ idField: 'id'})).pipe(tap((rdata) => console.log(rdata)), map((dataa: any) => {
+      // 7 days back
+      const uploadDate = new Date().getTime() - 2592000000;
+      const lastMonth = new Date(uploadDate);
+
+      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => ref.where('dateSent', '>=', lastMonth)).valueChanges({ idField: 'id'})).pipe(tap((rdata) => console.log(rdata)), map((dataa: any) => {
         return remindersAction.setReminders({reminders: dataa});
       }));
 

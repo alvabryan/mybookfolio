@@ -113,7 +113,10 @@ export class RemindersComponent implements OnInit, OnDestroy {
   }
 
   deleteReminder(id: string) {
-    this.store.dispatch(remaindersAction.deleteReminder({reminderUid: id}));
+    const alertBox = confirm('Are you sure you want to delete this reminder?');
+    if (alertBox) {
+      this.store.dispatch(remaindersAction.deleteReminder({reminderUid: id}));
+    }
   }
 
   ngOnDestroy() {

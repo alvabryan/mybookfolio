@@ -129,6 +129,14 @@
   font-size: 25px;
 }
 
+.fa-times {
+  font-size: 35px;
+}
+
+.fa-times:hover {
+  color: red;
+}
+
 @media screen and (max-width: 600px) {
   .msg_sent_color {
     float: left !important;

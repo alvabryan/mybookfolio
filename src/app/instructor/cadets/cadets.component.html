@@ -61,6 +61,7 @@
             <th>Let</th>
             <th>Period</th>
             <th>View</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tfoot>
@@ -71,6 +72,7 @@
             <th>Let</th>
             <th>Period</th>
             <th>View</th>
+            <th>Delete</th>
           </tr>
         </tfoot>
         <tbody *ngIf="filterRoster.length > 0">
@@ -82,6 +84,7 @@
             <td>{{ cadet.period }}</td>
             <td><button (click)="setSearchData(cadet.uid, cadet.firstName, cadet.lastName, cadet.letLevel)"
                 class="btn btn-primary">View</button></td>
+            <td><button (click)="deleteCadet(cadet.uid, cadet.firstName, cadet.lastName)" class="btn btn-danger">Delete</button></td>
           </tr>
 
         </tbody>
