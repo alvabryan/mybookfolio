@@ -16,19 +16,32 @@ export class CadetComponent implements OnInit, OnDestroy  {
 
   private cadetSubscription: Subscription = new Subscription();
 
-  user: firebase.User;
+  user: any;
   userLoaded = false;
 
   constructor( private db: AngularFirestore, private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(PortfolioActions.onReload());
     this.cadetSubscription.add(
-      this.store.select('auth').subscribe(data => {
-        if (data.user) {
-          this.store.dispatch(CadetActions.getCadetData());
-          this.store.dispatch(CadetActions.getCadetProgress());
-          this.store.dispatch(CadetActions.getCadetDataSheet());
+      this.store.select(fromCadet.authUserSelector).subscribe(data => {
+        if (data) {
+          if (data.battalionCode) {
+            this.user = data;
+            this.store.dispatch(CadetActions.getCadetData());
+            this.store.dispatch(CadetActions.getCadetProgress());
+            this.store.dispatch(CadetActions.getCadetDataSheet());
+            this.store.dispatch(PortfolioActions.onReload());
+          }
+        }
+      })
+    );
+
+    this.cadetSubscription.add(
+      this.store.select(fromCadet.cadetSelector).subscribe((data: any) => {
+        if (data) {
+          if (data.cadetData) {
+            this.userLoaded = true;
+          }
         }
       })
     );

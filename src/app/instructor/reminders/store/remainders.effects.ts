@@ -29,6 +29,13 @@ export class RemindersEffect {
       // upload timestamp
       const uploadDate = firestore.Timestamp.now();
 
+      const showToVar = [];
+      (remainderData.let).forEach(letLevel => {
+        (remainderData.period).forEach(period => {
+          showToVar.push(`${letLevel}${period}`);
+        });
+      });
+
 
       if (remainderData.images[0]) {
         const uploadImage = remainderData.images[0].file;
@@ -50,6 +57,7 @@ export class RemindersEffect {
 
         const fileTypeExtension = fileTypeSplit(fileType[1]);
 
+
       // reference to storage
         const ref = this.storage.ref(path);
         const image = this.storage.upload(path, uploadImage);
@@ -60,9 +68,7 @@ export class RemindersEffect {
             return from(this.db.collection('battalions').doc(battalionCode).collection('reminders').add({
               dateSent: uploadDate,
               message: remainderData.message,
-              showPeriods: remainderData.period,
-              showLet: remainderData.let,
-              urlLink: remainderData.url,
+              showTo: showToVar,
               imageUrl: url
             })).pipe(map(() => {
               return remindersAction.uploadingFile();
@@ -77,8 +83,7 @@ export class RemindersEffect {
         return from(this.db.collection('battalions').doc(battalionCode).collection('reminders').add({
           dateSent: uploadDate,
           message: remainderData.message,
-          showLet: remainderData.let,
-          showPeriods: remainderData.period,
+          showTo: showToVar,
           urlLink: remainderData.url,
           imageUrl: ''
         })).pipe(map(() => {
@@ -100,7 +105,7 @@ export class RemindersEffect {
       const uploadDate = new Date().getTime() - 2592000000;
       const lastMonth = new Date(uploadDate);
 
-      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => ref.where('dateSent', '>=', lastMonth)).valueChanges({ idField: 'id'})).pipe(tap((rdata) => console.log(rdata)), map((dataa: any) => {
+      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => ref.where('dateSent', '>=', lastMonth)).valueChanges({ idField: 'id'})).pipe(map((dataa: any) => {
         return remindersAction.setReminders({reminders: dataa});
       }));
 

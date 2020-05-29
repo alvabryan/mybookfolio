@@ -15,7 +15,7 @@ export const reducers = fromCadetReducer.reducer;
 
 
 // instructor reducer selector
-export const cadetSelector = createFeatureSelector<CadetState>('instructor');
+export const cadetSelector = createFeatureSelector<CadetState>('cadet');
 
 // auth reducer selectors
 export const authSelector = createFeatureSelector<fromAuth.State>('auth');

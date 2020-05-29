@@ -9,7 +9,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/index';
 import * as fromCadet from './index';
 import * as CadetActions from './cadet.actions';
-import { withLatestFrom, switchMap, map } from 'rxjs/operators';
+import { withLatestFrom, switchMap, map, take } from 'rxjs/operators';
 import { EMPTY, from } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -76,6 +76,29 @@ export class CadetEffects {
     })
   ));
 
+  getReminders = createEffect(() => this.actions$.pipe(
+    ofType(CadetActions.getReminders),
+    withLatestFrom(this.store.select('auth'), this.store.select('cadet')),
+    switchMap((data: any) => {
+      // battalion code
+      const battalionCode = data[1].user.battalionCode;
+      const cadetLet = data[1].user.letAssigned;
+      const period = data[2].cadetData.period;
+      const showToCadet = `${cadetLet}${period}`;
+
+      // 7 days back
+      const uploadDate = new Date().getTime() - 2592000000;
+      const lastMonth = new Date(uploadDate);
+
+      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => {
+        return ref.where('showTo', 'array-contains', showToCadet).where('dateSent', '>=', lastMonth);
+      }).valueChanges({ idField: 'id'})).pipe(take(1), tap(rdata => console.log(rdata)), map((dataa: any) => {
+        return CadetActions.setReminders({reminders: dataa});
+      }));
+
+    })
+  ));
+
   constructor(
     private http: HttpClient,
     private actions$: Actions,
@@ -83,7 +106,7 @@ export class CadetEffects {
     private storage: AngularFireStorage,
     private db: AngularFirestore,
     private router: Router,
-    private store: Store<fromRoot.State>
+    private store: Store<fromCadet.State>
   ) {}
 }
 

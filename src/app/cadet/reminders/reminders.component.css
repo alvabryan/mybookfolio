@@ -1,0 +1,14 @@
+.msg_sent {
+  border: 1px solid rgb(92.5%, 92.5%, 92.5%);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.msg_sent_color {
+  color: rgb(56, 56, 56);
+}
+
+.msg_sent_image_link {
+  margin: 0px 10px 0px 0px;
+}

@@ -31,6 +31,7 @@ import { AuthGuard } from './auth.guard';
 import * as CadetEffects from './store/cadet.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CadetDataSheetComponent } from './cadet-data-sheet/cadet-data-sheet.component';
+import { RemindersComponent } from './reminders/reminders.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CadetDataSheetComponent } from './cadet-data-sheet/cadet-data-sheet.com
     CardItmeComponent,
     CadetPortfolioComponent,
     CadetDataSheetComponent,
+    RemindersComponent,
   ],
   imports: [
     CommonModule,
