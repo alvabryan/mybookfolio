@@ -63,6 +63,11 @@ export const updateCadetInfo = createAction('[User Cadet] update personal data',
 
 // update cadet battalion code
 export const updateBattalionCode = createAction('[User Cadet] update battalion code', props<{newBattalionCode: string}>());
+export const updateCode = createAction('[user Cadet] code');
+export const updateCodeExist = createAction('[user Cadet] code', props<{newBattalionCode: string, oldBattalionCode: string}>());
+export const updateCodeDataRetrieved = createAction('[user code] data retrieved', props<{newBattalionCode: string, cadetDataSheet: any, cadetsProgress: any}>());
+export const updateCodeError = createAction('[user update] error');
+export const updateCodeSuccess = createAction('[user update] update successful', props<{newBattalionCode: string}>());
 
 // password update
 export const passwordUpdate = createAction('[User Settings] update password', props<{oldPassword: string, newPassword: string}>());

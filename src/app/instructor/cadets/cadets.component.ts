@@ -126,6 +126,10 @@ export class CadetsComponent implements OnInit, OnDestroy {
 
   deleteCadet(cadetUid: string, firstName: string, lastName: string) {
     const confirmDelete = confirm(`Are you sure you want to remove ${lastName}, ${firstName} from your battalion?`);
+    if (confirmDelete) {
+      // tslint:disable-next-line: object-literal-shorthand
+      this.store.dispatch(SearchCadetActions.deleteCadet({cadetUid: cadetUid}));
+    }
   }
 
   ngOnDestroy() {

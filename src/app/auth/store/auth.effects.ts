@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, Effect } from '@ngrx/effects';
 import { User } from '../user.model';
 
-import { switchMap, exhaustMap, mergeMap, catchError, tap, map, delay, take, withLatestFrom, finalize } from 'rxjs/operators';
+import { switchMap, mergeMap, catchError, tap, map, take, withLatestFrom } from 'rxjs/operators';
 
 // auth action
 import * as AuthActions from './auth.actions';
-import { of, EMPTY, from, forkJoin, combineLatest } from 'rxjs';
+import { of, EMPTY, from, forkJoin, combineLatest, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -130,7 +130,6 @@ export class AuthEffects {
     authRedirect = createEffect(() => this.actions$.pipe(
         ofType(AuthActions.authenticationSuccess),
         tap((data) => {
-           console.log(data);
            if (data.userType === 'cadet') {
              if (this.router.url === '/cadet/settings') {
               this.router.navigate(['/cadet/settings']);
@@ -407,7 +406,7 @@ export class AuthEffects {
                     }), map(url => {
                         return AuthActions.changeProfileImage({imageUrl: url});
                     }));
-                }), catchError((err) => {
+                }), catchError(() => {
                     return EMPTY;
                 }));
 
@@ -477,15 +476,14 @@ export class AuthEffects {
         ofType(AuthActions.passwordUpdate),
         withLatestFrom(this.store.select('auth')),
         switchMap((data: any) => {
-            const updateStatus = null;
             const credentials = firebase.auth.EmailAuthProvider.credential(data[1].user.email, data[0].oldPassword);
 
 
-            return this.afAuth.auth.currentUser.reauthenticateWithCredential(credentials).then(returnData => {
+            return this.afAuth.auth.currentUser.reauthenticateWithCredential(credentials).then(() => {
                 return this.afAuth.auth.currentUser.updatePassword(data[0].newPassword);
             }).then(() => {
                 return AuthActions.passwordUpdateStatus({status: 'success'});
-            }).catch((error) => {
+            }).catch(() => {
                 return AuthActions.passwordUpdateStatus({status: 'error'});
             });
 
@@ -563,10 +561,89 @@ export class AuthEffects {
     // update cadet battalion code
     updateBattalionCode = createEffect(() => this.actions$.pipe(
       ofType(AuthActions.updateBattalionCode),
-      tap((data: any) => {
-        console.log(data);
+      withLatestFrom(this.store.select('auth')),
+      tap(() => console.log('1: check is battalion code exit')),
+      switchMap((data: any) => {
+        const newBattalionCode = data[0].newBattalionCode.code;
+
+        // current battalion code
+        const oldBattalionCode = data[1].user.battalionCode;
+
+        // cadet uid
+        const cadetUid = data[1].user.uid;
+
+        try {
+          return this.db.collection('battalionCodeTracker').doc('battalionCode').valueChanges().pipe(map((rdata: any) => {
+            const battalionCodes = rdata.codes;
+            if (battalionCodes.includes(newBattalionCode)) {
+              return AuthActions.updateCodeExist({newBattalionCode, oldBattalionCode});
+            } else {
+              return AuthActions.updateCodeError();
+            }
+          }));
+        } catch (error) {
+          console.log(error);
+        }
+
       })
-    ), {dispatch: false});
+    ));
+
+    updateBattalionCodeExist = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.updateCodeExist),
+      withLatestFrom(this.store.select('auth')),
+      tap(() => console.log('2: get both of cadet data')),
+      switchMap((data) => {
+        const oldBattalionCode = data[1].user.battalionCode;
+        const newBattalionCode = data[0].newBattalionCode;
+        const cadetUid = data[1].user.uid;
+
+        try {
+          return combineLatest(
+            from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetsProgress').doc(oldBattalionCode).valueChanges()),
+            from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetDataSheet').doc(oldBattalionCode).valueChanges())
+          ).pipe(map(dbData => {
+            const cadetDataSheet = dbData[1][cadetUid];
+            const cadetsProgress = dbData[0][cadetUid];
+            if (cadetDataSheet && cadetsProgress) {
+              return AuthActions.updateCodeDataRetrieved({newBattalionCode, cadetDataSheet, cadetsProgress});
+            } else {
+              return AuthActions.updateCodeError();
+            }
+
+          }));
+        } catch (error) {
+          console.log(error);
+        }
+
+      })
+    ));
+
+    updateBattalionCodeRetrieved = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.updateCodeDataRetrieved),
+      withLatestFrom(this.store.select('auth')),
+      tap(() => console.log('3: set and delete data')),
+      switchMap(data => {
+        const cadetUid = data[1].user.uid;
+        const newBattalionCode = data[0].newBattalionCode;
+        const oldBattalionCode = data[1].user.battalionCode;
+        const cadetsProgress = data[0].cadetsProgress;
+        const cadetDataSheet = data[0].cadetDataSheet;
+
+        return combineLatest(
+          from(this.db.collection('users').doc(cadetUid).set({data: {battalionCode: newBattalionCode}}, {merge: true})),
+          from(this.db.collection('battalions').doc(newBattalionCode).collection('cadetDataSheet').doc(newBattalionCode).set({[cadetUid]: cadetDataSheet}, {merge: true})),
+          from(this.db.collection('battalions').doc(newBattalionCode).collection('cadetsProgress').doc(newBattalionCode).set({[cadetUid]: cadetsProgress}, {merge: true})),
+        ).pipe(tap((() => {
+            combineLatest(
+              from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetsProgress').doc(oldBattalionCode).update({[cadetUid]: firestore.FieldValue.delete()})),
+              from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetDataSheet').doc(oldBattalionCode).update({[cadetUid]: firestore.FieldValue.delete()}))
+            );
+        })), map((rdata) => {
+          return AuthActions.updateCodeSuccess({newBattalionCode});
+        }));
+      })
+    ));
+
 
     // update user let assign
     updateLetAssign = createEffect(() => this.actions$.pipe(
@@ -581,7 +658,6 @@ export class AuthEffects {
 
 
     constructor(
-        private http: HttpClient,
         private actions$: Actions,
         private afAuth: AngularFireAuth,
         private storage: AngularFireStorage,
