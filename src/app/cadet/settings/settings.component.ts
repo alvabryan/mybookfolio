@@ -108,12 +108,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   onBattalionCodeSubmit() {
     const battalionCode = this.battalionCode.value;
-    this.store.dispatch(AuthActions.updateBattalionCode({newBattalionCode: battalionCode}));
+    this.store.dispatch(AuthActions.updateBattalionCode({newBattalionCode: battalionCode.code, cadetUid: this.cadetData.uid}));
   }
 
   onSubmitPersonalInfo() {
     const newCadetData = this.personalInfo.value;
-    this.store.dispatch(AuthActions.updateCadetInfo({newPersonalData: newCadetData}));
+    this.store.dispatch(AuthActions.updateCadetInfo({newPersonalData: newCadetData.code}));
   }
 
   onSubmitPassword() {

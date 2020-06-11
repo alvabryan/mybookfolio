@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../store/index';
 import * as PortfolioActions from '../../portfolio/store/portfolio.actions';
 import * as SearchCadetActions from './store-searchcadet/searchCadet.actions';
+import * as AuthActions from '../../auth/store/auth.actions';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription, combineLatest } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -128,7 +129,7 @@ export class CadetsComponent implements OnInit, OnDestroy {
     const confirmDelete = confirm(`Are you sure you want to remove ${lastName}, ${firstName} from your battalion?`);
     if (confirmDelete) {
       // tslint:disable-next-line: object-literal-shorthand
-      this.store.dispatch(SearchCadetActions.deleteCadet({cadetUid: cadetUid}));
+      this.store.dispatch(AuthActions.updateBattalionCode({newBattalionCode: 'Pending', cadetUid: cadetUid}));
     }
   }
 

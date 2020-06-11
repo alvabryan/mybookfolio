@@ -10,7 +10,7 @@ import * as fromRoot from '../../store/index';
 import * as fromCadet from './index';
 import * as CadetActions from './cadet.actions';
 import { withLatestFrom, switchMap, map, take } from 'rxjs/operators';
-import { EMPTY, from } from 'rxjs';
+import { EMPTY, from, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable()
@@ -22,8 +22,10 @@ export class CadetEffects {
     switchMap((data: any) => {
       const userUid = data[1].user.uid;
       if (userUid) {
-        return from(this.db.collection('users').doc(userUid).valueChanges()).pipe(map((returnedData: any) => {
-          return CadetActions.setCadetData({data: returnedData.data});
+        return from(this.db.collection('users').doc(userUid).valueChanges()).pipe(map((rData: any) => {
+          return {...rData.data, uid: userUid};
+        }), map((returnedData: any) => {
+          return CadetActions.setCadetData({data: returnedData});
         }));
       }
 
@@ -40,8 +42,12 @@ export class CadetEffects {
       const battalionCode = data[1].user.battalionCode;
 
       return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetsProgress').doc(`${battalionCode}`).valueChanges()).pipe(map((returnedData: any) => {
-        const cadetProgressData = returnedData[userUid];
-        return CadetActions.setCadetProgress({cadetProgress: cadetProgressData});
+        if (returnedData[userUid]) {
+          const cadetProgressData = returnedData[userUid];
+          return CadetActions.setCadetProgress({cadetProgress: cadetProgressData});
+        } else {
+          return {type: 'error'};
+        }
       }));
 
     })

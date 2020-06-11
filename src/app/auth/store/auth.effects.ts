@@ -562,22 +562,23 @@ export class AuthEffects {
     updateBattalionCode = createEffect(() => this.actions$.pipe(
       ofType(AuthActions.updateBattalionCode),
       withLatestFrom(this.store.select('auth')),
-      tap(() => console.log('1: check is battalion code exit')),
+      tap(() => console.log('1: check if battalion code exist')),
       switchMap((data: any) => {
-        const newBattalionCode = data[0].newBattalionCode.code;
+        const newBattalionCode = data[0].newBattalionCode;
 
         // current battalion code
         const oldBattalionCode = data[1].user.battalionCode;
 
         // cadet uid
-        const cadetUid = data[1].user.uid;
+        const cadetUid =  data[0].cadetUid;
 
         try {
           return this.db.collection('battalionCodeTracker').doc('battalionCode').valueChanges().pipe(map((rdata: any) => {
             const battalionCodes = rdata.codes;
             if (battalionCodes.includes(newBattalionCode)) {
-              return AuthActions.updateCodeExist({newBattalionCode, oldBattalionCode});
+              return AuthActions.updateCodeExist({newBattalionCode, oldBattalionCode, cadetUid});
             } else {
+              console.log('error');
               return AuthActions.updateCodeError();
             }
           }));
@@ -595,18 +596,19 @@ export class AuthEffects {
       switchMap((data) => {
         const oldBattalionCode = data[1].user.battalionCode;
         const newBattalionCode = data[0].newBattalionCode;
-        const cadetUid = data[1].user.uid;
+        const cadetUid = data[0].cadetUid;
 
         try {
           return combineLatest(
-            from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetsProgress').doc(oldBattalionCode).valueChanges()),
-            from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetDataSheet').doc(oldBattalionCode).valueChanges())
+            from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetsProgress').doc(oldBattalionCode).valueChanges()).pipe(take(1)),
+            from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetDataSheet').doc(oldBattalionCode).valueChanges()).pipe(take(1))
           ).pipe(map(dbData => {
             const cadetDataSheet = dbData[1][cadetUid];
             const cadetsProgress = dbData[0][cadetUid];
             if (cadetDataSheet && cadetsProgress) {
-              return AuthActions.updateCodeDataRetrieved({newBattalionCode, cadetDataSheet, cadetsProgress});
+              return AuthActions.updateCodeDataRetrieved({newBattalionCode, cadetDataSheet, cadetsProgress, cadetUid});
             } else {
+              console.log('error');
               return AuthActions.updateCodeError();
             }
 
@@ -623,7 +625,7 @@ export class AuthEffects {
       withLatestFrom(this.store.select('auth')),
       tap(() => console.log('3: set and delete data')),
       switchMap(data => {
-        const cadetUid = data[1].user.uid;
+        const cadetUid = data[0].cadetUid;
         const newBattalionCode = data[0].newBattalionCode;
         const oldBattalionCode = data[1].user.battalionCode;
         const cadetsProgress = data[0].cadetsProgress;

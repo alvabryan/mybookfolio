@@ -61,6 +61,16 @@ const authReducer = createReducer(
         ...state,
         user: newUser
       };
+    }),
+    on(AuthActions.updateCodeSuccess, (state, data: any) => {
+      const newUserCode = state.user;
+      if (newUserCode.userType === 'cadet') {
+        newUserCode.battalionCode = data.newBattalionCode;
+      }
+      return {
+        ...state,
+        user: newUserCode
+      };
     })
 );
 

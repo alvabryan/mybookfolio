@@ -62,10 +62,10 @@ export const updateUserInfo = createAction('[User Settings] profile name', props
 export const updateCadetInfo = createAction('[User Cadet] update personal data', props<{newPersonalData: any}>());
 
 // update cadet battalion code
-export const updateBattalionCode = createAction('[User Cadet] update battalion code', props<{newBattalionCode: string}>());
+export const updateBattalionCode = createAction('[User Cadet] update battalion code', props<{newBattalionCode: string, cadetUid: string}>());
 export const updateCode = createAction('[user Cadet] code');
-export const updateCodeExist = createAction('[user Cadet] code', props<{newBattalionCode: string, oldBattalionCode: string}>());
-export const updateCodeDataRetrieved = createAction('[user code] data retrieved', props<{newBattalionCode: string, cadetDataSheet: any, cadetsProgress: any}>());
+export const updateCodeExist = createAction('[user Cadet] code', props<{newBattalionCode: string, oldBattalionCode: string, cadetUid: string}>());
+export const updateCodeDataRetrieved = createAction('[user code] data retrieved', props<{newBattalionCode: string, cadetDataSheet: any, cadetsProgress: any, cadetUid: string}>());
 export const updateCodeError = createAction('[user update] error');
 export const updateCodeSuccess = createAction('[user update] update successful', props<{newBattalionCode: string}>());
 
