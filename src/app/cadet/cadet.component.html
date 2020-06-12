@@ -1,5 +1,10 @@
 <app-spinner *ngIf="!userLoaded"></app-spinner>
 <app-navigation *ngIf="userLoaded"></app-navigation>
 <app-sidebar *ngIf="userLoaded">
+  <div class="container-fluid" *ngIf="user.battalionCode === 'Pending'">
+    <div class="code-warning">
+      <h6>Warning: you have been removed from your battalion and are currently in a PENDING battalion! Change your battalion code in <a routerLink="/cadet/settings"><u>settings</u></a> to be assigned to a new battalion.</h6>
+    </div>
+  </div>
   <router-outlet></router-outlet>
 </app-sidebar>

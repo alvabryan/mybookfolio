@@ -1,0 +1,10 @@
+.code-warning {
+  background-color: red;
+  padding: 20px 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.code-warning h6 {
+  color: white;
+}

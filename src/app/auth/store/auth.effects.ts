@@ -572,18 +572,23 @@ export class AuthEffects {
         // cadet uid
         const cadetUid =  data[0].cadetUid;
 
-        try {
-          return this.db.collection('battalionCodeTracker').doc('battalionCode').valueChanges().pipe(map((rdata: any) => {
-            const battalionCodes = rdata.codes;
-            if (battalionCodes.includes(newBattalionCode)) {
-              return AuthActions.updateCodeExist({newBattalionCode, oldBattalionCode, cadetUid});
-            } else {
-              console.log('error');
-              return AuthActions.updateCodeError();
-            }
-          }));
-        } catch (error) {
-          console.log(error);
+        if (newBattalionCode === oldBattalionCode) {
+          console.log('battalion code is the same');
+          return EMPTY;
+        } else {
+          try {
+            return this.db.collection('battalionCodeTracker').doc('battalionCode').valueChanges().pipe(map((rdata: any) => {
+              const battalionCodes = rdata.codes;
+              if (battalionCodes.includes(newBattalionCode)) {
+                return AuthActions.updateCodeExist({newBattalionCode, oldBattalionCode, cadetUid});
+              } else {
+                console.log('error');
+                return AuthActions.updateCodeError();
+              }
+            }));
+          } catch (error) {
+            console.log(error);
+          }
         }
 
       })
@@ -628,6 +633,7 @@ export class AuthEffects {
         const cadetUid = data[0].cadetUid;
         const newBattalionCode = data[0].newBattalionCode;
         const oldBattalionCode = data[1].user.battalionCode;
+        const userType = data[1].user.userType;
         const cadetsProgress = data[0].cadetsProgress;
         const cadetDataSheet = data[0].cadetDataSheet;
 
@@ -640,6 +646,12 @@ export class AuthEffects {
               from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetsProgress').doc(oldBattalionCode).update({[cadetUid]: firestore.FieldValue.delete()})),
               from(this.db.collection('battalions').doc(oldBattalionCode).collection('cadetDataSheet').doc(oldBattalionCode).update({[cadetUid]: firestore.FieldValue.delete()}))
             );
+
+            if (userType === 'cadet') {
+              const dataFromLocalStorageInfo = JSON.parse(localStorage.getItem('userData'));
+              dataFromLocalStorageInfo.battalionCode = newBattalionCode;
+              localStorage.setItem('userData', JSON.stringify(dataFromLocalStorageInfo));
+            }
         })), map((rdata) => {
           return AuthActions.updateCodeSuccess({newBattalionCode});
         }));
