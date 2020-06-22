@@ -12,11 +12,6 @@
       <!-- Modal body -->
       <div class="modal-body">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-              <!-- <p>Select the let levels and periods you want to send your remainder to:</p> -->
-            </div>
-          </div>
 
           <!-- Let Level -->
           <div class="row">
@@ -24,32 +19,48 @@
               <h3>Let Level</h3>
             </div>
           </div>
-          <div class="row">
-            <div class="col-3"><input type="checkbox" (change)="toggleLet(1)" checked> <P class="model-numbers">1</P></div>
-            <div class="col-3"><input type="checkbox" (change)="toggleLet(2)" checked> <P class="model-numbers">2</P></div>
-            <div class="col-3"><input type="checkbox" (change)="toggleLet(3)" checked> <P class="model-numbers">3</P></div>
-            <div class="col-3"><input type="checkbox" (change)="toggleLet(4)" checked> <P class="model-numbers">4</P></div>
-          </div>
 
-          <br>
-
-          <!-- Period -->
           <div class="row">
             <div class="col">
-              <h3>Period</h3>
+              <p>Select the let levels you want to send your remainder to:</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(1)" checked> <p class="model-numbers">1</p></div>
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(2)" checked> <p class="model-numbers">2</p></div>
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(3)" checked> <p class="model-numbers">3</p></div>
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(4)" checked> <p class="model-numbers">4</p></div>
+
+          <div class="row let-box-row">
+            <div class="col">
+              <div class="let-box-click" (click)="toggleLet(1)" [ngStyle]="{border: sendLetLevel.includes(1) ? '2px solid green' : 'none' }">
+                <div class="container-fluid">
+                  <h1 class="text-center">1</h1>
+                  <p class="text-center">Let</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="let-box-click" (click)="toggleLet(2)" [ngStyle]="{border: sendLetLevel.includes(2) ? '2px solid green' : 'none' }">
+                <div class="container-fluid">
+                  <h1 class="text-center">2</h1>
+                  <p class="text-center">Let</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="row">
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(5)" checked> <p class="model-numbers">5</p></div>
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(6)" checked> <p class="model-numbers">6</p></div>
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(7)" checked> <p class="model-numbers">7</p></div>
-            <div class="col-3"><input type="checkbox" (change)="togglePeriod(8)" checked> <p class="model-numbers">8</p></div>
+          <div class="row let-box-row">
+            <div class="col">
+              <div class="let-box-click" (click)="toggleLet(3)" [ngStyle]="{border: sendLetLevel.includes(3) ? '2px solid green' : 'none' }">
+                <div class="container-fluid">
+                  <h1 class="text-center">3</h1>
+                  <p class="text-center">Let</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="let-box-click" (click)="toggleLet(4)" [ngStyle]="{border: sendLetLevel.includes(4) ? '2px solid green' : 'none' }">
+                <div class="container-fluid">
+                  <h1 class="text-center">4</h1>
+                  <p class="text-center">Let</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -89,7 +100,7 @@
             </div>
             <div class="row">
               <div class="col">
-                <h6 *ngIf="x.urlLink"><a [href]="x.urlLink" target="_blank">{{ x.urlLink }}</a></h6>
+                <h6 *ngIf="x.webUrl"><a href="https://{{x.webUrl}}" target="_blank">{{ x.webUrl }}</a></h6>
               </div>
             </div>
             <div class="row">
@@ -98,13 +109,10 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-4">
-                <!-- <p class="msg_sent_color">Let: {{ x.showLet }}</p> -->
+              <div class="col-6">
+                <p class="msg_sent_color"><b>To:</b> {{ x.showTo }}</p>
               </div>
-              <div class="col-4">
-                <!-- <p class="msg_sent_color">Period: {{ x.showPeriods }}</p> -->
-              </div>
-              <div class="col-4">
+              <div class="col-6">
                 <p class="float-right msg_sent_color">{{ x.dateSent.toDate() | date:'yyyy/MM/dd h:mm:ss a' }}</p>
               </div>
             </div>

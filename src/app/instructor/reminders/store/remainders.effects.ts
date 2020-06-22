@@ -29,12 +29,18 @@ export class RemindersEffect {
       // upload timestamp
       const uploadDate = firestore.Timestamp.now();
 
-      const showToVar = [];
-      (remainderData.let).forEach(letLevel => {
-        (remainderData.period).forEach(period => {
-          showToVar.push(`${letLevel}${period}`);
+      // let level to
+      const letLevelTo = data[0].let;
+      let toShowLet = [];
+
+      if (letLevelTo.includes(1) && letLevelTo.includes(2) && letLevelTo.includes(3) && letLevelTo.includes(4)) {
+        toShowLet = [battalionCode];
+      } else {
+        letLevelTo.forEach((letLevel) => {
+          toShowLet.push(`${battalionCode}Let${letLevel}`);
         });
-      });
+      }
+
 
 
       if (remainderData.images[0]) {
@@ -68,7 +74,8 @@ export class RemindersEffect {
             return from(this.db.collection('battalions').doc(battalionCode).collection('reminders').add({
               dateSent: uploadDate,
               message: remainderData.message,
-              showTo: showToVar,
+              showTo: toShowLet,
+              webUrl: remainderData.url,
               imageUrl: url
             })).pipe(map(() => {
               return remindersAction.uploadingFile();
@@ -83,13 +90,18 @@ export class RemindersEffect {
         return from(this.db.collection('battalions').doc(battalionCode).collection('reminders').add({
           dateSent: uploadDate,
           message: remainderData.message,
-          showTo: showToVar,
-          urlLink: remainderData.url,
+          showTo: toShowLet,
+          webUrl: remainderData.url,
           imageUrl: ''
         })).pipe(map(() => {
           return remindersAction.uploadingFile();
         }));
       }
+
+
+
+
+
     })
   ));
 
@@ -105,7 +117,34 @@ export class RemindersEffect {
       const uploadDate = new Date().getTime() - 2592000000;
       const lastMonth = new Date(uploadDate);
 
-      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => ref.where('dateSent', '>=', lastMonth)).valueChanges({ idField: 'id'})).pipe(map((dataa: any) => {
+      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => ref.where('dateSent', '>=', lastMonth)).valueChanges({ idField: 'id'})).pipe(map(data2 => {
+        const remindersEdited = data2.map((reminder: any) => {
+          if (reminder.showTo.includes(battalionCode)) {
+            reminder.showTo = 'All Lets';
+          } else {
+            let newShowTo = '';
+            if (reminder.showTo.includes(`${battalionCode}Let1`)) {
+              newShowTo += 'Let 1,';
+            }
+            if (reminder.showTo.includes(`${battalionCode}Let2`)) {
+              newShowTo += ' Let 2,';
+            }
+            if (reminder.showTo.includes(`${battalionCode}Let3`)) {
+              newShowTo += ' Let 3,';
+            }
+            if (reminder.showTo.includes(`${battalionCode}Let4`)) {
+              newShowTo += ' Let 4';
+            }
+            reminder.showTo = newShowTo;
+          }
+          return reminder;
+        });
+
+        return remindersEdited;
+
+
+      }), map((dataa: any) => {
+
         return remindersAction.setReminders({reminders: dataa});
       }));
 

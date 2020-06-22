@@ -2,20 +2,35 @@
 <app-file-upload></app-file-upload>
 <div class="container-fluid">
 
-  <div class="container" *ngIf="cadetData.length > 0">
-    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#uploadModal">Upload File</button>
+  <div class="row">
+    <div class="col-lg-12">
+      <p *ngIf="pageName === 'Success Profiler and Personal Growth Plan'"><b>Directions:</b> In this assignment, upload an image or document file of your success profiler assignment. This might have been provided to you by your instructor or completed on <a href="https://www.conovercompany.com/conover-online/success-profiler/#" target="_blank">Conover</a>.</p>
+      <p *ngIf="pageName === 'Resume'"><b>Directions:</b> In this assignment, upload an image or document of your resume. A resume can be created at <a href="https://www.resume.com/" target="_blank">Resume.com</a> or using your desired platform or resume builder.</p>
+      <p *ngIf="pageName === 'Achievements'"><b>Directions:</b> In this assignment, upload an image or document of your awards and achievements throughout the years. This may include sport, academic, or personal awards.</p>
+      <p *ngIf="pageName === 'Course Work'"><b>Directions:</b> In this assignment, upload two samples of course work from JROTC or other academic areas. </p>
+      <p *ngIf="pageName === 'Essay'"><b>Directions:</b> In this assignment, write or upload an image or document of an essay from any of your courses.</p>
+      <p *ngIf="pageName === 'Let 1-4 Lesson Evidence'"><b>Directions:</b> In this assignment, upload a JROTC core curriculum assignment from you current let level.</p>
+      <p *ngIf="pageName === 'Written Summary'"><b>Directions:</b> In this assignment, upload or write below a reflection on any of your core curriculums (Service Learning is a good example each cadet should have).</p>
+      <p *ngIf="pageName === 'Cadet Challenge'"><b>Directions:</b> In this assignment, upload your cadet challenge results from your current let level. You should upload a document for each attempt.</p>
+      <p *ngIf="pageName === 'Service Learning'"><b>Directions:</b> In this assignment, upload an image or document demonstrating evidence of your participation in the service learning project.</p>
+    </div>
   </div>
 
   <div class="row mt-3 mb-4">
     <div class="col text-center">
-      <h3 class="text-center mt-5">{{ pageName }}</h3>
+      <h3 class="text-center">{{ pageName }}</h3>
+    </div>
+  </div>
+  <div class="row" *ngIf="cadetData.length > 0">
+    <div class="col text-center">
+      <button class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">Upload File</button>
     </div>
   </div>
   <div class=" mb-4">
 
     <!-- file card -->
-    <div class="m-5 mx-auto d-flex justify-content-center" *ngIf="cadetData?.length > 0 else noData">
-      <div class="d-inline-flex card mr-2 ml-2" style="width: 18rem; height: auto;"
+    <div class="m-5 mx-auto d-flex flex-wrap justify-content-center" *ngIf="cadetData?.length > 0 else noData">
+      <div class="d-inline-flex card mr-2 ml-2 mt-2" style="width: 18rem; height: auto;"
         *ngFor="let card of cadetData; let i = index">
         <img [src]="card.fileType === 'image' ? card.downloadUrl : 'https://www.mybookfolio.com/cadets/images/doc.png'"
           class="mx-auto mt-5" alt="pdf" width="150px" height="150px" />

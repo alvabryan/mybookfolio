@@ -2,6 +2,11 @@
   <h3 class="ml-2">Post Secondary Goals</h3>
   <form [formGroup]="postSecondaryGoals" (ngSubmit)="onSumbit()">
     <div class="wrapper" style="height: 500px; margin: 10px 10px 50px 10px; padding: 0px 0px 50px 0px;">
+        <div class="row">
+          <div class="col-lg-12">
+            <p><b>Directions:</b> In this assignment, you should describe your intended goals after high school. This exercise is included for every let level because throughout the years your goals may change. Therefore, you can reflect on how your intended goals changed throughout the year.</p>
+          </div>
+        </div>
         <quill-editor formControlName="postGoals" [style]="editorStyle" theme="snow" [modules]="editorOptions"></quill-editor>
         <input class="btn btn-primary btn-sm btn-submit btn-block mt-2 p-2" name="goalsOne" type="submit" value="Submit" >
     </div>

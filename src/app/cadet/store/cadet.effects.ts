@@ -90,14 +90,14 @@ export class CadetEffects {
       const battalionCode = data[1].user.battalionCode;
       const cadetLet = data[1].user.letAssigned;
       const period = data[2].cadetData.period;
-      const showToCadet = `${cadetLet}${period}`;
+      const showToCadet = `${battalionCode}Let${cadetLet}`;
 
       // 7 days back
       const uploadDate = new Date().getTime() - 2592000000;
       const lastMonth = new Date(uploadDate);
 
       return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => {
-        return ref.where('showTo', 'array-contains', showToCadet).where('dateSent', '>=', lastMonth);
+        return ref.where('showTo', 'array-contains-any', [showToCadet, battalionCode]).where('dateSent', '>=', lastMonth);
       }).valueChanges({ idField: 'id'})).pipe(take(1), tap(rdata => console.log(rdata)), map((dataa: any) => {
         return CadetActions.setReminders({reminders: dataa});
       }));

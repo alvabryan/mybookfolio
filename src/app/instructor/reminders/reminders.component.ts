@@ -17,7 +17,6 @@ export class RemindersComponent implements OnInit, OnDestroy {
 
   imageArray: Array<any> = [];
   sendLetLevel: Array<any> = [1, 2 , 3 , 4];
-  sendPeriod: Array<any> = [1, 2, 3 , 4, 5, 6, 7, 8];
   url = '';
   message = '';
 
@@ -68,6 +67,7 @@ export class RemindersComponent implements OnInit, OnDestroy {
   }
 
   toggleLet(letLevel: number) {
+    console.log('toggled');
     if (this.sendLetLevel.includes(letLevel)) {
       this.sendLetLevel = this.sendLetLevel.filter((element) => {
         if (element !== letLevel) {
@@ -76,18 +76,6 @@ export class RemindersComponent implements OnInit, OnDestroy {
       });
     } else {
       this.sendLetLevel.push(letLevel);
-    }
-  }
-
-  togglePeriod(period: any) {
-    if (this.sendPeriod.includes(period)) {
-      this.sendPeriod = this.sendPeriod.filter((element) => {
-        if (element !== period) {
-          return element;
-        }
-      });
-    } else {
-      this.sendPeriod.push(period);
     }
   }
 
@@ -100,13 +88,11 @@ export class RemindersComponent implements OnInit, OnDestroy {
       images: this.imageArray,
       url: this.url,
       message: this.message,
-      let: this.sendLetLevel,
-      period: this.sendPeriod
+      let: this.sendLetLevel
     }));
 
     this.imageArray = [];
     this.sendLetLevel = [1, 2 , 3 , 4];
-    this.sendPeriod = [1, 2, 3 , 4, 5, 6, 7, 8];
     this.url = '';
     this.message = '';
     this.showUrl = false;
