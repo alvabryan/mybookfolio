@@ -1,3 +1,7 @@
+<div class="approve-instructor-tab text-center" *ngIf="showApprovelTab">
+  <i class="fas fa-exclamation-triangle d-inline-block"></i>
+  <h5 class="d-inline-block">You have an Instructor waiting for approvel, visit <b><a [routerLink]="'/instructor/battalion-users'">Battalion Users</a></b> to approve them.</h5>
+</div>
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top ">
   <a class="navbar-brand mr-1" routerLink="/instructor">{{ instructorData.battalionCode }}</a>
 

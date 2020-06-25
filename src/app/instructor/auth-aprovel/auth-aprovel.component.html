@@ -3,23 +3,21 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <h2 class="text-center mt-5">Waiting for approvel...</h2>
+          <h1 class="text-center">Welcome to MyBookfolio</h1>
+          <p class="text-center mt-5">You are currently waiting for approvel from one of your instructors, please notify any other instructor in your battalion to aprove you under <b>Battalion Users.</b></p>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <div class="input-group mb-3 mt-5 ml-auto mr-auto">
-            <input type="text" class="form-control" placeholder="Battalion Code">
-            <div class="input-group-append">
-              <button class="btn btn-success" type="submit">Change</button>
-            </div>
+          <div class="input-group mb-2 mt-2 ml-auto mr-auto">
+            <input type="text" class="form-control text-center" placeholder="Battalion Code" [value]="battalionCode">
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <div class="container-fluid text-center">
-            <button id="logout" class="btn btn-danger">Logout</button>
+            <button id="logout" class="btn btn-danger" (click)="signout()">Logout</button>
           </div>
         </div>
       </div>

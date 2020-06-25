@@ -10,7 +10,6 @@ import { AuthComponent } from './auth.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { InstructorRegistrationComponent } from './register/instructor-registration/instructor-registration.component';
 import { CadetRegistrationComponent } from './register/cadet-registration/cadet-registration.component';
 import { StoreModule } from '@ngrx/store';
 
@@ -27,8 +26,8 @@ import * as fromAuth from './store/auth.reducer';
 import * as fromAuthEffects from './store/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { BattalionRegistrationComponent } from './register/instructor-registration/battalion-registration/battalion-registration.component';
-import { BattalionInstructorRegistrationComponent } from './register/instructor-registration/battalion-instructor-registration/battalion-instructor-registration.component';
+import { BattalionRegistrationComponent } from './register/battalion-registration/battalion-registration.component';
+import { BattalionInstructorRegistrationComponent } from './register/battalion-instructor-registration/battalion-instructor-registration.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,6 @@ import { BattalionInstructorRegistrationComponent } from './register/instructor-
     LoginComponent,
     RegisterComponent,
     ResetPasswordComponent,
-    InstructorRegistrationComponent,
     CadetRegistrationComponent,
     BattalionRegistrationComponent,
     BattalionInstructorRegistrationComponent

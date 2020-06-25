@@ -1,3 +1,15 @@
+.approve-instructor-tab {
+width: 100%;
+height: 50px;
+padding: 10px 0px;
+}
+
+.approve-instructor-tab .fas {
+  color: rgb(209, 209, 0);
+  font-size: 25px;
+  margin-right: 20px;
+}
+
 .navbar-nav .form-inline .input-group {
   width: 100%;
 
