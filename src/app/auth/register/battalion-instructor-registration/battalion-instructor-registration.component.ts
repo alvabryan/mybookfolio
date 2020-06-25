@@ -3,9 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 // ngrx
-import * as fromRoot from '../../../../store/index';
+import * as fromRoot from '../../../store/index';
 import { select, Store } from '@ngrx/store';
-import * as AuthActions from '../../../store/auth.actions';
+import * as AuthActions from '../../store/auth.actions';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({

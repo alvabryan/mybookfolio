@@ -24,6 +24,12 @@
         </div>
         <div class="col">
           <div class="mx-auto card-box" (click)="setSignup('instructor')">
+            <h5>Instructor Registration</h5>
+            <i class="fas fa-user IconsColor"></i>
+          </div>
+        </div>
+        <div class="col">
+          <div class="mx-auto card-box" (click)="setSignup('battalion')">
               <h5>Battalion Registration</h5>
               <i class="fas fa-users IconsColor"></i>
           </div>
@@ -37,7 +43,10 @@
             <app-cadet-registration></app-cadet-registration>
           </div>
           <div *ngIf="signupType === 'instructor'">
-            <app-instructor-registration></app-instructor-registration>
+            <app-battalion-instructor-registration></app-battalion-instructor-registration>
+          </div>
+          <div *ngIf="signupType === 'battalion'">
+            <app-battalion-registration></app-battalion-registration>
           </div>
 
 

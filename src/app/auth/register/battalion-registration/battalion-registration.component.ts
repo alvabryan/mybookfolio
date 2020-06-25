@@ -4,8 +4,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 // ngrx
 import { Store, select } from '@ngrx/store';
-import * as fromRoot from '../../../../store/index';
-import * as AuthActions from '../../../store/auth.actions';
+import * as fromRoot from '../../../store/index';
+import * as AuthActions from '../../store/auth.actions';
 import { Subscription } from 'rxjs';
 
 @Component({
