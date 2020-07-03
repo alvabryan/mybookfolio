@@ -92,7 +92,10 @@ export class AuthEffects {
         ofType(AuthActions.loginStart),
         switchMap((action) => {
             return from(this.afAuth.auth.signInWithEmailAndPassword(action.email, action.password)).pipe(switchMap((data: any) => {
-              return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(map((userDataType: any) => {
+              return this.db.doc(`users/${data.user.uid}`).valueChanges().pipe(tap((toFirebaseData: any) => {
+                const userUserType = toFirebaseData.userType;
+                firebase.analytics().logEvent('login', {userType: userUserType});
+              }), map((userDataType: any) => {
                 const userStatus = userDataType.userType === 'instructor' ? userDataType.data.approved : true;
                 return handleAuthentication(userDataType.userType, data.user.displayName, userDataType.data.firstName, userDataType.data.lastName, data.user.email, data.user.phoneNumber, data.user.photoURL, data.user.providerId, userDataType.data.battalionCode, data.user.uid, userDataType.data.letLevel, userStatus);
               }));
@@ -192,6 +195,9 @@ export class AuthEffects {
                   return AuthActions.battalionInstructorRegisterSuccess({...data, ...userCredential});
                 }
             }),
+            tap(() => {
+              firebase.analytics().logEvent('sign_up', {userType: 'instructor'});
+            }),
             catchError((err) => {
                 return handleError(err.code, err.message);
             })
@@ -245,6 +251,8 @@ export class AuthEffects {
           )
         ).pipe(map(() => {
           return AuthActions.loginStart({email: data.email, password: data.password});
+        }), tap(() => {
+          firebase.analytics().logEvent('sign_up', {userType: 'battalion_registration'});
         }));
       })
     ));
@@ -281,6 +289,8 @@ export class AuthEffects {
           }, {merge: true})
         )).pipe(map(() => {
           return AuthActions.loginStart({email: data.email, password: data.password});
+        }), tap(() => {
+          firebase.analytics().logEvent('sign_up', {userType: 'instructor'});
         }));
       })
     ));
@@ -367,7 +377,7 @@ export class AuthEffects {
         }),
         tap((data: any) => {
             console.log(data);
-
+            firebase.analytics().logEvent('sign_up', {userType: 'cadet'});
         })
     ));
 

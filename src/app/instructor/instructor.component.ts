@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, forkJoin, of, EMPTY } from 'rxjs';
 
+import * as firebase from 'firebase/app';
+
 // ngrx
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from './store/index';
@@ -49,7 +51,6 @@ export class InstructorComponent implements OnInit, OnDestroy {
     );
 
     this.store.dispatch(InstructorActions.onReload());
-
   }
 
   ngOnDestroy() {
