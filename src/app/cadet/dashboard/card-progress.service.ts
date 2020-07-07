@@ -40,7 +40,7 @@ export class CardProgressService {
     for (const x of cardPaths) {
       if (dbProgress[x]) {
         if (dbProgress[x].let3) {
-          newCadetProgress[x] = `${dbProgress[x].let3}%`;
+          newCadetProgress[x] = `${dbProgress[x][letLevel]}%`;
         } else {
           newCadetProgress[x] = `0%`;
         }

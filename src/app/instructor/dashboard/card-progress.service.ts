@@ -31,13 +31,11 @@ export class CardProgressService {
   constructor() { }
 
   determineCadetProgress(letAssinged, cadetProgress) {
-
     const newCadetProgessRoster = [];
 
     Object.values(cadetProgress).forEach((cadetData: any) => {
       const currentCadetData = cadetData;
-
-      if (letAssinged.includes(cadetData.letLevel)) {
+      if (letAssinged.includes(+cadetData.letLevel)) {
         if (!currentCadetData.progress) {
           currentCadetData.progress = {};
         }

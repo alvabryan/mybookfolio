@@ -98,7 +98,7 @@ export class CadetEffects {
 
       return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => {
         return ref.where('showTo', 'array-contains-any', [showToCadet, battalionCode]).where('dateSent', '>=', lastMonth);
-      }).valueChanges({ idField: 'id'})).pipe(take(1), tap(rdata => console.log(rdata)), map((dataa: any) => {
+      }).valueChanges({ idField: 'id'})).pipe(take(1), map((dataa: any) => {
         return CadetActions.setReminders({reminders: dataa});
       }));
 

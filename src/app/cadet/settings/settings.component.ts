@@ -113,7 +113,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   onSubmitPersonalInfo() {
     const newCadetData = this.personalInfo.value;
-    this.store.dispatch(AuthActions.updateCadetInfo({newPersonalData: newCadetData.code}));
+    this.store.dispatch(AuthActions.updateCadetInfo({newPersonalData: newCadetData}));
   }
 
   onSubmitPassword() {
