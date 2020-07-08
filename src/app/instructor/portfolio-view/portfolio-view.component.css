@@ -1,18 +1,104 @@
-.block-one, .filter-button{
-  display: inline-block;
-}
+  .page-title {
+    max-width: 400px;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
-.block-one{
-  margin-right: 10px;
-}
+  .inline-form {
+    display: inline-block;
+  }
 
+  .inline-form label, .inline-form select {
+  display: inline;
+  }
 
-/* .filter-button{
-    float: right;
-}
+  .inline-form label {
+  width: 100px;
+  margin: 0px 3px;
+  }
 
-@media screen and (max-width: 990px) {
-    .filter-button{
-        float: left;
+  .inline-form select {
+  width: 65px;
+  }
+
+  .inline-form button {
+  margin: 0px 3px;
+  }
+
+  .right-box-container {
+      float: right;
+  }
+
+  .cadet-type-select {
+      width: 150px;
+  }
+
+  @media screen and (max-width: 1119px) {
+    .page-title {
+      width: 300px;
     }
-} */
+  }
+
+  @media screen and (max-width: 1020px) {
+    .page-title {
+      width: 250px;
+    }
+  }
+
+  @media screen and (max-width: 970px) {
+    .page-title {
+      width: 200px;
+    }
+  }
+
+  @media screen and (max-width: 915px) {
+    .page-title {
+      width: 150px;
+    }
+  }
+
+  @media screen and (max-width: 875px) {
+    .page-title {
+      width: 100%;
+      text-overflow: none;
+    }
+  }
+
+  @media screen and (max-width: 875px) {
+      .right-box-container {
+          float: none !important;
+          display: block !important;
+          width: 100%;
+      }
+
+      form {
+          display: block !important;
+          width: 100%;
+      }
+
+      .cadet-type-select {
+          display: block;
+          width: 100%;
+      }
+
+      .inline-form label {
+          display: block;
+          width: 100%;
+          float: left;
+          margin: 5px 0px;
+      }
+
+      .inline-form select {
+          display: block;
+          width: 100%;
+      }
+
+      .inline-form button {
+          display: block;
+          width: 100%;
+          margin: 5px 0px;
+      }
+
+
+  }

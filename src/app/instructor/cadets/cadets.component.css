@@ -1,47 +1,66 @@
 .inline-form {
   display: inline-block;
-}
-
-.inline-form label, .inline-form select {
-  display: inline;
-}
-
-.inline-form label {
- width: 100px;
- margin: 0px 3px;
-}
-
-.inline-form select {
-  width: 45px;
-}
-
-.inline-form button {
-  margin: 0px 3px;
-}
-
-@media screen and (max-width: 768px) {
-  .inline-form {
-    display: block;
   }
 
   .inline-form label, .inline-form select {
-    display: block;
+  display: inline;
   }
 
   .inline-form label {
-   display: block;
-   width: 100%;
-   margin: 0px 5px;
+  width: 100px;
+  margin: 0px 3px;
   }
 
   .inline-form select {
-    display: block;
-    width: 100%;
+  width: 65px;
   }
 
   .inline-form button {
-    display: block;
-    width: 100%;
-    margin: 5px 0px;
+  margin: 0px 3px;
   }
-}
+
+  .right-box-container {
+      float: right;
+  }
+
+  .cadet-type-select {
+      width: 150px;
+  }
+
+  @media screen and (max-width: 800px) {
+      .right-box-container {
+          float: none !important;
+          display: block !important;
+          width: 100%;
+      }
+
+      form {
+          display: block !important;
+          width: 100%;
+      }
+
+      .cadet-type-select {
+          display: block;
+          width: 100%;
+      }
+
+      .inline-form label {
+          display: block;
+          width: 100%;
+          float: left;
+          margin: 5px 0px;
+      }
+
+      .inline-form select {
+          display: block;
+          width: 100%;
+      }
+
+      .inline-form button {
+          display: block;
+          width: 100%;
+          margin: 5px 0px;
+      }
+
+
+  }
