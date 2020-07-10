@@ -57,12 +57,10 @@ export class CadetsComponent implements OnInit, OnDestroy {
   }
 
   setUserData(letAssigned: Array<any>, cadetRoster: any) {
-
-
     const filteredData: Array<any> = [];
 
     cadetRoster.forEach((data: any, ) => {
-      if (letAssigned.includes(data.letLevel)) {
+      if (letAssigned.includes(+data.letLevel)) {
         const cadetData = data;
         filteredData.push(cadetData);
       }
