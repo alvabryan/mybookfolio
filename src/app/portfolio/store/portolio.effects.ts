@@ -93,8 +93,8 @@ const pageNameSetter = (pageName) => {
 };
 
 const fileProgressCalculator = (fileContent: any, uploadType: string) => {
-  const fileProgress = fileContent.content.length > 0 ? (fileContent.content.length * 50) : 0;
-  const writtenContent = fileContent.writtenContent ? fileContent.writtenContent ? 50 : 0 : 0;
+  const fileProgress = fileContent ? fileContent.content ? fileContent.content.length > 0 ? (fileContent.content.length * 50) : 0 : 0 : 0;
+  const writtenContent = fileContent ? fileContent.writtenContent ? fileContent.writtenContent ? 50 : 0 : 0 : 0;
 
   if (uploadType === 'upload') {
     return (fileProgress + writtenContent) + 50;

@@ -84,8 +84,12 @@ export class PortfolioComponent implements OnInit, OnDestroy {
               this.cadetViewData = data.viewData;
               if (data.viewData[letLevel]) {
                   if (this.pageName.pageName === 'Course Work') {
-                    const dataLength = (data.viewData[letLevel].content).length - 1;
-                    data.viewData[letLevel].content[dataLength] ? this.lastUpdated = data.viewData[letLevel].content[dataLength].dateSubmitted : this.lastUpdated = null;
+                    const dataLength = data.viewData[letLevel].content ? (data.viewData[letLevel].content).length - 1 : 0;
+                    if (dataLength) {
+                      data.viewData[letLevel].content[dataLength] ? this.lastUpdated = data.viewData[letLevel].content[dataLength].dateSubmitted : this.lastUpdated = null;
+                    } else {
+                      this.lastUpdated = null;
+                    }
                   } else {
                     this.lastUpdated = data.viewData[letLevel].dateSubmitted;
                   }

@@ -89,7 +89,7 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
     const filteredData: Array<any> = [];
 
     cadetRoster.forEach((data: any, ) => {
-      if (letAssigned.includes(data.letLevel)) {
+      if (letAssigned.includes(+data.letLevel)) {
         const cadetData = data;
         filteredData.push(cadetData);
       }
