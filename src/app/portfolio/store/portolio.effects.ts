@@ -402,7 +402,9 @@ export class PortfolioEffects {
             }
           }
         }, { merge: true });
-        this.storage.storage.refFromURL(`${imageUrlToDelete}`).delete();
+        if (!imageUrlToDelete.includes('https://www.files.mybookfolio.com')) {
+          this.storage.storage.refFromURL(`${imageUrlToDelete}`).delete();
+        }
       }
     })
   ), { dispatch: false });
