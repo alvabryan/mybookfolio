@@ -38,6 +38,8 @@ import * as SearchCadetEffects from './cadets/store-searchcadet/searchCadet.effe
 import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { CustomCardsComponent } from './dashboard/custom-cards/custom-cards.component';
+import { CustomCardItemComponent } from './dashboard/custom-cards/custom-card-item/custom-card-item.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
     SettingInstructorComponent,
     InstructorPortfolioComponent,
     AuthAprovelComponent,
-    RemindersComponent
+    RemindersComponent,
+    CustomCardsComponent,
+    CustomCardItemComponent
   ],
   imports: [
     CommonModule,

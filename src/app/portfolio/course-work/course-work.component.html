@@ -32,7 +32,7 @@
     <div class="m-5 mx-auto d-flex flex-wrap justify-content-center" *ngIf="cadetData?.length > 0 else noData">
       <div class="d-inline-flex card mr-2 ml-2 mt-2" style="width: 18rem; height: auto;"
         *ngFor="let card of cadetData; let i = index">
-        <img [src]="card.fileType === 'image' ? card.downloadUrl : 'https://www.mybookfolio.com/cadets/images/doc.png'"
+        <img [src]="card.fileType === 'image' ? card.downloadUrl : 'https://www.files.mybookfolio.com/images/doc.png'"
           class="mx-auto mt-5" alt="pdf" width="150px" height="150px" />
         <div class="card-body">
           <div style="height: 25px; width:250px; overflow-x: hidden;">

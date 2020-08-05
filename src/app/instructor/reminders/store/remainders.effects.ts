@@ -27,7 +27,7 @@ export class RemindersEffect {
       const remainderData = data[0];
 
       // upload timestamp
-      const uploadDate = firestore.Timestamp.now();
+      const uploadDate = Date.now();
 
       // let level to
       const letLevelTo = data[0].let;
@@ -76,7 +76,8 @@ export class RemindersEffect {
               message: remainderData.message,
               showTo: toShowLet,
               webUrl: remainderData.url,
-              imageUrl: url
+              imageUrl: url,
+              messageType: 'Reminder'
             })).pipe(map(() => {
               return remindersAction.uploadingFile();
             }));
@@ -92,7 +93,8 @@ export class RemindersEffect {
           message: remainderData.message,
           showTo: toShowLet,
           webUrl: remainderData.url,
-          imageUrl: ''
+          imageUrl: '',
+          messageType: 'Reminder'
         })).pipe(map(() => {
           return remindersAction.uploadingFile();
         }));
@@ -116,8 +118,8 @@ export class RemindersEffect {
       // 7 days back
       const uploadDate = new Date().getTime() - 2592000000;
       const lastMonth = new Date(uploadDate);
-
-      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => ref.where('dateSent', '>=', lastMonth)).valueChanges({ idField: 'id'})).pipe(map(data2 => {
+      // ref => ref.where('dateSent', '>=', lastMonth)
+      return from(this.db.collection('battalions').doc(battalionCode).collection('reminders').valueChanges({ idField: 'id'})).pipe(map(data2 => {
         const remindersEdited = data2.map((reminder: any) => {
           if (reminder.showTo.includes(battalionCode)) {
             reminder.showTo = 'All Lets';

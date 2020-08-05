@@ -2,11 +2,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-card-item',
-  templateUrl: './card-item.component.html',
-  styleUrls: ['./card-item.component.css']
+  selector: 'app-custom-card-item',
+  templateUrl: './custom-card-item.component.html',
+  styleUrls: ['./custom-card-item.component.css']
 })
-export class CardItemComponent implements OnInit {
+export class CustomCardItemComponent implements OnInit {
   @Input() card: {name: string, url: string, imageUrl: string, progress: string};
   @Output() urlData = new EventEmitter<{name: string, url: string}>();
 

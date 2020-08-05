@@ -10,9 +10,9 @@ export class CardProgressService {
   determineCadetProgress(cadetProgress, cadetLetLevel) {
     const dbProgress = cadetProgress;
     const letLevel = 'let' + cadetLetLevel;
-
     // tslint:disable-next-line: prefer-const
-    let newCadetProgress = {};
+
+    const newCadetProgress = {};
 
     const cardPaths = [
       'successProfiler',
@@ -39,7 +39,7 @@ export class CardProgressService {
 
     for (const x of cardPaths) {
       if (dbProgress[x]) {
-        if (dbProgress[x].let3) {
+        if (dbProgress[x][letLevel]) {
           newCadetProgress[x] = `${dbProgress[x][letLevel]}%`;
         } else {
           newCadetProgress[x] = `0%`;

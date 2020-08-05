@@ -55,14 +55,20 @@ export class CadetEffects {
 
   setCadetDataSheet = createEffect(() => this.actions$.pipe(
     ofType(CadetActions.setCadetDataSheet),
-    withLatestFrom(this.store.select('auth')),
+    withLatestFrom(this.store.select('auth'), this.store.select('cadet')),
     tap((data: any) => {
       const userUid = data[1].user.uid;
       const battalionCode = data[1].user.battalionCode;
 
       const cadetData = data[0].data;
+
+      const cadetStoreData = data[2].cadetData;
       return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(`${battalionCode}`).set({
         [userUid]: {
+          firstName: cadetStoreData.firstName,
+          lastName: cadetStoreData.lastName,
+          period: cadetStoreData.period,
+          letLevel: cadetStoreData.letLevel,
           ...cadetData
         }
       }, {merge: true}));
@@ -97,7 +103,8 @@ export class CadetEffects {
       const lastMonth = new Date(uploadDate);
 
       return from(this.db.collection('battalions').doc(battalionCode).collection('reminders', ref => {
-        return ref.where('showTo', 'array-contains-any', [showToCadet, battalionCode]).where('dateSent', '>=', lastMonth);
+        return ref.where('showTo', 'array-contains-any', [showToCadet, battalionCode]);
+        // .where('dateSent', '>=', lastMonth)
       }).valueChanges({ idField: 'id'})).pipe(take(1), map((dataa: any) => {
         return CadetActions.setReminders({reminders: dataa});
       }));

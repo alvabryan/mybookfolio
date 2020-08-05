@@ -17,8 +17,6 @@ export class CadetDataSheetComponent implements OnInit, OnDestroy {
 
   cadetInformationForm: FormGroup;
 
-  cadetInformation = {firstName: 'Jairo', lastName: 'Alvarenga', letLevel: 3, period: 6};
-
   currentYear = (new Date()).getFullYear();
 
   constructor(private store: Store<fromCadet.State>) { }
@@ -89,7 +87,7 @@ export class CadetDataSheetComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     const formData = this.cadetInformationForm.value;
-    const uploadObject = {...this.cadetInformation, ...formData};
+    const uploadObject = {...formData};
     this.store.dispatch(CadetActions.setCadetDataSheet({data: uploadObject}));
   }
 

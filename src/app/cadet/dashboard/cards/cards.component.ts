@@ -20,45 +20,45 @@ export class CardsComponent implements OnInit, OnDestroy {
       name: 'Personal Growth', cards:
       [
         // tslint:disable-next-line: max-line-length
-        {name: 'Four Year Goals', url: 'four-year-goals', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/goal.png', progress: '0%' },
+        {name: 'Four Year Goals', url: 'four-year-goals', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/goal.png', progress: '0%' },
         // tslint:disable-next-line: max-line-length
-        {name: 'Winning Colors', url: 'winning-colors', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/paper.png', progress: '0%' },
+        {name: 'Winning Colors', url: 'winning-colors', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/paper.png', progress: '0%' },
         // tslint:disable-next-line: max-line-length
-        {name: 'Success Profiler and Personal Growth Plan', url: 'success-profiler', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/successPro.png', progress: '0%'},
+        {name: 'Success Profiler and Personal Growth Plan', url: 'success-profiler', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/successPro.png', progress: '0%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Learning Style Inventory', url: 'learning-style', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/learningStyle.png', progress: '0%'}
+        {name: 'Learning Style Inventory', url: 'learning-style', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/learningStyle.png', progress: '0%'}
       ]
     },
     {
       name: 'Cadet Success', cards:
       [
-        {name: 'Personal Ad', url: 'personal-ad', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/pen.png', progress: '0%'},
+        {name: 'Personal Ad', url: 'personal-ad', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/pen.png', progress: '0%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Human Graph Activity', url: 'human-graph', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/graphActivity.png', progress: '0%'},
-        {name: 'Resume', url: 'resume', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/resume.png', progress: '0%'},
+        {name: 'Human Graph Activity', url: 'human-graph', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/graphActivity.png', progress: '0%'},
+        {name: 'Resume', url: 'resume', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/resume.png', progress: '0%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Achievements', url: 'achievements', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/medal.png', progress: '0%'},
+        {name: 'Achievements', url: 'achievements', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/medal.png', progress: '0%'},
       ]
     },
     {
       name: 'Course Work', cards:
       [
         // tslint:disable-next-line: max-line-length
-        {name: 'Course Work', url: 'course-work_courseWork', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/courseWork.png', progress: '0%'},
-        {name: 'Essay', url: 'essay', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/essay.png', progress: '0%'},
+        {name: 'Course Work', url: 'course-work_courseWork', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/courseWork.png', progress: '0%'},
+        {name: 'Essay', url: 'essay', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/essay.png', progress: '0%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Let 1-4 Lesson Evidence', url: 'course-work_lessonEvidence', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/books.png', progress: '0%'},
+        {name: 'Let 1-4 Lesson Evidence', url: 'course-work_lessonEvidence', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/books.png', progress: '0%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Written Summary', url: 'course-work_writtenSummary', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/edit.png', progress: '0%'}
+        {name: 'Written Summary', url: 'course-work_writtenSummary', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/edit.png', progress: '0%'}
       ]
     },
     {
       name: 'Miscellaneous', cards:
       [
         // tslint:disable-next-line: max-line-length
-        {name: 'Cadet Challenge', url: 'portfolio-cadet-challenge', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/running-man.png', progress: '0%'},
+        {name: 'Cadet Challenge', url: 'portfolio-cadet-challenge', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/running-man.png', progress: '0%'},
         // tslint:disable-next-line: max-line-length
-        {name: 'Service Learning', url: 'course-work_serviceLearning', imageUrl: 'https://www.mybookfolio.com/cadets/imagesCards/serviceLearning.png', progress: '0%'},
+        {name: 'Service Learning', url: 'course-work_serviceLearning', imageUrl: 'https://www.files.mybookfolio.com/imagesCards/serviceLearning.png', progress: '0%'},
         // tslint:disable-next-line: max-line-length
         {name: 'Financial Planning Module 1', url: 'financialPlanningModule1', imageUrl: 'https://image.flaticon.com/icons/svg/2693/2693663.svg', progress: '0%'},
         // tslint:disable-next-line: max-line-length

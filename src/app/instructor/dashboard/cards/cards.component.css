@@ -1,0 +1,11 @@
+.custom-card-button {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(62, 62, 195);
+  border-radius: 20px;
+  padding: 0px;
+  font-size: 20px;
+  color: white;
+  display: inline-block;
+  margin-right: 10px;
+}

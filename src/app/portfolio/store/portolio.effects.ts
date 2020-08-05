@@ -93,7 +93,8 @@ const pageNameSetter = (pageName) => {
 };
 
 const fileProgressCalculator = (fileContent: any, uploadType: string) => {
-  const fileProgress = fileContent ? fileContent.content ? fileContent.content.length > 0 ? (fileContent.content.length * 50) : 0 : 0 : 0;
+  const fileWeight = 50;
+  const fileProgress = fileContent ? fileContent.content ? fileContent.content.length > 0 ? (fileContent.content.length * fileWeight) : 0 : 0 : 0;
   const writtenContent = fileContent ? fileContent.writtenContent ? fileContent.writtenContent ? 50 : 0 : 0 : 0;
 
   if (uploadType === 'upload') {
@@ -296,9 +297,34 @@ export class PortfolioEffects {
       const imageName = `${Date.now()}_${fileName}`;
       const path = `${dbPath}/${imageName}`;
 
+
+
       // calculate the progress plus the new file
       const cadetPortfolioData = data[1].viewData[cadetLetLevel] ? data[1].viewData[cadetLetLevel] : {content: []};
-      const courseWorkProgress = fileProgressCalculator(cadetPortfolioData, 'upload');
+      let courseWorkProgress = 0;
+
+      switch (pageName) {
+        case 'Success Profiler and Personal Growth Plan':
+          courseWorkProgress = 100;
+          break;
+        case 'Resume':
+          courseWorkProgress = 100;
+          break;
+        case 'Essay':
+          courseWorkProgress = 100;
+          break;
+        case 'Let 1-4 Lesson Evidence':
+          courseWorkProgress = 100;
+          break;
+        case 'Written Summary':
+          courseWorkProgress = 100;
+          break;
+        case 'Service Learning':
+          courseWorkProgress = 100;
+          break;
+        default:
+          courseWorkProgress = fileProgressCalculator(cadetPortfolioData, 'upload');
+      }
 
       // file type
       const fileTypeSplit = (splitFileName) => {
@@ -413,6 +439,7 @@ export class PortfolioEffects {
     ofType(PortfolioActions.fileUploadEditorUpdate),
     withLatestFrom(this.store.select('portfolio'), this.store.select('auth')),
     tap((data: any) => {
+
       // battalion code
       const battalionCode = data[2].user.battalionCode;
 
@@ -429,7 +456,9 @@ export class PortfolioEffects {
       const cadetLetLevel = 'let' + data[1].cadetSearchData.letLevel;
 
       // calculate the progress minus the new file
-      const courseWorkProgress = fileEditorProgressCalculator(editorValue, data[1].viewData[cadetLetLevel]);
+      const courseWorkProgress = 100;
+
+      console.log(courseWorkProgress);
 
       forkJoin(
         from(this.db.doc(`portfolio/${cadetUid}/${dbPath}/${cadetUid}`).set({
