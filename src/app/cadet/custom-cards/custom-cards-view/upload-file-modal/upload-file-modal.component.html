@@ -1,0 +1,85 @@
+<!-- card view model -->
+<div class="modal fade" id="uploadModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Assignment Upload</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="changeLoadingStatus()">&times;</button>
+      </div>
+
+      <!-- modal body -->
+      <div class="modal-body mx-auto">
+
+        <!-- form -->
+        <div *ngIf="loading === 'not submitted'">
+          <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <div class="container-fluid">
+              <div class="container mb-2">
+                <span>File:</span>
+                <div class="row" style="width: 350px;" *ngIf="fileData">
+                  <div class="col col-9">
+                    <p style="width: 200px; overflow: hidden;">{{ fileData.target.files[0].name }}</p>
+                  </div>
+                  <div class="col col-3">
+                    <button class="btn btn-danger border d-inline-block" >X</button>
+                  </div>
+                </div>
+                <div class="custom-file" *ngIf="!fileData">
+                  <input name="file" type="file" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+              </div>
+              <div class="container">
+                <span>Comment:</span>
+                <textarea name="description" formControlName="description" class="form-control"></textarea>
+              </div>
+            </div>
+            <div class="container-fluid pt-3 pr-4 pb-5">
+              <button type="submit" class="btn btn-success float-right">Submit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- spinner -->
+        <div *ngIf="loading === 'uploading'">
+          <div class="p-2 w-100">
+            <h4 class="d-block text-center" stlye="width: 300px">Uploading...</h4>
+          </div>
+          <app-spinner></app-spinner>
+        </div>
+
+        <!-- upload completed container-->
+        <div *ngIf="loading === 'uploaded'">
+          <!-- upload completed container-->
+          <div class="p-2 w-100">
+            <h4 class="d-block text-center" stlye="width: 300px">Upload Complete!</h4>
+          </div>
+          <div class="p-2 w-100">
+            <img class="d-block mx-auto" stlye="color: green" src="../../../../assets/icons/check.svg" height="100" width="100">
+          </div>
+          <div class="p-2 w-100">
+            <button class="btn btn-success mx-auto d-block" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+        <div *ngIf="loading === 'error'">
+          <div class="p-2 w-100">
+            <h4 class="d-block text-center" stlye="width: 300px">Oops something went wrong!</h4>
+          </div>
+          <div class="p-2 w-100">
+            <img class="d-block mx-auto" stlye="color: green" src="../../../../assets/icons/close.svg" height="100" width="100">
+          </div>
+          <div class="p-2 w-100">
+            <h5 class="text-center">Only the following formats are allowed: PDF, DOC, DOCX, PNG, JPG, JPG, and SVG.</h5>
+          </div>
+          <div class="p-2 w-100">
+            <button class="btn btn-success mx-auto d-block" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      <!-- modal body ends -->
+    </div>
+  </div>
+</div>

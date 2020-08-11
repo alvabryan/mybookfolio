@@ -1,0 +1,38 @@
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">New Assignment</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form>
+          <label>Assignment Name:</label>
+          <input type="text" class="form-control" name="name">
+          <label>Attachment:</label>
+          <div class="custom-file">
+            <input name="file" type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
+          </div>
+          <label>Link:</label>
+          <input type="text" class="form-control" name="link">
+          <label>Instructions:</label>
+          <textarea class="form-control" placeholder="For this assignment, you will practice shifting genres. To begin, read pages 467-469 in our class textbook. Then, select one paragraph from a campaign speech and revise it into a tweet, a diary entry, and a business memo."></textarea>
+          <div class="form-check mt-2">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" value="true" checked>Open Assignment
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary mt-3 float-right">Submit</button>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>

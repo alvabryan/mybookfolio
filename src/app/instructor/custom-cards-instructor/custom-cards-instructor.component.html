@@ -1,0 +1,29 @@
+<app-new-assignment-model></app-new-assignment-model>
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col">
+      <h2>Assignments</h2>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">New Assignment</button>
+    </div>
+  </div>
+  <hr>
+  <p *ngIf="assignments.length == 0" class="text-center mt-5">You currently don't have any assignment!</p>
+
+  <div *ngIf="assignments.length > 0">
+    <div class="container-fluid" *ngFor="let x of assignments">
+      <div class="row on-hover pt-3 pb-3">
+        <div class="col" (click)="sendToInstructorCustomCardView('adskfjalkjdsflksa')">
+          <!-- <hr class="custom-color"> -->
+          <i class="fas fa-pencil-alt ml-3"></i>
+          <h4 class="d-inline-block ml-4">{{x.name}}</h4>
+          <span class="badge badge-pill badge-danger float-right" *ngIf="x.showCard === false">Closed</span>
+          <span class="badge badge-pill badge-success float-right" *ngIf="x.showCard === true">Open</span>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+</div>

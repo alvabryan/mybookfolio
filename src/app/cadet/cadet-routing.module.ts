@@ -16,11 +16,15 @@ import { ErrorPageComponent } from '../shared/error-page/error-page.component';
 import { CadetPortfolioComponent } from './cadet-portfolio/cadet-portfolio.component';
 import { CadetDataSheetComponent } from './cadet-data-sheet/cadet-data-sheet.component';
 import { RemindersComponent } from './reminders/reminders.component';
+import { CustomCardsComponent } from './custom-cards/custom-cards.component';
+import { CustomCardsViewComponent } from './custom-cards/custom-cards-view/custom-cards-view.component';
 
 
 const routes: Routes = [
   {path: '', component: CadetComponent, canActivate: [AuthGuard], children: [
     {path: '', component: DashboardComponent},
+    {path: 'assignments', component: CustomCardsComponent},
+    {path: 'assignment-view', component: CustomCardsViewComponent},
     {path: 'resume', component: ResumeComponent},
     {path: 'calendar', component: CalendarComponent},
     {path: 'request', component: RequestComponent},

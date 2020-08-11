@@ -38,8 +38,10 @@ import * as SearchCadetEffects from './cadets/store-searchcadet/searchCadet.effe
 import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { FlashMessagesModule } from 'angular2-flash-messages';
-import { CustomCardsComponent } from './dashboard/custom-cards/custom-cards.component';
-import { CustomCardItemComponent } from './dashboard/custom-cards/custom-card-item/custom-card-item.component';
+import { CustomCardsInstructorComponent } from './custom-cards-instructor/custom-cards-instructor.component';
+import { CustomCardsViewInstructorComponent } from './custom-cards-instructor/custom-cards-view-instructor/custom-cards-view-instructor.component';
+import { NewAssignmentModelComponent } from './custom-cards-instructor/new-assignment-model/new-assignment-model.component';
+import * as CustomCardsEffects from './custom-cards-instructor/store/custom-cards.effects';
 
 @NgModule({
   declarations: [
@@ -62,8 +64,9 @@ import { CustomCardItemComponent } from './dashboard/custom-cards/custom-card-it
     InstructorPortfolioComponent,
     AuthAprovelComponent,
     RemindersComponent,
-    CustomCardsComponent,
-    CustomCardItemComponent
+    CustomCardsInstructorComponent,
+    CustomCardsViewInstructorComponent,
+    NewAssignmentModelComponent
   ],
   imports: [
     CommonModule,
@@ -76,7 +79,7 @@ import { CustomCardItemComponent } from './dashboard/custom-cards/custom-card-it
     AngularFirestoreModule,
     AngularFireStorageModule,
     StoreModule.forFeature('instructor', InstructorIndex.reducers),
-    EffectsModule.forFeature([InstructorEffects.InstructorEffects, BattalionUsersEffect.BattalionUsersEFfect, SearchCadetEffects.SearchCadetEffects,  RemainderEffects.RemindersEffect]),
+    EffectsModule.forFeature([InstructorEffects.InstructorEffects, BattalionUsersEffect.BattalionUsersEFfect, SearchCadetEffects.SearchCadetEffects,  RemainderEffects.RemindersEffect, CustomCardsEffects.CustomCardEffects]),
     NgxDocViewerModule,
     PortfolioModule
   ],

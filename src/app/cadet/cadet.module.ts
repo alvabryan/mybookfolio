@@ -32,6 +32,9 @@ import * as CadetEffects from './store/cadet.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { CadetDataSheetComponent } from './cadet-data-sheet/cadet-data-sheet.component';
 import { RemindersComponent } from './reminders/reminders.component';
+import { CustomCardsComponent } from './custom-cards/custom-cards.component';
+import { CustomCardsViewComponent } from './custom-cards/custom-cards-view/custom-cards-view.component';
+import { UploadFileModalComponent } from './custom-cards/custom-cards-view/upload-file-modal/upload-file-modal.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { RemindersComponent } from './reminders/reminders.component';
     CadetPortfolioComponent,
     CadetDataSheetComponent,
     RemindersComponent,
+    CustomCardsComponent,
+    CustomCardsViewComponent,
+    UploadFileModalComponent,
   ],
   imports: [
     CommonModule,

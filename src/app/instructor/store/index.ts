@@ -5,6 +5,7 @@ import * as fromAuth from '../../auth/store/auth.reducer';
 import * as fromPortfolio from '../../portfolio/store/portfolio.reducer';
 import * as searchCadetReducer from '../cadets/store-searchcadet/searchCadet.reducer';
 import * as fromReminders from '../reminders/store/remainders.reducer';
+import * as fromCustomCards from '../custom-cards-instructor/store/custom-cards.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface InstructorState {
@@ -12,6 +13,7 @@ export interface InstructorState {
     battalionUsers: battalionUsersReducer.State;
     currentCadet: searchCadetReducer.State;
     reminders: fromReminders.State;
+    customCards: fromCustomCards.State;
 }
 
 export interface State extends fromRoot.State {
@@ -22,7 +24,8 @@ export const reducers = {
     cadetData: InstructorReducer.reducer,
     battalionUsers: battalionUsersReducer.reducer,
     currentCadet: searchCadetReducer.reducer,
-    reminders: fromReminders.reducer
+    reminders: fromReminders.reducer,
+    customCards: fromCustomCards.reducer
 };
 
 // instructor reducer selector
