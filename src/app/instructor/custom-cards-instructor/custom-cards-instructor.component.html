@@ -9,9 +9,9 @@
     </div>
   </div>
   <hr>
-  <p *ngIf="assignments.length == 0" class="text-center mt-5">You currently don't have any assignment!</p>
+  <p *ngIf="!assignments" class="text-center mt-5">You currently don't have any assignment!</p>
 
-  <div *ngIf="assignments.length > 0">
+  <div *ngIf="assignments">
     <div class="container-fluid" *ngFor="let x of assignments">
       <div class="row on-hover pt-3 pb-3">
         <div class="col" (click)="sendToInstructorCustomCardView('adskfjalkjdsflksa')">

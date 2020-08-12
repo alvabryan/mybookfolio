@@ -12,7 +12,7 @@ import * as customCardActions from './store/custom-cards.actions';
 })
 export class CustomCardsInstructorComponent implements OnInit {
 
-  assignments = null;
+  assignments: any;
 
   constructor(private router: Router, private store: Store<fromInstructor.State>) { }
 
@@ -20,7 +20,11 @@ export class CustomCardsInstructorComponent implements OnInit {
     this.store.dispatch(customCardActions.getAssignments());
 
     this.store.select('instructor').subscribe((data) => {
-      this.assignments = data.customCards.assignments;
+      if (data.customCards) {
+        if (data.customCards.assignments) {
+          this.assignments = data.customCards.assignments;
+        }
+      }
     });
   }
 
