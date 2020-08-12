@@ -6,8 +6,8 @@ import { Store } from '@ngrx/store';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as customCardActions from './custom-cards.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, tap, withLatestFrom, map } from 'rxjs/operators';
-import { EMPTY, from } from 'rxjs';
+import { switchMap, tap, withLatestFrom, map, mergeMap } from 'rxjs/operators';
+import { EMPTY, from, of } from 'rxjs';
 
 import { firestore } from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -30,39 +30,80 @@ export class CustomCardEffects {
   createAssignment = createEffect(() => this.actions$.pipe(
     ofType(customCardActions.createAssignment),
     withLatestFrom(this.store.select('auth')),
-    tap((data) => {
-      console.log(data);
-    }),
     switchMap((data) => {
       const battalionCode = data[1].user.battalionCode;
 
-      // file data
-      const uploadDate = firestore.Timestamp.now();
-      const fileType = data[0].newAssignment.fileData.target.files[0].type.split('/');
-      const fileName = Math.random() * 200 + '.' + fileType[1].toLowerCase();
-      const imageName = `${Date.now()}_${fileName}`;
-      const path = `customCards/${battalionCode}`;
-
-      // file type
-      const fileTypeSplit = (splitFileName) => {
-        const fileExtension = splitFileName.toLowerCase();
-        console.log(fileExtension);
-        if (fileExtension === 'docx' || fileExtension === 'doc' || fileExtension === 'pdf' || fileExtension === 'vnd.openxmlformats-officedocument.wordprocessingml.document') {
-          return 'doc';
-        } else if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'svg') {
-          return 'image';
-        }
-      };
-
-      const fileTypeExtension = fileTypeSplit(fileType[1]);
+      // assignment data
+      const assignmentData = data[0].newAssignment;
 
 
-      const ref = this.storage.ref(path);
-      const image = this.storage.upload(path, data[0].newAssignment.fileData.target.files[0]);
+      if (data[0].newAssignment.fileData) {
+        // file data
+        const uploadDate = firestore.Timestamp.now();
+        const fileType = data[0].newAssignment.fileData.target.files[0].type.split('/');
+        const fileName = Math.random() * 200 + '.' + fileType[1].toLowerCase();
+        const imageName = `${Date.now()}_${fileName}`;
+        const path = `customCards/${battalionCode}/assignments/${imageName}`;
 
-      return EMPTY;
+        // file type
+        const fileTypeSplit = (splitFileName) => {
+          const fileExtension = splitFileName.toLowerCase();
+          console.log(fileExtension);
+          if (fileExtension === 'docx' || fileExtension === 'doc' || fileExtension === 'pdf' || fileExtension === 'vnd.openxmlformats-officedocument.wordprocessingml.document') {
+            return 'doc';
+          } else if (fileExtension === 'png' || fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'svg') {
+            return 'image';
+          }
+        };
+
+        const fileTypeExtension = fileTypeSplit(fileType[1]);
+
+
+        const ref = this.storage.ref(path);
+        const image = this.storage.upload(path, data[0].newAssignment.fileData.target.files[0]);
+
+        return from(image).pipe(switchMap(() => {
+          // get download URL and upload progress data
+          return from(ref.getDownloadURL()).pipe(mergeMap((attachmentUrl: any) => {
+
+            try {
+              return from(this.db.collection('battalions').doc(battalionCode).collection('customCards').add({
+                attachment: {
+                  fileType: fileTypeExtension,
+                  url: attachmentUrl
+                },
+                description: assignmentData.instructions,
+                iconName: 'Folder',
+                name: assignmentData.assignmentName,
+                showCard: assignmentData.showAssignment,
+                urlLink: assignmentData.link
+              })).pipe(map(() => {
+                return customCardActions.uploadingStatus();
+              }));
+            } catch (err) {
+              this.storage.storage.refFromURL(`${attachmentUrl}`).delete();
+              console.log(err);
+              // return of(PortfolioActions.fileUploadError({ error: err }));
+            }
+
+          }));
+
+        }));
+      } else {
+        return from(this.db.collection('battalions').doc(battalionCode).collection('customCards').add({
+          attachment: {},
+          description: assignmentData.instructions,
+          iconName: 'Folder',
+          name: assignmentData.assignmentName,
+          showCard: assignmentData.showAssignment,
+          urlLink: assignmentData.link
+        })).pipe(map(() => {
+          return customCardActions.uploadingStatus();
+        }));
+      }
+
     })
-  ), {dispatch: false});
+  ));
 
   constructor(
     private actions$: Actions,

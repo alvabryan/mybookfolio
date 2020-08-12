@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import * as fromCadet from '../../store/index';
 
 @Component({
   selector: 'app-custom-cards-view',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomCardsViewComponent implements OnInit {
 
-  constructor() { }
+  assignmentId: string;
+  currentAssignment: any;
+
+  constructor(private route: ActivatedRoute, private store: Store<fromCadet.State>) { }
 
   ngOnInit() {
+    this.assignmentId = this.route.snapshot.params.id;
+    this.store.select('cadet').subscribe((data) => {
+      if (data.customCards.assignments) {
+        this.currentAssignment = data.customCards.assignments[this.assignmentId];
+      }
+    });
   }
 
 }

@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: '', component: CadetComponent, canActivate: [AuthGuard], children: [
     {path: '', component: DashboardComponent},
     {path: 'assignments', component: CustomCardsComponent},
-    {path: 'assignment-view', component: CustomCardsViewComponent},
+    {path: 'assignment-view/:id', component: CustomCardsViewComponent},
     {path: 'resume', component: ResumeComponent},
     {path: 'calendar', component: CalendarComponent},
     {path: 'request', component: RequestComponent},

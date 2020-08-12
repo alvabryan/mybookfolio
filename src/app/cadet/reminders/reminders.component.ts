@@ -24,9 +24,9 @@ export class RemindersComponent implements OnInit {
 
     this.subscription.add(
       this.store.select('cadet').subscribe((data: any) => {
-        if (data) {
-          if (data.reminderData) {
-            this.reminders = data.reminderData;
+        if (data.cadet) {
+          if (data.cadet.reminderData) {
+            this.reminders = data.cadet.reminderData;
           }
         }
       })

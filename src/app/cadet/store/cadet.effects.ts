@@ -95,7 +95,7 @@ export class CadetEffects {
       // battalion code
       const battalionCode = data[1].user.battalionCode;
       const cadetLet = data[1].user.letAssigned;
-      const period = data[2].cadetData.period;
+      const period = data[2].cadet.cadetData.period;
       const showToCadet = `${battalionCode}Let${cadetLet}`;
 
       // 7 days back

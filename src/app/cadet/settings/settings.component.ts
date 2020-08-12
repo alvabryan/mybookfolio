@@ -62,18 +62,18 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
     this.store.select('cadet').subscribe((data: any) => {
-      this.cadetData = data.cadetData;
+      this.cadetData = data.cadet.cadetData;
 
-      if (data.cadetData) {
+      if (data.cadet.cadetData) {
         this.personalInfo.setValue({
-          firstName: data ? data.cadetData.firstName : null,
-          lastName: data ? data.cadetData.lastName : null,
-          letLevel: data ? data.cadetData.letLevel : null,
-          period: data ? data.cadetData.period : null
+          firstName: data ? data.cadet.cadetData.firstName : null,
+          lastName: data ? data.cadet.cadetData.lastName : null,
+          letLevel: data ? data.cadet.cadetData.letLevel : null,
+          period: data ? data.cadet.cadetData.period : null
         });
 
         this.battalionCode.setValue({
-          code: data ? data.cadetData.battalionCode : null
+          code: data ? data.cadet.cadetData.battalionCode : null
         });
       }
 

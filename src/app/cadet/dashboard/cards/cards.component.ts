@@ -86,9 +86,9 @@ export class CardsComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select('cadet').subscribe((data: any) => {
         if (data) {
-          if (data.cadetData && data.cadetProgress) {
-            const progressFromDb = data.cadetProgress;
-            const letLevel = data.cadetData.letLevel;
+          if (data.cadet.cadetData && data.cadet.cadetProgress) {
+            const progressFromDb = data.cadet.cadetProgress;
+            const letLevel = data.cadet.cadetData.letLevel;
             const progress: any = this.cardProgress.determineCadetProgress(progressFromDb, letLevel);
 
             // first four

@@ -35,6 +35,7 @@ import { RemindersComponent } from './reminders/reminders.component';
 import { CustomCardsComponent } from './custom-cards/custom-cards.component';
 import { CustomCardsViewComponent } from './custom-cards/custom-cards-view/custom-cards-view.component';
 import { UploadFileModalComponent } from './custom-cards/custom-cards-view/upload-file-modal/upload-file-modal.component';
+import * as customCardEffects from './custom-cards/store/custom-cards.effects';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import { UploadFileModalComponent } from './custom-cards/custom-cards-view/uploa
     AngularFirestoreModule,
     PortfolioModule,
     StoreModule.forFeature('cadet', fromCadet.reducers),
-    EffectsModule.forFeature([CadetEffects.CadetEffects])
+    EffectsModule.forFeature([CadetEffects.CadetEffects, customCardEffects.CustomCardEffects])
   ],
   providers: [
     AuthGuard

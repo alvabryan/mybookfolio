@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+
+import * as fromCadet from '../store/index';
+import * as cadetCustomCardActions from './store/custom-cards.actions';
 
 @Component({
   selector: 'app-custom-cards',
@@ -8,15 +12,22 @@ import { Router } from '@angular/router';
 })
 export class CustomCardsComponent implements OnInit {
 
-  assignments = [1, 2];
+  assignments: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store<fromCadet.State>) { }
 
   ngOnInit() {
+    this.store.dispatch(cadetCustomCardActions.getAssignments());
+
+    this.store.select('cadet').subscribe((data: any) => {
+      if (data.customCards.assignments) {
+        this.assignments = Object.values(data.customCards.assignments);
+      }
+    });
   }
 
   sendToCustomCardView(assignmentId: string) {
-    this.router.navigate(['/cadet/assignment-view']);
+    this.router.navigate(['/cadet/assignment-view', assignmentId]);
   }
 
 }

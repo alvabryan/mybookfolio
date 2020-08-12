@@ -43,8 +43,8 @@ export class CadetDataSheetComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.store.select('cadet').subscribe((data: any) => {
-        if (data.cadetDataSheet) {
-          const cadetDataSheet = data.cadetDataSheet;
+        if (data.cadet.cadetDataSheet) {
+          const cadetDataSheet = data.cadet.cadetDataSheet;
           this.cadetInformationForm.setValue({
             gender: cadetDataSheet.gender ? cadetDataSheet.gender : '',
             birthMonth: cadetDataSheet.birthMonth ? cadetDataSheet.birthMonth : '',

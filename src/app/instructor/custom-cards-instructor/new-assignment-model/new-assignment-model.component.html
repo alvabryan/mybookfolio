@@ -11,36 +11,63 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
-          <label>Assignment Name:</label>
-          <input type="text" class="form-control" name="assignmentName" formControlName="assignmentName">
-          <div class="mt-2 mb-2">
-            <span>Attachment (optional):</span>
-            <div class="row bg-light p-3" *ngIf="fileData">
-              <div class="col col-10">
-                <p style="width: 100%; overflow: hidden;">{{ fileData.target.files[0].name }}</p>
+
+        <div *ngIf="loading === 'not submitted'">
+          <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+            <label>Assignment Name:</label>
+            <input type="text" class="form-control" name="assignmentName" formControlName="assignmentName">
+            <div class="mt-2 mb-2">
+              <span>Attachment (optional):</span>
+              <div class="row bg-light p-3" *ngIf="fileData">
+                <div class="col col-10">
+                  <p style="width: 100%; overflow: hidden;">{{ fileData.target.files[0].name }}</p>
+                </div>
+                <div class="col col-2">
+                  <button class="btn btn-danger border d-inline-block" (click)="deleteCurrentUploadFile()">X</button>
+                </div>
               </div>
-              <div class="col col-2">
-                <button class="btn btn-danger border d-inline-block" (click)="deleteCurrentUploadFile()">X</button>
+              <div class="custom-file" *ngIf="!fileData">
+                <input name="file" type="file" class="custom-file-input" id="customFile"
+                  (change)="onFileSelect($event)">
+                <label class="custom-file-label" for="customFile">Choose file</label>
               </div>
             </div>
-            <div class="custom-file" *ngIf="!fileData">
-              <input name="file" type="file" class="custom-file-input" id="customFile"
-                (change)="onFileSelect($event)">
-              <label class="custom-file-label" for="customFile">Choose file</label>
+            <label>Link (optional):</label>
+            <input type="text" class="form-control" name="link" formControlName="link">
+            <label class="mt-2 mb-2">Instructions:</label>
+            <textarea name="instructions" formControlName="instructions"  class="form-control" placeholder="For this assignment, you will practice shifting genres. To begin, read pages 467-469 in our class textbook. Then, select one paragraph from a campaign speech and revise it into a tweet, a diary entry, and a business memo."></textarea>
+            <div class="form-check mt-2">
+              <label class="form-check-label">
+                <input name="showAssignment" formControlName="showAssignment" type="checkbox" class="form-check-input" value="true" checked>Open Assignment
+              </label>
             </div>
+            <button type="submit" class="btn btn-primary mt-3 float-right">Submit</button>
+          </form>
+        </div>
+
+        <!-- spinner -->
+        <div *ngIf="loading === 'uploading'">
+          <div class="p-2 w-100">
+            <h4 class="d-block text-center" stlye="width: 300px">Uploading...</h4>
           </div>
-          <label>Link (optional):</label>
-          <input type="text" class="form-control" name="link" formControlName="link">
-          <label class="mt-2 mb-2">Instructions:</label>
-          <textarea name="instructions" formControlName="instructions"  class="form-control" placeholder="For this assignment, you will practice shifting genres. To begin, read pages 467-469 in our class textbook. Then, select one paragraph from a campaign speech and revise it into a tweet, a diary entry, and a business memo."></textarea>
-          <div class="form-check mt-2">
-            <label class="form-check-label">
-              <input name="showAssignment" formControlName="showAssignment" type="checkbox" class="form-check-input" value="true" checked>Open Assignment
-            </label>
+          <app-spinner></app-spinner>
+        </div>
+
+        <!-- upload completed container-->
+        <div *ngIf="loading === 'uploaded'">
+          <!-- upload completed container-->
+          <div class="p-2 w-100">
+            <h4 class="d-block text-center" stlye="width: 300px">Upload Complete!</h4>
           </div>
-          <button type="submit" class="btn btn-primary mt-3 float-right">Submit</button>
-        </form>
+          <div class="p-2 w-100">
+            <img class="d-block mx-auto" stlye="color: green" src="../../../../assets/icons/check.svg" height="100" width="100">
+          </div>
+          <div class="p-2 w-100">
+            <button class="btn btn-success mx-auto d-block" data-dismiss="modal" (click)="changeLoadingStatus()">Close</button>
+          </div>
+        </div>
+
+
       </div>
 
 

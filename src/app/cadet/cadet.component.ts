@@ -39,7 +39,7 @@ export class CadetComponent implements OnInit, OnDestroy  {
     this.cadetSubscription.add(
       this.store.select(fromCadet.cadetSelector).subscribe((data: any) => {
         if (data) {
-          if (data.cadetData) {
+          if (data.cadet.cadetData) {
             this.userLoaded = true;
           }
         }

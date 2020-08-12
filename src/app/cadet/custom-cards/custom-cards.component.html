@@ -5,15 +5,17 @@
     </div>
   </div>
   <hr>
-  <p *ngIf="assignments.length == 0" class="text-center mt-5">You currently don't have any assignment!</p>
+  <p *ngIf="!assignments" class="text-center mt-5">You currently don't have any assignment!</p>
 
-  <div *ngIf="assignments.length > 0">
+  <div *ngIf="assignments">
     <div class="container-fluid" *ngFor="let x of assignments">
       <div class="row on-hover pt-3 pb-3">
-        <div class="col" (click)="sendToCustomCardView('adskfjalkjdsflksa')">
+        <div class="col" (click)="sendToCustomCardView(x.id)">
           <!-- <hr class="custom-color"> -->
           <i class="fas fa-pencil-alt ml-3"></i>
-          <h4 class="d-inline-block ml-4">Syllabus</h4>
+          <h4 class="d-inline-block ml-4">{{x.name}}</h4>
+          <span class="badge badge-pill badge-danger float-right" *ngIf="x.showCard == 'false' || x.showCard == false">Closed</span>
+          <span class="badge badge-pill badge-success float-right" *ngIf="x.showCard == 'true' || x.showCard == true">Open</span>
         </div>
       </div>
       <hr>
