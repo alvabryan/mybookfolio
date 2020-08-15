@@ -1,7 +1,11 @@
-<div class="container-fluid">
+<app-new-assignment-model [updateData]="editModelData" *ngIf="editModelData.assignmentData"></app-new-assignment-model>
+<div class="container-fluid" *ngIf="currentAssignment">
   <div class="row mt-3">
     <div class="col-8">
-      <h2>Syllabus</h2>
+      <h2>{{ currentAssignment.name }}</h2>
+    </div>
+    <div class="col-4">
+      <button class="btn btn-warning float-right" data-toggle="modal" data-target="#myModal" *ngIf="editModelData.assignmentData">Edit</button>
     </div>
   </div>
   <hr>
@@ -12,35 +16,55 @@
         <div class="card">
           <div class="card-header">
             <a class="card-link" data-toggle="collapse" href="#collapseOne">
-              <p style="display: inline-block;"><b>Directions: </b> For this assignment, you will practice shifting genres. To begin, read pages 467-469 in...</p>
-              <img style="display: inline-block; margin-left: 10px" src="https://www.paperown.com/blog/wp-content/uploads/2018/09/Assignment-Objectives-1.png" height="50px" width="50px">
+              <p style="display: inline-block;"><b>Directions: </b> {{ currentAssignment.description }}</p>
+              <img *ngIf="currentAssignment.attachment.fileType === 'image' && currentAssignment.attachment.url" style="display: inline-block; margin-left: 10px" [src]="currentAssignment.attachment.url" height="50px" width="50px">
             </a>
           </div>
           <div id="collapseOne" class="collapse" data-parent="#accordion">
             <div class="card-body">
               <div class="row">
                 <div class="col">
-                  <p><b>Directions: </b> For this assignment, you will practice shifting genres. To begin, read pages 467-469 in our class textbook. Then, select one paragraph from a campaign speech and revise it into a tweet, a diary entry, and a business memo.</p>
+                  <p><b>Directions: </b> {{ currentAssignment.description }}</p>
+                  <p *ngIf="currentAssignment.urlLink"><b>Link: </b> <a [href]="currentAssignment.urlLink" target="_blank">{{ currentAssignment.urlLink }}</a></p>
                 </div>
               </div>
               <!-- Image Row -->
-              <div class="row">
+              <div class="row" *ngIf="currentAssignment.attachment.url && currentAssignment.attachment.fileType === 'image'">
                 <div class="col-xs-12 col-sm-12 col-md-9">
-                  <img class="img-fluid" src="https://www.paperown.com/blog/wp-content/uploads/2018/09/Assignment-Objectives-1.png" height="auto" width="auto">
+                  <img class="img-fluid" [src]="currentAssignment.attachment.url" height="auto" width="auto">
                 </div>
               </div>
+              <button class="btn btn-primary" *ngIf="currentAssignment.attachment.url && currentAssignment.attachment.fileType === 'doc'"><a [href]="currentAssignment.attachment.url" target="_blank" style="color: white">View Attachment</a></button>
             </div>
           </div>
         </div>
       </div>
       <hr>
-      <p class="text-center">This student hasn't submitted their assignment!</p>
+      <p class="text-center" *ngIf="currentCadet && !currentCadetData">This student hasn't submitted their assignment!</p>
+      <p class="text-center" *ngIf="!currentCadet">Please select a cadet to view</p>
+      <div class="container-fluid bg-light p-3" *ngIf="currentCadet && currentCadetData">
+        <div class="row">
+          <div class="col" *ngIf="currentCadetData.attachmentUrl && currentCadetData.fileType === 'image'">
+            <img class="img-fluid" [src]="currentCadetData.attachmentUrl">
+          </div>
+          <div class="col">
+            <h5>Attachment Name:</h5>
+            <p>{{ currentCadetData.fileName }}</p>
+            <h5 class="mt-2 mb-2">Comment:</h5>
+            <p>{{ currentCadetData.studentComment }}</p>
+            <h5 class="mt-2 mb-2">Date Submitted:</h5>
+            <p>{{ currentCadetData.dateSubmitted.toDate() | date:'medium' }}</p>
+            <button class="btn btn-primary mt-3" *ngIf="currentCadetData.attachmentUrl && currentCadetData.fileType === 'doc'"><a [href]="currentCadetData.attachmentUrl" target="_blank" style="color: white;">View Attachment</a></button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-3">
       <ul class="list-group">
-        <li class="list-group-item active">Bryan Alvarenga <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span></li>
-        <li class="list-group-item">Jairo Alvarenga</li>
-        <li class="list-group-item">John Doe <span class="badge badge-success badge-pill"><i class="fas fa-check"></i></span></li>
+          <li class="list-group-item" *ngFor="let cadet of cadetRoster; let index = i" (click)="selectCadet(cadet.uid)">{{ cadet.lastName }}, {{ cadet.firstName}}
+            <span class="badge badge-success badge-pill" *ngIf="cadetSubmissions && cadetSubmissions[cadet.uid]"><i class="fas fa-check"></i></span>
+            <span class="badge badge-danger badge-pill" *ngIf="cadetSubmissions && !cadetSubmissions[cadet.uid]"><i class="fas fa-times pl-1 pr-1"></i></span>
+          </li>
       </ul>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
@@ -12,6 +12,19 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./new-assignment-model.component.css']
 })
 export class NewAssignmentModelComponent implements OnInit, OnDestroy {
+  @Input() updateData: {
+    type: string,
+    assignmentId: string,
+    assignmentData: any
+  };
+
+  modelTitle: any;
+
+  // edit model variables
+  editFileData = {
+    fileData: null,
+    removed: false
+  };
 
   subscription: Subscription = new Subscription();
   assignmentForm: FormGroup;
@@ -27,6 +40,25 @@ export class NewAssignmentModelComponent implements OnInit, OnDestroy {
       instructions: new FormControl(''),
       showAssignment: new FormControl('true')
     });
+
+    console.log(this.updateData);
+
+    if (this.updateData.type === 'edit') {
+      this.modelTitle = 'Edit';
+      this.assignmentForm.setValue({
+        assignmentName: this.updateData.assignmentData.name ? this.updateData.assignmentData.name : '',
+        link: this.updateData.assignmentData.urlLink ? this.updateData.assignmentData.urlLink : '',
+        instructions: this.updateData.assignmentData.description ? this.updateData.assignmentData.description : '',
+        showAssignment: this.updateData.assignmentData.showCard ? this.updateData.assignmentData.showCard : true
+      });
+      this.editFileData.fileData = this.updateData.assignmentData.attachment ? this.updateData.assignmentData.attachment.url : null;
+    } else {
+      this.modelTitle = 'New';
+    }
+  }
+
+  removeEditAttachment() {
+    this.editFileData.removed = true;
   }
 
   onFileSelect(uploadFileData) {
@@ -38,21 +70,24 @@ export class NewAssignmentModelComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.loading = 'uploading';
-    const newAssignmentData = {...this.assignmentForm.value, fileData: this.fileData};
-    this.store.dispatch(customCardAction.createAssignment({newAssignment: newAssignmentData}));
+    if (this.updateData.type === 'edit') {
+      console.log('edit mode');
+    } else {
+      this.loading = 'uploading';
+      const newAssignmentData = {...this.assignmentForm.value, fileData: this.fileData};
+      this.store.dispatch(customCardAction.createAssignment({newAssignment: newAssignmentData}));
 
-    this.subscription.add(
-      this.store.select('instructor').subscribe((data: any) => {
-        if (data.customCards) {
-          if (data.customCards.uploadingStatus) {
-            console.log('ran');
-            console.log(data.customCards.uploadingStatus);
-            this.loading = data.customCards.uploadingStatus;
+      this.subscription.add(
+        this.store.select('instructor').subscribe((data: any) => {
+          if (data.customCards) {
+            if (data.customCards.uploadingStatus) {
+              this.loading = data.customCards.uploadingStatus;
+            }
           }
-        }
-      })
-    );
+        })
+      );
+    }
+
   }
 
   changeLoadingStatus() {

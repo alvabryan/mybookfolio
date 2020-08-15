@@ -12,6 +12,7 @@ import * as PortfolioActions from '../portfolio/store/portfolio.actions';
 import { take, delay, tap, switchMap, mergeMap } from 'rxjs/operators';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { Router } from '@angular/router';
+import * as customCardActions from './custom-cards-instructor/store/custom-cards.actions';
 
 @Component({
   selector: 'app-instructor',
@@ -35,6 +36,7 @@ export class InstructorComponent implements OnInit, OnDestroy {
           this.user = data;
           this.store.dispatch(InstructorActions.getCadetProgress());
           this.store.dispatch(InstructorActions.getCadetDataSheet());
+          this.store.dispatch(customCardActions.getAssignments());
           this.store.dispatch(PortfolioActions.searchCadetLoad());
           this.store.dispatch(PortfolioActions.onReload());
           this.store.dispatch(BattalionUsersActions.getBattalionUsers());

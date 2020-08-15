@@ -12,6 +12,12 @@ import * as customCardActions from './store/custom-cards.actions';
 })
 export class CustomCardsInstructorComponent implements OnInit {
 
+  editModelData = {
+    type: 'new',
+    assignmentId: null,
+    assignmentData: null
+  };
+
   assignments: any;
 
   constructor(private router: Router, private store: Store<fromInstructor.State>) { }
@@ -22,14 +28,14 @@ export class CustomCardsInstructorComponent implements OnInit {
     this.store.select('instructor').subscribe((data) => {
       if (data.customCards) {
         if (data.customCards.assignments) {
-          this.assignments = data.customCards.assignments;
+          this.assignments = Object.values(data.customCards.assignments);
         }
       }
     });
   }
 
   sendToInstructorCustomCardView(assignmentId: string) {
-    this.router.navigate(['/instructor/assignment-view']);
+    this.router.navigate(['/instructor/assignment-view/', assignmentId]);
   }
 
 }

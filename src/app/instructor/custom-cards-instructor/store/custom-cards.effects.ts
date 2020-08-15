@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import * as fromRoot from '../../../store';
 import * as fromInstructor from '../../store/index';
-import { Store } from '@ngrx/store';
+import { Store, createAction } from '@ngrx/store';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as customCardActions from './custom-cards.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -21,7 +21,7 @@ export class CustomCardEffects {
     switchMap((data) => {
       const battalionCode = data[1].user.battalionCode;
 
-      return from(this.db.collection('battalions').doc(battalionCode).collection('customCards').valueChanges()).pipe(map((assignmentsData) => {
+      return from(this.db.collection('battalions').doc(battalionCode).collection('customCards').valueChanges({idField: 'id'})).pipe(map((assignmentsData) => {
         return customCardActions.setAssignments({assignments: assignmentsData});
       }));
     })
@@ -102,6 +102,19 @@ export class CustomCardEffects {
         }));
       }
 
+    })
+  ));
+
+  getCadetSubmissions = createEffect(() => this.actions$.pipe(
+    ofType(customCardActions.getCurrentAssignmentSubmissions),
+    withLatestFrom(this.store.select('auth')),
+    switchMap((data) => {
+      const battalionCode = data[1].user.battalionCode;
+      const currentAssignmentId = data[0].assignmentId;
+
+      return from(this.db.collection('battalions').doc(battalionCode).collection('customCards').doc(currentAssignmentId).collection('submissions').valueChanges({idField: 'id'})).pipe(map((rdata) => {
+        return customCardActions.setCurrentAssignmentSubmissions({data: rdata});
+      }));
     })
   ));
 

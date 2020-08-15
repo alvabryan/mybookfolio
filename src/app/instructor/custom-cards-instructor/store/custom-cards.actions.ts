@@ -7,3 +7,6 @@ export const setAssignments = createAction('[Custom Cards] set assignments', pro
 export const createAssignment = createAction('[Custom Cards] create assignment', props<{newAssignment: any}>());
 export const uploadingStatus = createAction('[Custom Cards] uploading status');
 export const resetUploadFileStatus = createAction('[Custom Cards] reset uploading status');
+
+export const getCurrentAssignmentSubmissions = createAction('[Custom Cards] get submissions', props<{assignmentId: string}>());
+export const setCurrentAssignmentSubmissions = createAction('[Custom Cards] set submissions', props<{data: any}>());

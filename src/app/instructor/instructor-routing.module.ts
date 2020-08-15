@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: '', canActivate: [AuthInstructor] , component: InstructorComponent, children: [
     {path: '', component: DashboardComponent},
     {path: 'assignments', component: CustomCardsInstructorComponent},
-    {path: 'assignment-view', component: CustomCardsViewInstructorComponent},
+    {path: 'assignment-view/:id', component: CustomCardsViewInstructorComponent},
     {path: 'cadets', component: CadetsComponent},
     {path: 'portfolio-view', component: PortfolioViewComponent},
     {path: 'cadet-data-request', component: CadetDataRequestComponent},

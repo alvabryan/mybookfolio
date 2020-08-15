@@ -5,7 +5,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">New Assignment</h4>
+        <h4 class="modal-title">{{modelTitle}} Assignment</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -17,7 +17,7 @@
             <label>Assignment Name:</label>
             <input type="text" class="form-control" name="assignmentName" formControlName="assignmentName">
             <div class="mt-2 mb-2">
-              <span>Attachment (optional):</span>
+              <span>Attachment (optional) PDF, DOC, PNG, JPG only:</span>
               <div class="row bg-light p-3" *ngIf="fileData">
                 <div class="col col-10">
                   <p style="width: 100%; overflow: hidden;">{{ fileData.target.files[0].name }}</p>
@@ -26,7 +26,15 @@
                   <button class="btn btn-danger border d-inline-block" (click)="deleteCurrentUploadFile()">X</button>
                 </div>
               </div>
-              <div class="custom-file" *ngIf="!fileData">
+              <div class="row bg-light p-3" *ngIf="editFileData.fileData && !editFileData.removed">
+                <div class="col col-10">
+                  <p style="width: 100%; overflow: hidden;">{{ editFileData.fileData }}</p>
+                </div>
+                <div class="col col-2">
+                  <button class="btn btn-danger border d-inline-block" (click)="removeEditAttachment()">X</button>
+                </div>
+              </div>
+              <div class="custom-file" *ngIf="!fileData && updateData.type === 'new' && !editFileData.removed">
                 <input name="file" type="file" class="custom-file-input" id="customFile"
                   (change)="onFileSelect($event)">
                 <label class="custom-file-label" for="customFile">Choose file</label>
@@ -35,13 +43,14 @@
             <label>Link (optional):</label>
             <input type="text" class="form-control" name="link" formControlName="link">
             <label class="mt-2 mb-2">Instructions:</label>
-            <textarea name="instructions" formControlName="instructions"  class="form-control" placeholder="For this assignment, you will practice shifting genres. To begin, read pages 467-469 in our class textbook. Then, select one paragraph from a campaign speech and revise it into a tweet, a diary entry, and a business memo."></textarea>
+            <textarea name="instructions" rows="7" formControlName="instructions"  class="form-control" placeholder="For this assignment, you will practice shifting genres. To begin, read pages 467-469 in our class textbook. Then, select one paragraph from a campaign speech and revise it into a tweet, a diary entry, and a business memo."></textarea>
             <div class="form-check mt-2">
               <label class="form-check-label">
                 <input name="showAssignment" formControlName="showAssignment" type="checkbox" class="form-check-input" value="true" checked>Open Assignment
               </label>
             </div>
-            <button type="submit" class="btn btn-primary mt-3 float-right">Submit</button>
+            <button type="submit" class="btn btn-primary mt-3 float-right" *ngIf="updateData.type === 'new'">Submit</button>
+            <button type="submit" class="btn btn-warning mt-3 float-right" *ngIf="updateData.type === 'edit'">Update</button>
           </form>
         </div>
 

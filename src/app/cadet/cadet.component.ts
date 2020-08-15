@@ -6,6 +6,7 @@ import * as fromCadet from './store/index';
 import * as fromRoot from '../store/index';
 import * as PortfolioActions from '../portfolio/store/portfolio.actions';
 import * as CadetActions from './store/cadet.actions';
+import * as cadetCustomCardActions from './custom-cards/store/custom-cards.actions';
 
 @Component({
   selector: 'app-cadet',
@@ -30,6 +31,7 @@ export class CadetComponent implements OnInit, OnDestroy  {
             this.store.dispatch(CadetActions.getCadetData());
             this.store.dispatch(CadetActions.getCadetProgress());
             this.store.dispatch(CadetActions.getCadetDataSheet());
+            this.store.dispatch(cadetCustomCardActions.getAssignments());
             this.store.dispatch(PortfolioActions.onReload());
           }
         }
