@@ -38,6 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
 import * as logoutMetaReducer from './store/logout-reducer/logout.reducer';
 import * as logoutEffects from './store/logout-reducer/logout.effects';
 
+import { NgwWowModule } from 'ngx-wow';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -59,7 +61,8 @@ import * as logoutEffects from './store/logout-reducer/logout.effects';
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production
     }),
-    EffectsModule.forRoot([logoutEffects.LogoutEffect])
+    EffectsModule.forRoot([logoutEffects.LogoutEffect]),
+    NgwWowModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

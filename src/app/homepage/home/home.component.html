@@ -1,300 +1,1036 @@
-<div style="position:relative;width:100%" id="topView">
-    <nav class="fixed-top navbar navbar-expand-lg navbar-light" id="mainNav" (scroll)="onWindowScroll($event)">
-        <div class="container">
-            <a href="#page-top" class="navbar-brand"><img src="http://files.mybookfolio.com/logoWhite.svg"
-                    width="60px" height="60px"></a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarResponsive"
-                data-toggle="collapse"><i class="fas fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="ml-auto navbar-nav">
-                    <li class="nav-item"><a routerLink="/home" fragment="services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a routerLink="/home" fragment="demo" class="nav-link">About</a></li>
-                    <li class="nav-item"><a routerLink="/home" fragment="pricing" class="nav-link active">Steps</a></li>
-                    <li class="nav-item"><a routerLink="/home" fragment="contact" class="nav-link">Contact</a></li>
-                    <li class="nav-item"><a routerLink="/auth" class=" nav-link"><b>Login</b></a></li>
-                    <li class="nav-item"><a routerLink="/auth/register" class=" nav-link"><b>Register</b></a></li>
-                </ul>
-            </div>
+
+    <!-- PRELOADER SPINNER
+		============================================= -->
+    <div id="loader-wrapper">
+      <div id="loader">
+        <div class="cssload-contain">
+          <div class="cssload-dot"></div>
+          <div class="cssload-dot"></div>
+          <div class="cssload-dot"></div>
+          <div class="cssload-dot"></div>
+          <div class="cssload-dot"></div>
         </div>
-    </nav>
-    <section id="home" class="banner-area relative">
-        <div class="container">
-            <div class="row align-items-center d-flex fullscreen justify-content-start">
-                <div class="col-lg-12 banner-content col-md-12">
-                    <h1>Pass your JPA with</h1>
-                    <h1>MyBookfolio</h1>
-                    <p class="text-light">MyBookfolio is a battalion management system created to <br> help JROTC programs pass their JPA Inspection. </p>
-                    <a routerLink="register" class="text-uppercase header-btn primary-btn">Register Free</a>
-                </div>
+      </div>
+    </div>
+
+    <!-- PAGE CONTENT
+		============================================= -->
+    <div id="page" class="page">
+      <!-- HEADER
+			============================================= -->
+      <header id="header" class="header">
+        <nav
+          class="navbar fixed-top navbar-expand-lg bg-tra navbar-dark hover-menu"
+        >
+          <div class="container">
+            <!-- LOGO IMAGE -->
+            <!-- For Retina Ready displays take a image with double the amount of pixels that your image will be displayed (e.g 256 x 80 pixels) -->
+            <a href="#hero-1" class="navbar-brand logo-blue">
+              <h4 class="mt-2" style="color: #007cff;">MyBookfolio</h4>
+            </a>
+            <a href="#hero-1" class="navbar-brand logo-white">
+              <h4 class="mt-2 text-white">MyBookfolio</h4>
+            </a>
+
+            <!-- Responsive Menu Button -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-bar-icon"><i class="fas fa-bars"></i></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" routerLink="." fragment="features-1">Features</a>
+                </li>
+
+                <!-- <li class="nav-item nl-simple">
+                  <a class="nav-link" href="#">Features</a>
+                </li> -->
+
+                <!-- Dropdown Link -->
+                <!-- <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdownMenuLink1"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Resources
+                  </a>
+                  -->
+                  <!-- Dropdown Menu -->
+                  <!-- <ul
+                    class="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink1"
+                  >
+                    <li>
+                      <a class="dropdown-item" href="#">Why Us</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#features-8"
+                        >How It Works</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#content-4"
+                        >Watch The Video</a
+                      >
+                    </li>
+                  </ul>
+                </li>  -->
+
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" routerLink="." fragment="faqs-1">Support</a>
+                </li>
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" routerLink="/auth">Login</a>
+                </li>
+                <li class="nav-item nl-simple">
+                  <a class="nav-link" routerLink="/auth/register">Sign Up</a>
+                </li>
+              </ul>
             </div>
+            <!-- End Navigation Menu -->
+          </div>
+          <!-- End container -->
+        </nav>
+        <!-- End navbar -->
+      </header>
+      <!-- END HEADER -->
+
+      <!-- HERO-1
+			============================================= -->
+      <section id="hero-1" class="pb-20 hero-section">
+        <div class="bg-scroll bg-inner division">
+          <!-- HERO CONTENT -->
+          <div class="container white-color header-child">
+            <div class="row d-flex align-items-center">
+              <!-- HERO IMAGE -->
+              <div class="col-md-6">
+                <div
+                  class="hero-1-img wow fadeInRight"
+                  data-wow-duration="2.5s"
+                  data-wow-delay="0.8s"
+                >
+                  <img
+                    class="img-fluid"
+                    src="../../../assets/homepage/iPhoneXMockup.png"
+                    alt="JROTC Inspection"
+                  />
+                </div>
+              </div>
+
+              <!-- HERO TEXT -->
+              <div class="col-md-6">
+                <div
+                  class="hero-1-txt mb-40 wow fadeInLeft"
+                  data-wow-duration="2.5s"
+                  data-wow-delay="0.4s"
+                >
+                  <!-- HERO APP LOGO -->
+                  <!-- For Retina Ready displays take a image, with double the amount of pixels that your image will be displayed (e.g 276 x 240 pixels) -->
+                  <div class="hero-app-logo">
+                    <img
+                      class="img-fluid"
+                      src="../../../assets/homepage/appIconHero.png"
+                      width="130"
+                      height="102"
+                      alt="Cadet Portfolio"
+                    />
+                  </div>
+
+                  <!-- Title -->
+                  <h2 class="h2-xl">MyBookfolio</h2>
+                  <h5 class="h5-xl">A JROTC JPA Inspection Solution</h5>
+
+                  <!-- Text -->
+                  <p class="p-md">
+                    Mybookfolio allows JROTC battalions to stay connected. Our
+                    custom software renders all JROTC programs with the tools
+                    necessary to manage, maintain, and overview their Battalion
+                    progress throughout the year to ensure high results in the
+                    JPA Inspection.
+                  </p>
+
+                  <!-- Button -->
+                  <a
+                    href="download-1.html"
+                    class="btn btn-md btn-tra-white white-hover"
+                    >Sign Up</a
+                  >
+                </div>
+              </div>
+              <!-- END HERO TEXT -->
+            </div>
+            <!-- End row -->
+          </div>
+          <!--END HERO CONTENT -->
+
+          <!-- SECTION OVERLAY -->
+          <div class="bg-fixed white-overlay-top header-child"></div>
         </div>
-    </section>
-    <section id="services">
+        <!-- End Inner Content -->
+      </section>
+      <!-- END HERO-1 -->
+
+      <!-- FEATURES-1
+			============================================= -->
+      <section id="features-1" class="pt-80 pb-60 features-section division">
         <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    <h2 class="text-uppercase section-heading">Our Services</h2>
-                    <h3 class="text-muted section-subheading">These are our main three services.</h3>
+          <div class="row">
+            <!-- FEATURE BOX #1 -->
+            <div class="col-sm-6 col-lg-4">
+              <div class="fbox-1 icon-md wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Icon  -->
+                <!-- 								<span class="flaticon-189-monitor skyblue-color"></span> -->
+                <img
+                  src="../../../assets/homepage/cadetPortfolioIcon.svg"
+                  width="90"
+                  alt="Jrotc Portfolio Software"
+                />
+                <!-- Text -->
+                <div class="fbox-1-txt">
+                  <!-- Title -->
+                  <h5 class="h5-xl">JPA <span>Portfolio</span></h5>
+
+                  <!-- Text -->
+                  <p class="grey-color">
+                    With our friendly system, cadets can build their personal
+                    portfolio using a, iphone, tablet, or computer.
+                  </p>
                 </div>
+              </div>
             </div>
-            <div class="text-center row">
-                <div class="col-md-4"><span class="fa-4x fa-stack"><img src="assets/img/cadetPortfolioIcon.svg"
-                            width="100%"></span>
-                    <h4 class="service-heading">JPA Portfolio</h4>
-                    <h5><span class="badge badge-primary">Included</span></h5>
-                    <p class="text-muted">Our platform provides a friendly system that can be used for the JPA
-                        inspection, cadets can build their personal portfolio using a phone, tablet or computer.</p>
+            <!-- END FEATURE BOX #1 -->
+
+            <!-- FEATURE BOX #2 -->
+            <div class="col-sm-6 col-lg-4">
+              <div class="fbox-1 icon-md wow fadeInUp" data-wow-delay="0.6s">
+                <!-- Icon  -->
+                <img src="../../../assets/homepage/analytics.svg" width="90" alt="MyBookfolio Jrotc Software Cadet Inspection" />
+
+                <!-- Text -->
+                <div class="fbox-1-txt">
+                  <!-- Title -->
+                  <h5 class="h5-xl"><span>Powerful</span> Analytics</h5>
+
+                  <!-- Text -->
+                  <p class="grey-color">
+                    Our tools allow both cadets and instructors to see critical
+                    analysis of the JPA portfolio progress
+                  </p>
                 </div>
-                <div class="col-md-4"><span class="fa-4x fa-stack"><img src="assets/img/resumeMainIcon.svg"
-                            width="100%"></span>
-                    <h4 class="service-heading" id="resumeLink">Resume Builder</h4>
-                    <h5><span class="badge badge-primary">Included</span></h5>
-                    <p class="text-muted">A Resume allows Employers and other Programs to see the endless capabilities
-                        of a cadet. With three easy steps we provide the tools necessary that allow a cadet to Create,
-                        Edit, and share their Resume to Employers and any other service.</p>
-                </div>
-                <div class="col-md-4"><span class="fa-4x fa-stack"><img src="assets/img/staffToolsIcon.svg"
-                            width="100%"></span>
-                    <h4 class="service-heading">Staff tools</h4>
-                    <h5><span class="badge badge-primary">Included</span></h5>
-                    <p class="text-muted">Our platform comes with unique tools that the S-1 through S-6 can use to
-                        better accomplish their weekly tasks, and make sure the battalion is reaching the desired goals
-                        and deadlines.</p>
-                </div>
+              </div>
             </div>
+            <!-- END FEATURE BOX #2 -->
+
+            <!-- FEATURE BOX #3 -->
+            <div class="col-sm-6 col-lg-4">
+              <div class="fbox-1 icon-md wow fadeInUp" data-wow-delay="0.8s">
+                <!-- Icon  -->
+                <img
+                  src="../../../assets/homepage/datasheet.svg"
+                  width="90"
+                  height="90"
+                  alt="Jrotc JPA Inspection"
+                />
+
+                <!-- Text -->
+                <div class="fbox-1-txt">
+                  <!-- Title -->
+                  <h5 class="h5-xl">Cadet <span>DataSheet</span></h5>
+
+                  <!-- Text -->
+                  <p class="grey-color">
+                    JROTC instructors can easily obtain a cadets datasheet
+                    information for upload to JUMS
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- END FEATURE BOX #3 -->
+
+            <!-- FEATURE BOX #4 -->
+            <div class="col-sm-6 col-lg-6">
+              <div class="fbox-1 icon-md wow fadeInUp" data-wow-delay="1s">
+                <!-- Icon  -->
+                <img
+                  src="../../../assets/homepage/files.svg"
+                  width="90"
+                  height="90"
+                  alt="Cadet Jrotc"
+                />
+
+                <!-- Text -->
+                <div class="fbox-1-txt">
+                  <!-- Title -->
+                  <h5 class="h5-xl">Custom <span>Assignments</span></h5>
+
+                  <!-- Text -->
+                  <p class="grey-color">
+                    MyBookfolio's custom assignment tool allow instructors to create assignments for cadets to complete.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- END FEATURE BOX #4 -->
+
+            <!-- FEATURE BOX #5 -->
+            <div class="col-sm-6 col-lg-6">
+              <div class="fbox-1 icon-md wow fadeInUp" data-wow-delay="1.2s">
+                <!-- Icon  -->
+                <img
+                  src="../../../assets/homepage/reminders.svg"
+                  width="90"
+                  height="90"
+                  alt="MyBookfolio Cadet Portfolio"
+                />
+
+                <!-- Text -->
+                <div class="fbox-1-txt">
+                  <!-- Title -->
+                  <h5 class="h5-xl">Realtime <span>Reminders</span></h5>
+
+                  <!-- Text -->
+                  <p class="grey-color">
+                    With the use of the MyBookfolio app cadets can instantly
+                    recieve reminders or messages from instructors
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- END FEATURE BOX #5 -->
+
+
+          </div>
+          <!-- End row -->
         </div>
-        <section id="demo" class="call-action-area section-gap">
-            <div class="container">
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-lg-9">
-                        <h1 class="text-white" style="margin-top:-30px!important">What is MYBOOKFOLIO?</h1>
-                        <p class="text-white mt-5">MyBookfolio is a Battalion Management System that renders all Army
-                            JROTC programs with the tools necessary to manage, maintain, and overview their Battalions
-                            progress throughout the year with accordance to the JROTC program of accreditation. Our
-                            powerful platform will help you achieve your overall battalion goal and will also provide
-                            you with the confidence you need in knowing that you are partnered with the most reliable
-                            and secure Battalion Management System. Our platform includes a cadet, staff, and instructor
-                            profile each made to accommodate the needs of your battalion.</p>
+        <!-- End container -->
+      </section>
+      <!-- END FEATURES-1 -->
+
+      <!-- CONTENT-3
+			============================================= -->
+      <section id="content-2" class="wide-60 content-section division">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-6">
+              <div
+                class="img-block pl-45 mb-40 wow fadeInRight"
+                data-wow-delay="0.6s"
+              >
+                <img
+                  class="img-fluid"
+                  src="../../../assets/homepage/cards.png"
+                  alt="Portfolio Cadet"
+                />
+              </div>
+            </div>
+
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6">
+              <div
+                class="txt-block pc-45 mb-40 wow fadeInLeft"
+                data-wow-delay="0.4s"
+              >
+                <!-- Section ID -->
+                <div class="section-id icon-xs">
+                  <p>
+
+                    JPA INSPECTION
+                  </p>
+                </div>
+
+                <!-- Title -->
+                <h3 class="h3-lg">Get more productivity with less effort</h3>
+
+                <!-- Text -->
+                <p>
+                  The JPA Inspection Tool allows JROTC Instructors to assign
+                  assignments for cadets to complete, our JPA tool comes with
+                  required tasks necessary for the JPA Inspection. Our tool also
+                  allows JROTC instructors to create other assignments not
+                  included for a more flexible experience.
+                </p>
+
+                <!-- Link -->
+                <div class="txt-block-link">
+                  <a href="#features-8" class="internal-link skyblue-color"
+                    >Show me more <i class="fas fa-chevron-right"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-3 -->
+
+      <!-- CONTENT-1
+			============================================= -->
+      <section id="content-1" class="wide-60 content-section division">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6">
+              <div
+                class="txt-block pc-45 mb-40 wow fadeInRight"
+                data-wow-delay="0.4s"
+              >
+                <!-- Section ID -->
+                <div class="section-id icon-xs">
+                  <p>
+
+                    App Reminders
+                  </p>
+                </div>
+
+                <!-- Title -->
+                <h3 class="h3-lg">Stay Connected</h3>
+
+                <!-- Text -->
+                <p>
+                  Through the use of the MyBookfolio app, cadets can instantly
+                  recieve reminders, messages, links or images from instructors.
+                  This allows JROTC battalions to always stay connected,
+                  allowing a all in one system that both cadets and instructors
+                  can benefit from.
+                </p>
+
+                <!-- Button -->
+                <a
+                  href="download-1.html"
+                  class="btn btn-md btn-skyblue tra-black-hover"
+                  >Get Started With Free Trial</a
+                >
+
+                <!-- OS Prerequisite -->
+                <span class="os-version grey-color"
+                  >Available on:
+                  <a href="#"><i class="fab fa-apple"></i></a>
+                  <a href="#"><i class="fab fa-android"></i></a>
+                </span>
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
+
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-6">
+              <div
+                class="img-block pr-45 mb-40 wow fadeInLeft"
+                data-wow-delay="0.6s"
+              >
+                <img
+                  class="img-fluid"
+                  src="../../../assets/homepage/reminders.png"
+                  alt="Jrotc Cadet Portfolio Website"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-1 -->
+
+      <section
+        id="features-10"
+        class="bg-lightgrey wide-100 features-section division"
+      >
+        <div class="container">
+          <!-- SECTION TITLE -->
+          <div class="row">
+            <div
+              class="col-lg-10 offset-lg-1 section-title wow fadeInUp"
+              data-wow-delay="0.4s"
+            >
+              <!-- Title 	-->
+              <h3 class="h3-xl">The MyBookfolio Difference</h3>
+
+              <!-- Text -->
+              <p class="p-lg lightgrey-color">
+                Learn how mybookfolio is different when it compares to a
+                traditional binder setup.
+              </p>
+            </div>
+          </div>
+          <!-- END SECTION TITLE -->
+
+          <div class="row">
+            <div
+              class="mx-auto col-md-6 col-sm-12 col-lg-6 mt-5 wow fadeInRight"
+              data-wow-delay="0.6s"
+            >
+              <h2 class="text-center">Digital Portfolio</h2>
+              <p class="text-center text-muted">Efficient & Powerful</p>
+              <img
+                alt="cadet portfolio"
+                src="../../../assets/homepage/phoneMybookfolioDifference.svg"
+                style="display: block; margin: auto; margin: 50px auto 70px;"
+                width="40%"
+              />
+              <h4 class="text-center">MyBookfolio</h4>
+              <p class="text-center text-muted mt-3" style="font-size: 18px;">
+                Free Account
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                Keep track of progress
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                JPA Portfolio
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                Message Reminders
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                Custom Assignments
+              </p>
+            </div>
+            <div
+              class="mx-auto col-md-6 col-sm-12 col-lg-6 mt-5 box-right wow fadeInLeft"
+              data-wow-delay="0.6s"
+            >
+              <h2 class="text-center">Standard Portfolio</h2>
+              <p class="text-center text-muted">Expensive & time consuming</p>
+              <img
+                alt="jrotc cadet portfolio"
+                src="../../../assets/homepage/fileMybookfolioDifference.svg"
+                style="display: block; margin: auto; margin: 50px auto 70px;"
+                width="45%"
+              />
+              <h4 class="text-center">Traditional Binder</h4>
+              <p class="text-center text-muted mt-3" style="font-size: 18px;">
+                Time Consuming
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                Can be damaged or lost
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                Limited content can be added
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                Material Can't be shared
+              </p>
+              <p class="text-center text-muted mt-1" style="font-size: 18px;">
+                Costly
+              </p>
+            </div>
+
+            <!-- Button -->
+            <a
+              href="#download-5"
+              class="btn btn-md btn-skyblue tra-black-hover wow fadeInUp"
+              data-wow-delay="0.6s"
+              style="margin: 50px auto 0px auto;"
+              >Get Started</a
+            >
+          </div>
+        </div>
+        <!-- End container -->
+      </section>
+
+      <!-- CONTENT-4
+			============================================= -->
+      <section id="content-6" class="pt-100 content-section division">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6">
+              <div
+                class="txt-block pc-45 mb-40 wow fadeInLeft"
+                data-wow-delay="0.4s"
+              >
+                <!-- Section ID -->
+                <div class="section-id icon-xs">
+                  <p>
+                    <span class="flaticon-066-edit-1 skyblue-color"></span>
+                    All-In-One
+                  </p>
+                </div>
+
+                <!-- Title -->
+                <h3 class="h3-lg">Organize anything. Everytime. Everywhere</h3>
+
+                <!-- Text -->
+                <p>
+                  Our easy to use platform allows instructors and cadets to
+                  organize all their necessary documents and files in a single
+                  place for a more pleasent JPA inspection experience.
+                </p>
+
+                <!-- Text -->
+                <p>
+                  Mybookfolio takes away the hassle of dealing with paperwork
+                  and folders, and provides a single location for completion of
+                  assignments, communication, and sharing of documents.
+                </p>
+
+                <!-- Button -->
+                <a
+                  href="#download-5"
+                  class="btn btn-md btn-skyblue tra-black-hover"
+                  >Start For Free</a
+                >
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
+
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-6">
+              <div class="content-6-img wow fadeInRight" data-wow-delay="0.6s">
+                <img
+                  class="img-fluid"
+                  src="../../../assets/homepage/dashboard.png"
+                  width="1000"
+                  height="600"
+                  alt="Cadet Portfolio For Jrotc"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-4 -->
+
+      <!-- FEATURES-8
+			============================================= -->
+      <section
+        id="features-8"
+        class="bg-lightgrey wide-60 features-section division"
+      >
+        <div class="container">
+          <!-- SECTION TITLE -->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1 section-title">
+              <!-- Title 	-->
+              <h3 class="h3-xl">How MyBookfolio Works For You</h3>
+
+              <!-- Text -->
+              <p class="p-lg">
+                Completing assignments for the JPA Inspection has never been
+                easier.
+              </p>
+            </div>
+          </div>
+          <!-- END SECTION TITLE -->
+
+          <div class="row">
+            <!-- FEATURE BOX #1 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="fbox-8 icon-md wow fadeInUp" data-wow-delay="0.4s">
+                <!-- Step -->
+                <div class="step bg-green white-color"><span>1</span></div>
+
+                <!-- Icon -->
+                <div class="fbox-8-ico lightgrey-color">
+                  <span class="flaticon-038-cursor"></span>
+                </div>
+
+                <!-- Title -->
+                <p class="mt-3">Instructor opens or creates assignment</p>
+              </div>
+            </div>
+            <!-- END FEATURE BOX #1 -->
+
+            <!-- FEATURE BOX #2 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="fbox-8 icon-md wow fadeInUp" data-wow-delay="0.6s">
+                <!-- Step -->
+                <div class="step bg-green white-color"><span>2</span></div>
+
+                <!-- Icon -->
+                <div class="fbox-8-ico lightgrey-color">
+                  <span class="flaticon-066-edit-1"></span>
+                </div>
+
+                <!-- Title -->
+                <p class="mt-3">Cadets complete assignment</p>
+              </div>
+            </div>
+            <!-- END FEATURE BOX #2 -->
+
+            <!-- FEATURE BOX #3 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="fbox-8 icon-md wow fadeInUp" data-wow-delay="0.8s">
+                <!-- Step -->
+                <div class="step bg-green white-color"><span>3</span></div>
+
+                <!-- Icon -->
+                <div class="fbox-8-ico lightgrey-color">
+                  <span class="flaticon-046-agenda"></span>
+                </div>
+
+                <!-- Title -->
+                <p class="mt-3">Instructor Views Cadet Completed Work</p>
+              </div>
+            </div>
+            <!-- END FEATURE BOX #3 -->
+
+            <!-- FEATURE BOX #4 -->
+            <div class="col-sm-6 col-lg-3">
+              <div class="fbox-8 icon-md wow fadeInUp" data-wow-delay="1s">
+                <!-- Step -->
+                <div class="step bg-green white-color"><span>4</span></div>
+
+                <!-- Icon -->
+                <div class="fbox-8-ico lightgrey-color">
+                  <span class="flaticon-055-book-1"></span>
+                </div>
+
+                <!-- Title -->
+                <p class="mt-3">Cadet Prepares For Inspection</p>
+              </div>
+            </div>
+            <!-- END FEATURE BOX #4 -->
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END FEATURES-8 -->
+
+      <!-- CONTENT-4
+			============================================= -->
+      <section id="content-4" class="pt-100 content-section division">
+        <div class="container">
+          <div class="row d-flex align-items-center">
+            <!-- TEXT BLOCK -->
+            <div class="col-md-6">
+              <div
+                class="txt-block pc-45 mb-40 wow fadeInUp"
+                data-wow-delay="0.4s"
+              >
+                <!-- Icon -->
+                <div class="txt-block-ico icon-xs green-color">
+                  <img
+                    class="txt-ico-bkg"
+                    src="../../../assets/homepage/txt-ico-bkg.png"
+                    alt="Army Jrotc Portfolio Inspection"
+                  />
+                  <span class="flaticon-195-share-1"></span>
+                </div>
+
+                <!-- Title -->
+                <h3 class="h3-lg">Track Progress</h3>
+
+                <!-- Text -->
+                <p>
+                  MyBookfolio allows intructors and cadets to save time, by bringing all classroom tools together, cadets can effortlessely complete assignment, get reminders, and ensure they are completing assignments to the instructors desired pace.
+                  <br> Instructors can easily view cadets progress as a whole, let level or period.
+                </p>
+
+                <!-- Button -->
+                <a
+                  href="#download-5"
+                  class="btn btn-md btn-skyblue tra-black-hover"
+                  >Get Started</a
+                >
+              </div>
+            </div>
+            <!-- END TEXT BLOCK -->
+
+            <!-- IMAGE BLOCK -->
+            <div class="col-md-6">
+              <div class="img-block pr-45 wow fadeInUp" data-wow-delay="0.6s">
+                <img
+                  class="img-fluid"
+                  src="../../../assets/homepage/trackProgress.png"
+                  alt="Jrotc Digital Portfolio"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- End row -->
+        </div>
+        <!-- End container -->
+      </section>
+      <!-- END CONTENT-4 -->
+
+      <!-- DOWNLOAD-1
+			============================================= -->
+      <section id="download-1" class="wide-60 download-section division">
+        <div class="container">
+          <!-- SECTION TITLE -->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1 section-title">
+              <!-- Text -->
+              <h3 class="h3-xl">Download MyBookfolio App Today!</h3>
+              <p class="p-lg">The apps are available on iPhone and Android</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-10 offset-xl-1">
+              <div class="row">
+                <!-- FOR IPHONE -->
+                <div class="col-md-6">
+                  <div class="dbox-1">
+                    <!-- App Data -->
+                    <h5 class="h5-lg">MyBookfolio for iPhone</h5>
+                    <p class="p-sm grey-color">Requires iOS 10.2 or later</p>
+
+                    <!-- Store Link -->
+                    <div class="store">
+                      <a href="#"
+                        ><img
+                          class="appstore-original"
+                          src="../../../assets/homepage/appstore.png"
+                          alt="Digital Portfolio Army Jrotc"
+                      /></a>
                     </div>
+                  </div>
                 </div>
-            </div>
-        </section>
-    </section>
-    <section id="features" class="features">
-        <div class="container">
-            <div class="text-center section-heading-comp" style="margin-bottom:20px">
-                <h3 class="comp-head" style="color:rgba(0,0,0,.66)">The MyBookfolio Difference</h3>
-                <div style="width:50px;height:8px;margin:25px auto;background-color:#2089f1;border-radius:50px"></div>
-            </div>
-            <div class="row">
-                <div class="mx-auto col-md-6 col-sm-12 col-lg-6 mt-5">
-                    <h2 class="text-center">Simple &amp; Free</h2>
-                    <p class="text-center text-muted">Limited Time Offer</p><img
-                        src="assets/img/undraw_messages1_9ah2.svg" width="40%" alt="smartphone"
-                        style="display:block;margin:auto;margin:50px auto 70px">
-                    <h4 class="text-center">MyBookfolio</h4>
-                    <p class="text-center text-muted mt-3" style="font-size:18px">Create accounts for Free</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Keep track of your portfolio</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Access Anywhere</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Stay Organized</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Unlimited Benefits</p>
-                </div>
-                <div class="mx-auto col-md-6 col-sm-12 col-lg-6 mt-5 box-right">
-                    <h2 class="text-center">Standard Portfolio</h2>
-                    <p class="text-center text-muted">Expensive &amp; time consuming</p><img
-                        src="assets/img/undraw_resume_folder_2_arse.svg" width="45%" alt="smartphone"
-                        style="display:block;margin:auto;margin:50px auto 70px">
-                    <h4 class="text-center">Traditional Binder</h4>
-                    <p class="text-center text-muted mt-3" style="font-size:18px">Time Consuming</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Can be damaged or lost</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Limited content can be added</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Material Can't be shared</p>
-                    <p class="text-center text-muted mt-1" style="font-size:18px">Costly</p>
-                </div>
-                <div class="col-12"><a routerLink="register" class="btn btn-primary" role="button"
-                        style="display:block;margin:70px auto;border-radius:50px;width:150px;margin-bottom:-20px">Register</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="row height-auto">
-                <div class="text-center col-lg-7 mx-auto">
-                    <h2 class="text-uppercase section-heading mainTitle">How to Get Started</h2>
-                    <p class="section-subheading subTitle">Instructors</p>
-                </div>
-            </div>
-            <div class="splitter"></div>
-            <div class="row mx-auto">
-                <div class="mx-auto col-md-6 col-sm-12 col-lg-3">
-                    <div class="card p-3 processStep text-right">
-                        <div class="row">
-                            <div class="col-12"><i class="fas IconCard fa-user-plus" style="color:#3898f8"></i></div>
-                            <div class="col-12">
-                                <h2 style="text-align:center">Step 1</h2>
-                            </div>
-                            <div class="col-12">
-                                <h5 style="text-align:center;margin-top:20px;font-weight:400">Register Your Battalion
-                                </h5>
-                            </div>
-                        </div>
+
+                <!-- FOR ANDROID -->
+                <div class="col-md-6">
+                  <div class="dbox-1">
+                    <!-- App Data -->
+                    <h5 class="h5-lg">MyBookfolio for Android</h5>
+                    <p class="p-sm grey-color">All Android devices from 5.5</p>
+
+                    <!-- Store Link -->
+                    <div class="store">
+                      <a href="#"
+                        ><img
+                          class="googleplay-original"
+                          src="../../../assets/homepage/googleplay.png"
+                          alt="googleplay-logo"
+                      /></a>
                     </div>
+                  </div>
                 </div>
-                <div class="mx-auto col-md-6 col-sm-12 col-lg-3">
-                    <div class="card p-3 processStep text-right">
-                        <div class="row">
-                            <div class="col-12"><i class="fas IconCard fa-plus-circle"
-                                    style="margin:50px 65px;color:#3898f8"></i></div>
-                            <div class="col-12">
-                                <h2 style="text-align:center">Step 2</h2>
-                            </div>
-                            <div class="col-12">
-                                <h5 style="text-align:center;margin-top:20px;font-weight:400">Generate your battalion code
-                                </h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mx-auto col-md-6 col-sm-12 col-lg-3">
-                    <div class="card p-3 processStep text-right">
-                        <div class="row">
-                            <div class="col-12"><i class="fas IconCard fa-users"
-                                    style="margin:50px 53px;color:#3898f8"></i></div>
-                            <div class="col-12">
-                                <h2 style="text-align:center">Step 3</h2>
-                            </div>
-                            <div class="col-12">
-                                <h5 style="text-align:center;margin-top:20px;font-weight:400">Share your code and accept
-                                    cadets into your battalion</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mx-auto col-md-6 col-sm-12 col-lg-3">
-                    <div class="card p-3 processStep text-right">
-                        <div class="row">
-                            <div class="col-12"><i class="fas IconCard fa-chart-bar"
-                                    style="margin:50px 65px;color:#3898f8"></i></div>
-                            <div class="col-12">
-                                <h2 style="text-align:center">Step 4</h2>
-                            </div>
-                            <div class="col-12">
-                                <h5 style="text-align:center;margin-top:20px;font-weight:400">Enjoy keeping track of
-                                    your battalion</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div><a routerLink="register" class="text-uppercase header-btn primary-btn startButton">Let's get
-                    Started</a>
+              </div>
             </div>
+          </div>
+          <!-- End row -->
         </div>
-    </section>
-    <section id="team" style="background-color:#fff">
+        <!-- End container -->
+      </section>
+      <!-- END DOWNLOAD-1 -->
+
+      <div
+        style="
+          width: 80%;
+          height: 1px;
+          background-color: rgb(231, 231, 231);
+          margin: auto;
+        "
+      ></div>
+
+      <!-- FAQs-1
+			============================================= -->
+      <section id="faqs-1" class="bg-fixed wide-100 faqs-section division">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-12 col-lg-6">
-                    <div style="margin-left:-50px">
-                        <div class="outBoxOutline mt-3">
-                            <div class="boxCardContainer">
-                                <div class="boxCard" id="boxOne"></div>
-                                <div class="boxCard" id="boxTwo"></div>
-                                <div class="boxCard" id="boxThree">
-                                    <p class="cardTitle">Syllabus</p><img src="assets/img/folder.svg" width="120px;"
-                                        alt="jrotc portfolio" class="cardImg">
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-animated progress-bar-striped"
-                                            style="width:70%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="10"
-                                            role="progressbar"></div>
-                                    </div>
-                                </div>
-                            </div>
+          <!-- SECTION TITLE -->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1 section-title">
+              <!-- Title -->
+              <h3 class="h3-xl">Have Questions? Look Here.</h3>
+            </div>
+          </div>
+
+          <!-- QUESTIONS HOLDER -->
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+              <div id="accordion" role="tablist">
+                <!-- QUESTION #1 -->
+                <div class="card">
+                  <!-- Question -->
+                  <div class="card-header" role="tab" id="headingOne">
+                    <h5 class="h5-lg">
+                      <a
+                        data-toggle="collapse"
+                        href="#collapseOne"
+                        role="button"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        Is MyBookfolio 100% Free?
+                      </a>
+                    </h5>
+                  </div>
+
+                  <!-- Answer -->
+                  <div
+                    id="collapseOne"
+                    class="collapse show"
+                    role="tabpanel"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordion"
+                  >
+                    <div class="card-body">
+                      <!-- INFO BOX #1 -->
+                      <div class="box-list">
+                        <div class="box-list-icon">
+                          <i class="fas fa-genderless"></i>
                         </div>
+                        <p>
+                          Yes, currently MyBookfolio is 100% free, both instructors and cadets can benfit from the tools that MyBookfolio provides.
+                        </p>
+                      </div>
+
+
                     </div>
+                  </div>
                 </div>
-                <div class="col-md-6 col-sm-12 col-lg-6" style="height:auto">
-                    <h3 class="text-center customCardTitle">Allow Cadets to insert file's<br>of your choice</h3>
-                    <p class="text-center text-muted customCardSubTitle mt-4">Our team believes in a flexible online
-                        portfolio, as a result, we are allowing instructors to create their own tasks, we understand
-                        that some battalions want to add other documents to their online battalion portfolio, and we are
-                        excited to allow instructors to have such ability. With our flexible Custom Cards instructors
-                        can choose what they name the card and have the ability to upload what they choose. Custom Cards
-                        can be used to add a syllabus for each cadet, a contract or other important forms.</p>
+                <!-- END QUESTION #1 -->
+
+                <!-- QUESTION #2 -->
+                <div class="card">
+                  <!-- Question -->
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="h5-lg">
+                      <a
+                        class="collapsed"
+                        data-toggle="collapse"
+                        href="#collapseTwo"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapseTwo"
+                      >
+                        How Can I register a battalion?
+                      </a>
+                    </h5>
+                  </div>
+
+                  <!-- Answer -->
+                  <div
+                    id="collapseTwo"
+                    class="collapse"
+                    role="tabpanel"
+                    aria-labelledby="headingTwo"
+                    data-parent="#accordion"
+                  >
+                    <div class="card-body">
+                      <p>
+                        1. In order to register a battalion one instructor from the battalion needs to register that battalion at: <a href="https://www.mybookfolio.com/auth/register" target="_blank"  class="skyblue-color">https://www.mybookfolio.com/auth/register</a>.
+                        <br>2. Once one instructor as registered the battalion and created his account all other instructors can join the battalion using the battalion code.
+                        <br>3. A battalion code is a unique identifer that both instructors and cadets can use to join a battalion.
+                        <br><br>
+                        For help or more information, please contact us at: support@mybookfolio.com
+                      </p>
+                    </div>
+                  </div>
                 </div>
+                <!-- END QUESTION #2 -->
+
+                <!-- QUESTION #3 -->
+                <div class="card">
+                  <!-- Question -->
+                  <div class="card-header" role="tab" id="headingThree">
+                    <h5 class="h5-lg">
+                      <a
+                        class="collapsed"
+                        data-toggle="collapse"
+                        href="#collapseThree"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapseThree"
+                      >
+                        How can cadets register into a battalion?
+                      </a>
+                    </h5>
+                  </div>
+
+                  <!-- Answer -->
+                  <div
+                    id="collapseThree"
+                    class="collapse"
+                    role="tabpanel"
+                    aria-labelledby="headingThree"
+                    data-parent="#accordion"
+                  >
+                    <div class="card-body">
+                      <!-- Text -->
+                      <p>
+                        Cadets can register into a battalion by creating a account, when creating a account cadets will be asked for a Battalion Code, a Battalion Code is a unqiue identifer that links the cadet to the battalion. Instructors must share the battalion code with cadets since its the only way to pair a battalion and cadet.
+                      </p>
+
+                    </div>
+                  </div>
+                </div>
+                <!-- END QUESTION #3 -->
+
+                <!-- QUESTION #4 -->
+                <div class="card">
+                  <!-- Question -->
+                  <div class="card-header" role="tab" id="headingFour">
+                    <h5 class="h5-lg">
+                      <a
+                        class="collapsed"
+                        data-toggle="collapse"
+                        href="#collapseFour"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="collapseFour"
+                      >
+                        Is there a cadet limit per battalion?
+                      </a>
+                    </h5>
+                  </div>
+
+                  <!-- Answer -->
+                  <div
+                    id="collapseFour"
+                    class="collapse"
+                    role="tabpanel"
+                    aria-labelledby="headingFour"
+                    data-parent="#accordion"
+                  >
+                    <div class="card-body">
+                      <!-- Text -->
+                      <p>
+                        Currently there is no limit of cadets per battalion.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- END QUESTION #4 -->
+
+
+              </div>
+              <!-- END ACCORDION -->
             </div>
+            <!-- End col-x -->
+          </div>
+          <!-- END QUESTIONS HOLDER -->
+
+          <!-- MORE QUESTIONS BUTTON -->
+          <div class="row">
+            <div class="col-md-12 text-center more-questions">
+              <h5 class="h5-md">
+                Still have a question? contact us at:
+                <a  class="skyblue-color">support@mybookfolio.com</a>
+              </h5>
+            </div>
+          </div>
         </div>
-    </section>
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="text-center col-lg-12">
-                    <h2 class="text-uppercase section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-light">Our Team Is Waiting</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input class="form-control"
-                                        data-validation-required-message="Please enter your name." id="name" name="name"
-                                        placeholder="Your Name *" required="">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control"
-                                        data-validation-required-message="Please enter your email address." id="email"
-                                        name="email" placeholder="Your Email *" required="" type="email">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control"
-                                        data-validation-required-message="Please enter your phone number." id="phone"
-                                        name="phone" placeholder="Your Phone *" required="" type="tel">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea class="form-control"
-                                        data-validation-required-message="Please enter a message." id="message"
-                                        name="message" placeholder="Your Message *" required=""></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="text-center col-lg-12">
-                                <div id="success"></div>
-                                <button class="text-uppercase header-btn primary-btn" id="sendMessageButton"
-                                    name="sendMessage" type="submit">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4"><span class="copyright">Copyright © MyBookfolio 2019</span></div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a routerLink="/home" fragment="topView"
-                                style="background-color:#527dff"><i class="fa fa-arrow-up" style="color:#fff"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li class="list-inline-item"><a href="landingPage/termsandconditions.php"
-                                style="color:#000">Terms of Use</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+        <!-- End container -->
+      </section>
+      <!-- END FAQs-1 -->
+
+      <!-- FOOTER-1
+			============================================= -->
+
+      <!-- END FOOTER-1 -->
+    </div>
+    <!-- END PAGE CONTENT -->
+
