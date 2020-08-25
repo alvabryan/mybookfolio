@@ -42,6 +42,7 @@ import { CustomCardsInstructorComponent } from './custom-cards-instructor/custom
 import { CustomCardsViewInstructorComponent } from './custom-cards-instructor/custom-cards-view-instructor/custom-cards-view-instructor.component';
 import { NewAssignmentModelComponent } from './custom-cards-instructor/new-assignment-model/new-assignment-model.component';
 import * as CustomCardsEffects from './custom-cards-instructor/store/custom-cards.effects';
+import { ShareBattalionCodeComponent } from './share-battalion-code/share-battalion-code.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import * as CustomCardsEffects from './custom-cards-instructor/store/custom-card
     RemindersComponent,
     CustomCardsInstructorComponent,
     CustomCardsViewInstructorComponent,
-    NewAssignmentModelComponent
+    NewAssignmentModelComponent,
+    ShareBattalionCodeComponent
   ],
   imports: [
     CommonModule,

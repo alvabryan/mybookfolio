@@ -1,0 +1,33 @@
+.battalion-code-box {
+  padding: 10px 30px;
+  width: 300px;
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 15px;
+}
+
+#barcode {
+  width: 150px;
+  margin: 20px auto;
+  display: block;
+}
+
+.join-box {
+  border-radius: 20px;
+  padding: 40px;
+  background-color: rgb(243, 243, 243) !important;
+}
+
+.step {
+  background-color: rgb(34.7%, 59%, 100%);
+  padding: 5px 0px;
+  width: 40px;
+  border-radius: 25px;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+
+.step-text {
+  font-size: 20px;
+}

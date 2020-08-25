@@ -46,9 +46,11 @@
             <textarea name="instructions" rows="7" formControlName="instructions"  class="form-control" placeholder="For this assignment, you will practice shifting genres. To begin, read pages 467-469 in our class textbook. Then, select one paragraph from a campaign speech and revise it into a tweet, a diary entry, and a business memo."></textarea>
             <div class="form-check mt-2">
               <label class="form-check-label">
-                <input name="showAssignment" formControlName="showAssignment" type="checkbox" class="form-check-input" value="true" checked>Open Assignment
+                <input name="showAssignment" formControlName="showAssignment" type="checkbox" class="form-check-input" value="true" checked>Open
               </label>
+              <a class="ml-2" data-toggle="tooltip" data-placement="right" title="Cadets won't be able to open assignment if not toggled!"><i class="fas fa-info-circle"></i></a>
             </div>
+
             <button type="submit" class="btn btn-primary mt-3 float-right" *ngIf="updateData.type === 'new'">Submit</button>
             <button type="submit" class="btn btn-warning mt-3 float-right" *ngIf="updateData.type === 'edit'">Update</button>
           </form>

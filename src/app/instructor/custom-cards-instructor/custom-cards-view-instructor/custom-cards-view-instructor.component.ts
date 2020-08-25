@@ -59,4 +59,8 @@ export class CustomCardsViewInstructorComponent implements OnInit {
     this.currentCadetData = this.cadetSubmissions[cadetId];
   }
 
+  archieveAssignment() {
+    const promtAnswer = confirm('Are you sure you want to archive this assignment? Cadet\'s won\'t be able to see this assignment!');
+  }
+
 }

@@ -108,9 +108,6 @@ export class CustomCardEffects {
   editAssignment = createEffect(() => this.actions$.pipe(
     ofType(customCardActions.editAssignment),
     withLatestFrom(this.store.select('auth')),
-    tap((data) => {
-      console.log(data);
-    }),
     switchMap((data) => {
       const battalionCode = data[1].user.battalionCode;
       const editAssignmentId = data[0].editAssignment.assignmentId;

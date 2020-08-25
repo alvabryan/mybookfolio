@@ -6,6 +6,8 @@ import * as fromInstructor from '../../store/index';
 import * as customCardAction from '../store/custom-cards.actions';
 import { Subscription } from 'rxjs';
 
+declare var $: any;
+
 @Component({
   selector: 'app-new-assignment-model',
   templateUrl: './new-assignment-model.component.html',
@@ -31,7 +33,11 @@ export class NewAssignmentModelComponent implements OnInit, OnDestroy {
   fileData: any;
   loading = 'not submitted';
 
-  constructor(private store: Store<fromInstructor.State>) { }
+  constructor(private store: Store<fromInstructor.State>) {
+    $(document).ready(() => {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  }
 
   ngOnInit() {
     this.assignmentForm = new FormGroup({

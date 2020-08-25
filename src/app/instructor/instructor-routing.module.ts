@@ -18,6 +18,7 @@ import { AuthAprovelComponent } from './auth-aprovel/auth-aprovel.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { CustomCardsInstructorComponent } from './custom-cards-instructor/custom-cards-instructor.component';
 import { CustomCardsViewInstructorComponent } from './custom-cards-instructor/custom-cards-view-instructor/custom-cards-view-instructor.component';
+import { ShareBattalionCodeComponent } from './share-battalion-code/share-battalion-code.component';
 
 const routes: Routes = [
   {path: '', canActivate: [AuthInstructor] , component: InstructorComponent, children: [
@@ -36,7 +37,8 @@ const routes: Routes = [
       {path: 'cadet-information', component: CadetInformationComponent}
     ]},
     {path: 'portfolio', component: InstructorPortfolioComponent},
-    {path: 'reminders', component: RemindersComponent}
+    {path: 'reminders', component: RemindersComponent},
+    {path: 'share-battalion-code', component: ShareBattalionCodeComponent}
   ]},
   {path: 'approvel', component: AuthAprovelComponent}
 ];

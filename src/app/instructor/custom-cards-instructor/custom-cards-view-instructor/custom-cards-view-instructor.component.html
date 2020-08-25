@@ -5,7 +5,8 @@
       <h2>{{ currentAssignment.name }}</h2>
     </div>
     <div class="col-4">
-      <button class="btn btn-warning float-right" data-toggle="modal" data-target="#myModal" *ngIf="editModelData.assignmentData">Edit</button>
+      <button class="btn btn-warning float-right ml-1" data-toggle="modal" data-target="#myModal" *ngIf="editModelData.assignmentData">Edit</button>
+      <button disabled class="btn btn-danger float-right" (click)="archieveAssignment()">Archive</button>
     </div>
   </div>
   <hr>
