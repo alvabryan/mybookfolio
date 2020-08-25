@@ -12,7 +12,7 @@ $(window).on("load", function () {
   loader.fadeOut();
   preloader.delay(400).fadeOut("slow");
 
-  
+
 });
 
 $(window).on("scroll", function () {
@@ -178,7 +178,7 @@ $(document).ready(function () {
 //   });
 
 
-  
+
   /*----------------------------------------------------*/
   /*	Sign In Form Validation
 		/*----------------------------------------------------*/

@@ -41,8 +41,6 @@ export class NewAssignmentModelComponent implements OnInit, OnDestroy {
       showAssignment: new FormControl('true')
     });
 
-    console.log(this.updateData);
-
     if (this.updateData.type === 'edit') {
       this.modelTitle = 'Edit';
       this.assignmentForm.setValue({
@@ -70,33 +68,52 @@ export class NewAssignmentModelComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if (this.updateData.type === 'edit') {
-      console.log('edit mode');
-    } else {
+    if (this.updateData.type !== 'edit') {
       this.loading = 'uploading';
       const newAssignmentData = {...this.assignmentForm.value, fileData: this.fileData};
       this.store.dispatch(customCardAction.createAssignment({newAssignment: newAssignmentData}));
+      console.log(newAssignmentData);
+    } else {
+      this.loading = 'uploading';
+      const editAssignmentData = {
+        ...this.assignmentForm.value,
+        fileData: {
+          oldFileData: this.editFileData.removed ? this.editFileData.fileData : null,
+          newFileData: this.fileData ? this.fileData : null
+        },
+        assignmentId: this.updateData.assignmentId
+      };
 
-      this.subscription.add(
-        this.store.select('instructor').subscribe((data: any) => {
-          if (data.customCards) {
-            if (data.customCards.uploadingStatus) {
-              this.loading = data.customCards.uploadingStatus;
-            }
-          }
-        })
-      );
+      this.store.dispatch(customCardAction.editAssignment({editAssignment: editAssignmentData}));
     }
+
+    this.subscription.add(
+      this.store.select('instructor').subscribe((data: any) => {
+        if (data.customCards) {
+          if (data.customCards.uploadingStatus) {
+            this.loading = data.customCards.uploadingStatus;
+          }
+        }
+      })
+    );
 
   }
 
   changeLoadingStatus() {
-    this.fileData = null;
-    this.assignmentForm.reset();
-    setTimeout(() => {
-      this.loading = 'not submitted';
-      this.store.dispatch(customCardAction.resetUploadFileStatus());
-    }, 1000);
+    if (this.updateData.type !== 'edit') {
+      this.fileData = null;
+      this.assignmentForm.reset();
+      setTimeout(() => {
+        this.loading = 'not submitted';
+        this.store.dispatch(customCardAction.resetUploadFileStatus());
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.loading = 'not submitted';
+        this.store.dispatch(customCardAction.resetUploadFileStatus());
+      }, 1000);
+    }
+
   }
 
   ngOnDestroy() {

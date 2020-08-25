@@ -27,12 +27,13 @@
               "./node_modules/quill/dist/quill.core.css",
               "./node_modules/quill/dist/quill.snow.css",
               "node_modules/wowjs/css/libs/animate.css",
-              "src/assets/homepage/custom-css/responsive.css"
+              "./src/assets/homepage/custom-css/flaticon.css"
             ],
             "scripts": [
               "./node_modules/quill/dist/quill.js",
               "./node_modules/wowjs/dist/wow.js",
               "./src/assets/homepage/custom-js/custom.js"
+
             ]
           },
           "configurations": {

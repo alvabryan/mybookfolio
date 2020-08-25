@@ -105,6 +105,40 @@ export class CustomCardEffects {
     })
   ));
 
+  editAssignment = createEffect(() => this.actions$.pipe(
+    ofType(customCardActions.editAssignment),
+    withLatestFrom(this.store.select('auth')),
+    tap((data) => {
+      console.log(data);
+    }),
+    switchMap((data) => {
+      const battalionCode = data[1].user.battalionCode;
+      const editAssignmentId = data[0].editAssignment.assignmentId;
+      const editAssignmentData = data[0].editAssignment;
+
+      if (data[0].editAssignment.fileData.oldFileData && data[0].editAssignment.fileData.oldFileData) {
+        // old image deleted and new one inserted (delete old image url and insert new image)
+        return EMPTY;
+      } else if (data[0].editAssignment.fileData.oldFileData && !data[0].editAssignment.fileData.oldFileData) {
+        // old image deleted but no new one inserted (delete old image)
+        return EMPTY;
+      } else if (!data[0].editAssignment.fileData.oldFileData && !data[0].editAssignment.fileData.oldFileData) {
+        // nothing was done to the filedata (keep it the same)
+        return from(this.db.collection('battalions').doc(battalionCode).collection('customCards').doc(editAssignmentId).set({
+          description: editAssignmentData.instructions,
+          iconName: 'Folder',
+          name: editAssignmentData.assignmentName,
+          showCard: editAssignmentData.showAssignment,
+          urlLink: editAssignmentData.link
+        }, {merge: true})).pipe(map(() => {
+          return customCardActions.uploadingStatus();
+        }));
+      }
+
+      // return EMPTY;
+    })
+  ));
+
   getCadetSubmissions = createEffect(() => this.actions$.pipe(
     ofType(customCardActions.getCurrentAssignmentSubmissions),
     withLatestFrom(this.store.select('auth')),

@@ -4,6 +4,8 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NgwWowService } from 'ngx-wow';
 
+declare var $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,6 +24,11 @@ export class HomeComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.subscription = this.route.fragment.subscribe(fragment => {
       this.fragment = fragment ? fragment : null;
     });
+
+    const preloader = $('#loader-wrapper');
+    const loader = preloader.find('.cssload-contain');
+    loader.fadeOut();
+    preloader.delay(400).fadeOut('slow');
   }
 
   ngAfterViewChecked(): void {

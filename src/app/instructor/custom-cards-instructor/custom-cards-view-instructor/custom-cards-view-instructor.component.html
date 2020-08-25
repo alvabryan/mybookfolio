@@ -60,7 +60,8 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-3">
-      <ul class="list-group">
+      <p *ngIf="cadetRoster.length == 0" class="text-center"><b>You currently don't have any cadets</b></p>
+      <ul class="list-group" *ngIf="cadetRoster.length > 0">
           <li class="list-group-item" *ngFor="let cadet of cadetRoster; let index = i" (click)="selectCadet(cadet.uid)">{{ cadet.lastName }}, {{ cadet.firstName}}
             <span class="badge badge-success badge-pill" *ngIf="cadetSubmissions && cadetSubmissions[cadet.uid]"><i class="fas fa-check"></i></span>
             <span class="badge badge-danger badge-pill" *ngIf="cadetSubmissions && !cadetSubmissions[cadet.uid]"><i class="fas fa-times pl-1 pr-1"></i></span>

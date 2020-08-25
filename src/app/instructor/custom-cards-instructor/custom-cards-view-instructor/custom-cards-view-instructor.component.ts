@@ -43,6 +43,8 @@ export class CustomCardsViewInstructorComponent implements OnInit {
         }
         if (data.cadetData.cadetProgress) {
           this.cadetRoster = Object.values(data.cadetData.cadetProgress);
+        } else {
+          this.cadetRoster = null;
         }
 
         if (data.customCards.cadetSubmissions) {
