@@ -4,7 +4,7 @@
       <h2>Share</h2>
     </div>
     <div class="col">
-      <button class="btn btn-primary float-right" type="button">Download</button>
+      <button class="btn btn-primary float-right" type="button" disabled>Download</button>
     </div>
   </div>
 </div>
@@ -12,7 +12,7 @@
   <h1 class="text-center">Join your Battalion!</h1>
   <div class="text-center battalion-code-box">
     <h5 class="text-center text-dark">Batalion Code:</h5>
-    <h2 class="text-center text-dark">HC82A</h2>
+    <h2 class="text-center text-dark">{{ battalionCode }}</h2>
   </div>
   <img id="barcode" src="../../../assets/img/frame (1).png">
 
@@ -30,7 +30,7 @@
     </div>
     <div class="row mt-2">
       <div class="col-3"><p class="step">3</p></div>
-      <div class="col-9 step-text">Enter the code given above in the <b>Battalion Field</b>.</div>
+      <div class="col-9 step-text">Enter '<b>{{ battalionCode }}</b>' in the <b>Battalion Code</b> field.</div>
     </div>
     <div class="row mt-2">
       <div class="col-3"><p class="step">4</p></div>
