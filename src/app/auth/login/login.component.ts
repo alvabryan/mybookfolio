@@ -4,10 +4,10 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { take } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 
-//ngrx root
+// ngrx root
 import * as fromRoot from '../../store/index';
 
-//auth actions
+// auth actions
 import * as AuthActions from '../store/auth.actions';
 import { from, Subscription } from 'rxjs';
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   errorAuth: any;
 
-  constructor(private store: Store<fromRoot.State>,private flashMessages: FlashMessagesService) { }
+  constructor(private store: Store<fromRoot.State>, private flashMessages: FlashMessagesService) { }
 
   ngOnInit() {
     this.subscription.add(

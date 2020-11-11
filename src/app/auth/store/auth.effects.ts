@@ -680,6 +680,15 @@ export class AuthEffects {
     ), {dispatch: false});
 
 
+    passwordReset = createEffect(() => this.actions$.pipe(
+      ofType(AuthActions.passwordReset),
+      tap((data: any) => {
+        return from(this.afAuth.auth.sendPasswordResetEmail(data.email)).pipe(tap(() => {
+          console.log('Error');
+        }));
+      })
+    ), {dispatch: false});
+
 
     constructor(
         private actions$: Actions,
