@@ -88,7 +88,6 @@ export class CadetDataSheetComponent implements OnInit, OnDestroy {
   onSubmit() {
     const formData = this.cadetInformationForm.value;
     const uploadObject = {...formData};
-    this.store.dispatch(CadetActions.setCadetDataSheet({data: uploadObject}));
   }
 
   ngOnDestroy() {

@@ -30,7 +30,6 @@ export class CadetComponent implements OnInit, OnDestroy  {
             this.user = data;
             this.store.dispatch(CadetActions.getCadetData());
             this.store.dispatch(CadetActions.getCadetProgress());
-            this.store.dispatch(CadetActions.getCadetDataSheet());
             this.store.dispatch(cadetCustomCardActions.getAssignments());
             this.store.dispatch(PortfolioActions.onReload());
           }

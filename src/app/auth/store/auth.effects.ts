@@ -166,7 +166,7 @@ export class AuthEffects {
               );
           }),
           catchError((err) => {
-            console.log(err);
+            // console.log(err);
             return handleError(err.code, err.message);
           })
         );
@@ -210,7 +210,7 @@ export class AuthEffects {
         );
     }),
     catchError((err) => {
-      console.log(err);
+      // console.log(err);
       return handleError(err.code, err.message);
     })
   ));
@@ -399,13 +399,6 @@ export class AuthEffects {
           from(
             this.db
               .doc(`battalions/${data.battalionCode}`)
-              .collection('cadetDataSheet')
-              .doc(data.battalionCode)
-              .set({})
-          ),
-          from(
-            this.db
-              .doc(`battalions/${data.battalionCode}`)
               .collection('cadetsProgress')
               .doc(data.battalionCode)
               .set({})
@@ -540,8 +533,8 @@ export class AuthEffects {
         const appUserData = {
           firstName: data.firstName,
           lastName: data.lastName,
-          letLevel: data.letLevel,
-          period: data.classPeriod,
+          letLevel: +data.letLevel,
+          period: +data.classPeriod,
           uid: data.user.uid,
           progress: {},
         };
@@ -554,27 +547,10 @@ export class AuthEffects {
                 battalionCode: data.battalionCode,
                 firstName: data.firstName,
                 lastName: data.lastName,
-                letLevel: data.letLevel,
-                period: data.classPeriod,
+                letLevel: +data.letLevel,
+                period: +data.classPeriod,
               },
             })
-          ),
-          from(
-            this.db
-              .doc(
-                `battalions/${data.battalionCode}/cadetDataSheet/${data.battalionCode}`
-              )
-              .set(
-                {
-                  [data.user.uid]: {
-                    firstName: data.firstName,
-                    lastName: data.lastName,
-                    letLevel: data.letLevel,
-                    period: data.classPeriod,
-                  },
-                },
-                { merge: true }
-              )
           ),
           from(
             this.db
@@ -677,14 +653,13 @@ export class AuthEffects {
       ofType(AuthActions.updateUserInfo),
       withLatestFrom(this.store.select('auth')),
       tap((data) => {
-        console.log(data);
+        // console.log(data);
 
         this.afAuth.auth.currentUser
           .updateProfile({
             displayName: data[0].firstName + ' ' + data[0].lastName,
           })
-          .then((data2: any) => {
-            console.log(data2);
+          .then(() => {
             this.db.collection('users').doc(`${data[1].user.uid}`).update({
               'data.firstName': data[0].firstName,
               'data.lastName': data[0].lastName,
@@ -772,25 +747,8 @@ export class AuthEffects {
                   data: {
                     firstName: newData.firstName,
                     lastName: newData.lastName,
-                    letLevel: newData.letLevel,
-                    period: newData.period,
-                  },
-                },
-                { merge: true }
-              )
-          ).pipe(catchError((error) => of(error))),
-          from(
-            this.db
-              .doc(`battalions/${battalionCode}`)
-              .collection('cadetDataSheet')
-              .doc(battalionCode)
-              .set(
-                {
-                  [cadetUid]: {
-                    firstName: newData.firstName,
-                    lastName: newData.lastName,
-                    letLevel: newData.letLevel,
-                    period: newData.period,
+                    letLevel: +newData.letLevel,
+                    period: +newData.period,
                   },
                 },
                 { merge: true }
@@ -806,8 +764,8 @@ export class AuthEffects {
                   [cadetUid]: {
                     firstName: newData.firstName,
                     lastName: newData.lastName,
-                    letLevel: newData.letLevel,
-                    period: newData.period,
+                    letLevel: +newData.letLevel,
+                    period: +newData.period,
                   },
                 },
                 { merge: true }
@@ -855,12 +813,14 @@ export class AuthEffects {
     )
   );
 
-  // update cadet battalion code
+  // transfer cadet from one battalion to other
   updateBattalionCode = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.updateBattalionCode),
       withLatestFrom(this.store.select('auth')),
-      tap(() => console.log('1: check if battalion code exist')),
+      tap(() => {
+        // console.log('1: check if battalion code exist');
+      }),
       switchMap((data: any) => {
         const newBattalionCode = data[0].newBattalionCode;
 
@@ -871,7 +831,7 @@ export class AuthEffects {
         const cadetUid = data[0].cadetUid;
 
         if (newBattalionCode === oldBattalionCode) {
-          console.log('battalion code is the same');
+          // console.log('battalion code is the same');
           return EMPTY;
         } else {
           try {
@@ -889,13 +849,13 @@ export class AuthEffects {
                       cadetUid,
                     });
                   } else {
-                    console.log('error');
+                    // console.log('error');
                     return AuthActions.updateCodeError();
                   }
                 })
               );
           } catch (error) {
-            console.log(error);
+            // console.log(error);
           }
         }
       })
@@ -906,7 +866,9 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.updateCodeExist),
       withLatestFrom(this.store.select('auth')),
-      tap(() => console.log('2: get both of cadet data')),
+      tap(() => {
+        // console.log('2: get data of cadet to transfer');
+      }),
       switchMap((data) => {
         const oldBattalionCode = data[1].user.battalionCode;
         const newBattalionCode = data[0].newBattalionCode;
@@ -921,37 +883,24 @@ export class AuthEffects {
                 .collection('cadetsProgress')
                 .doc(oldBattalionCode)
                 .valueChanges()
-            ).pipe(take(1)),
-            from(
-              this.db
-                .collection('battalions')
-                .doc(oldBattalionCode)
-                .collection('cadetDataSheet')
-                .doc(oldBattalionCode)
-                .valueChanges()
             ).pipe(take(1))
           ).pipe(
             map((dbData) => {
-              let cadetDataSheet = dbData[1][cadetUid];
               const cadetsProgress = dbData[0][cadetUid];
-              if (!cadetDataSheet) {
-                cadetDataSheet = {};
-              }
-              if (cadetDataSheet && cadetsProgress) {
+              if (cadetsProgress) {
                 return AuthActions.updateCodeDataRetrieved({
                   newBattalionCode,
-                  cadetDataSheet,
                   cadetsProgress,
                   cadetUid,
                 });
               } else {
-                console.log('error');
+                // console.log('error');
                 return AuthActions.updateCodeError();
               }
             })
           );
         } catch (error) {
-          console.log(error);
+          // console.log(error);
         }
       })
     )
@@ -961,14 +910,15 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.updateCodeDataRetrieved),
       withLatestFrom(this.store.select('auth')),
-      tap(() => console.log('3: set and delete data')),
+      tap(() => {
+        console.log('3: set and delete data');
+      }),
       switchMap((data) => {
         const cadetUid = data[0].cadetUid;
         const newBattalionCode = data[0].newBattalionCode;
         const oldBattalionCode = data[1].user.battalionCode;
         const userType = data[1].user.userType;
         const cadetsProgress = data[0].cadetsProgress;
-        const cadetDataSheet = data[0].cadetDataSheet;
 
         return combineLatest(
           from(
@@ -979,14 +929,6 @@ export class AuthEffects {
                 { data: { battalionCode: newBattalionCode } },
                 { merge: true }
               )
-          ),
-          from(
-            this.db
-              .collection('battalions')
-              .doc(newBattalionCode)
-              .collection('cadetDataSheet')
-              .doc(newBattalionCode)
-              .set({ [cadetUid]: cadetDataSheet }, { merge: true })
           ),
           from(
             this.db
@@ -1004,14 +946,6 @@ export class AuthEffects {
                   .collection('battalions')
                   .doc(oldBattalionCode)
                   .collection('cadetsProgress')
-                  .doc(oldBattalionCode)
-                  .update({ [cadetUid]: firestore.FieldValue.delete() })
-              ),
-              from(
-                this.db
-                  .collection('battalions')
-                  .doc(oldBattalionCode)
-                  .collection('cadetDataSheet')
                   .doc(oldBattalionCode)
                   .update({ [cadetUid]: firestore.FieldValue.delete() })
               )
@@ -1057,7 +991,7 @@ export class AuthEffects {
         tap((data: any) => {
           return from(this.afAuth.auth.sendPasswordResetEmail(data.email)).pipe(
             tap(() => {
-              console.log('Error');
+              // console.log('Error');
             })
           );
         })

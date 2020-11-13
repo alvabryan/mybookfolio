@@ -32,54 +32,6 @@ export class InstructorEffects {
       })
   ));
 
-  getCadetDataSheet = createEffect(() => this.actions$.pipe(
-    ofType(InstructorActions.getCadetDataSheet),
-    withLatestFrom(this.store.select('auth')),
-    switchMap((data: any) => {
-      const battalionCode = data[1].user.battalionCode;
-      return from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet')
-      .doc(battalionCode).valueChanges()).pipe(map((returnedData) => {
-        const returnDataLength = Object.keys(returnedData).length;
-        if (returnDataLength > 0) {
-          return InstructorActions.loadCadetDataSheet({data: returnedData});
-        } else {
-          return InstructorActions.loadCadetDataSheet({data: {}});
-        }
-      }));
-    })
-  ));
-
-  updateDataSheet = createEffect(() => this.actions$.pipe(
-    ofType(InstructorActions.updateDataSheet),
-    withLatestFrom(this.store.select('auth'), this.store.select('instructor')),
-    tap((data: any) => {
-      const battalionCode = data[1].user.battalionCode;
-      const cadetData = data[0].data;
-      const uid = data[2].currentCadet.cadetSearchData.uid;
-      forkJoin(
-        from(this.db.collection('users').doc(uid).set({
-          data: {
-            firstName: cadetData.firstName,
-            lastName: cadetData.lastName,
-            letLevel: +cadetData.letLevel,
-            period: +cadetData.period
-          }
-        }, {merge: true})),
-        from(this.db.doc(`battalions/${battalionCode}`).collection('cadetsProgress').doc(battalionCode).set({
-          [uid]: {
-            firstName: cadetData.firstName,
-            lastName: cadetData.lastName,
-            letLevel: +cadetData.letLevel,
-            period: +cadetData.period
-          }
-        }, {merge: true})),
-        from(this.db.doc(`battalions/${battalionCode}`).collection('cadetDataSheet').doc(battalionCode).set({
-          [uid]: cadetData
-        }, {merge: true}))
-      );
-    })
-  ), {dispatch: false});
-
   onReload = createEffect(() => this.actions$.pipe(
     ofType(InstructorActions.onReload),
     switchMap(() => {

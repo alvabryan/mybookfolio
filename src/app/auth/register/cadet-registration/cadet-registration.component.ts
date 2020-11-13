@@ -44,8 +44,8 @@ export class CadetRegistrationComponent implements OnInit, OnDestroy {
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       email: form.value.email,
-      letLevel: form.value.letLevel,
-      classPeriod: form.value.classPeriod,
+      letLevel: +form.value.letLevel,
+      classPeriod: +form.value.classPeriod,
       password: form.value.password
     };
 

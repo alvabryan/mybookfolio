@@ -7,8 +7,7 @@ export interface State {
 }
 
 export const initialState = {
-  cadetProgress: null,
-  cadetDataSheet: null
+  cadetProgress: null
 };
 
 const instructorReducer = createReducer(
@@ -28,22 +27,6 @@ const instructorReducer = createReducer(
     return {
       ...state,
       cadetProgress: cadetProgressData
-    };
-  }),
-  on(InstructorActions.loadCadetDataSheet, (state, cadetData: any) => {
-    const newCadetDataSheet = {};
-    const cadetDataSheetValues = Object.values(cadetData.data);
-    const cadetDataSheetKeys = Object.keys(cadetData.data);
-
-    cadetDataSheetValues.forEach((data: any, index) => {
-      const newObjectData = data;
-      newObjectData.uid = cadetDataSheetKeys[index];
-      newCadetDataSheet[cadetDataSheetKeys[index]] = newObjectData;
-    });
-
-    return {
-      ...state,
-      cadetDataSheet: newCadetDataSheet
     };
   })
 );

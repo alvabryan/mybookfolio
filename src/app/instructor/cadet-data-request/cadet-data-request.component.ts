@@ -26,17 +26,17 @@ export class CadetDataRequestComponent implements OnInit, OnDestroy {
       letLevel: new FormControl('all'),
       period: new FormControl('all')
     });
-    this.subscription.add(
-      this.store.select('instructor').subscribe((data: any) => {
-        if (data) {
-          if (data.cadetData.cadetDataSheet) {
-            const dataArray = Object.values(data.cadetData.cadetDataSheet);
-            this.unfilteredData = dataArray;
-            this.setData(dataArray);
-          }
-        }
-      })
-    );
+    // this.subscription.add(
+    //   this.store.select('instructor').subscribe((data: any) => {
+    //     if (data) {
+    //       if (data.cadetData.cadetDataSheet) {
+    //         const dataArray = Object.values(data.cadetData.cadetDataSheet);
+    //         this.unfilteredData = dataArray;
+    //         this.setData(dataArray);
+    //       }
+    //     }
+    //   })
+    // );
   }
 
   setData(data) {

@@ -5,10 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavigationComponent } from './page-skeleton/navigation/navigation.component';
 import { SidebarComponent } from './page-skeleton/sidebar/sidebar.component';
 import { CadetComponent } from './cadet.component';
-import { ResumeComponent } from './resume/resume.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { RequestComponent } from './request/request.component';
-import { AnalyticsComponent } from './analytics/analytics.component';
 import { CadetChallengeComponent } from './cadet-challenge/cadet-challenge.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DocumentationComponent } from './documentation/documentation.component';
@@ -43,10 +40,7 @@ import * as customCardEffects from './custom-cards/store/custom-cards.effects';
     NavigationComponent,
     SidebarComponent,
     CadetComponent,
-    ResumeComponent,
     CalendarComponent,
-    RequestComponent,
-    AnalyticsComponent,
     CadetChallengeComponent,
     SettingsComponent,
     DocumentationComponent,

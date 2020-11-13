@@ -5,10 +5,7 @@ import { AuthGuard } from './auth.guard';
 // cadet components
 import { CadetComponent } from './cadet.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ResumeComponent } from './resume/resume.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { RequestComponent } from './request/request.component';
-import { AnalyticsComponent } from './analytics/analytics.component';
 import { CadetChallengeComponent } from './cadet-challenge/cadet-challenge.component';
 import { SettingsComponent } from './settings/settings.component';
 import { DocumentationComponent } from './documentation/documentation.component';
@@ -25,12 +22,8 @@ const routes: Routes = [
     {path: '', component: DashboardComponent},
     {path: 'assignments', component: CustomCardsComponent},
     {path: 'assignment-view/:id', component: CustomCardsViewComponent},
-    {path: 'resume', component: ResumeComponent},
     {path: 'calendar', component: CalendarComponent},
-    {path: 'request', component: RequestComponent},
-    {path: 'analytics', component: AnalyticsComponent},
     {path: 'cadet-challenge', component: CadetChallengeComponent},
-    {path: 'cadet-data-sheet', component: CadetDataSheetComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'documentation', component: DocumentationComponent},
     {path: 'portfolio', component: CadetPortfolioComponent},

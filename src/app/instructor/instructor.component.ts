@@ -35,7 +35,6 @@ export class InstructorComponent implements OnInit, OnDestroy {
         if (data) {
           this.user = data;
           this.store.dispatch(InstructorActions.getCadetProgress());
-          this.store.dispatch(InstructorActions.getCadetDataSheet());
           this.store.dispatch(customCardActions.getAssignments());
           this.store.dispatch(PortfolioActions.searchCadetLoad());
           this.store.dispatch(PortfolioActions.onReload());

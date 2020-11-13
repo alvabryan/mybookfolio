@@ -27,14 +27,12 @@ const routes: Routes = [
     {path: 'assignment-view/:id', component: CustomCardsViewInstructorComponent},
     {path: 'cadets', component: CadetsComponent},
     {path: 'portfolio-view', component: PortfolioViewComponent},
-    {path: 'cadet-data-request', component: CadetDataRequestComponent},
     {path: 'battalion-users', component: BattalionUsersComponent},
     {path: 'support', component: SupportComponent},
     {path: 'settings', component: SettingInstructorComponent},
     {path: 'documentation', component: DocumentationComponent},
     {path: 'cadet-portfolio', component: CadetPortfolioComponent, children: [
       {path: '', component: CadetPortfolioViewComponent},
-      {path: 'cadet-information', component: CadetInformationComponent}
     ]},
     {path: 'portfolio', component: InstructorPortfolioComponent},
     {path: 'reminders', component: RemindersComponent},

@@ -84,11 +84,6 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
     this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: taskName}));
   }
 
-  toCadetInformation() {
-    this.store.dispatch(InstructorActions.getCadetDataSheet());
-    this.router.navigate(['/instructor/cadet-portfolio/cadet-information']);
-  }
-
   getCadetProgress(filterLet, searchCadetProgress) {
     const cadetProgress = this.progressService.getProgress(filterLet, searchCadetProgress);
     this.progress = cadetProgress;
