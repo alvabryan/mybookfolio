@@ -30,7 +30,8 @@ export class CardItmeComponent implements OnInit {
           uid: userData.uid,
           firstName: userData.firstName,
           lastName: userData.lastName,
-          letLevel: userData.letAssigned
+          letLevel: userData.letAssigned,
+          period: userData.period
         }));
       }
     });

@@ -42,7 +42,8 @@ export class InstructorEffects {
             uid: userData.uid,
             firstName: userData.firstName,
             lastName: userData.lastName,
-            letLevel: userData.letLevel
+            letLevel: userData.letLevel,
+            period: userData.period
         }));
     } else {
         return EMPTY;

@@ -79,7 +79,7 @@
             <td>{{ cadet.firstName }}</td>
             <td>{{ cadet.letLevel }}</td>
             <td>{{ cadet.period }}</td>
-            <td><button (click)="setSearchData(cadet.uid, cadet.firstName, cadet.lastName, cadet.letLevel)"
+            <td><button (click)="setSearchData(cadet.uid, cadet.firstName, cadet.lastName, cadet.letLevel, cadet.period)"
                 class="btn btn-primary">View</button></td>
             <td><button (click)="deleteCadet(cadet.uid, cadet.firstName, cadet.lastName)" class="btn btn-danger">Delete</button></td>
           </tr>

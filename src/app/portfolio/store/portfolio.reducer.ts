@@ -29,7 +29,8 @@ const portfolioReducer = createReducer(
       uid: data.uid,
       firstName: data.firstName,
       lastName: data.lastName,
-      letLevel: data.letLevel
+      letLevel: data.letLevel,
+      period: data.period
     }
   })),
   on(PortfolioActions.setPortfolioPageType, (state, data: any) => ({ ...state, pageName: data.pageName, viewData: null})),

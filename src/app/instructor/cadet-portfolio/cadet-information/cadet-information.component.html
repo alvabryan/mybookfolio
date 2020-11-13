@@ -1,7 +1,7 @@
 <div class="container-fluid p-2">
 	<div class="row">
 		<div class="col ml-3">
-			<h3>{{ cadetInformation?.firstName }} {{ cadetInformation?.lastName }}</h3>
+			<h3>{{ searchedCadet?.firstName }} {{ searchedCadet?.lastName }}</h3>
 		</div>
 	</div>
 
@@ -18,360 +18,88 @@
 		</div>
 		<hr>
 		<div class="container-fluid">
-			<form [formGroup]="cadetInformationForm" (ngSubmit)="onSubmit()" class="form-sample">
-				<p class="card-description font-weight-bold">
-					JUMS CADET DATA SHEET
-				</p>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Last Name</label>
-							<div class="col-sm-9">
-								<input type="text" formControlName="lastName" name="lastName" class="form-control"
-									required />
-							</div>
-						</div>
-					</div>
+      <form [formGroup]="personalInfo" class="mt-5" (ngSubmit)="onSubmitPersonalInfo()">
+        <p class="card-description font-weight-bold">
+          Personal info
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">First Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="firstName" formControlName="firstName" required="true"/>
+              </div>
+            </div>
+            <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+                class="alert alert-danger">
 
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">First Name</label>
-							<div class="col-sm-9">
-								<input type="text" formControlName="firstName" name="firstName" class="form-control"
-									required />
-							</div>
-						</div>
-					</div>
-				</div>
+              <div *ngIf="firstName.errors.required">
+                First name is required.
+              </div>
+            </div>
+          </div>
 
-				<div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Last Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" name="lastName" formControlName="lastName" required="true"/>
+              </div>
+            </div>
+            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+                class="alert alert-danger">
 
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Student Id</label>
-							<div class="col-sm-9">
-								<input type="text" formControlName="studentId" name="studentId" class="form-control"
-									placeholder="Optional / Higly Suggested" />
-							</div>
-						</div>
-					</div>
+              <div *ngIf="lastName.errors.required">
+                Last name is required.
+              </div>
+            </div>
+          </div>
+        </div>
 
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Gender</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="gender" name="gender" required>
-									<option disabled="disabled" value="">Gender</option>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Let Level</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="letLevel" formControlName="letLevel">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Period</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="period" formControlName="period">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
-									<option>Male</option>
-									<option>Female</option>
-								</select>
-							</div>
-						</div>
-					</div>
+        </div>
 
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Birth Month</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="birthMonth" name="birthMonth" required>
-									<option disabled="disabled" value="">Birth Month</option>
-									<option value="1">January</option>
-									<option value="2">February</option>
-									<option value="3">March</option>
-									<option value="4">April</option>
-									<option value="5">May</option>
-									<option value="6">June</option>
-									<option value="7">July</option>
-									<option value="8">August</option>
-									<option value="9">September</option>
-									<option value="10">October</option>
-									<option Value="11">November</option>
-									<option value="12">December</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Birth Year</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="birthYear" name="birthYear" required>
-                  <option disabled="disabled" value="">Birth Year</option>
-                  <option [value]="currentYear - 1">{{ currentYear - 1 }}</option>
-                  <option [value]="currentYear - 2">{{ currentYear - 2 }}</option>
-                  <option [value]="currentYear - 3">{{ currentYear - 3 }}</option>
-                  <option [value]="currentYear - 4">{{ currentYear - 4 }}</option>
-                  <option [value]="currentYear - 5">{{ currentYear - 5 }}</option>
-                  <option [value]="currentYear - 6">{{ currentYear - 6 }}</option>
-                  <option [value]="currentYear - 7">{{ currentYear - 7 }}</option>
-                  <option [value]="currentYear - 8">{{ currentYear - 8 }}</option>
-                  <option [value]="currentYear - 9">{{ currentYear - 9 }}</option>
-                  <option [value]="currentYear - 10">{{ currentYear - 10 }}</option>
-                  <option [value]="currentYear - 11">{{ currentYear - 11 }}</option>
-                  <option [value]="currentYear - 12">{{ currentYear - 12 }}</option>
-                  <option [value]="currentYear - 13">{{ currentYear - 13 }}</option>
-                  <option [value]="currentYear - 14">{{ currentYear - 14 }}</option>
-                  <option [value]="currentYear - 15">{{ currentYear - 15 }}</option>
-                  <option [value]="currentYear - 16">{{ currentYear - 16 }}</option>
-                  <option [value]="currentYear - 17">{{ currentYear - 17 }}</option>
-                  <option [value]="currentYear - 18">{{ currentYear - 18 }}</option>
-                  <option [value]="currentYear - 19">{{ currentYear - 19 }}</option>
-                  <option [value]="currentYear - 20">{{ currentYear - 20 }}</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Let Level</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="letLevel" name="letLevel" required>
-									<option disabled="disabled" value="">Current Let Level</option>
-									<option Value="1">1</option>
-									<option Value="2">2</option>
-									<option Value="3">3</option>
-									<option Value="4">4</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Grade</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="grade" name="grade" required>
-									<option disabled="disabled" value="">Grade</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Race</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="race" name="race" required>
-									<option disabled="disabled" value="">Race</option>
-									<option value="Other">Other</option>
-									<option value="Native American">Native American</option>
-									<option value="Hispanic (other than black)">Hispanic (other than black)</option>
-									<option value="Caucasian">Caucasian</option>
-									<option vlaue="Asian + Pacific Islander">Asian + Pacific Islander</option>
-									<option value="African American">African American</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Student Type</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="studentType" name="studentType" required>
-									<option disabled="disabled" value="">Student Type</option>
-                  <option value="Cadet">Cadet</option>
-                  <option value="Participating Student">Participating Student</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Attending Different School</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="differSchool" name="differSchool"
-									required>
-
-									<option disabled="disabled" value="">Attending Different School</option>
-
-									<option value="Y">Yes</option>
-									<option value="N">No</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">School Name (If attending other school)</label>
-							<div class="col-sm-9">
-								<input type="text" formControlName="differSchoolName" name="SchoolName"
-									class="form-control"
-									placeholder='Required When "Attending Different School" is marked Yes' />
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Class Period</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="period" name="period" required>
-
-									<option disabled="disabled" value="">Class Period</option>
-
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6" formGroupName="enrollmentDate">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Enrollment Date</label>
-							<div class="col-sm-9">
-
-								<div class="row">
-									<div class="col">
-										<select class="form-control" formControlName="day" name="day">
-											<option disabled="disabled" value="">Day</option>
-                      <option value="01">01</option>
-                      <option value="02">02</option>
-                      <option value="03">03</option>
-                      <option value="04">04</option>
-                      <option value="05">05</option>
-                      <option value="06">06</option>
-                      <option value="07">07</option>
-                      <option value="08">08</option>
-                      <option value="09">09</option>
-                      <option value="10">10</option>
-                      <option value="11">11</option>
-                      <option value="12">12</option>
-                      <option value="13">13</option>
-                      <option value="14">14</option>
-                      <option value="15">15</option>
-                      <option value="16">16</option>
-                      <option value="17">17</option>
-                      <option value="18">18</option>
-                      <option value="19">19</option>
-                      <option value="20">20</option>
-                      <option value="21">21</option>
-                      <option value="22">22</option>
-                      <option value="23">23</option>
-                      <option value="24">24</option>
-                      <option value="25">25</option>
-                      <option value="26">26</option>
-                      <option value="27">27</option>
-                      <option value="28">28</option>
-                      <option value="29">29</option>
-                      <option value="30">30</option>
-                      <option value="31">31</option>
-										</select>
-									</div>
-									<div class="col">
-										<select class="form-control" formControlName="month" name="month" required>
-											<option disabled="disabled" value="">Month</option>
-											<option value="Jan">January</option>
-											<option value="Feb">February</option>
-											<option value="Mar">March</option>
-											<option value="Apr">April</option>
-											<option value="May">May</option>
-											<option value="Jun">June</option>
-											<option value="Jul">July</option>
-											<option value="Aug">August</option>
-											<option value="Sep">September</option>
-											<option value="Oct">October</option>
-											<option value="Nov">November</option>
-											<option value="Dec">December</option>
-										</select>
-									</div>
-									<div class="col">
-										<select class="form-control" formControlName="year" name="year" required>
-											<option disabled="disabled" value="">Year</option>
-                      <option [value]="currentYear">{{ currentYear }}</option>
-                      <option [value]="currentYear - 1">{{ currentYear - 1 }}</option>
-                      <option [value]="currentYear - 2">{{ currentYear - 2 }}</option>
-                      <option [value]="currentYear - 3">{{ currentYear - 3 }}</option>
-										</select>
-									</div>
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Expected Graduation Year</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="graduationYear" name="graduationYear"
-									required>
-                  <option disabled="disabled" value="">Expected Graduation Year</option>
-                  <option [value]="currentYear + 1">{{ currentYear + 1 }}</option>
-                  <option [value]="currentYear + 2">{{ currentYear + 2 }}</option>
-                  <option [value]="currentYear + 3">{{ currentYear + 3 }}</option>
-                  <option [value]="currentYear + 4">{{ currentYear + 4 }}</option>
-                  <option [value]="currentYear + 5">{{ currentYear + 5 }}</option>
-								</select>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="form-group row">
-							<label class="col-sm-3 col-form-label">Expected Graduation Month</label>
-							<div class="col-sm-9">
-								<select class="form-control" formControlName="graduationMonth" name="graduationMonth"
-									required>
-
-									<option disabled="disabled" value="">Month</option>
-									<option value="1">January</option>
-									<option value="2">February</option>
-									<option value="3">March</option>
-									<option value="4">April</option>
-									<option value="5">May</option>
-									<option value="6">June</option>
-									<option value="7">July</option>
-									<option value="8">August</option>
-									<option value="9">September</option>
-									<option value="10">October</option>
-									<option value="11">November</option>
-									<option value="12">December</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col">
-						<button type="submit" name="DataSubmit" class="mt-3 btn btn-primary float-right btn-block">Submit</button>
-					</div>
-				</div>
-			</form>
+        <div class="row">
+          <div class="col">
+            <input type="submit" class="btn btn-primary float-right" name="update" [disabled]="(lastName.invalid && (lastName.dirty || lastName.touched)) || firstName.invalid && (firstName.dirty || firstName.touched)">
+          </div>
+        </div>
+      </form>
 		</div>
 	</div>
 

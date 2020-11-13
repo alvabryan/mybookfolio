@@ -174,47 +174,6 @@ export class AuthEffects {
     )
   );
 
-  authAdInstructorLogin = createEffect(() => this.actions$.pipe(
-    ofType(AuthActions.adInstructorLogin),
-    switchMap((data: any) => {
-      return this.db
-        .doc(`users/${data.user.uid}`)
-        .valueChanges()
-        .pipe(
-          tap((toFirebaseData: any) => {
-            const userUserType = toFirebaseData.userType;
-            firebase
-              .analytics()
-              .logEvent('login', { userType: userUserType });
-          }),
-          map((userDataType: any) => {
-            const userStatus =
-              userDataType.userType === 'instructor'
-                ? userDataType.data.approved
-                : true;
-            return handleAuthentication(
-              userDataType.userType,
-              data.user.displayName,
-              userDataType.data.firstName,
-              userDataType.data.lastName,
-              data.user.email,
-              data.user.phoneNumber,
-              data.user.photoURL,
-              data.user.providerId,
-              userDataType.data.battalionCode,
-              data.user.uid,
-              userDataType.data.letLevel,
-              userStatus
-            );
-          })
-        );
-    }),
-    catchError((err) => {
-      // console.log(err);
-      return handleError(err.code, err.message);
-    })
-  ));
-
 
 
   // refresh page auto login
@@ -812,6 +771,65 @@ export class AuthEffects {
       })
     )
   );
+
+
+
+    // update cadet personal data
+    updateCadetInfoByInstructor = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.updateCadetInfoByInstructor),
+      withLatestFrom(this.store.select('auth')),
+      tap((data: any) => {
+        const newData = data[0].newPersonalData;
+        const battalionCode = data[1].user.battalionCode;
+
+        combineLatest(
+          from(
+            this.db
+              .collection('users')
+              .doc(newData.uid)
+              .set(
+                {
+                  data: {
+                    firstName: newData.firstName,
+                    lastName: newData.lastName,
+                    letLevel: +newData.letLevel,
+                    period: +newData.period,
+                  },
+                },
+                { merge: true }
+              )
+          ).pipe(catchError((error) => of(error))),
+          from(
+            this.db
+              .doc(`battalions/${battalionCode}`)
+              .collection('cadetsProgress')
+              .doc(battalionCode)
+              .set(
+                {
+                  [newData.uid]: {
+                    firstName: newData.firstName,
+                    lastName: newData.lastName,
+                    letLevel: +newData.letLevel,
+                    period: +newData.period,
+                  },
+                },
+                { merge: true }
+              )
+          ).pipe(catchError((error) => of(error))),
+          from(
+            this.afAuth.auth.currentUser.updateProfile({
+              displayName: newData.firstName + ' ' + newData.lastName,
+            })
+          )
+        );
+
+      })
+    ), {dispatch: false}
+  );
+
+
+
 
   // transfer cadet from one battalion to other
   updateBattalionCode = createEffect(() =>

@@ -4,5 +4,6 @@ export const setSearchCadet = createAction('[Instructor Portfolio] set search ca
     uid: string,
     firstName: string,
     lastName: string,
-    letLevel: number
+    letLevel: number,
+    period: number
 }>());

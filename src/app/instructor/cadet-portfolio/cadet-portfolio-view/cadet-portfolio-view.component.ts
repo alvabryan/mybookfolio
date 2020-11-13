@@ -65,7 +65,7 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
           this.searchCadet = progressData[searchedCadet];
 
           if (this.searchCadet) {
-            this.filterLetLevel = searchedCadetLevetLevel;
+            this.filterLetLevel = +searchedCadetLevetLevel;
             this.getCadetProgress(this.filterLetLevel, this.searchCadet.progress);
           }
         }
@@ -82,6 +82,10 @@ export class CadetPortfolioViewComponent implements OnInit, OnDestroy {
     this.router.navigate(defaultUrl);
 
     this.store.dispatch(PortfolioActions.setPortfolioPageType({pageName: taskName}));
+  }
+
+  toCadetInformation() {
+    this.router.navigate(['/instructor/cadet-portfolio/cadet-information']);
   }
 
   getCadetProgress(filterLet, searchCadetProgress) {

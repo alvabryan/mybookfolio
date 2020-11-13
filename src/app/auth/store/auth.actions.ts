@@ -4,8 +4,6 @@ import { createAction, props } from '@ngrx/store';
 
 export const loginStart = createAction('[Auth] login Start', props<{email: string, password: string}>());
 
-export const adInstructorLogin = createAction('[Auth] instructor login', props<{emai: string}>());
-
 export const authenticationSuccess = createAction('[Auth] Authenticate Success', props<{
     userType: string,
     displayName: string,
@@ -62,6 +60,9 @@ export const updateUserInfo = createAction('[User Settings] profile name', props
 
 // update cadet data
 export const updateCadetInfo = createAction('[User Cadet] update personal data', props<{newPersonalData: any}>());
+
+// update cadet data by instructor
+export const updateCadetInfoByInstructor = createAction('[User Cadet] update personal data by instructor', props<{newPersonalData: any}>());
 
 // update cadet battalion code
 export const updateBattalionCode = createAction('[User Cadet] update battalion code', props<{newBattalionCode: string, cadetUid: string}>());

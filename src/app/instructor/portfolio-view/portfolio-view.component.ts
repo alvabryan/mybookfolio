@@ -105,7 +105,8 @@ export class PortfolioViewComponent implements OnInit, OnDestroy {
       uid: searchCadet.uid,
       firstName: searchCadet.firstName,
       lastName: searchCadet.lastName,
-      letLevel: searchCadet.letLevel
+      letLevel: searchCadet.letLevel,
+      period: searchCadet.period
     }));
 
     this.setTaskName();

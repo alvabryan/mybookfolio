@@ -33,6 +33,7 @@ const routes: Routes = [
     {path: 'documentation', component: DocumentationComponent},
     {path: 'cadet-portfolio', component: CadetPortfolioComponent, children: [
       {path: '', component: CadetPortfolioViewComponent},
+      {path: 'cadet-information', component: CadetInformationComponent}
     ]},
     {path: 'portfolio', component: InstructorPortfolioComponent},
     {path: 'reminders', component: RemindersComponent},

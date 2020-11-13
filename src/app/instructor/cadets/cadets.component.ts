@@ -98,7 +98,7 @@ export class CadetsComponent implements OnInit, OnDestroy {
 
   }
 
-  setSearchData(uid: string, firstname: string, lastName: string, letLevel: number) {
+  setSearchData(uid: string, firstname: string, lastName: string, letLevel: number, period: number) {
 
     this.store.dispatch(PortfolioActions.searchCadet({
       // tslint:disable-next-line: object-literal-shorthand
@@ -107,7 +107,9 @@ export class CadetsComponent implements OnInit, OnDestroy {
       // tslint:disable-next-line: object-literal-shorthand
       lastName: lastName,
       // tslint:disable-next-line: object-literal-shorthand
-      letLevel: letLevel
+      letLevel: letLevel,
+      // tslint:disable-next-line: object-literal-shorthand
+      period: period
     }));
 
     this.store.dispatch(SearchCadetActions.setSearchCadet({
@@ -117,7 +119,9 @@ export class CadetsComponent implements OnInit, OnDestroy {
       // tslint:disable-next-line: object-literal-shorthand
       lastName: lastName,
       // tslint:disable-next-line: object-literal-shorthand
-      letLevel: letLevel
+      letLevel: letLevel,
+      // tslint:disable-next-line: object-literal-shorthand
+      period: period
     }));
 
     this.router.navigate(['/instructor/cadet-portfolio']);

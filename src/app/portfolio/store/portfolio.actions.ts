@@ -4,7 +4,8 @@ export const searchCadet = createAction('[Portfolio searchCadet] search data', p
     uid: string,
     firstName: string,
     lastName: string,
-    letLevel: number
+    letLevel: number,
+    period: number
 }>());
 
 
