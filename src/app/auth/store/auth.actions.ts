@@ -4,6 +4,8 @@ import { createAction, props } from '@ngrx/store';
 
 export const loginStart = createAction('[Auth] login Start', props<{email: string, password: string}>());
 
+export const adInstructorLogin = createAction('[Auth] instructor login', props<{emai: string}>());
+
 export const authenticationSuccess = createAction('[Auth] Authenticate Success', props<{
     userType: string,
     displayName: string,

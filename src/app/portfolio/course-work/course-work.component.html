@@ -21,7 +21,7 @@
       <h3 class="text-center">{{ pageName }}</h3>
     </div>
   </div>
-  <div class="row" *ngIf="cadetData ? cadetData.content ? true : false : false">
+  <div class="row" *ngIf="cadetData?.length > 0">
     <div class="col text-center">
       <button class="btn btn-primary" data-toggle="modal" data-target="#uploadModal">Upload File</button>
     </div>
